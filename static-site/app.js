@@ -181,11 +181,83 @@
       $$("#nav button").forEach((b) => b.classList.toggle("active", b.dataset.page === id));
     }
     document.body.classList.toggle("is-landing", id === "overview");
+    const activeNav = document.querySelector("#nav button.active");
+    if (activeNav) revealNavButton(activeNav);
     const stage = $(".stage");
     const bgKey = id === "org-profile" ? "org-profile" : id;
     if (stage && STAGE_BG[bgKey]) {
       stage.style.backgroundImage = `linear-gradient(120deg, rgba(15, 20, 25, 0.55), rgba(15, 20, 25, 0.28)), url("${STAGE_BG[bgKey]}")`;
     }
+  }
+
+  /* Keep the active item inside the phone nav scroller without moving the page. */
+  function revealNavButton(btn) {
+    const nav = document.getElementById("nav");
+    const shell = nav && nav.closest(".nav-scroll");
+    if (!nav || !shell || !btn) return;
+    const buttons = [...nav.querySelectorAll("button")];
+    const navRect = nav.getBoundingClientRect();
+    const btnRect = btn.getBoundingClientRect();
+    const padLeft = shell.classList.contains("is-scrolled") ? 40 : 2;
+    const padRight = shell.classList.contains("is-at-end") ? 2 : 44;
+    const hiddenLeft = btnRect.left < navRect.left + padLeft;
+    const hiddenRight = btnRect.right > navRect.right - padRight;
+    if (!hiddenLeft && !hiddenRight) return;
+    if (btn === buttons[0]) nav.scrollLeft = 0;
+    else if (btn === buttons[buttons.length - 1]) nav.scrollLeft = nav.scrollWidth;
+    else if (hiddenLeft) nav.scrollLeft -= navRect.left + padLeft - btnRect.left;
+    else nav.scrollLeft += btnRect.right - (navRect.right - padRight);
+    syncNavEdges();
+  }
+
+  function syncNavEdges() {
+    const nav = document.getElementById("nav");
+    const shell = nav && nav.closest(".nav-scroll");
+    if (!nav || !shell) return;
+    const max = nav.scrollWidth - nav.clientWidth;
+    const overflowing = max > 1;
+    const scrolled = overflowing && nav.scrollLeft > 4;
+    const atEnd = overflowing && nav.scrollLeft >= max - 2;
+    for (const el of [nav, shell]) {
+      el.classList.toggle("is-overflowing", overflowing);
+      el.classList.toggle("is-scrolled", scrolled);
+      el.classList.toggle("is-at-end", atEnd);
+    }
+  }
+
+  function bindNavOverflow() {
+    const nav = document.getElementById("nav");
+    if (!nav || nav.dataset.overflowBound) return;
+    nav.dataset.overflowBound = "1";
+    nav.addEventListener("scroll", syncNavEdges, { passive: true });
+    const shell = nav.closest(".nav-scroll");
+    const nudge = (direction) => {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      nav.scrollBy({
+        left: direction * Math.max(120, nav.clientWidth * 0.65),
+        behavior: reduce ? "auto" : "smooth",
+      });
+    };
+    shell?.querySelector(".nav-edge-end")?.addEventListener("click", () => nudge(1));
+    shell?.querySelector(".nav-edge-start")?.addEventListener("click", () => nudge(-1));
+    nav.addEventListener("focusin", (event) => {
+      const btn = event.target.closest("button");
+      if (btn && nav.contains(btn)) revealNavButton(btn);
+    });
+    if (typeof ResizeObserver !== "undefined") {
+      const ro = new ResizeObserver(() => syncNavEdges());
+      ro.observe(nav);
+    } else {
+      window.addEventListener("resize", syncNavEdges);
+    }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        syncNavEdges();
+        const active = nav.querySelector("button.active");
+        if (active) revealNavButton(active);
+      });
+    }
+    syncNavEdges();
   }
 
   /* ---------- navigation ---------- */
@@ -1111,6 +1183,7 @@
   renderJobs();
   renderApply();
   renderPossibility();
+  bindNavOverflow();
   applyRoute();
 })();
 

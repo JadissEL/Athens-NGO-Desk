@@ -12,7 +12,7 @@
   <meta property="og:description" content="Openings, weekly NGO media, and what life is like for workers in Greek civil society — from major hubs to islands and regional field posts." />
   <meta property="og:image" content="hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="styles.css?v=osintrefs2" />
+  <link rel="stylesheet" href="styles.css?v=navscroll1" />
 </head>
 <body>
   <div class="site">
@@ -23,25 +23,29 @@
             <span class="logo-mark" aria-hidden="true"></span>
             <span class="logo-text">Greece NGO Desk</span>
           </a>
-          <nav class="nav-center" id="nav" aria-label="Primary">
-            <button type="button" data-page="overview" class="active">Home</button>
-            <span class="sep">·</span>
-            <button type="button" data-page="media">Media</button>
-            <span class="sep">·</span>
-            <button type="button" data-page="life">Life</button>
-            <span class="sep">·</span>
-            <button type="button" data-page="jobs">Openings</button>
-            <span class="sep">·</span>
-            <button type="button" data-page="apply">Apply</button>
-            <span class="sep">·</span>
-            <button type="button" data-page="registry">Registry</button>
-            <span class="sep">·</span>
-            <button type="button" data-page="possibility">Scores</button>
-            <span class="sep">·</span>
-            <button type="button" data-page="create">Found</button>
-            <span class="sep">·</span>
-            <button type="button" data-page="funding">Fund</button>
-          </nav>
+          <div class="nav-scroll">
+            <nav class="nav-center" id="nav" aria-label="Primary">
+              <button type="button" data-page="overview" class="active">Home</button>
+              <span class="sep">·</span>
+              <button type="button" data-page="media">Media</button>
+              <span class="sep">·</span>
+              <button type="button" data-page="life">Life</button>
+              <span class="sep">·</span>
+              <button type="button" data-page="jobs">Openings</button>
+              <span class="sep">·</span>
+              <button type="button" data-page="apply">Apply</button>
+              <span class="sep">·</span>
+              <button type="button" data-page="registry">Registry</button>
+              <span class="sep">·</span>
+              <button type="button" data-page="possibility">Scores</button>
+              <span class="sep">·</span>
+              <button type="button" data-page="create">Found</button>
+              <span class="sep">·</span>
+              <button type="button" data-page="funding">Fund</button>
+            </nav>
+            <button type="button" class="nav-edge nav-edge-start" aria-label="Previous sections" tabindex="-1"></button>
+            <button type="button" class="nav-edge nav-edge-end" aria-label="More sections" tabindex="-1"></button>
+          </div>
           <div class="nav-actions">
             <button type="button" class="btn btn-primary" data-page="apply">Send a CV</button>
           </div>
@@ -1133,6 +1137,6 @@
   </script>
   <script src="data.js"></script>
   <script src="data_loader.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js?v=navscroll1"></script>
 </body>
 </html>
