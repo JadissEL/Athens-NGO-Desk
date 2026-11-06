@@ -4,11 +4,35 @@
  */
 const fs = require("fs");
 const path = require("path");
-const Ajv2020 = require("ajv/dist/2020");
-const addFormats = require("ajv-formats");
+const { createRequire } = require("module");
 const { mergeOsintIntoRegistry } = require("./merge_osint_into_registry");
 
 const repoRoot = path.join(__dirname, "..");
+
+/**
+ * Fastify on Render uses `rootDir: server` — dependencies live in `server/node_modules`, but this
+ * file lives under `scripts/` at the repo root. Default `require()` resolution starts from `scripts/`
+ * and never reaches `server/node_modules`, so we anchor resolution to `server/package.json` when present.
+ */
+function requireAjvFromServerOrRoot() {
+  const serverPkg = path.join(repoRoot, "server", "package.json");
+  const rootPkg = path.join(repoRoot, "package.json");
+  try {
+    const req = createRequire(serverPkg);
+    return {
+      Ajv2020: req("ajv/dist/2020"),
+      addFormats: req("ajv-formats"),
+    };
+  } catch {
+    const req = createRequire(rootPkg);
+    return {
+      Ajv2020: req("ajv/dist/2020"),
+      addFormats: req("ajv-formats"),
+    };
+  }
+}
+
+const { Ajv2020, addFormats } = requireAjvFromServerOrRoot();
 const schemasDir = path.join(repoRoot, "schemas");
 
 const bundleMap = [
