@@ -5,9 +5,9 @@
  *
  * Env:
  *   RENDER_API_KEY     (required)
- *   OWNER_EMAIL        default: bognboa@gmail.com
- *   DB_NAME            default: athens-ngo-desk-db-bognboa
- *   SERVICE_NAME       default: athens-ngo-desk-api-bognboa
+ *   OWNER_EMAIL        default: elantaki.dijadiss@gmail.com
+ *   DB_NAME            default: athens-ngo-desk-db
+ *   SERVICE_NAME       default: athens-ngo-desk-api
  *   REPO_URL           default: https://github.com/JadissEL/Athens-NGO-Desk
  *   REPO_BRANCH        default: main
  *   CORS_ORIGIN        default: https://greece-ngo-desk.vercel.app
@@ -26,9 +26,9 @@ if (!RENDER_API_KEY) {
   process.exit(1);
 }
 
-const OWNER_EMAIL = process.env.OWNER_EMAIL ?? "bognboa@gmail.com";
-const DB_NAME = process.env.DB_NAME ?? "athens-ngo-desk-db-bognboa";
-const SERVICE_NAME = process.env.SERVICE_NAME ?? "athens-ngo-desk-api-bognboa";
+const OWNER_EMAIL = process.env.OWNER_EMAIL ?? "elantaki.dijadiss@gmail.com";
+const DB_NAME = process.env.DB_NAME ?? "athens-ngo-desk-db";
+const SERVICE_NAME = process.env.SERVICE_NAME ?? "athens-ngo-desk-api";
 const REPO_URL = process.env.REPO_URL ?? "https://github.com/JadissEL/Athens-NGO-Desk";
 const REPO_BRANCH = process.env.REPO_BRANCH ?? "main";
 const CORS_ORIGIN = process.env.CORS_ORIGIN ?? "https://greece-ngo-desk.vercel.app";

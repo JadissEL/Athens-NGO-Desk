@@ -59,11 +59,13 @@ Until `DATABASE_URL` is present, **`prisma migrate deploy` fails** during build 
 
 ### New Render account (e.g. second workspace / email)
 
-The Cursor **Render MCP** only sees the workspace linked to its integration. To provision **Postgres + Web service** on another Render login (for example **bognboa@gmail.com**):
+The Cursor **Render MCP** only sees the workspace linked to its integration. To provision **Postgres + Web service** automatically:
+
+**Default workspace** in the script / workflow is **`elantaki.dijadiss@gmail.com`**, using existing resource names **`athens-ngo-desk-db`** and **`athens-ngo-desk-api`**. For another login, set **`OWNER_EMAIL`**, **`DB_NAME`**, and **`SERVICE_NAME`** in the workflow env or when running the script.
 
 #### Option A — GitHub Actions (minimal manual work)
 
-1. Log into Render as that user → **Account Settings** → **API Keys** → create a key (store only in **GitHub repo secret** `RENDER_API_KEY`, never in chat or git).
+1. Log into **that** Render user → **Account Settings** → **API Keys** → create a key (store only in **GitHub repo secret** `RENDER_API_KEY`, never in chat or git).
 2. In the **GitHub** repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret** → name `RENDER_API_KEY`, paste the key.
 3. Ensure **Render** can clone the repo for that account (connect GitHub when Render asks on first deploy, or connect in Render **Account Settings**).
 4. **Actions** → workflow **Provision Render API** → **Run workflow**. Wait for green; the log prints **`serviceUrl=...`**.
@@ -78,6 +80,9 @@ The job runs [`scripts/render_provision_api.mjs`](../scripts/render_provision_ap
 $env:RENDER_API_KEY = "<your key>"
 node scripts/render_provision_api.mjs
 ```
+
+Override example (other workspace):  
+`$env:OWNER_EMAIL="bognboa@gmail.com"; $env:DB_NAME="my-db"; $env:SERVICE_NAME="my-api"; node scripts/render_provision_api.mjs`
 
 (`render_provision_api.ps1` is a legacy non-idempotent variant; prefer the `.mjs` script.)
 

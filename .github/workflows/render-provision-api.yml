@@ -27,7 +27,8 @@ jobs:
       - name: Provision Postgres + Web Service (Render API)
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          OWNER_EMAIL: bognboa@gmail.com
-          DB_NAME: athens-ngo-desk-db-bognboa
-          SERVICE_NAME: athens-ngo-desk-api-bognboa
+          # Default workspace: elantaki.dijadiss@gmail.com (existing names: athens-ngo-desk-db + athens-ngo-desk-api)
+          OWNER_EMAIL: elantaki.dijadiss@gmail.com
+          DB_NAME: athens-ngo-desk-db
+          SERVICE_NAME: athens-ngo-desk-api
         run: node scripts/render_provision_api.mjs

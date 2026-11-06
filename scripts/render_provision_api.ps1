@@ -5,7 +5,7 @@
 #   .\scripts\render_provision_api.ps1
 #
 # Prerequisites:
-# - API key for the Render account that should own the resources (e.g. bognboa@gmail.com workspace).
+# - API key for the Render account that should own the resources (default: elantaki.dijadiss@gmail.com workspace).
 # - GitHub repo https://github.com/JadissEL/Athens-NGO-Desk connected to Render for that account
 #   (Dashboard → connect GitHub / install Render GitHub app for this workspace).
 #
@@ -36,9 +36,9 @@ if (-not $env:RENDER_API_KEY) {
   Write-Error "Set RENDER_API_KEY to a Render API key for the target workspace (Account Settings → API Keys)."
 }
 
-$ownerEmail = "bognboa@gmail.com"
-$dbName = "athens-ngo-desk-db-bognboa"
-$serviceName = "athens-ngo-desk-api-bognboa"
+$ownerEmail = "elantaki.dijadiss@gmail.com"
+$dbName = "athens-ngo-desk-db"
+$serviceName = "athens-ngo-desk-api"
 $repo = "https://github.com/JadissEL/Athens-NGO-Desk"
 $branch = "main"
 $cors = "https://greece-ngo-desk.vercel.app"
