@@ -18,6 +18,8 @@
     "db:seed": "tsx scripts/seed_from_json.ts"
   },
   "dependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "@clerk/backend": "^3.27.0",
     "@fastify/cors": "^10.0.2",
     "@fastify/rate-limit": "^11.2.2",
