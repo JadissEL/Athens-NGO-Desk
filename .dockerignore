@@ -1,0 +1,12 @@
+node_modules
+**/node_modules
+.git
+.cursor
+.vercel
+static-site
+e2e
+.github
+
+# Root-only markdown (keep docs/ for server static mount)
+/*.md
+/README.txt

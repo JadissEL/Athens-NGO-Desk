@@ -47,6 +47,8 @@ npm run dev
 
 Runbook: [../docs/STAGING.md](../docs/STAGING.md).
 
+**Cloud Run:** container build from repo root, migrations at startup — [../docs/DEPLOYMENT_CLOUD_RUN.md](../docs/DEPLOYMENT_CLOUD_RUN.md).
+
 **Local JSON first:** Steward changes often land in `data/ngos/*.json` (e.g. `npm run import:registry` from repo root — see [../data/ngos/imports/README.md](../data/ngos/imports/README.md)). Run `npm run validate` and `npm run build:data` there, then `cd server && npm run db:seed` (or your publish path) so Postgres mirrors the bundle.
 
 See [../docs/PHASE_B_STACK.md](../docs/PHASE_B_STACK.md) and [../docs/LEGAL_NOTICE.md](../docs/LEGAL_NOTICE.md).

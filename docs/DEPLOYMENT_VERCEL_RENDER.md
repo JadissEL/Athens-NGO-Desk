@@ -97,6 +97,7 @@ curl -fsS "https://<render-host>/api/ngo-data" | head -c 400
 
 ## Related
 
+- [DEPLOYMENT_CLOUD_RUN.md](./DEPLOYMENT_CLOUD_RUN.md) — host the API on **Google Cloud Run** instead of Render
 - [STAGING.md](./STAGING.md) — EU checklist, env names
 - [server/README.md](../server/README.md) — routes and auth
 - [SECURITY.md](./SECURITY.md) — keys and rotation

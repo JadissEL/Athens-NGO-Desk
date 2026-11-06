@@ -25,12 +25,12 @@
     "@prisma/client": "^6.3.1",
     "fastify": "^5.2.1",
     "jose": "^6.2.15",
-    "jsonwebtoken": "^9.0.3"
+    "jsonwebtoken": "^9.0.3",
+    "prisma": "^6.3.1"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.6.6",
-    "prisma": "^6.3.1",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   }
