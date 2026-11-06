@@ -19,6 +19,7 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_REN
 
 | Date | Action |
 |------|--------|
+| 2026-11-06 | **Render — second account (API):** `scripts/render_provision_api.ps1` + deploy doc section: creates Postgres + web service via Render API when `RENDER_API_KEY` is set for that workspace (MCP cannot act as another Render user). |
 | 2026-11-06 | **Google Cloud Run:** root `Dockerfile` + `server/docker-entrypoint.sh` (`prisma migrate deploy` then `node dist/index.js`); `prisma` moved to runtime deps for migrate in prod image; `docs/DEPLOYMENT_CLOUD_RUN.md` (build/push, env, seed once). |
 | 2026-11-06 | **Render deploy fix:** `render.yaml` wires `DATABASE_URL` from Postgres `athens-ngo-desk-db` via `fromDatabase`; build runs `seed_from_json.ts --if-empty` after compile. **Static site:** `static-site/index.html` sets `NGO_DATA_API_BASE` to `https://athens-ngo-desk-api.onrender.com`. **Note:** manual web services must **link DB** in the dashboard or use a synced Blueprint — `render.yaml` alone does not update env on an existing manual service. |
 | 2026-11-06 | **Production deploy guide:** `docs/DEPLOYMENT_VERCEL_RENDER.md` (Vercel `static-site/` + Render `server/` + Clerk); `render.yaml` blueprint; `static-site/vercel.json`; `docs/STAGING.md` fix: `NGO_DATA_API_BASE` (was wrong name). |

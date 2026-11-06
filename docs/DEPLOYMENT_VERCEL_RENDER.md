@@ -57,6 +57,23 @@ If the API was created **manually** (not from a synced Blueprint), Render does *
 
 Until `DATABASE_URL` is present, **`prisma migrate deploy` fails** during build (P1012).
 
+### New Render account (e.g. second workspace / email)
+
+The Cursor **Render MCP** only sees the workspace linked to its integration. To provision **Postgres + Web service** on another Render login (for example **bognboa@gmail.com**):
+
+1. Log into Render as that user → **Account Settings** → **API Keys** → create a key (do not paste it into chat or git).
+2. On that same account, ensure **GitHub** is connected so Render can clone `https://github.com/JadissEL/Athens-NGO-Desk`.
+3. From the repo root in PowerShell:
+
+```powershell
+$env:RENDER_API_KEY = "<your key>"
+.\scripts\render_provision_api.ps1
+```
+
+The script creates a **Frankfurt** Postgres plus a **Node** web service (`rootDir: server`, build includes migrate + optional seed). It sets **`DATABASE_URL`** from the DB **internal** connection string (same region as the service).
+
+4. When the deploy is **live**, set **`window.NGO_DATA_API_BASE`** in `static-site/index.html` to the new `https://*.onrender.com` URL and redeploy Vercel.
+
 ## 3. Vercel — static site
 
 1. **New Project** → import the repo.
