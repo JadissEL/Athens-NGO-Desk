@@ -184,6 +184,7 @@ a:hover {
   padding: 0.45rem 0.7rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .nav-center button:hover {
@@ -1815,15 +1816,150 @@ button.pill {
   color: var(--muted);
 }
 
+.nav-scroll {
+  min-width: 0;
+  position: relative;
+}
+
+.nav-edge {
+  display: none;
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+
 @media (max-width: 1023px) {
   .topnav {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     justify-items: start;
+  }
+
+  .nav-scroll {
+    width: 100%;
   }
 
   .nav-center {
     justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-block: 0.1rem;
   }
+
+  .nav-center::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-center button,
+  .nav-center .sep {
+    flex: 0 0 auto;
+  }
+}
+
+/* Phone: one scrolling row. Dots stay on tablet/desktop, where the row fits on a line. */
+@media (max-width: 767px) {
+  .nav-center .sep {
+    display: none;
+  }
+
+  .nav-scroll.is-overflowing:not(.is-at-end) .nav-center {
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      #000 0,
+      #000 calc(100% - 2.55rem),
+      transparent calc(100% - 1.2rem),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      #000 0,
+      #000 calc(100% - 2.55rem),
+      transparent calc(100% - 1.2rem),
+      transparent 100%
+    );
+  }
+
+  .nav-scroll.is-overflowing.is-scrolled:not(.is-at-end) .nav-center {
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 1.15rem,
+      #000 2.4rem,
+      #000 calc(100% - 2.55rem),
+      transparent calc(100% - 1.2rem),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 1.15rem,
+      #000 2.4rem,
+      #000 calc(100% - 2.55rem),
+      transparent calc(100% - 1.2rem),
+      transparent 100%
+    );
+  }
+
+  .nav-scroll.is-overflowing.is-scrolled.is-at-end .nav-center {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, transparent 1.15rem, #000 2.4rem, #000 100%);
+    mask-image: linear-gradient(90deg, transparent 0, transparent 1.15rem, #000 2.4rem, #000 100%);
+  }
+
+  .nav-scroll.is-overflowing:not(.is-at-end) .nav-edge-end,
+  .nav-scroll.is-scrolled .nav-edge-start {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1.25rem;
+    color: var(--ink-soft);
+  }
+
+  .nav-edge-end {
+    right: 0;
+    justify-content: flex-end;
+  }
+
+  .nav-edge-end::before {
+    content: "›";
+  }
+
+  .nav-edge-start {
+    left: 0;
+    justify-content: flex-start;
+    padding-left: 0.05rem;
+  }
+
+  .nav-edge-start::before {
+    content: "‹";
+  }
+}
+
+@media (max-width: 767px) and (forced-colors: active) {
+  .nav-scroll.is-overflowing:not(.is-at-end) .nav-center,
+  .nav-scroll.is-overflowing.is-scrolled:not(.is-at-end) .nav-center,
+  .nav-scroll.is-overflowing.is-scrolled.is-at-end .nav-center {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+@media (max-width: 1023px) {
 
   .editorial {
     grid-template-columns: 1fr;
