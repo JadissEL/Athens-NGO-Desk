@@ -29,14 +29,14 @@ Then use the steward UI to **Publish** so `GET /api/ngo-data` returns 200 (not 4
 1. Connect this GitHub repo to Render.
 2. **New Web Service** — use **[`render.yaml`](../render.yaml)** (Blueprint) **or** manual:
    - **Root directory:** `server`
-   - **Build:** `npm ci && npx prisma migrate deploy && npm run build`
+   - **Build:** `npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty` (Blueprint seeds once if there is no published bundle yet)
    - **Start:** `npm start`
    - **Health check path:** `/api/ready` (or `/api/health` — DB optional for `health`)
-3. **Environment variables** (set in Render dashboard; do not commit):
+3. **Environment variables** (Blueprint can inject `DATABASE_URL` from linked Postgres via `fromDatabase` in `render.yaml`; Clerk keys and `CORS_ORIGIN` stay in the dashboard)
 
 | Variable | Required | Notes |
 |----------|----------|--------|
-| `DATABASE_URL` | yes | Pooled Postgres URL |
+| `DATABASE_URL` | yes | Linked Render Postgres (`fromDatabase` in blueprint) or paste URL if manual |
 | `CLERK_SECRET_KEY` | yes* | Server verifies steward JWTs (*if using Clerk) |
 | `CLERK_PUBLISHABLE_KEY` | yes* | `GET /api/steward-config` for steward UI |
 | `CLERK_AUTHORIZED_PARTIES` | recommended | Origins allowed for session tokens — include **Vercel URL** and **Render API URL** if steward loads from API host |

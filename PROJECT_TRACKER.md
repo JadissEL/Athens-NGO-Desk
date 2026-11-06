@@ -13,12 +13,13 @@ Greece NGO Desk: **static site** (`static-site/`) plus optional **Phase B API** 
 - **Build:** `scripts/build_data.js` → `static-site/data.js`.
 - **Phase B:** Fastify + Prisma + PostgreSQL — read-only `GET /api/ngo-data`, steward `PATCH` datasets + `POST /publish`, `AuditLog`. See `docs/PHASE_B_STACK.md`, `server/README.md`.
 
-See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/METHODOLOGY.md`, `docs/LEGAL_NOTICE.md`, `docs/GOVERNANCE_RACI.md`, `docs/STAGING.md`, `docs/SECURITY.md`.
+See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_RENDER.md`, `docs/METHODOLOGY.md`, `docs/LEGAL_NOTICE.md`, `docs/GOVERNANCE_RACI.md`, `docs/STAGING.md`, `docs/SECURITY.md`.
 
 ## Completed actions
 
 | Date | Action |
 |------|--------|
+| 2026-11-06 | **Render deploy fix:** `render.yaml` wires `DATABASE_URL` from Postgres `athens-ngo-desk-db` via `fromDatabase`; build runs `seed_from_json.ts --if-empty` after compile. **Static site:** `static-site/index.html` sets `NGO_DATA_API_BASE` to `https://athens-ngo-desk-api.onrender.com`. |
 | 2026-11-06 | **Production deploy guide:** `docs/DEPLOYMENT_VERCEL_RENDER.md` (Vercel `static-site/` + Render `server/` + Clerk); `render.yaml` blueprint; `static-site/vercel.json`; `docs/STAGING.md` fix: `NGO_DATA_API_BASE` (was wrong name). |
 | 2026-11-06 | **Standalone git + GitHub:** repository root fixed to this folder (`git init`); initial commit; public remote **[github.com/JadissEL/Athens-NGO-Desk](https://github.com/JadissEL/Athens-NGO-Desk)** (`gh repo create` + push `main`). Prior issue: user-level git had treated **home directory** as repo root — do not use `git status` from `~` for this project. |
 | 2026-11-06 | **OSINT profile enrichment (desk-held):** `merge_osint_into_registry` ingests `job_possibility` (URLs + text) + `media_week` (fuzzy match + aliases) into `osintProfile.references` + `deskCorpus`; UI section **Desk corpus & digest**; schema `deskCorpus` + `osintMediaDigestMatch`. |

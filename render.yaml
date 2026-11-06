@@ -1,7 +1,9 @@
 # Render Blueprint — Phase B API (`server/`)
 # https://render.com/docs/blueprint-spec
-# Prereq: create a PostgreSQL instance (EU region recommended) and set DATABASE_URL on this service.
-# After first deploy: ensure migrations ran (build runs migrate deploy) and seed/publish if DB is empty.
+#
+# Postgres: use an existing Render Postgres named `athens-ngo-desk-db` in this workspace, or add a
+# `databases:` block here. DATABASE_URL is injected via `fromDatabase` (no secret in git).
+# After first deploy: build runs migrate + seed once if PublishedBundle is empty (see buildCommand).
 
 services:
   - type: web
@@ -9,16 +11,19 @@ services:
     runtime: node
     region: frankfurt
     rootDir: server
-    buildCommand: npm ci && npx prisma migrate deploy && npm run build
+    buildCommand: npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: athens-ngo-desk-db
+          property: connectionString
       - key: NODE_VERSION
         value: "20"
       - key: HOST
         value: 0.0.0.0
       # Render injects PORT automatically — do not override unless you know the platform port.
-      # Set in Render dashboard (secret):
-      # DATABASE_URL — pooled Postgres URL
-      # CLERK_SECRET_KEY, CLERK_PUBLISHABLE_KEY
-      # CORS_ORIGIN — your Vercel site origin, e.g. https://desk.example.com
+      # Set in Render dashboard (secrets) if using Clerk steward:
+      # CLERK_SECRET_KEY, CLERK_PUBLISHABLE_KEY, CLERK_AUTHORIZED_PARTIES
+      # CORS_ORIGIN — your Vercel site origin, e.g. https://greece-ngo-desk.vercel.app

@@ -52,8 +52,18 @@ function loadBundle() {
 }
 
 async function main() {
-  const bundle = loadBundle();
+  const ifEmpty = process.argv.includes("--if-empty");
   const prisma = new PrismaClient();
+  if (ifEmpty) {
+    const existing = await prisma.publishedBundle.findUnique({ where: { id: 1 } });
+    if (existing) {
+      console.log("seed_if_empty: skip — PublishedBundle id=1 already exists");
+      await prisma.$disconnect();
+      return;
+    }
+  }
+
+  const bundle = loadBundle();
   const now = new Date();
   await prisma.draftBundle.upsert({
     where: { id: 1 },
