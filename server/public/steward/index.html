@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Greece NGO Desk — Steward</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; background: #0f1419; color: #e8eaed; }
+    body { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+    h1 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    a { color: #8ab4f8; }
+    label { display: block; margin-top: 0.75rem; font-size: 0.85rem; color: #9aa0a6; }
+    input, select, textarea, button {
+      width: 100%; max-width: 100%; box-sizing: border-box;
+      padding: 0.5rem 0.6rem; margin-top: 0.25rem;
+      background: #1f2937; border: 1px solid #3d4a5c; color: #e8eaed; border-radius: 6px;
+    }
+    textarea { min-height: 280px; font-family: ui-monospace, monospace; font-size: 0.8rem; }
+    button { width: auto; cursor: pointer; margin-right: 0.5rem; margin-top: 0.75rem; }
+    .row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; }
+    .row > div { flex: 1; min-width: 200px; }
+    .muted { color: #9aa0a6; font-size: 0.85rem; }
+    .err { color: #f28b82; white-space: pre-wrap; font-size: 0.85rem; }
+    .ok { color: #81c995; font-size: 0.85rem; }
+    nav { margin-bottom: 1rem; }
+    details { margin: 0.75rem 0; padding: 0.75rem; background: #1a1f26; border-radius: 8px; border: 1px solid #3d4a5c; }
+    details summary { cursor: pointer; font-size: 0.9rem; color: #9aa0a6; }
+  </style>
+</head>
+<body>
+  <nav><a href="/desk-docs/LEGAL_NOTICE.md" target="_blank" rel="noopener">Legal</a> · <a href="/desk-docs/METHODOLOGY.md" target="_blank" rel="noopener">Methodology</a></nav>
+  <h1>Steward console</h1>
+  <p class="muted">Loads <code>/api/draft</code>, edit one organisation JSON, validate via publish gate on save. Sign in with <strong>Clerk</strong> (recommended) or use a break-glass API key.</p>
+
+  <div id="authClerk" class="row">
+    <div>
+      <label>Session</label>
+      <p id="clerkUserLine" class="muted" style="margin:0.25rem 0 0;">Not signed in</p>
+      <button type="button" id="btnClerkSignIn">Sign in</button>
+      <button type="button" id="btnClerkSignOut" hidden>Sign out</button>
+    </div>
+  </div>
+
+  <details id="breakGlass">
+    <summary>Break-glass API key (omit if using Clerk)</summary>
+    <div class="row" style="margin-top:0.75rem;">
+      <div>
+        <label for="apiBase">API base (same origin default)</label>
+        <input id="apiBase" type="text" placeholder="" />
+      </div>
+      <div>
+        <label for="apiKey">Steward key</label>
+        <input id="apiKey" type="password" autocomplete="off" placeholder="Bearer key" />
+      </div>
+    </div>
+  </details>
+
+  <label for="orgSelect">Organisation</label>
+  <select id="orgSelect" disabled><option value="">Load draft first…</option></select>
+
+  <textarea id="editor" spellcheck="false" disabled></textarea>
+
+  <button type="button" id="btnLoad">Load draft</button>
+  <button type="button" id="btnSave" disabled>Save organisation</button>
+  <button type="button" id="btnPublish" disabled>Publish draft → public</button>
+
+  <p id="status" class="muted"></p>
+  <p id="msg" class="err" hidden></p>
+
+  <script>
+    const apiBaseInput = document.getElementById("apiBase");
+    const apiKeyInput = document.getElementById("apiKey");
+    const orgSelect = document.getElementById("orgSelect");
+    const editor = document.getElementById("editor");
+    const btnLoad = document.getElementById("btnLoad");
+    const btnSave = document.getElementById("btnSave");
+    const btnPublish = document.getElementById("btnPublish");
+    const status = document.getElementById("status");
+    const msg = document.getElementById("msg");
+    const clerkUserLine = document.getElementById("clerkUserLine");
+    const btnClerkSignIn = document.getElementById("btnClerkSignIn");
+    const btnClerkSignOut = document.getElementById("btnClerkSignOut");
+    const breakGlass = document.getElementById("breakGlass");
+
+    let draft = null;
+    /** @type {any} */
+    let clerkInstance = null;
+    /** @type {string | null} */
+    let publishableKey = null;
+
+    function base() {
+      const v = apiBaseInput.value.trim();
+      return v || "";
+    }
+
+    async function getBearerToken() {
+      if (clerkInstance && clerkInstance.session) {
+        try {
+          return await clerkInstance.session.getToken();
+        } catch (e) {
+          throw new Error("Clerk session token failed: " + (e && e.message ? e.message : String(e)));
+        }
+      }
+      const k = apiKeyInput.value.trim();
+      if (!k) throw new Error("Sign in with Clerk or enter a steward key");
+      return k;
+    }
+
+    async function authHeaders() {
+      const token = await getBearerToken();
+      return { Authorization: "Bearer " + token, "Content-Type": "application/json" };
+    }
+
+    function showError(e) {
+      msg.hidden = false;
+      msg.textContent = e instanceof Error ? e.message : String(e);
+      msg.className = "err";
+    }
+
+    function showOk(t) {
+      msg.hidden = false;
+      msg.textContent = t;
+      msg.className = "ok";
+    }
+
+    function setClerkUi() {
+      if (!clerkInstance) return;
+      const u = clerkInstance.user;
+      if (u) {
+        clerkUserLine.textContent = u.primaryEmailAddress?.emailAddress || u.username || u.id;
+        btnClerkSignIn.hidden = true;
+        btnClerkSignOut.hidden = false;
+      } else {
+        clerkUserLine.textContent = "Not signed in";
+        btnClerkSignIn.hidden = false;
+        btnClerkSignOut.hidden = true;
+      }
+    }
+
+    function loadClerkScript() {
+      return new Promise((resolve, reject) => {
+        if (window.Clerk) {
+          resolve(window.Clerk);
+          return;
+        }
+        const s = document.createElement("script");
+        s.src = "https://cdn.jsdelivr.net/npm/@clerk/clerk-js@6.42.3/dist/clerk.browser.js";
+        s.crossOrigin = "anonymous";
+        s.onload = () => resolve(window.Clerk);
+        s.onerror = () => reject(new Error("Failed to load Clerk JS from CDN"));
+        document.head.appendChild(s);
+      });
+    }
+
+    async function initClerk() {
+      try {
+        const r = await fetch(base() + "/api/steward-config");
+        const j = await r.json();
+        publishableKey = j.clerkPublishableKey || null;
+        const serverOk = !!j.clerkServerConfigured;
+        if (!publishableKey) {
+          clerkUserLine.textContent = "Clerk not configured (set CLERK_PUBLISHABLE_KEY on server)";
+          btnClerkSignIn.disabled = true;
+          return;
+        }
+        if (!serverOk) {
+          clerkUserLine.textContent = "Server missing CLERK_SECRET_KEY or CLERK_JWT_KEY — cannot verify tokens";
+          btnClerkSignIn.disabled = true;
+          return;
+        }
+        const Clerk = await loadClerkScript();
+        clerkInstance = Clerk;
+        await clerkInstance.load({ publishableKey });
+        clerkInstance.addListener(() => setClerkUi());
+        setClerkUi();
+        breakGlass.open = false;
+      } catch (e) {
+        clerkUserLine.textContent = "Clerk init failed: " + (e && e.message ? e.message : String(e));
+        btnClerkSignIn.disabled = true;
+      }
+    }
+
+    btnClerkSignIn.addEventListener("click", () => {
+      if (clerkInstance) clerkInstance.openSignIn();
+    });
+    btnClerkSignOut.addEventListener("click", () => {
+      if (clerkInstance) clerkInstance.signOut();
+    });
+
+    apiBaseInput.value = "";
+    if (typeof localStorage !== "undefined") {
+      apiBaseInput.value = localStorage.getItem("steward_api_base") || "";
+      apiKeyInput.value = localStorage.getItem("steward_api_key") || "";
+    }
+
+    initClerk();
+
+    btnLoad.addEventListener("click", async () => {
+      msg.hidden = true;
+      status.textContent = "Loading…";
+      try {
+        if (typeof localStorage !== "undefined") {
+          localStorage.setItem("steward_api_base", apiBaseInput.value.trim());
+          localStorage.setItem("steward_api_key", apiKeyInput.value.trim());
+        }
+        const r = await fetch(base() + "/api/draft", { headers: await authHeaders() });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || r.statusText);
+        draft = j;
+        const orgs = j.registry && j.registry.organizations ? j.registry.organizations : [];
+        orgSelect.innerHTML = '<option value="">— Select —</option>';
+        orgs.forEach((o) => {
+          const opt = document.createElement("option");
+          opt.value = o.id;
+          opt.textContent = o.name + " (" + o.id + ")";
+          orgSelect.appendChild(opt);
+        });
+        orgSelect.disabled = false;
+        editor.disabled = false;
+        btnSave.disabled = false;
+        btnPublish.disabled = false;
+        status.textContent = "Draft loaded. " + orgs.length + " organisations.";
+      } catch (e) {
+        status.textContent = "";
+        showError(e);
+      }
+    });
+
+    orgSelect.addEventListener("change", () => {
+      const id = orgSelect.value;
+      if (!draft || !id) return;
+      const orgs = draft.registry.organizations;
+      const o = orgs.find((x) => x.id === id);
+      editor.value = o ? JSON.stringify(o, null, 2) : "";
+    });
+
+    btnSave.addEventListener("click", async () => {
+      msg.hidden = true;
+      const id = orgSelect.value;
+      if (!id) {
+        showError("Select an organisation");
+        return;
+      }
+      let body;
+      try {
+        body = JSON.parse(editor.value);
+      } catch (e) {
+        showError("Invalid JSON: " + e.message);
+        return;
+      }
+      if (body.id !== id) {
+        showError("JSON id must match selection (" + id + ")");
+        return;
+      }
+      status.textContent = "Saving…";
+      try {
+        const r = await fetch(base() + "/api/draft/registry/organizations/" + encodeURIComponent(id), {
+          method: "PATCH",
+          headers: await authHeaders(),
+          body: JSON.stringify(body),
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.detail || j.error || r.statusText);
+        const idx = draft.registry.organizations.findIndex((x) => x.id === id);
+        if (idx >= 0) draft.registry.organizations[idx] = body;
+        showOk("Saved. Schema OK.");
+        status.textContent = "Saved.";
+      } catch (e) {
+        status.textContent = "";
+        showError(e);
+      }
+    });
+
+    btnPublish.addEventListener("click", async () => {
+      msg.hidden = true;
+      status.textContent = "Publishing…";
+      try {
+        const r = await fetch(base() + "/api/publish", {
+          method: "POST",
+          headers: await authHeaders(),
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.detail || j.error || r.statusText);
+        showOk("Published at " + j.publishedAt);
+        status.textContent = "Published.";
+      } catch (e) {
+        status.textContent = "";
+        showError(e);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+{
+  "meta": {
+    "researchedAt": "2026-10-28T01:45:00.000Z",
+    "method": "Official careers pages + public job boards + LinkedIn / Workable (partial). Not a complete historical archive for all 104 orgs.",
+    "coverageNote": "Pass 2 (2026-10-28): added ARSIS, HOME Project, Lighthouse Relief, KMOP; refreshed ActionAid deadline; Athens-focused Oct openings prioritized."
+  },
+  "byOrgId": {
+    "ngo-001-metadrasi": {
+      "careersUrl": "https://metadrasi.org/en/job-openings/",
+      "status": "researched",
+      "totalFound": 3,
+      "sources": ["metadrasi.org", "linkedin.com/company/metadrasi", "career.aegean.gr"],
+      "postings": [
+        {
+          "title": "Information Manager (Athens)",
+          "postedDate": "2026-05-07",
+          "deadline": "2026-05-16",
+          "url": "https://www.linkedin.com/posts/metadrasi_%CE%B6%CE%B7%CF%84%CE%B5%CE%AF%CF%84%CE%B1%CE%B9-employment-jobs-activity-7458075374430748672-ylyJ",
+          "location": "Athens"
+        },
+        {
+          "title": "Call No. 4/2026 — Intercultural Mediators (fixed-term / independent)",
+          "postedDate": "2026-03",
+          "deadline": "2026-03-29",
+          "url": "https://metadrasi.org/wp-content/uploads/2026/03/Call-for-Intercultural-Mediators_EN-1.pdf",
+          "location": "Greece"
+        },
+        {
+          "title": "Guardianship officers (Εντεταλμένος Επιτροπείας) — Attica (7 posts)",
+          "postedDate": "2026-03-24",
+          "deadline": null,
+          "url": "https://metadrasi.org/wp-content/uploads/2026/03/%CE%95%CE%9D%CE%A4%CE%95%CE%A4%CE%91%CE%9B%CE%9C%CE%95%CE%9D%CE%9F%CE%A3-%CE%91%CE%A4%CE%A4%CE%99%CE%9A%CE%97-24.3.2026.pdf",
+          "location": "Attica"
+        }
+      ],
+      "notes": "Official job-openings page currently empty (0 live). Counts above are recent 2026 calls still indexed publicly."
+    },
+    "ngo-002-greek-council-for-refugees-gcr": {
+      "careersUrl": "https://gcr.gr/en/category/career-opportunities/",
+      "status": "researched",
+      "totalFound": 12,
+      "sources": ["gcr.gr", "linkedin.com/company/greek-council-for-refugees"],
+      "postings": [
+        { "title": "Turkish Interpreter", "postedDate": "2026-09-23", "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Athens" },
+        { "title": "Local Team Lead — North Aegean (Lesvos)", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Lesvos" },
+        { "title": "Labour Market Linkage Facilitator — Eastern Macedonia & Thrace (Kavala)", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Kavala" },
+        { "title": "Local Team Lead — Eastern Macedonia & Thrace (Kavala)", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Kavala" },
+        { "title": "Local Team Lead (Lesvos)", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Lesvos" },
+        { "title": "Legal Researcher & Child Protection Trainer", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Thessaloniki" },
+        { "title": "Social Cohesion Facilitator (2 posts)", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Patras" },
+        { "title": "Housing Search Facilitator (posts)", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Patras" },
+        { "title": "Labour Market Linkage Facilitator", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Patras" },
+        { "title": "Labour Market Linkage Facilitator (2 posts)", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Kavala" },
+        { "title": "Helios+ Deputy Coordinator", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Athens" },
+        { "title": "Local Team Lead — Peloponnese (Corinth)", "postedDate": null, "deadline": null, "url": "https://gcr.gr/en/category/career-opportunities/", "location": "Corinth" }
+      ],
+      "notes": "Category page lists ~10+ active/recent openings; exact publish dates often only on individual posts. Older LinkedIn alerts from 2023–2024 also exist."
+    },
+    "ngo-003-solidaritynow": {
+      "careersUrl": "https://www.solidaritynow.org/en/theseis-ergasias/",
+      "status": "researched",
+      "totalFound": 15,
+      "sources": ["solidaritynow.org"],
+      "postings": [
+        { "title": "Community Engagement Officer", "postedDate": "2026-10-09", "deadline": "2026-10-16", "url": "https://www.solidaritynow.org/theseis-ergasias/", "location": "Thessaloniki–Sofades/Karditsa" },
+        { "title": "Employment Counsellor HELIOS+ Macedonia", "postedDate": "2026-10-01", "deadline": "2026-10-08", "url": "https://www.solidaritynow.org/theseis-ergasias/", "location": "Thessaloniki" },
+        { "title": "Roma & Communications Officer", "postedDate": "2026-09-29", "deadline": "2026-10-15", "url": "https://www.solidaritynow.org/theseis-ergasias/", "location": "Athens, Thessaloniki" },
+        { "title": "Education Expert", "postedDate": "2026-09-29", "deadline": "2026-10-15", "url": "https://www.solidaritynow.org/theseis-ergasias/", "location": "Athens, Thessaloniki" },
+        { "title": "Social Cohesion Mediator HELIOS+ Attica", "postedDate": "2026-09-18", "deadline": "2026-10-02", "url": "https://www.solidaritynow.org/theseis-ergasias/", "location": "Attica" },
+        { "title": "HELIOS+ Center Coordinator Attica", "postedDate": "2026-08-28", "deadline": "2026-09-11", "url": "https://www.solidaritynow.org/theseis-ergasias/", "location": "Attica" },
+        { "title": "MEAL Manager", "postedDate": "2026-07-27", "deadline": "2026-08-14", "url": "https://www.solidaritynow.org/en/meal-manager-athens/", "location": "Athens" },
+        { "title": "IT Support HELIOS+ Attica", "postedDate": "2026-07-21", "deadline": "2026-08-04", "url": "https://www.solidaritynow.org/theseis-ergasias/", "location": "Attica" },
+        { "title": "Psychologist — Ioannina PYXIDA", "postedDate": "2026-05-27", "deadline": "2026-06-10", "url": "https://www.solidaritynow.org/en/theseis-ergasias/", "location": "Ioannina" },
+        { "title": "Psychologist — Larissa PYXIDA", "postedDate": "2026-05-27", "deadline": "2026-06-10", "url": "https://www.solidaritynow.org/en/theseis-ergasias/", "location": "Larissa" },
+        { "title": "Coordinator HELIOS+ Attica Center", "postedDate": "2026-03-30", "deadline": "2026-04-13", "url": "https://www.solidaritynow.org/en/coordinator-heliosplus-center-attica/", "location": "Athens" },
+        { "title": "Accountant (ASC Athens)", "postedDate": "2026-03-23", "deadline": "2026-03-31", "url": "https://www.solidaritynow.org/en/accountant-asc-athens/", "location": "Athens" },
+        { "title": "ASC Employability Officer", "postedDate": "2026-03-16", "deadline": "2026-03-27", "url": "https://www.solidaritynow.org/en/theseis-ergasias/", "location": "Athens ASC" },
+        { "title": "Interpreter Farsi (Thessaloniki) PT", "postedDate": "2026-02-17", "deadline": "2026-02-23", "url": "https://www.solidaritynow.org/en/theseis-ergasias/", "location": "Thessaloniki" },
+        { "title": "Interpreter Farsi (Thessaloniki) FT", "postedDate": "2026-02-17", "deadline": "2026-02-23", "url": "https://www.solidaritynow.org/en/theseis-ergasias/", "location": "Thessaloniki" }
+      ],
+      "notes": "Official careers archive keeps dated posts; page may paginate beyond first screen."
+    },
+    "ngo-004-praksis": {
+      "careersUrl": "https://praksis.gr/category/job-openings/",
+      "status": "researched",
+      "totalFound": 11,
+      "sources": ["praksis.gr"],
+      "postings": [
+        { "title": "Apartment Search Lead + Assistant (Rhodes/Kos/Leros) — deadline extension", "postedDate": "2026-10-16", "deadline": "2026-10-23", "url": "https://praksis.gr/category/job-openings/", "location": "South Aegean" },
+        { "title": "Guardianship officers (7) — Kozani, Volos, Chios, Thessaloniki, Lesvos, Kalavryta", "postedDate": "2026-10-16", "deadline": null, "url": "https://praksis.gr/category/job-openings/", "location": "Multi" },
+        { "title": "Social Worker — Homeless Housing & Work III Thessaloniki", "postedDate": "2026-10-16", "deadline": null, "url": "https://praksis.gr/category/job-openings/", "location": "Thessaloniki" },
+        { "title": "ESPA Day Centre homeless — provisional results tables", "postedDate": "2026-10-12", "deadline": null, "url": "https://praksis.gr/category/job-openings/", "location": "Greece", "kind": "results_notice" },
+        { "title": "Doctor in Athens", "postedDate": "2026-10-05", "deadline": null, "url": "https://praksis.gr/category/job-openings/", "location": "Athens" },
+        { "title": "Guardianship officer — Alexandroupoli", "postedDate": "2026-09-28", "deadline": null, "url": "https://praksis.gr/category/job-openings/", "location": "Alexandroupoli" },
+        { "title": "Apartment Search Lead + Assistant (Rhodes/Kos/Leros)", "postedDate": "2026-09-24", "deadline": null, "url": "https://praksis.gr/category/job-openings/", "location": "South Aegean" },
+        { "title": "Guardianship officers (5) — Kalavryta, Lesvos, Volos, Chios, Kozani", "postedDate": "2026-09-14", "deadline": null, "url": "https://praksis.gr/category/job-openings/", "location": "Multi" },
+        { "title": "Apartment Search Lead + Assistant (earlier call)", "postedDate": "2026-09-09", "deadline": null, "url": "https://praksis.gr/category/job-openings/", "location": "South Aegean" },
+        { "title": "SOX 12/2026 fixed-term staff recruitment notice", "postedDate": null, "deadline": null, "url": "https://praksis.gr/category/job-openings/", "location": "Greece" },
+        { "title": "Social Worker Athens (SIL AMIF)", "postedDate": "2026-03-03", "deadline": null, "url": "https://praksis.gr/sil-amif-3-3-26/", "location": "Athens" }
+      ],
+      "notes": "Active WordPress job-openings archive; more pages likely exist beyond first listing."
+    },
+    "ngo-005-caritas-athens": {
+      "careersUrl": "https://www.caritasathens.gr/en/jobs-en.html",
+      "status": "partial",
+      "totalFound": 0,
+      "sources": ["caritasathens.gr"],
+      "postings": [],
+      "notes": "Jobs page exists; openings listed ad-hoc. Spontaneous CV: caritasathens@caritasathens.gr / caritasref@caritasathens.gr."
+    },
+    "ngo-008-the-home-project": {
+      "careersUrl": "https://www.homeproject.org/en/get-involved/join-our-team/",
+      "status": "researched",
+      "totalFound": 7,
+      "sources": ["homeproject.org", "apply.workable.com/the-home-project"],
+      "postings": [
+        {
+          "title": "Caregiver — daily care (part-time, Attica)",
+          "postedDate": "2026-10",
+          "deadline": "2026-10-30",
+          "url": "https://apply.workable.com/j/7215B034C5",
+          "location": "Attica"
+        },
+        { "title": "Chief Development Officer", "postedDate": null, "deadline": null, "url": "https://www.homeproject.org/en/get-involved/join-our-team/", "location": "Athens" },
+        { "title": "Facilities Manager", "postedDate": null, "deadline": null, "url": "https://www.homeproject.org/en/get-involved/join-our-team/", "location": "Athens" },
+        { "title": "Social Worker", "postedDate": null, "deadline": null, "url": "https://www.homeproject.org/en/get-involved/join-our-team/", "location": "Athens" },
+        { "title": "Psychologist", "postedDate": null, "deadline": null, "url": "https://www.homeproject.org/en/get-involved/join-our-team/", "location": "Athens" },
+        { "title": "Educator", "postedDate": null, "deadline": null, "url": "https://www.homeproject.org/en/get-involved/join-our-team/", "location": "Athens" },
+        { "title": "Caregiver Nightshift", "postedDate": null, "deadline": null, "url": "https://www.homeproject.org/en/get-involved/join-our-team/", "location": "Athens" }
+      ],
+      "notes": "Workable + join-our-team board. Clarifications: hr@homeproject.org."
+    },
+    "ngo-009-arsis": {
+      "careersUrl": "https://arsis.gr/theseis-ergasias/",
+      "status": "researched",
+      "totalFound": 5,
+      "sources": ["arsis.gr"],
+      "postings": [
+        {
+          "title": "Educator — Unaccompanied Minors Shelter Athens",
+          "postedDate": "2026-10-16",
+          "deadline": "2026-10-23",
+          "url": "https://arsis.gr/thesi-ergasias-am9593/",
+          "location": "Athens"
+        },
+        {
+          "title": "Cleaning attendant (part-time) — UAM Shelter Athens",
+          "postedDate": "2026-10-14",
+          "deadline": null,
+          "url": "https://arsis.gr/en/theseis-ergasias/",
+          "location": "Athens"
+        },
+        {
+          "title": "Caregiver (rotating) — UAM Shelter Athens",
+          "postedDate": "2026-10-06",
+          "deadline": null,
+          "url": "https://arsis.gr/en/theseis-ergasias/",
+          "location": "Athens"
+        },
+        {
+          "title": "Caregiver — UAM Shelter «Έλλη» Alexandroupoli",
+          "postedDate": "2026-10-22",
+          "deadline": null,
+          "url": "https://arsis.gr/en/theseis-ergasias/",
+          "location": "Alexandroupoli"
+        },
+        {
+          "title": "Arabic interpreter / intercultural mediator — Thessaloniki",
+          "postedDate": "2026-10-20",
+          "deadline": null,
+          "url": "https://arsis.gr/en/theseis-ergasias/",
+          "location": "Thessaloniki"
+        }
+      ],
+      "notes": "Very active Oct 2026 board (Athens + north). Apply: hr.arsis@gmail.com with position title in subject."
+    },
+    "ngo-025-lighthouse-relief": {
+      "careersUrl": "https://www.lighthouserelief.org/work-with-us",
+      "status": "researched",
+      "totalFound": 3,
+      "sources": ["lighthouserelief.org"],
+      "postings": [
+        {
+          "title": "Fundraising intern (remote / Athens HQ)",
+          "postedDate": "2026-10",
+          "deadline": null,
+          "url": "https://www.lighthouserelief.org/work-with-us",
+          "location": "Athens / remote",
+          "kind": "internship"
+        },
+        {
+          "title": "Social media intern",
+          "postedDate": "2026-10",
+          "deadline": null,
+          "url": "https://www.lighthouserelief.org/work-with-us",
+          "location": "Athens",
+          "kind": "internship"
+        },
+        {
+          "title": "Programme intern",
+          "postedDate": "2026-10",
+          "deadline": null,
+          "url": "https://www.lighthouserelief.org/work-with-us",
+          "location": "Athens",
+          "kind": "internship"
+        }
+      ],
+      "notes": "Rolling applications to recruitment@lighthouserelief.org. Intern roles unpaid; volunteer portal separate."
+    },
+    "ngo-052-kmop": {
+      "careersUrl": "https://www.kmop.gr/work-with-us/",
+      "status": "researched",
+      "totalFound": 1,
+      "sources": ["kmop.gr"],
+      "postings": [
+        {
+          "title": "Nurse (Νοσηλευτής/τρια) — Kapandriti",
+          "postedDate": "2026-10",
+          "deadline": null,
+          "url": "https://www.kmop.gr/work-with-us/",
+          "location": "Kapandriti (Attica)"
+        }
+      ],
+      "notes": "Explicitly accepts spontaneous CVs at careers@kmop.org when no matching opening."
+    },
+    "ngo-035-doctors-of-the-world-greek-delegation": {
+      "careersUrl": "https://www.mdmgreece.gr/en/participate/job-openings/",
+      "status": "researched",
+      "totalFound": 12,
+      "sources": ["mdmgreece.gr"],
+      "postings": [
+        { "title": "Dentist — Social Polyclinic Thessaloniki (provisional ranking notice)", "postedDate": "2026-10-13", "deadline": null, "url": "https://www.mdmgreece.gr/en/participate/job-openings/", "location": "Thessaloniki", "kind": "results_notice" },
+        { "title": "Cleaning & General Duties — Homeless Shelter (final ranking)", "postedDate": "2026-10-09", "deadline": null, "url": "https://www.mdmgreece.gr/en/participate/job-openings/", "location": "Athens", "kind": "results_notice" },
+        { "title": "Dentist — Social Polyclinic Thessaloniki (new opening)", "postedDate": "2026-10-02", "deadline": "2026-10-12", "url": "https://www.mdmgreece.gr/en/participate/job-openings/", "location": "Thessaloniki" },
+        { "title": "GP/Pathologist — Thessaloniki polyclinic", "postedDate": "2026-10-19", "deadline": null, "url": "https://www.mdmgreece.gr/job/genikos-iatros-pathologos-thessaloniki-202610/", "location": "Thessaloniki" },
+        { "title": "Cleaning & General Duties — Homeless Shelter Athens (call)", "postedDate": "2026-09-08", "deadline": "2026-09-21", "url": "https://www.mdmgreece.gr/job/ypallilos-kathariotitas-genikon-kathikonton-202609/", "location": "Athens" },
+        { "title": "Nurse — Athens (mostly outside Attica travel)", "postedDate": "2026-08-31", "deadline": "2026-09-07", "url": "https://www.mdmgreece.gr/job/nosilevtis-tria-athina-202608/", "location": "Athens" },
+        { "title": "Doctor without specialty — Athens (travel)", "postedDate": "2026-08-31", "deadline": null, "url": "https://www.mdmgreece.gr/en/participate/job-openings/", "location": "Athens" },
+        { "title": "Administrative Officer — Homeless Shelter (ranking)", "postedDate": "2026-08-06", "deadline": null, "url": "https://www.mdmgreece.gr/symmetecho/theseis-ergasias/", "location": "Athens", "kind": "results_notice" },
+        { "title": "Cleaning & General Duties (earlier August call)", "postedDate": "2026-08-03", "deadline": null, "url": "https://www.mdmgreece.gr/symmetecho/theseis-ergasias/", "location": "Athens" },
+        { "title": "Dermatologist — Thessaloniki polyclinic", "postedDate": "2026-07", "deadline": "2026-07-17", "url": "https://www.mdmgreece.gr/symmetecho/theseis-ergasias/", "location": "Thessaloniki" },
+        { "title": "GP/Pathologist/Doctor w/o specialty Thessaloniki (ranking cycle)", "postedDate": "2026-09-15", "deadline": null, "url": "https://www.mdmgreece.gr/en/participate/job-openings/", "location": "Thessaloniki", "kind": "results_notice" },
+        { "title": "Cleaning staff deadline extensions (multiple notices Aug–Sep 2026)", "postedDate": "2026-08-17", "deadline": null, "url": "https://www.mdmgreece.gr/symmetecho/theseis-ergasias/", "location": "Athens", "kind": "extension_notice" }
+      ],
+      "notes": "Job board mixes new openings, extensions, and ranking tables; totalFound counts distinct dated board items from the public listing."
+    },
+    "ngo-013-international-rescue-committee-hellas": {
+      "careersUrl": "https://www.rescue.org/eu/careers",
+      "status": "researched",
+      "totalFound": 2,
+      "sources": ["rescue.org", "myworkdayjobs.com", "unchannel.org"],
+      "postings": [
+        { "title": "Helios+ Center Assistant", "postedDate": "2026-10-19", "deadline": null, "url": "https://theirc.wd1.myworkdayjobs.com/en-US/External_Careers/job/Helios--Center-Assistant_JR00005551", "location": "Athens" },
+        { "title": "Job Counselor (Youth Empowerment)", "postedDate": "2026-10-05", "deadline": "2026-12-01", "url": "https://unchannel.org/jobs/174590", "location": "Greece / Thessaloniki focus" }
+      ],
+      "notes": "IRC uses Workday; Greece roles appear among global listings."
+    },
+    "ngo-057-actionaid-hellas": {
+      "careersUrl": "https://actionaid.gr/doylepse-stin-actionaid",
+      "status": "researched",
+      "totalFound": 4,
+      "sources": ["actionaid.gr", "apply.workable.com/actionaid-hellas", "linkedin"],
+      "postings": [
+        { "title": "Monitoring and Evaluation Coordinator", "postedDate": "2026-10-22", "deadline": "2026-11-04", "url": "https://apply.workable.com/j/2FEBD26A4F", "location": "Athens" },
+        { "title": "Education Coordinator", "postedDate": null, "deadline": null, "url": "https://career.aegean.gr/jobs/education-coordinator-action-aid-athens/", "location": "Athens" },
+        { "title": "Institutional Fundraising Manager", "postedDate": "2026-01-07", "deadline": null, "url": "https://www.linkedin.com/posts/makis-drakopoulos-88b91141_institutional-fundraising-manager-actionaid-activity-7414692559668699136-9iXz", "location": "Athens" },
+        { "title": "Official careers page (site copy)", "postedDate": null, "deadline": null, "url": "https://actionaid.gr/doylepse-stin-actionaid", "location": "Athens", "kind": "page_state", "notes": "Site text sometimes says no openings while Workable still lists roles." }
+      ],
+      "notes": "Primary ATS: Workable (actionaid-hellas)."
+    },
+    "ngo-046-the-smile-of-the-child": {
+      "careersUrl": "https://www.hamogelo.gr/",
+      "status": "researched",
+      "totalFound": 2,
+      "sources": ["hamogelo.gr", "linkedin.com"],
+      "postings": [
+        {
+          "title": "Child And Adolescent Psychiatrist (Day Centre Athens)",
+          "postedDate": "2026-10-21",
+          "deadline": null,
+          "url": "https://www.linkedin.com/jobs/view/child-and-adolescent-psychiatrist-at-%CF%84%CE%BF-%CF%87%CE%B1%CE%BC%CF%8C%CE%B3%CE%B5%CE%BB%CE%BF-%CF%84%CE%BF%CF%85-%CF%80%CE%B1%CE%B9%CE%B4%CE%B9%CE%BF%CF%8D-the-smile-of-the-child-4478272787",
+          "location": "Zografos, Attiki"
+        },
+        {
+          "title": "Ukrainian Interpreters / Intercultural Mediators (2)",
+          "postedDate": "2022-06",
+          "deadline": "2022-07-01",
+          "url": "https://www.hamogelo.gr/media/uploads_file/2022/06/22/p1g65c8rl02f6861m5ocqamv24.pdf",
+          "location": "Attica"
+        }
+      ],
+      "notes": "No dedicated careers archive on hamogelo.gr; LinkedIn currently shows live psychiatrist role (discovered 2026-10-28)."
+    }
+  }
+}

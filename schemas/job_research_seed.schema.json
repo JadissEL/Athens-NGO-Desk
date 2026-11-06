@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "job_research_seed.schema.json",
+  "title": "Job research seed (job_research_seed.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "byOrgId"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["researchedAt"],
+      "properties": {
+        "researchedAt": { "type": "string" },
+        "method": { "type": "string" },
+        "coverageNote": { "type": "string" }
+      }
+    },
+    "byOrgId": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["status", "postings"],
+        "properties": {
+          "careersUrl": { "type": ["string", "null"] },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "researched", "partial"]
+          },
+          "totalFound": { "type": ["integer", "null"], "minimum": 0 },
+          "sources": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "postings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["title", "url", "location"],
+              "properties": {
+                "title": { "type": "string" },
+                "postedDate": { "type": ["string", "null"] },
+                "deadline": { "type": ["string", "null"] },
+                "url": { "type": "string" },
+                "location": { "type": "string" },
+                "kind": { "type": "string" },
+                "notes": { "type": "string" }
+              }
+            }
+          },
+          "notes": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

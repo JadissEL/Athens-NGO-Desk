@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "job_openings_summary.schema.json",
+  "title": "Job openings summary (job_openings_summary.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "researched"],
+  "properties": {
+    "meta": { "type": "object", "additionalProperties": true },
+    "researched": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["id", "name", "status", "totalFound"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "status": { "type": "string" },
+          "totalFound": { "type": ["integer", "null"] },
+          "careersUrl": { "type": ["string", "null"] },
+          "dates": {
+            "type": "array",
+            "items": { "type": ["string", "null"] }
+          }
+        }
+      }
+    }
+  }
+}

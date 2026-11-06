@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "media_week.schema.json",
+  "title": "Weekly media digest (media_week.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "articles"],
+  "properties": {
+    "meta": { "type": "object", "additionalProperties": true },
+    "articles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "id",
+          "date",
+          "hot",
+          "title",
+          "dek",
+          "body",
+          "source",
+          "sourceUrl",
+          "tags",
+          "image",
+          "imageAlt"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "date": { "type": "string" },
+          "hot": { "type": "boolean" },
+          "title": { "type": "string" },
+          "dek": { "type": "string" },
+          "body": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "source": { "type": "string" },
+          "sourceUrl": { "type": "string", "format": "uri" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "image": { "type": "string" },
+          "imageAlt": { "type": "string" }
+        }
+      }
+    }
+  }
+}

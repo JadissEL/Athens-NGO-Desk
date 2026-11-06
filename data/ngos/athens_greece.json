@@ -1,0 +1,3021 @@
+{
+  "meta": {
+    "title": "NGOs operating in Greece (national scope; Athens as a major hub)",
+    "createdAt": "2026-10-28T00:24:20.334Z",
+    "source": "canvas athens-greece-ngos + Migration Ministry / UNHCR / HelpPoint / NGOBase",
+    "count": 104,
+    "note": "jobOpenings filled by research scripts; not a complete national census",
+    "jobResearch": {
+      "lastMergedAt": "2026-10-28T00:42:42.489Z",
+      "orgsResearched": 13,
+      "orgsPending": 91,
+      "postingsIndexed": 77,
+      "seedFile": "data/ngos/job_research_seed.json",
+      "caveat": "Public careers pages + boards only. Not a complete historical count of every vacancy ever published by each NGO."
+    },
+    "jobPossibility": {
+      "lastMergedAt": "2026-10-28T00:30:34.289Z",
+      "scored": 9,
+      "source": "data/ngos/job_possibility.json"
+    }
+  },
+  "organizations": [
+    {
+      "id": "ngo-001-metadrasi",
+      "name": "METAdrasi",
+      "nameEl": "ΜΕΤΑδραση",
+      "sector": "Refugees & migration",
+      "scope": "Athens / Attica HQ",
+      "focus": "Interpretation, unaccompanied minors, legal aid, education/integration",
+      "website": "https://metadrasi.org/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 3,
+        "sources": [
+          "metadrasi.org",
+          "linkedin.com/company/metadrasi",
+          "career.aegean.gr"
+        ],
+        "careersUrl": "https://metadrasi.org/en/job-openings/",
+        "postings": [
+          {
+            "title": "Information Manager (Athens)",
+            "postedDate": "2026-05-07",
+            "deadline": "2026-05-16",
+            "url": "https://www.linkedin.com/posts/metadrasi_%CE%B6%CE%B7%CF%84%CE%B5%CE%AF%CF%84%CE%B1%CE%B9-employment-jobs-activity-7458075374430748672-ylyJ",
+            "location": "Athens"
+          },
+          {
+            "title": "Call No. 4/2026 — Intercultural Mediators (fixed-term / independent)",
+            "postedDate": "2026-03",
+            "deadline": "2026-03-29",
+            "url": "https://metadrasi.org/wp-content/uploads/2026/03/Call-for-Intercultural-Mediators_EN-1.pdf",
+            "location": "Greece"
+          },
+          {
+            "title": "Guardianship officers (Εντεταλμένος Επιτροπείας) — Attica (7 posts)",
+            "postedDate": "2026-03-24",
+            "deadline": null,
+            "url": "https://metadrasi.org/wp-content/uploads/2026/03/%CE%95%CE%9D%CE%A4%CE%95%CE%A4%CE%91%CE%9B%CE%9C%CE%95%CE%9D%CE%9F%CE%A3-%CE%91%CE%A4%CE%A4%CE%99%CE%9A%CE%97-24.3.2026.pdf",
+            "location": "Attica"
+          }
+        ],
+        "status": "researched",
+        "notes": "Official job-openings page currently empty (0 live). Counts above are recent 2026 calls still indexed publicly."
+      },
+      "jobPossibility": {
+        "status": "scored",
+        "score": 92,
+        "band": "Very high",
+        "staffEstimate": 910,
+        "beneficiariesLabel": "Multi-thousand / year across programmes",
+        "why": "Largest measured hire pipeline in this set (519 hires/year). Even with few live public ads, scale + project churn makes this the strongest probability target if you match interpreter / child-protection / legal / employment profiles.",
+        "bestFitRoles": [
+          "Intercultural mediator / interpreter",
+          "Guardianship officer",
+          "Legal aid",
+          "Employment counsellor",
+          "Information / MEAL"
+        ]
+      }
+    },
+    {
+      "id": "ngo-002-greek-council-for-refugees-gcr",
+      "name": "Greek Council for Refugees (GCR)",
+      "nameEl": "Ελληνικό Συμβούλιο για τους Πρόσφυγες",
+      "sector": "Refugees & migration",
+      "scope": "Athens / Attica HQ",
+      "focus": "Free legal & social services for asylum seekers/refugees",
+      "website": "https://gcr.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 12,
+        "sources": [
+          "gcr.gr",
+          "linkedin.com/company/greek-council-for-refugees"
+        ],
+        "careersUrl": "https://gcr.gr/en/category/career-opportunities/",
+        "postings": [
+          {
+            "title": "Turkish Interpreter",
+            "postedDate": "2026-09-23",
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Athens"
+          },
+          {
+            "title": "Local Team Lead — North Aegean (Lesvos)",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Lesvos"
+          },
+          {
+            "title": "Labour Market Linkage Facilitator — Eastern Macedonia & Thrace (Kavala)",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Kavala"
+          },
+          {
+            "title": "Local Team Lead — Eastern Macedonia & Thrace (Kavala)",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Kavala"
+          },
+          {
+            "title": "Local Team Lead (Lesvos)",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Lesvos"
+          },
+          {
+            "title": "Legal Researcher & Child Protection Trainer",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Thessaloniki"
+          },
+          {
+            "title": "Social Cohesion Facilitator (2 posts)",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Patras"
+          },
+          {
+            "title": "Housing Search Facilitator (posts)",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Patras"
+          },
+          {
+            "title": "Labour Market Linkage Facilitator",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Patras"
+          },
+          {
+            "title": "Labour Market Linkage Facilitator (2 posts)",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Kavala"
+          },
+          {
+            "title": "Helios+ Deputy Coordinator",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Athens"
+          },
+          {
+            "title": "Local Team Lead — Peloponnese (Corinth)",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://gcr.gr/en/category/career-opportunities/",
+            "location": "Corinth"
+          }
+        ],
+        "status": "researched",
+        "notes": "Category page lists ~10+ active/recent openings; exact publish dates often only on individual posts. Older LinkedIn alerts from 2023–2024 also exist."
+      },
+      "jobPossibility": {
+        "status": "scored",
+        "score": 76,
+        "band": "High",
+        "staffEstimate": null,
+        "beneficiariesLabel": "Asylum seekers & refugees via legal + social units (Athens + field sites)",
+        "why": "Many simultaneous openings across Greece; Athens HQ roles exist but a large share are field (Patras, Kavala, Lesvos, Corinth). High volume if mobile.",
+        "bestFitRoles": [
+          "Interpreter",
+          "Lawyer / legal researcher",
+          "Local team lead",
+          "HELIOS+ facilitator",
+          "Project manager"
+        ]
+      }
+    },
+    {
+      "id": "ngo-003-solidaritynow",
+      "name": "SolidarityNow",
+      "nameEl": "Αλληλεγγύη SolidarityNow",
+      "sector": "Refugees & migration",
+      "scope": "Athens / Attica HQ",
+      "focus": "Athens Solidarity Center: legal, psychosocial, integration (Domokou 2)",
+      "website": "https://www.solidaritynow.org/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 15,
+        "sources": [
+          "solidaritynow.org"
+        ],
+        "careersUrl": "https://www.solidaritynow.org/en/theseis-ergasias/",
+        "postings": [
+          {
+            "title": "Community Engagement Officer",
+            "postedDate": "2026-10-09",
+            "deadline": "2026-10-16",
+            "url": "https://www.solidaritynow.org/theseis-ergasias/",
+            "location": "Thessaloniki–Sofades/Karditsa"
+          },
+          {
+            "title": "Employment Counsellor HELIOS+ Macedonia",
+            "postedDate": "2026-10-01",
+            "deadline": "2026-10-08",
+            "url": "https://www.solidaritynow.org/theseis-ergasias/",
+            "location": "Thessaloniki"
+          },
+          {
+            "title": "Roma & Communications Officer",
+            "postedDate": "2026-09-29",
+            "deadline": "2026-10-15",
+            "url": "https://www.solidaritynow.org/theseis-ergasias/",
+            "location": "Athens, Thessaloniki"
+          },
+          {
+            "title": "Education Expert",
+            "postedDate": "2026-09-29",
+            "deadline": "2026-10-15",
+            "url": "https://www.solidaritynow.org/theseis-ergasias/",
+            "location": "Athens, Thessaloniki"
+          },
+          {
+            "title": "Social Cohesion Mediator HELIOS+ Attica",
+            "postedDate": "2026-09-18",
+            "deadline": "2026-10-02",
+            "url": "https://www.solidaritynow.org/theseis-ergasias/",
+            "location": "Attica"
+          },
+          {
+            "title": "HELIOS+ Center Coordinator Attica",
+            "postedDate": "2026-08-28",
+            "deadline": "2026-09-11",
+            "url": "https://www.solidaritynow.org/theseis-ergasias/",
+            "location": "Attica"
+          },
+          {
+            "title": "MEAL Manager",
+            "postedDate": "2026-07-27",
+            "deadline": "2026-08-14",
+            "url": "https://www.solidaritynow.org/en/meal-manager-athens/",
+            "location": "Athens"
+          },
+          {
+            "title": "IT Support HELIOS+ Attica",
+            "postedDate": "2026-07-21",
+            "deadline": "2026-08-04",
+            "url": "https://www.solidaritynow.org/theseis-ergasias/",
+            "location": "Attica"
+          },
+          {
+            "title": "Psychologist — Ioannina PYXIDA",
+            "postedDate": "2026-05-27",
+            "deadline": "2026-06-10",
+            "url": "https://www.solidaritynow.org/en/theseis-ergasias/",
+            "location": "Ioannina"
+          },
+          {
+            "title": "Psychologist — Larissa PYXIDA",
+            "postedDate": "2026-05-27",
+            "deadline": "2026-06-10",
+            "url": "https://www.solidaritynow.org/en/theseis-ergasias/",
+            "location": "Larissa"
+          },
+          {
+            "title": "Coordinator HELIOS+ Attica Center",
+            "postedDate": "2026-03-30",
+            "deadline": "2026-04-13",
+            "url": "https://www.solidaritynow.org/en/coordinator-heliosplus-center-attica/",
+            "location": "Athens"
+          },
+          {
+            "title": "Accountant (ASC Athens)",
+            "postedDate": "2026-03-23",
+            "deadline": "2026-03-31",
+            "url": "https://www.solidaritynow.org/en/accountant-asc-athens/",
+            "location": "Athens"
+          },
+          {
+            "title": "ASC Employability Officer",
+            "postedDate": "2026-03-16",
+            "deadline": "2026-03-27",
+            "url": "https://www.solidaritynow.org/en/theseis-ergasias/",
+            "location": "Athens ASC"
+          },
+          {
+            "title": "Interpreter Farsi (Thessaloniki) PT",
+            "postedDate": "2026-02-17",
+            "deadline": "2026-02-23",
+            "url": "https://www.solidaritynow.org/en/theseis-ergasias/",
+            "location": "Thessaloniki"
+          },
+          {
+            "title": "Interpreter Farsi (Thessaloniki) FT",
+            "postedDate": "2026-02-17",
+            "deadline": "2026-02-23",
+            "url": "https://www.solidaritynow.org/en/theseis-ergasias/",
+            "location": "Thessaloniki"
+          }
+        ],
+        "status": "researched",
+        "notes": "Official careers archive keeps dated posts; page may paginate beyond first screen."
+      },
+      "jobPossibility": {
+        "status": "scored",
+        "score": 88,
+        "band": "Very high",
+        "staffEstimate": 350,
+        "beneficiariesLabel": "350,000+ people supported to date",
+        "why": "Most active public careers board in our sample + mid/large staff + huge cumulative beneficiary base. Steady HELIOS+/ASC/project churn in Attica and beyond.",
+        "bestFitRoles": [
+          "ASC services (accountant, employability)",
+          "HELIOS+ centre roles",
+          "MEAL",
+          "Education / Roma projects",
+          "Psychologist"
+        ]
+      }
+    },
+    {
+      "id": "ngo-004-praksis",
+      "name": "PRAKSIS",
+      "nameEl": "ΠΡΑΚΣΙΣ",
+      "sector": "Refugees & migration",
+      "scope": "Athens / Attica HQ",
+      "focus": "Medical, social, legal; homeless day centres; unaccompanied minors",
+      "website": "https://praksis.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 11,
+        "sources": [
+          "praksis.gr"
+        ],
+        "careersUrl": "https://praksis.gr/category/job-openings/",
+        "postings": [
+          {
+            "title": "Apartment Search Lead + Assistant (Rhodes/Kos/Leros) — deadline extension",
+            "postedDate": "2026-10-16",
+            "deadline": "2026-10-23",
+            "url": "https://praksis.gr/category/job-openings/",
+            "location": "South Aegean"
+          },
+          {
+            "title": "Guardianship officers (7) — Kozani, Volos, Chios, Thessaloniki, Lesvos, Kalavryta",
+            "postedDate": "2026-10-16",
+            "deadline": null,
+            "url": "https://praksis.gr/category/job-openings/",
+            "location": "Multi"
+          },
+          {
+            "title": "Social Worker — Homeless Housing & Work III Thessaloniki",
+            "postedDate": "2026-10-16",
+            "deadline": null,
+            "url": "https://praksis.gr/category/job-openings/",
+            "location": "Thessaloniki"
+          },
+          {
+            "title": "ESPA Day Centre homeless — provisional results tables",
+            "postedDate": "2026-10-12",
+            "deadline": null,
+            "url": "https://praksis.gr/category/job-openings/",
+            "location": "Greece",
+            "kind": "results_notice"
+          },
+          {
+            "title": "Doctor in Athens",
+            "postedDate": "2026-10-05",
+            "deadline": null,
+            "url": "https://praksis.gr/category/job-openings/",
+            "location": "Athens"
+          },
+          {
+            "title": "Guardianship officer — Alexandroupoli",
+            "postedDate": "2026-09-28",
+            "deadline": null,
+            "url": "https://praksis.gr/category/job-openings/",
+            "location": "Alexandroupoli"
+          },
+          {
+            "title": "Apartment Search Lead + Assistant (Rhodes/Kos/Leros)",
+            "postedDate": "2026-09-24",
+            "deadline": null,
+            "url": "https://praksis.gr/category/job-openings/",
+            "location": "South Aegean"
+          },
+          {
+            "title": "Guardianship officers (5) — Kalavryta, Lesvos, Volos, Chios, Kozani",
+            "postedDate": "2026-09-14",
+            "deadline": null,
+            "url": "https://praksis.gr/category/job-openings/",
+            "location": "Multi"
+          },
+          {
+            "title": "Apartment Search Lead + Assistant (earlier call)",
+            "postedDate": "2026-09-09",
+            "deadline": null,
+            "url": "https://praksis.gr/category/job-openings/",
+            "location": "South Aegean"
+          },
+          {
+            "title": "SOX 12/2026 fixed-term staff recruitment notice",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://praksis.gr/category/job-openings/",
+            "location": "Greece"
+          },
+          {
+            "title": "Social Worker Athens (SIL AMIF)",
+            "postedDate": "2026-03-03",
+            "deadline": null,
+            "url": "https://praksis.gr/sil-amif-3-3-26/",
+            "location": "Athens"
+          }
+        ],
+        "status": "researched",
+        "notes": "Active WordPress job-openings archive; more pages likely exist beyond first listing."
+      },
+      "jobPossibility": {
+        "status": "scored",
+        "score": 84,
+        "band": "High",
+        "staffEstimate": 160,
+        "beneficiariesLabel": "Nationwide vulnerable populations (homeless, UAMs, migrants, health exclusion)",
+        "why": "Very frequent public calls (esp. guardianship, housing search, medical/social). High opportunity if Greek-qualified social work / medicine / field ops.",
+        "bestFitRoles": [
+          "Guardianship officer",
+          "Social worker",
+          "Doctor",
+          "Housing search",
+          "Day-centre staff"
+        ]
+      }
+    },
+    {
+      "id": "ngo-005-caritas-athens",
+      "name": "Caritas Athens",
+      "nameEl": "Καρίτας Αθηνών",
+      "sector": "Refugees & migration",
+      "scope": "Athens / Attica HQ",
+      "focus": "Material aid, meals, psychosocial support, refugee services",
+      "website": "https://www.caritasathens.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 0,
+        "sources": [
+          "caritasathens.gr"
+        ],
+        "careersUrl": "https://www.caritasathens.gr/en/jobs-en.html",
+        "postings": [],
+        "status": "partial",
+        "notes": "Jobs page exists; openings listed ad-hoc. Spontaneous CV: caritasathens@caritasathens.gr / caritasref@caritasathens.gr."
+      },
+      "jobPossibility": {
+        "status": "scored",
+        "score": 28,
+        "band": "Low / opaque",
+        "staffEstimate": null,
+        "beneficiariesLabel": "Historically high material-aid & refugee service volume in Attica (exact 2024/25 headcount not verified here)",
+        "why": "Real operational footprint, but near-zero public vacancy signal → hard to time applications. Treat as speculative / network / speculative CV drop unless a call appears.",
+        "bestFitRoles": [
+          "Social services",
+          "Refugee sector support",
+          "Logistics / material aid"
+        ]
+      }
+    },
+    {
+      "id": "ngo-006-caritas-hellas",
+      "name": "Caritas Hellas",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Greece-wide (Athens office)",
+      "focus": "National Caritas network: poverty, refugees, social inclusion",
+      "website": "https://caritas.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-007-a-drop-in-the-ocean",
+      "name": "A Drop in the Ocean",
+      "nameEl": "Σταγόνα / Dråpen i Havet",
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Education, language, digital skills, community centres for refugees",
+      "website": "https://www.drapenihavet.no/en/our-work/athens/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-008-the-home-project",
+      "name": "The HOME Project",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens / Attica HQ",
+      "focus": "Housing & protection for unaccompanied refugee children",
+      "website": "https://www.homeproject.org/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 7,
+        "sources": [
+          "homeproject.org",
+          "apply.workable.com/the-home-project"
+        ],
+        "careersUrl": "https://www.homeproject.org/en/get-involved/join-our-team/",
+        "postings": [
+          {
+            "title": "Caregiver — daily care (part-time, Attica)",
+            "postedDate": "2026-10",
+            "deadline": "2026-10-30",
+            "url": "https://apply.workable.com/j/7215B034C5",
+            "location": "Attica"
+          },
+          {
+            "title": "Chief Development Officer",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://www.homeproject.org/en/get-involved/join-our-team/",
+            "location": "Athens"
+          },
+          {
+            "title": "Facilities Manager",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://www.homeproject.org/en/get-involved/join-our-team/",
+            "location": "Athens"
+          },
+          {
+            "title": "Social Worker",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://www.homeproject.org/en/get-involved/join-our-team/",
+            "location": "Athens"
+          },
+          {
+            "title": "Psychologist",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://www.homeproject.org/en/get-involved/join-our-team/",
+            "location": "Athens"
+          },
+          {
+            "title": "Educator",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://www.homeproject.org/en/get-involved/join-our-team/",
+            "location": "Athens"
+          },
+          {
+            "title": "Caregiver Nightshift",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://www.homeproject.org/en/get-involved/join-our-team/",
+            "location": "Athens"
+          }
+        ],
+        "status": "researched",
+        "notes": "Workable + join-our-team board. Clarifications: hr@homeproject.org."
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-009-arsis",
+      "name": "ARSIS",
+      "nameEl": "Άρσις",
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Youth support, streetwork, shelters for vulnerable minors",
+      "website": "https://arsis.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 5,
+        "sources": [
+          "arsis.gr"
+        ],
+        "careersUrl": "https://arsis.gr/theseis-ergasias/",
+        "postings": [
+          {
+            "title": "Educator — Unaccompanied Minors Shelter Athens",
+            "postedDate": "2026-10-16",
+            "deadline": "2026-10-23",
+            "url": "https://arsis.gr/thesi-ergasias-am9593/",
+            "location": "Athens"
+          },
+          {
+            "title": "Cleaning attendant (part-time) — UAM Shelter Athens",
+            "postedDate": "2026-10-14",
+            "deadline": null,
+            "url": "https://arsis.gr/en/theseis-ergasias/",
+            "location": "Athens"
+          },
+          {
+            "title": "Caregiver (rotating) — UAM Shelter Athens",
+            "postedDate": "2026-10-06",
+            "deadline": null,
+            "url": "https://arsis.gr/en/theseis-ergasias/",
+            "location": "Athens"
+          },
+          {
+            "title": "Caregiver — UAM Shelter «Έλλη» Alexandroupoli",
+            "postedDate": "2026-10-22",
+            "deadline": null,
+            "url": "https://arsis.gr/en/theseis-ergasias/",
+            "location": "Alexandroupoli"
+          },
+          {
+            "title": "Arabic interpreter / intercultural mediator — Thessaloniki",
+            "postedDate": "2026-10-20",
+            "deadline": null,
+            "url": "https://arsis.gr/en/theseis-ergasias/",
+            "location": "Thessaloniki"
+          }
+        ],
+        "status": "researched",
+        "notes": "Very active Oct 2026 board (Athens + north). Apply: hr.arsis@gmail.com with position title in subject."
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-010-greek-forum-of-refugees",
+      "name": "Greek Forum of Refugees",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens / Attica HQ",
+      "focus": "Refugee-led advocacy and community representation",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-011-melissa-network",
+      "name": "Melissa Network",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens / Attica HQ",
+      "focus": "Network of migrant & refugee women; skills, community, advocacy",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-012-jesuit-refugee-service-greece",
+      "name": "Jesuit Refugee Service Greece",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Refugee accompaniment, education, pastoral/social support",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-013-international-rescue-committee-hellas",
+      "name": "International Rescue Committee Hellas",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Legal aid, MHPSS, economic integration, GBV protection",
+      "website": "https://www.rescue.org/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 2,
+        "sources": [
+          "rescue.org",
+          "myworkdayjobs.com",
+          "unchannel.org"
+        ],
+        "careersUrl": "https://www.rescue.org/eu/careers",
+        "postings": [
+          {
+            "title": "Helios+ Center Assistant",
+            "postedDate": "2026-10-19",
+            "deadline": null,
+            "url": "https://theirc.wd1.myworkdayjobs.com/en-US/External_Careers/job/Helios--Center-Assistant_JR00005551",
+            "location": "Athens"
+          },
+          {
+            "title": "Job Counselor (Youth Empowerment)",
+            "postedDate": "2026-10-05",
+            "deadline": "2026-12-01",
+            "url": "https://unchannel.org/jobs/174590",
+            "location": "Greece / Thessaloniki focus"
+          }
+        ],
+        "status": "researched",
+        "notes": "IRC uses Workday; Greece roles appear among global listings."
+      },
+      "jobPossibility": {
+        "status": "scored",
+        "score": 52,
+        "band": "Medium",
+        "staffEstimate": 114,
+        "beneficiariesLabel": "125,000+ people directly supported over first decade in Greece (incl. 31,000 children)",
+        "why": "Recent openings exist (Helios+ / livelihoods) and beneficiary footprint is large, but hiring volume is lower and process is more formal/competitive than local Greek NGOs.",
+        "bestFitRoles": [
+          "Helios+ centre assistant",
+          "Job counsellor / livelihoods",
+          "Protection",
+          "MEAL"
+        ]
+      }
+    },
+    {
+      "id": "ngo-014-intersos-hellas",
+      "name": "INTERSOS Hellas",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Humanitarian protection and medical/social support",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-015-fenix-humanitarian-legal-aid",
+      "name": "Fenix Humanitarian Legal Aid",
+      "nameEl": null,
+      "sector": "Human rights & legal",
+      "scope": "Athens programs",
+      "focus": "Legal aid for asylum seekers",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-016-equal-rights-beyond-borders",
+      "name": "Equal Rights Beyond Borders",
+      "nameEl": null,
+      "sector": "Human rights & legal",
+      "scope": "Athens programs",
+      "focus": "Legal assistance & rights advocacy for migrants",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-017-safe-passage-international-amke",
+      "name": "Safe Passage International AMKE",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Safe routes / protection for displaced people",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-018-hias-greece",
+      "name": "HIAS Greece",
+      "nameEl": "Hebrew Immigrant Aid Society",
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Legal protection for refugees and asylum seekers",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-019-catholic-relief-services-crs-greece",
+      "name": "Catholic Relief Services (CRS) Greece",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Humanitarian & recovery programs",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-020-icmc-greece",
+      "name": "ICMC Greece",
+      "nameEl": "International Catholic Migration Commission",
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Migration & resettlement support",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-021-norwegian-refugee-council-nrc",
+      "name": "Norwegian Refugee Council (NRC)",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Information, counselling, legal assistance (ICLA)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-022-zeuxis",
+      "name": "Zeuxis",
+      "nameEl": "Ζεύξις",
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Support for refugees/migrants (Migration Ministry registry)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-023-nostos",
+      "name": "Nostos",
+      "nameEl": "Νόστος",
+      "sector": "Refugees & migration",
+      "scope": "Athens / Attica HQ",
+      "focus": "Social & cultural support for repatriates and migrants",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-024-faros-elpidas",
+      "name": "Faros Elpidas",
+      "nameEl": "Φάρος Ελπίδας",
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Hope/support programs for vulnerable displaced people",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-025-lighthouse-relief",
+      "name": "Lighthouse Relief",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Emergency & longer-term refugee support",
+      "website": null,
+      "notes": "Also active on islands",
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 3,
+        "sources": [
+          "lighthouserelief.org"
+        ],
+        "careersUrl": "https://www.lighthouserelief.org/work-with-us",
+        "postings": [
+          {
+            "title": "Fundraising intern (remote / Athens HQ)",
+            "postedDate": "2026-10",
+            "deadline": null,
+            "url": "https://www.lighthouserelief.org/work-with-us",
+            "location": "Athens / remote",
+            "kind": "internship"
+          },
+          {
+            "title": "Social media intern",
+            "postedDate": "2026-10",
+            "deadline": null,
+            "url": "https://www.lighthouserelief.org/work-with-us",
+            "location": "Athens",
+            "kind": "internship"
+          },
+          {
+            "title": "Programme intern",
+            "postedDate": "2026-10",
+            "deadline": null,
+            "url": "https://www.lighthouserelief.org/work-with-us",
+            "location": "Athens",
+            "kind": "internship"
+          }
+        ],
+        "status": "researched",
+        "notes": "Rolling applications to recruitment@lighthouserelief.org. Intern roles unpaid; volunteer portal separate."
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-026-action-for-education",
+      "name": "Action for Education",
+      "nameEl": null,
+      "sector": "Education & culture",
+      "scope": "Athens programs",
+      "focus": "Education access for refugees/youth in Athens",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-027-el-sistema-greece",
+      "name": "El Sistema Greece",
+      "nameEl": null,
+      "sector": "Education & culture",
+      "scope": "Athens programs",
+      "focus": "Music education for children including refugee communities",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-028-connect-by-music-greece",
+      "name": "Connect by Music Greece",
+      "nameEl": null,
+      "sector": "Education & culture",
+      "scope": "Athens programs",
+      "focus": "Music programs with refugee/vulnerable youth",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-029-because-we-carry-hellas",
+      "name": "Because We Carry Hellas",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Humanitarian support (Migration Ministry registry)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-030-movement-on-the-ground-hellas",
+      "name": "Movement on the Ground Hellas",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Camp/community humanitarian programs",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-031-eurorelief-hellas",
+      "name": "EuroRelief Hellas",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Humanitarian response",
+      "website": null,
+      "notes": "Strong island footprint; registered nationally",
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-032-refugee-support-aegean-rsa",
+      "name": "Refugee Support Aegean (RSA)",
+      "nameEl": "Υποστήριξη Προσφύγων στο Αιγαίο",
+      "sector": "Human rights & legal",
+      "scope": "Athens programs",
+      "focus": "Legal/advocacy on asylum & reception conditions",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-033-terre-des-hommes-hellas",
+      "name": "Terre des Hommes Hellas",
+      "nameEl": null,
+      "sector": "Children & youth",
+      "scope": "Athens programs",
+      "focus": "Child protection in migration contexts",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-034-athens-network-of-collaborating-experts-ance",
+      "name": "Athens Network of Collaborating Experts (ANCE)",
+      "nameEl": null,
+      "sector": "International / development",
+      "scope": "Athens / Attica HQ",
+      "focus": "Development, migration, social research & projects",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-035-doctors-of-the-world-greek-delegation",
+      "name": "Doctors of the World – Greek Delegation",
+      "nameEl": "Γιατροί του Κόσμου",
+      "sector": "Humanitarian & health",
+      "scope": "Athens / Attica HQ",
+      "focus": "Free clinics, medical care for uninsured & vulnerable",
+      "website": "https://mdmgreece.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 12,
+        "sources": [
+          "mdmgreece.gr"
+        ],
+        "careersUrl": "https://www.mdmgreece.gr/en/participate/job-openings/",
+        "postings": [
+          {
+            "title": "Dentist — Social Polyclinic Thessaloniki (provisional ranking notice)",
+            "postedDate": "2026-10-13",
+            "deadline": null,
+            "url": "https://www.mdmgreece.gr/en/participate/job-openings/",
+            "location": "Thessaloniki",
+            "kind": "results_notice"
+          },
+          {
+            "title": "Cleaning & General Duties — Homeless Shelter (final ranking)",
+            "postedDate": "2026-10-09",
+            "deadline": null,
+            "url": "https://www.mdmgreece.gr/en/participate/job-openings/",
+            "location": "Athens",
+            "kind": "results_notice"
+          },
+          {
+            "title": "Dentist — Social Polyclinic Thessaloniki (new opening)",
+            "postedDate": "2026-10-02",
+            "deadline": "2026-10-12",
+            "url": "https://www.mdmgreece.gr/en/participate/job-openings/",
+            "location": "Thessaloniki"
+          },
+          {
+            "title": "GP/Pathologist — Thessaloniki polyclinic",
+            "postedDate": "2026-10-19",
+            "deadline": null,
+            "url": "https://www.mdmgreece.gr/job/genikos-iatros-pathologos-thessaloniki-202610/",
+            "location": "Thessaloniki"
+          },
+          {
+            "title": "Cleaning & General Duties — Homeless Shelter Athens (call)",
+            "postedDate": "2026-09-08",
+            "deadline": "2026-09-21",
+            "url": "https://www.mdmgreece.gr/job/ypallilos-kathariotitas-genikon-kathikonton-202609/",
+            "location": "Athens"
+          },
+          {
+            "title": "Nurse — Athens (mostly outside Attica travel)",
+            "postedDate": "2026-08-31",
+            "deadline": "2026-09-07",
+            "url": "https://www.mdmgreece.gr/job/nosilevtis-tria-athina-202608/",
+            "location": "Athens"
+          },
+          {
+            "title": "Doctor without specialty — Athens (travel)",
+            "postedDate": "2026-08-31",
+            "deadline": null,
+            "url": "https://www.mdmgreece.gr/en/participate/job-openings/",
+            "location": "Athens"
+          },
+          {
+            "title": "Administrative Officer — Homeless Shelter (ranking)",
+            "postedDate": "2026-08-06",
+            "deadline": null,
+            "url": "https://www.mdmgreece.gr/symmetecho/theseis-ergasias/",
+            "location": "Athens",
+            "kind": "results_notice"
+          },
+          {
+            "title": "Cleaning & General Duties (earlier August call)",
+            "postedDate": "2026-08-03",
+            "deadline": null,
+            "url": "https://www.mdmgreece.gr/symmetecho/theseis-ergasias/",
+            "location": "Athens"
+          },
+          {
+            "title": "Dermatologist — Thessaloniki polyclinic",
+            "postedDate": "2026-07",
+            "deadline": "2026-07-17",
+            "url": "https://www.mdmgreece.gr/symmetecho/theseis-ergasias/",
+            "location": "Thessaloniki"
+          },
+          {
+            "title": "GP/Pathologist/Doctor w/o specialty Thessaloniki (ranking cycle)",
+            "postedDate": "2026-09-15",
+            "deadline": null,
+            "url": "https://www.mdmgreece.gr/en/participate/job-openings/",
+            "location": "Thessaloniki",
+            "kind": "results_notice"
+          },
+          {
+            "title": "Cleaning staff deadline extensions (multiple notices Aug–Sep 2026)",
+            "postedDate": "2026-08-17",
+            "deadline": null,
+            "url": "https://www.mdmgreece.gr/symmetecho/theseis-ergasias/",
+            "location": "Athens",
+            "kind": "extension_notice"
+          }
+        ],
+        "status": "researched",
+        "notes": "Job board mixes new openings, extensions, and ranking tables; totalFound counts distinct dated board items from the public listing."
+      },
+      "jobPossibility": {
+        "status": "scored",
+        "score": 80,
+        "band": "High",
+        "staffEstimate": 59,
+        "beneficiariesLabel": 26763,
+        "why": "Smaller payroll than METAdrasi but very active recruitment for clinical and shelter roles. Strong if you hold Greek medical/nursing licences.",
+        "bestFitRoles": [
+          "GP / pathologist",
+          "Nurse",
+          "Dentist",
+          "Shelter admin / cleaning (ESPA)",
+          "Mobile unit staff"
+        ]
+      }
+    },
+    {
+      "id": "ngo-036-m-decins-sans-fronti-res-greek-section",
+      "name": "Médecins Sans Frontières – Greek Section",
+      "nameEl": "Γιατροί χωρίς Σύνορα",
+      "sector": "Humanitarian & health",
+      "scope": "Athens / Attica HQ",
+      "focus": "Emergency medical humanitarian aid",
+      "website": "https://msf.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-037-hellenic-red-cross",
+      "name": "Hellenic Red Cross",
+      "nameEl": "Ελληνικός Ερυθρός Σταυρός",
+      "sector": "Humanitarian & health",
+      "scope": "Greece-wide (Athens office)",
+      "focus": "First aid, social welfare, tracing, disaster response",
+      "website": "https://www.redcross.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-038-medical-intervention",
+      "name": "Medical Intervention",
+      "nameEl": "Ιατρική Παρέμβαση",
+      "sector": "Humanitarian & health",
+      "scope": "Athens / Attica HQ",
+      "focus": "Medical & psychosocial humanitarian interventions",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-039-heart-doctors",
+      "name": "Heart Doctors",
+      "nameEl": "Γιατροί Καρδιάς",
+      "sector": "Humanitarian & health",
+      "scope": "Athens / Attica HQ",
+      "focus": "Charitable medical missions & patient support",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-040-aids-healthcare-foundation-greece",
+      "name": "AIDS Healthcare Foundation Greece",
+      "nameEl": null,
+      "sector": "Humanitarian & health",
+      "scope": "Athens programs",
+      "focus": "Free HIV testing, prevention, treatment access",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-041-iasis-amke",
+      "name": "IASIS AMKE",
+      "nameEl": "Ίασις",
+      "sector": "Humanitarian & health",
+      "scope": "Athens programs",
+      "focus": "Mental health services (Elliniko / Attica)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-042-epapsy",
+      "name": "EPAPSY",
+      "nameEl": "ΕΠΑΨΥ",
+      "sector": "Humanitarian & health",
+      "scope": "Athens programs",
+      "focus": "Regional development & mental health",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-043-syrian-american-medical-society-sams",
+      "name": "Syrian American Medical Society (SAMS)",
+      "nameEl": null,
+      "sector": "Humanitarian & health",
+      "scope": "Athens programs",
+      "focus": "Medical humanitarian support",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-044-apostoli",
+      "name": "Apostoli",
+      "nameEl": "Αποστολή",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens / Attica HQ",
+      "focus": "Archbishopric of Athens charity: food, social, medical aid",
+      "website": "https://mkoapostoli.com/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-045-family-support-centre-archdiocese-of-athens",
+      "name": "Family Support Centre – Archdiocese of Athens",
+      "nameEl": "Κέντρο Στήριξης Οικογένειας Ι.Α.Α.",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens / Attica HQ",
+      "focus": "Family welfare & social support",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-046-the-smile-of-the-child",
+      "name": "The Smile of the Child",
+      "nameEl": "Το Χαμόγελο του Παιδιού",
+      "sector": "Children & youth",
+      "scope": "Greece-wide (Athens office)",
+      "focus": "Child protection, missing children, abuse prevention, shelters",
+      "website": "https://www.hamogelo.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 2,
+        "sources": [
+          "hamogelo.gr",
+          "linkedin.com"
+        ],
+        "careersUrl": "https://www.hamogelo.gr/",
+        "postings": [
+          {
+            "title": "Child And Adolescent Psychiatrist (Day Centre Athens)",
+            "postedDate": "2026-10-21",
+            "deadline": null,
+            "url": "https://www.linkedin.com/jobs/view/child-and-adolescent-psychiatrist-at-%CF%84%CE%BF-%CF%87%CE%B1%CE%BC%CF%8C%CE%B3%CE%B5%CE%BB%CE%BF-%CF%84%CE%BF%CF%85-%CF%80%CE%B1%CE%B9%CE%B4%CE%B9%CE%BF%CF%8D-the-smile-of-the-child-4478272787",
+            "location": "Zografos, Attiki"
+          },
+          {
+            "title": "Ukrainian Interpreters / Intercultural Mediators (2)",
+            "postedDate": "2022-06",
+            "deadline": "2022-07-01",
+            "url": "https://www.hamogelo.gr/media/uploads_file/2022/06/22/p1g65c8rl02f6861m5ocqamv24.pdf",
+            "location": "Attica"
+          }
+        ],
+        "status": "researched",
+        "notes": "No dedicated careers archive on hamogelo.gr; LinkedIn currently shows live psychiatrist role (discovered 2026-10-28)."
+      },
+      "jobPossibility": {
+        "status": "scored",
+        "score": 58,
+        "band": "Medium",
+        "staffEstimate": 502,
+        "beneficiariesLabel": 90601,
+        "why": "Huge staff/beneficiary footprint → ongoing needs, but hiring is not continuously advertised. Possibility exists especially for clinical/child-protection specialisms; lower visibility than SN/PRAKSIS.",
+        "bestFitRoles": [
+          "Child psychiatrist",
+          "Social worker",
+          "Psychologist",
+          "Helpline / intervention",
+          "Interpreter"
+        ]
+      }
+    },
+    {
+      "id": "ngo-047-sos-children-s-villages-greece",
+      "name": "SOS Children's Villages Greece",
+      "nameEl": "Παιδικά Χωριά SOS Ελλάδος",
+      "sector": "Children & youth",
+      "scope": "Greece-wide (Athens office)",
+      "focus": "Alternative care, family strengthening",
+      "website": "https://www.sos-villages.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-048-network-for-children-s-rights",
+      "name": "Network for Children's Rights",
+      "nameEl": "Δίκτυο για τα Δικαιώματα του Παιδιού",
+      "sector": "Children & youth",
+      "scope": "Athens / Attica HQ",
+      "focus": "Child rights advocacy & services",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-049-pnoe-friends-of-children-in-intensive-care",
+      "name": "PNOE – Friends of Children in Intensive Care",
+      "nameEl": "Πνοή",
+      "sector": "Children & youth",
+      "scope": "Athens / Attica HQ",
+      "focus": "Support for critically ill children & families",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-050-flame-parents-of-children-with-neoplastic-diseases",
+      "name": "Flame (Parents of children with neoplastic diseases)",
+      "nameEl": "Φλόγα",
+      "sector": "Children & youth",
+      "scope": "Athens / Attica HQ",
+      "focus": "Support for children with cancer & families",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-051-kivotos-tou-kosmou",
+      "name": "Kivotos tou Kosmou",
+      "nameEl": "Κιβωτός του Κόσμου",
+      "sector": "Children & youth",
+      "scope": "Athens programs",
+      "focus": "Care for vulnerable children",
+      "website": null,
+      "notes": "Verify current status before engagement",
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-052-kmop",
+      "name": "KMOP",
+      "nameEl": "Κέντρο Μέριμνας Οικογένειας και Παιδιού",
+      "sector": "Children & youth",
+      "scope": "Athens / Attica HQ",
+      "focus": "Family & child welfare; social innovation",
+      "website": "https://www.kmop.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 1,
+        "sources": [
+          "kmop.gr"
+        ],
+        "careersUrl": "https://www.kmop.gr/work-with-us/",
+        "postings": [
+          {
+            "title": "Nurse (Νοσηλευτής/τρια) — Kapandriti",
+            "postedDate": "2026-10",
+            "deadline": null,
+            "url": "https://www.kmop.gr/work-with-us/",
+            "location": "Kapandriti (Attica)"
+          }
+        ],
+        "status": "researched",
+        "notes": "Explicitly accepts spontaneous CVs at careers@kmop.org when no matching opening."
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-053-sman",
+      "name": "SMAN",
+      "nameEl": "Σύλλογος Μέριμνας Ανηλίκων και Νέων",
+      "sector": "Children & youth",
+      "scope": "Athens programs",
+      "focus": "Care of minors and youth",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-054-greek-foster-care-association",
+      "name": "Greek Foster Care Association",
+      "nameEl": null,
+      "sector": "Children & youth",
+      "scope": "Athens / Attica HQ",
+      "focus": "Foster care advocacy",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-055-union-for-the-care-of-underaged",
+      "name": "Union for the Care of Underaged",
+      "nameEl": null,
+      "sector": "Children & youth",
+      "scope": "Athens / Attica HQ",
+      "focus": "Child welfare (NGO Federation member)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-056-kyan",
+      "name": "KYAN",
+      "nameEl": "Κύτταρο Εναλλακτικών Αναζητήσεων Νέων",
+      "sector": "Children & youth",
+      "scope": "Athens programs",
+      "focus": "Youth alternative education & engagement",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-057-actionaid-hellas",
+      "name": "ActionAid Hellas",
+      "nameEl": null,
+      "sector": "Poverty & solidarity",
+      "scope": "Athens / Attica HQ",
+      "focus": "Poverty, women's rights, education, community centre (Patision)",
+      "website": "https://www.actionaid.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": "2026-10-28T01:45:00.000Z",
+        "totalFound": 4,
+        "sources": [
+          "actionaid.gr",
+          "apply.workable.com/actionaid-hellas",
+          "linkedin"
+        ],
+        "careersUrl": "https://actionaid.gr/doylepse-stin-actionaid",
+        "postings": [
+          {
+            "title": "Monitoring and Evaluation Coordinator",
+            "postedDate": "2026-10-22",
+            "deadline": "2026-11-04",
+            "url": "https://apply.workable.com/j/2FEBD26A4F",
+            "location": "Athens"
+          },
+          {
+            "title": "Education Coordinator",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://career.aegean.gr/jobs/education-coordinator-action-aid-athens/",
+            "location": "Athens"
+          },
+          {
+            "title": "Institutional Fundraising Manager",
+            "postedDate": "2026-01-07",
+            "deadline": null,
+            "url": "https://www.linkedin.com/posts/makis-drakopoulos-88b91141_institutional-fundraising-manager-actionaid-activity-7414692559668699136-9iXz",
+            "location": "Athens"
+          },
+          {
+            "title": "Official careers page (site copy)",
+            "postedDate": null,
+            "deadline": null,
+            "url": "https://actionaid.gr/doylepse-stin-actionaid",
+            "location": "Athens",
+            "kind": "page_state",
+            "notes": "Site text sometimes says no openings while Workable still lists roles."
+          }
+        ],
+        "status": "researched",
+        "notes": "Primary ATS: Workable (actionaid-hellas)."
+      },
+      "jobPossibility": {
+        "status": "scored",
+        "score": 55,
+        "band": "Medium",
+        "staffEstimate": 97,
+        "beneficiariesLabel": "4,500+ Community Centre beneficiaries; ~300,000 students via education programmes (cumulative)",
+        "why": "Steady but selective HQ hiring (M&E, education, fundraising). Smaller headcount than METAdrasi/SN → fewer total slots, more competitive professional roles.",
+        "bestFitRoles": [
+          "M&E coordinator",
+          "Education coordinator",
+          "Institutional fundraising",
+          "Community centre programmes"
+        ]
+      }
+    },
+    {
+      "id": "ngo-058-bread-action",
+      "name": "Bread & Action",
+      "nameEl": "Άρτος & Δράση",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens / Attica HQ",
+      "focus": "Philanthropic food & social aid",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-059-friends-of-the-homeless",
+      "name": "Friends of the Homeless",
+      "nameEl": "Φίλοι των Αστέγων",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens / Attica HQ",
+      "focus": "Homelessness support (Chalandri / Attica)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-060-equal-society",
+      "name": "Equal Society",
+      "nameEl": "Κοινωνία Ίσων Ευκαιριών",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens programs",
+      "focus": "Equal opportunities & social inclusion",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-061-we-wear-love",
+      "name": "We Wear Love",
+      "nameEl": "Φοράμε Αγάπη",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens programs",
+      "focus": "Clothing donation & redistribution",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-062-better-days-greece",
+      "name": "Better Days Greece",
+      "nameEl": "Καλύτερες Μέρες Ελλάδα",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens programs",
+      "focus": "Humanitarian / community support",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-063-armenian-blue-cross",
+      "name": "Armenian Blue Cross",
+      "nameEl": null,
+      "sector": "Poverty & solidarity",
+      "scope": "Athens / Attica HQ",
+      "focus": "Community philanthropic aid (Syngrou)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-064-goodwill-caravan-amke",
+      "name": "Goodwill Caravan AMKE",
+      "nameEl": null,
+      "sector": "Poverty & solidarity",
+      "scope": "Athens programs",
+      "focus": "Material aid / solidarity caravans",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-065-amnesty-international-greece",
+      "name": "Amnesty International Greece",
+      "nameEl": null,
+      "sector": "Human rights & legal",
+      "scope": "Athens / Attica HQ",
+      "focus": "Human rights research & campaigns (Sina 30)",
+      "website": "https://www.amnesty.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-066-transparency-international-greece",
+      "name": "Transparency International Greece",
+      "nameEl": "Διεθνής Διαφάνεια Ελλάς",
+      "sector": "Human rights & legal",
+      "scope": "Athens / Attica HQ",
+      "focus": "Anti-corruption advocacy",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-067-hellenic-league-for-human-rights",
+      "name": "Hellenic League for Human Rights",
+      "nameEl": null,
+      "sector": "Human rights & legal",
+      "scope": "Athens / Attica HQ",
+      "focus": "Civil liberties & human rights advocacy",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-068-diotima-centre",
+      "name": "Diotima Centre",
+      "nameEl": "Κέντρο Γυναικείων Μελετών και Ερευνών Διοτίμα",
+      "sector": "Women & gender",
+      "scope": "Athens / Attica HQ",
+      "focus": "Gender-based violence, women's rights, research",
+      "website": "https://diotima.org.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-069-generation-2-0-for-rights-equality-diversity",
+      "name": "Generation 2.0 for Rights, Equality & Diversity",
+      "nameEl": null,
+      "sector": "Human rights & legal",
+      "scope": "Athens / Attica HQ",
+      "focus": "Citizenship, anti-discrimination, migrant youth rights",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-070-wwf-greece",
+      "name": "WWF Greece",
+      "nameEl": null,
+      "sector": "Environment",
+      "scope": "Athens / Attica HQ",
+      "focus": "Wildlife, marine, climate, sustainability",
+      "website": "https://www.wwf.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-071-greenpeace-greece",
+      "name": "Greenpeace Greece",
+      "nameEl": null,
+      "sector": "Environment",
+      "scope": "Athens / Attica HQ",
+      "focus": "Climate, energy, ocean & environmental campaigns",
+      "website": "https://www.greenpeace.org/greece/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-072-organization-earth",
+      "name": "Organization Earth",
+      "nameEl": "Οργάνωση Γη",
+      "sector": "Environment",
+      "scope": "Athens programs",
+      "focus": "Environmental education & sustainability",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-073-elix-conservation-volunteers-greece",
+      "name": "ELIX – Conservation Volunteers Greece",
+      "nameEl": "ΕΛΙΞ",
+      "sector": "Environment",
+      "scope": "Athens / Attica HQ",
+      "focus": "Volunteer conservation, education, inclusion programs",
+      "website": "https://www.elix.org.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-074-arcturos",
+      "name": "ARCTUROS",
+      "nameEl": null,
+      "sector": "Environment",
+      "scope": "Greece-wide (Athens office)",
+      "focus": "Bear/wildlife protection",
+      "website": null,
+      "notes": "HQ Florina; national presence",
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-075-alzheimer-athens",
+      "name": "Alzheimer Athens",
+      "nameEl": "Εταιρεία Alzheimer Αθηνών",
+      "sector": "Disability & chronic illness",
+      "scope": "Athens / Attica HQ",
+      "focus": "Day centres, helpline, caregiver support (Pangrati)",
+      "website": "https://alzheimerathens.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-076-alma-zois",
+      "name": "Alma Zois",
+      "nameEl": "Άλμα Ζωής",
+      "sector": "Disability & chronic illness",
+      "scope": "Athens / Attica HQ",
+      "focus": "Breast cancer support & advocacy",
+      "website": "https://www.almazois.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-077-amymoni",
+      "name": "AMYMONI",
+      "nameEl": "Αμυμώνη",
+      "sector": "Disability & chronic illness",
+      "scope": "Athens / Attica HQ",
+      "focus": "Blind/visually impaired with additional disabilities",
+      "website": "https://www.amimoni.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-078-anasa",
+      "name": "ANASA",
+      "nameEl": "Ανάσα",
+      "sector": "Disability & chronic illness",
+      "scope": "Athens / Attica HQ",
+      "focus": "Eating disorders support",
+      "website": "https://www.anasa.com.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-079-hellenic-patients-association",
+      "name": "Hellenic Patients Association",
+      "nameEl": "Ένωση Ασθενών Ελλάδας",
+      "sector": "Disability & chronic illness",
+      "scope": "Athens / Attica HQ",
+      "focus": "Patient advocacy umbrella",
+      "website": "https://greekpatient.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-080-dynami-zois-amke",
+      "name": "Dynami Zois AMKE",
+      "nameEl": "Δύναμη Ζωής",
+      "sector": "Disability & chronic illness",
+      "scope": "Athens programs",
+      "focus": "Support for people with health/disability challenges",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-081-alma-adapted-activities",
+      "name": "ALMA – Adapted Activities",
+      "nameEl": "Άλμα",
+      "sector": "Disability & chronic illness",
+      "scope": "Athens programs",
+      "focus": "Adapted sports/activities for people with disabilities",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-082-colour-youth-lgbtq-youth-community-of-athens",
+      "name": "Colour Youth – LGBTQ Youth Community of Athens",
+      "nameEl": "Colour Youth",
+      "sector": "LGBTQ+",
+      "scope": "Athens / Attica HQ",
+      "focus": "LGBTQ youth support, documentation of violence, advocacy",
+      "website": "https://www.colouryouth.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-083-allilonnet",
+      "name": "ALLILONnet",
+      "nameEl": null,
+      "sector": "Education & culture",
+      "scope": "Athens / Attica HQ",
+      "focus": "Mentoring & career networking for young professionals",
+      "website": "https://allilonnet.com/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-084-bodossaki-foundation",
+      "name": "Bodossaki Foundation",
+      "nameEl": "Ίδρυμα Μποδοσάκη",
+      "sector": "International / development",
+      "scope": "Athens / Attica HQ",
+      "focus": "Philanthropy, scholarships, civil society strengthening",
+      "website": "https://www.bodossaki.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-085-eliamep",
+      "name": "ELIAMEP",
+      "nameEl": "ΕΛΙΑΜΕΠ",
+      "sector": "International / development",
+      "scope": "Athens / Attica HQ",
+      "focus": "European & foreign policy think tank",
+      "website": "https://www.eliamep.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-086-british-council-greece",
+      "name": "British Council Greece",
+      "nameEl": null,
+      "sector": "Education & culture",
+      "scope": "Athens / Attica HQ",
+      "focus": "Education, English exams, cultural programs",
+      "website": "https://www.britishcouncil.gr/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-087-american-councils-greece",
+      "name": "American Councils Greece",
+      "nameEl": null,
+      "sector": "Education & culture",
+      "scope": "Athens programs",
+      "focus": "Academic exchange & language programs",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-088-hephaestus-educational-association-of-athens",
+      "name": "Hephaestus Educational Association of Athens",
+      "nameEl": "Ο Ήφαιστος",
+      "sector": "Education & culture",
+      "scope": "Athens / Attica HQ",
+      "focus": "Educational association (Migration Ministry registry)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-089-centre-for-research-on-women-s-issues-related-women-s-orgs",
+      "name": "Centre for Research on Women's Issues / related women's orgs",
+      "nameEl": null,
+      "sector": "Women & gender",
+      "scope": "Athens / Attica HQ",
+      "focus": "See also Diotima; women's shelters & research centres in Attica",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-090-unhcr-greece",
+      "name": "UNHCR Greece",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Greece-wide (Athens office)",
+      "focus": "UN refugee agency – protection & coordination",
+      "website": "https://help.unhcr.org/greece/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-091-iom-greece",
+      "name": "IOM Greece",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Greece-wide (Athens office)",
+      "focus": "UN migration agency programs",
+      "website": "https://greece.iom.int/",
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-092-vela-humanitarian-organization",
+      "name": "Vela Humanitarian Organization",
+      "nameEl": null,
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Protection & education",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-093-wellbeingr-amke",
+      "name": "WellbeingR AMKE",
+      "nameEl": null,
+      "sector": "Humanitarian & health",
+      "scope": "Athens programs",
+      "focus": "Wellbeing / psychosocial programs",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-094-earthmedicine-amke",
+      "name": "EarthMedicine AMKE",
+      "nameEl": null,
+      "sector": "Humanitarian & health",
+      "scope": "Athens programs",
+      "focus": "Health-related nonprofit (registry)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-095-crisis-management-association-cma",
+      "name": "Crisis Management Association (CMA)",
+      "nameEl": null,
+      "sector": "Humanitarian & health",
+      "scope": "Athens programs",
+      "focus": "Crisis management nonprofit",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-096-odysseia-amke",
+      "name": "Odysseia AMKE",
+      "nameEl": "Οδυσσεία",
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Support programs (Migration Ministry registry)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-097-stagona-amke",
+      "name": "Stagona AMKE",
+      "nameEl": "Σταγόνα",
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Related to Drop in the Ocean / local entity",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-098-synyparxis",
+      "name": "Synyparxis",
+      "nameEl": "Συνύπαρξη",
+      "sector": "Refugees & migration",
+      "scope": "Athens programs",
+      "focus": "Coexistence / social inclusion (registry)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-099-damaris-community-house",
+      "name": "Damaris Community House",
+      "nameEl": "Κοινοτικό Σπίτι Δάμαρις",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens programs",
+      "focus": "Community house / social support",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-100-chain-of-life",
+      "name": "Chain of Life",
+      "nameEl": "Αλυσίδα Ζωής",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens programs",
+      "focus": "Solidarity nonprofit (registry)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-101-arogi-amke",
+      "name": "Arogi AMKE",
+      "nameEl": "Αρωγή",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens programs",
+      "focus": "Aid / relief nonprofit",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-102-ergon-filias",
+      "name": "Ergon Filias",
+      "nameEl": "Έργο Φιλίας",
+      "sector": "Poverty & solidarity",
+      "scope": "Athens programs",
+      "focus": "Friendship/social support nonprofit",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-103-panhellenic-organ-donation-union",
+      "name": "Panhellenic Organ Donation Union",
+      "nameEl": null,
+      "sector": "Humanitarian & health",
+      "scope": "Athens / Attica HQ",
+      "focus": "Organ donation awareness (Chalandri)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-104-hellenic-society-for-tuberous-sclerosis",
+      "name": "Hellenic Society for Tuberous Sclerosis",
+      "nameEl": null,
+      "sector": "Disability & chronic illness",
+      "scope": "Athens / Attica HQ",
+      "focus": "Patient & family support (Byron)",
+      "website": null,
+      "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    }
+  ]
+}

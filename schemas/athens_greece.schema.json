@@ -1,0 +1,324 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "athens_greece.schema.json",
+  "title": "NGO registry — Greece-wide dataset (file: athens_greece.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "organizations"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["title", "count"],
+      "properties": {
+        "title": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "source": { "type": "string" },
+        "count": { "type": "integer", "minimum": 0 },
+        "note": { "type": ["string", "null"] }
+      }
+    },
+    "organizations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/organization" }
+    }
+  },
+  "$defs": {
+    "jobPosting": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["title", "url", "location"],
+      "properties": {
+        "title": { "type": "string" },
+        "postedDate": { "type": ["string", "null"] },
+        "deadline": { "type": ["string", "null"] },
+        "url": { "type": "string" },
+        "location": { "type": "string" },
+        "kind": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "organization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "nameEl",
+        "sector",
+        "scope",
+        "focus",
+        "website",
+        "notes",
+        "jobOpenings",
+        "jobPossibility"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^ngo-[0-9]+-" },
+        "name": { "type": "string", "minLength": 1 },
+        "nameEl": { "type": ["string", "null"] },
+        "sector": { "type": "string" },
+        "scope": { "type": "string" },
+        "focus": { "type": "string" },
+        "website": { "type": ["string", "null"] },
+        "notes": { "type": ["string", "null"] },
+        "osintProfile": { "$ref": "#/$defs/osintProfile" },
+        "jobOpenings": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "researchedAt",
+            "totalFound",
+            "sources",
+            "postings",
+            "status"
+          ],
+          "properties": {
+            "researchedAt": { "type": ["string", "null"] },
+            "totalFound": { "type": ["integer", "null"], "minimum": 0 },
+            "sources": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "careersUrl": { "type": ["string", "null"] },
+            "postings": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/jobPosting" }
+            },
+            "status": {
+              "type": "string",
+              "enum": ["pending", "researched", "partial"]
+            },
+            "notes": { "type": ["string", "null"] }
+          }
+        },
+        "jobPossibility": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["status", "score", "band"],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["scored", "unscored"]
+            },
+            "score": { "type": ["integer", "null"] },
+            "band": { "type": ["string", "null"] }
+          }
+        }
+      }
+    },
+    "osintReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "url"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": ["website", "registry", "social", "news", "careers", "funding", "legal", "other"]
+        },
+        "retrievedAt": { "type": ["string", "null"] }
+      }
+    },
+    "osintLogo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url"],
+      "properties": {
+        "url": { "type": "string", "minLength": 1 },
+        "alt": { "type": ["string", "null"] },
+        "sourceLabel": { "type": ["string", "null"] }
+      }
+    },
+    "osintMediaDigestMatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["articleId", "title", "sourceUrl"],
+      "properties": {
+        "articleId": { "type": "string" },
+        "title": { "type": "string" },
+        "dek": { "type": ["string", "null"] },
+        "date": { "type": ["string", "null"] },
+        "sourceLabel": { "type": ["string", "null"] },
+        "sourceUrl": { "type": "string", "minLength": 1 },
+        "digestWeekLabel": { "type": ["string", "null"] }
+      }
+    },
+    "osintContactHint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "label", "email", "applyUrl"],
+      "properties": {
+        "kind": { "type": "string" },
+        "label": { "type": "string" },
+        "email": { "type": ["string", "null"] },
+        "applyUrl": { "type": ["string", "null"] }
+      }
+    },
+    "osintProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "methodology",
+        "collectedAt",
+        "sourcesTiers",
+        "identity",
+        "mission",
+        "scaleSignals",
+        "employmentSignals",
+        "onlinePresence",
+        "programmes",
+        "deskCorpus",
+        "references",
+        "narrative",
+        "verification"
+      ],
+      "properties": {
+        "methodology": { "type": "string" },
+        "collectedAt": { "type": "string" },
+        "sourcesTiers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["primaryName", "nameEl", "aliases"],
+          "properties": {
+            "primaryName": { "type": "string" },
+            "nameEl": { "type": ["string", "null"] },
+            "aliases": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "legalFormHint": { "type": ["string", "null"] }
+          }
+        },
+        "mission": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["summary", "thematicAreas", "geographyLabel"],
+          "properties": {
+            "summary": { "type": "string" },
+            "thematicAreas": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "geographyLabel": { "type": "string" }
+          }
+        },
+        "scaleSignals": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["staffEstimate", "beneficiariesLabel", "sourcesNote"],
+          "properties": {
+            "staffEstimate": { "type": ["integer", "null"] },
+            "beneficiariesLabel": { "type": ["string", "null"] },
+            "sourcesNote": { "type": "string" }
+          }
+        },
+        "employmentSignals": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "researchStatus",
+            "indexedPostingsCount",
+            "careersUrl",
+            "discoverySources",
+            "discoverySourceUrls",
+            "linkedInHints",
+            "indicativeRoles"
+          ],
+          "properties": {
+            "researchStatus": { "type": "string" },
+            "indexedPostingsCount": { "type": ["integer", "null"] },
+            "careersUrl": { "type": ["string", "null"] },
+            "discoverySources": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "discoverySourceUrls": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "linkedInHints": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "indicativeRoles": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "onlinePresence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["website", "careersPage", "socialHints", "contactHints"],
+          "properties": {
+            "website": { "type": ["string", "null"] },
+            "careersPage": { "type": ["string", "null"] },
+            "socialHints": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "contactHints": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/osintContactHint" }
+            }
+          }
+        },
+        "programmes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "summary", "evidence"],
+            "properties": {
+              "name": { "type": "string" },
+              "summary": { "type": "string" },
+              "evidence": {
+                "type": "array",
+                "items": { "$ref": "#/$defs/osintReference" }
+              }
+            }
+          }
+        },
+        "deskCorpus": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mediaDigestMatches", "possibilitySourcesNote"],
+          "properties": {
+            "mediaDigestMatches": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/osintMediaDigestMatch" }
+            },
+            "possibilitySourcesNote": { "type": ["string", "null"] }
+          }
+        },
+        "narrative": { "type": "string" },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["confidence", "lastSynthesizedAt", "notes"],
+          "properties": {
+            "confidence": {
+              "type": "string",
+              "enum": ["low", "medium", "high"]
+            },
+            "lastSynthesizedAt": { "type": "string" },
+            "notes": { "type": "string" }
+          }
+        },
+        "logo": {
+          "anyOf": [{ "$ref": "#/$defs/osintLogo" }, { "type": "null" }]
+        },
+        "references": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/osintReference" }
+        }
+      }
+    }
+  }
+}

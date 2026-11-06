@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Example National NGO (demo)",
+    "nameEl": "Παράδειγμα Εθνικής ΜΚΟ",
+    "sector": "Social welfare",
+    "scope": "Thessaloniki / Central Macedonia",
+    "focus": "Youth programmes, food solidarity",
+    "website": "example.org",
+    "notes": "Replace this file with a real import batch; this row is for structure testing only."
+  }
+]

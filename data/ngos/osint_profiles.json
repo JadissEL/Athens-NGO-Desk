@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Per-organisation OSINT overrides",
+    "note": "Optional: add entries here to merge into auto-generated osintProfile at build time. Id must match athens_greece.json organisation id. Omit this file or leave organizations empty for auto-only profiles."
+  },
+  "organizations": []
+}

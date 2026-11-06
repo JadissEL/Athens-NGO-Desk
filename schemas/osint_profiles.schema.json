@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "osint_profiles.schema.json",
+  "title": "Optional OSINT profile overrides (data/ngos/osint_profiles.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "organizations"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "note"],
+      "properties": {
+        "title": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "organizations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "osintProfile"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^ngo-[0-9]+-" },
+          "osintProfile": {
+            "$ref": "athens_greece.schema.json#/$defs/osintProfile"
+          }
+        }
+      }
+    }
+  }
+}

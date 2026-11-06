@@ -1,0 +1,25 @@
+{
+  "name": "athens-ngo-desk",
+  "private": true,
+  "description": "Greece NGO Desk — static site with JSON-backed registry and build scripts",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build:data": "node scripts/build_data.js",
+    "merge:jobs": "node scripts/merge_ngo_job_research.js",
+    "validate": "node scripts/validate_data_schemas.js",
+    "validate:schemas": "node scripts/validate_data_schemas.js",
+    "validate:seed": "node scripts/validate_job_research_seed.js",
+    "validate:import": "node scripts/validate_registry_import.js",
+    "export:api": "node scripts/export_from_api.js",
+    "smoke:api": "node scripts/smoke_api.js",
+    "audit:registry-duplicates": "node scripts/audit_registry_duplicates.js",
+    "import:registry": "node scripts/import_registry_rows.js",
+    "osint:coverage": "node scripts/report_osint_coverage.js"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

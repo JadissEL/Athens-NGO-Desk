@@ -1,0 +1,16 @@
+# Local PostgreSQL for Phase B server (EU-like dev only — set region in production)
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: athens-ngo-desk-pg
+    environment:
+      POSTGRES_USER: desk
+      POSTGRES_PASSWORD: desk
+      POSTGRES_DB: athens_ngo_desk
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

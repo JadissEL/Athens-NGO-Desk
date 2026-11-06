@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "lastMergedAt": "2026-10-28T00:42:42.489Z",
+    "orgsResearched": 13,
+    "orgsPending": 91,
+    "postingsIndexed": 77,
+    "seedFile": "data/ngos/job_research_seed.json",
+    "caveat": "Public careers pages + boards only. Not a complete historical count of every vacancy ever published by each NGO."
+  },
+  "researched": [
+    {
+      "id": "ngo-003-solidaritynow",
+      "name": "SolidarityNow",
+      "status": "researched",
+      "totalFound": 15,
+      "careersUrl": "https://www.solidaritynow.org/en/theseis-ergasias/",
+      "dates": [
+        "2026-10-09",
+        "2026-10-01",
+        "2026-09-29",
+        "2026-09-29",
+        "2026-09-18",
+        "2026-08-28",
+        "2026-07-27",
+        "2026-07-21",
+        "2026-05-27",
+        "2026-05-27",
+        "2026-03-30",
+        "2026-03-23",
+        "2026-03-16",
+        "2026-02-17",
+        "2026-02-17"
+      ]
+    },
+    {
+      "id": "ngo-002-greek-council-for-refugees-gcr",
+      "name": "Greek Council for Refugees (GCR)",
+      "status": "researched",
+      "totalFound": 12,
+      "careersUrl": "https://gcr.gr/en/category/career-opportunities/",
+      "dates": [
+        "2026-09-23"
+      ]
+    },
+    {
+      "id": "ngo-035-doctors-of-the-world-greek-delegation",
+      "name": "Doctors of the World – Greek Delegation",
+      "status": "researched",
+      "totalFound": 12,
+      "careersUrl": "https://www.mdmgreece.gr/en/participate/job-openings/",
+      "dates": [
+        "2026-10-13",
+        "2026-10-09",
+        "2026-10-02",
+        "2026-10-19",
+        "2026-09-08",
+        "2026-08-31",
+        "2026-08-31",
+        "2026-08-06",
+        "2026-08-03",
+        "2026-07",
+        "2026-09-15",
+        "2026-08-17"
+      ]
+    },
+    {
+      "id": "ngo-004-praksis",
+      "name": "PRAKSIS",
+      "status": "researched",
+      "totalFound": 11,
+      "careersUrl": "https://praksis.gr/category/job-openings/",
+      "dates": [
+        "2026-10-16",
+        "2026-10-16",
+        "2026-10-16",
+        "2026-10-12",
+        "2026-10-05",
+        "2026-09-28",
+        "2026-09-24",
+        "2026-09-14",
+        "2026-09-09",
+        "2026-03-03"
+      ]
+    },
+    {
+      "id": "ngo-008-the-home-project",
+      "name": "The HOME Project",
+      "status": "researched",
+      "totalFound": 7,
+      "careersUrl": "https://www.homeproject.org/en/get-involved/join-our-team/",
+      "dates": [
+        "2026-10"
+      ]
+    },
+    {
+      "id": "ngo-009-arsis",
+      "name": "ARSIS",
+      "status": "researched",
+      "totalFound": 5,
+      "careersUrl": "https://arsis.gr/theseis-ergasias/",
+      "dates": [
+        "2026-10-16",
+        "2026-10-14",
+        "2026-10-06",
+        "2026-10-22",
+        "2026-10-20"
+      ]
+    },
+    {
+      "id": "ngo-057-actionaid-hellas",
+      "name": "ActionAid Hellas",
+      "status": "researched",
+      "totalFound": 4,
+      "careersUrl": "https://actionaid.gr/doylepse-stin-actionaid",
+      "dates": [
+        "2026-10-22",
+        "2026-01-07"
+      ]
+    },
+    {
+      "id": "ngo-001-metadrasi",
+      "name": "METAdrasi",
+      "status": "researched",
+      "totalFound": 3,
+      "careersUrl": "https://metadrasi.org/en/job-openings/",
+      "dates": [
+        "2026-05-07",
+        "2026-03",
+        "2026-03-24"
+      ]
+    },
+    {
+      "id": "ngo-025-lighthouse-relief",
+      "name": "Lighthouse Relief",
+      "status": "researched",
+      "totalFound": 3,
+      "careersUrl": "https://www.lighthouserelief.org/work-with-us",
+      "dates": [
+        "2026-10",
+        "2026-10",
+        "2026-10"
+      ]
+    },
+    {
+      "id": "ngo-013-international-rescue-committee-hellas",
+      "name": "International Rescue Committee Hellas",
+      "status": "researched",
+      "totalFound": 2,
+      "careersUrl": "https://www.rescue.org/eu/careers",
+      "dates": [
+        "2026-10-19",
+        "2026-10-05"
+      ]
+    },
+    {
+      "id": "ngo-046-the-smile-of-the-child",
+      "name": "The Smile of the Child",
+      "status": "researched",
+      "totalFound": 2,
+      "careersUrl": "https://www.hamogelo.gr/",
+      "dates": [
+        "2026-10-21",
+        "2022-06"
+      ]
+    },
+    {
+      "id": "ngo-052-kmop",
+      "name": "KMOP",
+      "status": "researched",
+      "totalFound": 1,
+      "careersUrl": "https://www.kmop.gr/work-with-us/",
+      "dates": [
+        "2026-10"
+      ]
+    },
+    {
+      "id": "ngo-005-caritas-athens",
+      "name": "Caritas Athens",
+      "status": "partial",
+      "totalFound": 0,
+      "careersUrl": "https://www.caritasathens.gr/en/jobs-en.html",
+      "dates": []
+    }
+  ]
+}

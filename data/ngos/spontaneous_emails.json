@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "researchedAt": "2026-10-28T01:45:00.000Z",
+    "purpose": "Emails for spontaneous candidature (unsolicited CV + short motivation) when no matching vacancy — or the HR inbox used on official calls.",
+    "tip": "Subject: Spontaneous application — [role / domain]. Attach CV + ½-page letter. Greek + English are commonly accepted; many HQs are in Athens but roles may be nationwide."
+  },
+  "contacts": [
+    {
+      "orgId": "ngo-001-metadrasi",
+      "name": "METAdrasi",
+      "email": "cv@metadrasi.org",
+      "kind": "recruitment",
+      "note": "Primary inbox for all vacancy calls; also usable for speculative CVs with a clear subject line."
+    },
+    {
+      "orgId": "ngo-002-greek-council-for-refugees-gcr",
+      "name": "Greek Council for Refugees (GCR)",
+      "email": "gcr1@gcr.gr",
+      "kind": "general / Send CV page",
+      "note": "General contact; prefer the Send CV flow on gcr.gr when a specific call is open."
+    },
+    {
+      "orgId": "ngo-003-solidaritynow",
+      "name": "SolidarityNow",
+      "email": "recruitment@solidaritynow.org",
+      "kind": "recruitment",
+      "note": "Use exact vacancy subject when applying to a posted role; otherwise use a clear spontaneous-application subject line."
+    },
+    {
+      "orgId": "ngo-005-caritas-athens",
+      "name": "Caritas Athens",
+      "email": "caritasathens@caritasathens.gr",
+      "kind": "jobs / HQ",
+      "note": "Also caritasref@caritasathens.gr for refugee-programme roles (Kapodistriou offices)."
+    },
+    {
+      "orgId": "ngo-005-caritas-athens",
+      "name": "Caritas Athens (Refugee Program)",
+      "email": "caritasref@caritasathens.gr",
+      "kind": "refugee programme",
+      "note": "Secondary inbox listed on the Jobs page."
+    },
+    {
+      "orgId": "ngo-008-the-home-project",
+      "name": "The HOME Project",
+      "email": "hr@homeproject.org",
+      "kind": "HR",
+      "note": "Questions + applications; many roles also go through Workable."
+    },
+    {
+      "orgId": "ngo-009-arsis",
+      "name": "ARSIS",
+      "email": "hr.arsis@gmail.com",
+      "kind": "HR",
+      "note": "Athens shelter calls (Oct 2026) ask for CV + interest letter to this address."
+    },
+    {
+      "orgId": "ngo-025-lighthouse-relief",
+      "name": "Lighthouse Relief",
+      "email": "recruitment@lighthouserelief.org",
+      "kind": "recruitment",
+      "note": "Rolling review for paid/intern roles. Volunteers use the separate Volunteer portal."
+    },
+    {
+      "orgId": "ngo-052-kmop",
+      "name": "KMOP",
+      "email": "careers@kmop.org",
+      "kind": "spontaneous (explicit)",
+      "note": "Site invites unsolicited CVs when no opening matches."
+    },
+    {
+      "orgId": "ngo-057-actionaid-hellas",
+      "name": "ActionAid Hellas",
+      "email": null,
+      "applyUrl": "https://apply.workable.com/actionaid-hellas/",
+      "kind": "ATS only",
+      "note": "Prefer Workable applications; no public generic HR mailbox found this pass."
+    },
+    {
+      "orgId": "ngo-013-international-rescue-committee-hellas",
+      "name": "IRC Hellas",
+      "email": null,
+      "applyUrl": "https://www.rescue.org/eu/careers",
+      "kind": "ATS (Workday)",
+      "note": "Apply via IRC Workday — spontaneous email rarely accepted."
+    },
+    {
+      "orgId": null,
+      "name": "EPLO (European Public Law Organization)",
+      "email": "hr@eplo.int",
+      "kind": "HR",
+      "note": "Not in the 104 NGO registry (international org, Kolonaki). Senior Program Officer posted 21 Oct 2026."
+    },
+    {
+      "orgId": null,
+      "name": "Mission Anthropos (Αποστολή Άνθρωπος)",
+      "email": "missionanthroposngo@gmail.com",
+      "kind": "recruitment",
+      "note": "Athens-based; recent Programme Manager call used this inbox."
+    }
+  ]
+}

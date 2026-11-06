@@ -1,0 +1,289 @@
+{
+  "meta": {
+    "createdAt": "2026-10-28T00:35:00.000Z",
+    "question": "Possibility to find a job at each NGO, based on recent public vacancy activity + organisational scale (staff and people served / 'dependents')",
+    "method": {
+      "hiringActivity": "40% — count of public openings indexed (2026 research) + known annual hire volume when disclosed",
+      "recency": "20% — how recently the last public vacancy appeared",
+      "staffScale": "20% — employees / workforce size (proxy for replacement & project churn)",
+      "beneficiaryScale": "20% — people served / supported (dependents of programmes)",
+      "bands": {
+        "Very high": "80–100",
+        "High": "65–79",
+        "Medium": "45–64",
+        "Low": "25–44",
+        "Very low / opaque": "0–24"
+      }
+    },
+    "caveats": [
+      "Only 9/104 NGOs have deep job-board research so far; unscored orgs are not 'impossible', just unmeasured.",
+      "Public vacancy count underestimates orgs that hire via closed calls, interpreter registries, or EUAA/AMIF tenders (esp. METAdrasi).",
+      "Large beneficiary counts do not guarantee open roles; they raise the chance of funded project hiring over time.",
+      "Competition is high for NGO roles in Greece; score = relative opportunity volume, not chance of getting an offer."
+    ]
+  },
+  "organizations": [
+    {
+      "id": "ngo-001-metadrasi",
+      "name": "METAdrasi",
+      "possibility": "Very high",
+      "score": 92,
+      "staff": {
+        "estimate": 910,
+        "year": 2024,
+        "source": "METAdrasi Annual Report 2024",
+        "note": "519 new hires in 2024 alone"
+      },
+      "beneficiariesDependents": {
+        "estimateLabel": "Multi-thousand / year across programmes",
+        "examples": [
+          "3,147 unaccompanied children via guardianship (2024)",
+          "2,402 people in employment counselling (2024)",
+          "1,241 asylum seekers legal assistance (2024)"
+        ],
+        "source": "METAdrasi Annual Report 2024"
+      },
+      "hiringSignal": {
+        "publicPostingsIndexed": 3,
+        "lastPublicPost": "2026-05-07",
+        "extra": "Official site currently empty, but 2024 HR report shows extreme hire volume — many roles via specialised calls (mediators, guardianship)"
+      },
+      "why": "Largest measured hire pipeline in this set (519 hires/year). Even with few live public ads, scale + project churn makes this the strongest probability target if you match interpreter / child-protection / legal / employment profiles.",
+      "bestFitRoles": [
+        "Intercultural mediator / interpreter",
+        "Guardianship officer",
+        "Legal aid",
+        "Employment counsellor",
+        "Information / MEAL"
+      ]
+    },
+    {
+      "id": "ngo-003-solidaritynow",
+      "name": "SolidarityNow",
+      "possibility": "Very high",
+      "score": 88,
+      "staff": {
+        "estimate": 350,
+        "range": "201–500",
+        "source": "RevenueBase / LinkedIn-class size bands Sep 2026"
+      },
+      "beneficiariesDependents": {
+        "estimateLabel": "350,000+ people supported to date",
+        "source": "SolidarityNow Annual Report 2022"
+      },
+      "hiringSignal": {
+        "publicPostingsIndexed": 15,
+        "lastPublicPost": "2026-10-09",
+        "span": "2026-02 → 2026-10 (~15 dated openings on careers page)"
+      },
+      "why": "Most active public careers board in our sample + mid/large staff + huge cumulative beneficiary base. Steady HELIOS+/ASC/project churn in Attica and beyond.",
+      "bestFitRoles": [
+        "ASC services (accountant, employability)",
+        "HELIOS+ centre roles",
+        "MEAL",
+        "Education / Roma projects",
+        "Psychologist"
+      ]
+    },
+    {
+      "id": "ngo-004-praksis",
+      "name": "PRAKSIS",
+      "possibility": "High",
+      "score": 84,
+      "staff": {
+        "estimate": 160,
+        "range": "up to 501–1000 band on some listings",
+        "source": "LinkedIn company metrics + directory bands"
+      },
+      "beneficiariesDependents": {
+        "estimateLabel": "Nationwide vulnerable populations (homeless, UAMs, migrants, health exclusion)",
+        "source": "praksis.gr about"
+      },
+      "hiringSignal": {
+        "publicPostingsIndexed": 11,
+        "lastPublicPost": "2026-10-16",
+        "span": "Multiple Oct 2026 guardianship & housing calls"
+      },
+      "why": "Very frequent public calls (esp. guardianship, housing search, medical/social). High opportunity if Greek-qualified social work / medicine / field ops.",
+      "bestFitRoles": [
+        "Guardianship officer",
+        "Social worker",
+        "Doctor",
+        "Housing search",
+        "Day-centre staff"
+      ]
+    },
+    {
+      "id": "ngo-035-doctors-of-the-world-greek-delegation",
+      "name": "Doctors of the World – Greek Delegation",
+      "possibility": "High",
+      "score": 80,
+      "staff": {
+        "estimate": 59,
+        "range": "51–200",
+        "source": "MdM Network Annual Report 2024 / RevenueBase"
+      },
+      "beneficiariesDependents": {
+        "estimate": 26763,
+        "year": 2023,
+        "label": "vulnerable people supported",
+        "source": "MdM-Greece Annual Report 2023"
+      },
+      "hiringSignal": {
+        "publicPostingsIndexed": 12,
+        "lastPublicPost": "2026-10-19",
+        "span": "Near-continuous medical & shelter staffing notices Aug–Oct 2026"
+      },
+      "why": "Smaller payroll than METAdrasi but very active recruitment for clinical and shelter roles. Strong if you hold Greek medical/nursing licences.",
+      "bestFitRoles": [
+        "GP / pathologist",
+        "Nurse",
+        "Dentist",
+        "Shelter admin / cleaning (ESPA)",
+        "Mobile unit staff"
+      ]
+    },
+    {
+      "id": "ngo-002-greek-council-for-refugees-gcr",
+      "name": "Greek Council for Refugees (GCR)",
+      "possibility": "High",
+      "score": 76,
+      "staff": {
+        "estimate": null,
+        "range": "medium specialised NGO",
+        "source": "estimate — legal/social field org"
+      },
+      "beneficiariesDependents": {
+        "estimateLabel": "Asylum seekers & refugees via legal + social units (Athens + field sites)",
+        "source": "gcr.gr"
+      },
+      "hiringSignal": {
+        "publicPostingsIndexed": 12,
+        "lastPublicPost": "2026-09-23",
+        "span": "Large live careers category (many HELIOS+ / local team posts)"
+      },
+      "why": "Many simultaneous openings across Greece; Athens HQ roles exist but a large share are field (Patras, Kavala, Lesvos, Corinth). High volume if mobile.",
+      "bestFitRoles": [
+        "Interpreter",
+        "Lawyer / legal researcher",
+        "Local team lead",
+        "HELIOS+ facilitator",
+        "Project manager"
+      ]
+    },
+    {
+      "id": "ngo-046-the-smile-of-the-child",
+      "name": "The Smile of the Child",
+      "possibility": "Medium",
+      "score": 58,
+      "staff": {
+        "estimate": 502,
+        "year": 2018,
+        "volunteers": 3466,
+        "source": "hamogelo.gr press 2019 (2018 stats)"
+      },
+      "beneficiariesDependents": {
+        "estimate": 90601,
+        "year": 2018,
+        "label": "children and families supported",
+        "source": "hamogelo.gr"
+      },
+      "hiringSignal": {
+        "publicPostingsIndexed": 2,
+        "lastPublicPost": "2026-10-21",
+        "extra": "Large org but opaque careers site; LinkedIn currently shows Child & Adolescent Psychiatrist"
+      },
+      "why": "Huge staff/beneficiary footprint → ongoing needs, but hiring is not continuously advertised. Possibility exists especially for clinical/child-protection specialisms; lower visibility than SN/PRAKSIS.",
+      "bestFitRoles": [
+        "Child psychiatrist",
+        "Social worker",
+        "Psychologist",
+        "Helpline / intervention",
+        "Interpreter"
+      ]
+    },
+    {
+      "id": "ngo-057-actionaid-hellas",
+      "name": "ActionAid Hellas",
+      "possibility": "Medium",
+      "score": 55,
+      "staff": {
+        "estimate": 97,
+        "volunteersNational": 140,
+        "source": "European Youth Portal / ActionAid Hellas profile"
+      },
+      "beneficiariesDependents": {
+        "estimateLabel": "4,500+ Community Centre beneficiaries; ~300,000 students via education programmes (cumulative)",
+        "source": "ActionAid Hellas organisational profile"
+      },
+      "hiringSignal": {
+        "publicPostingsIndexed": 4,
+        "lastPublicPost": "2026-10-22",
+        "extra": "Workable ATS; site sometimes says 'no openings' while Workable still lists roles"
+      },
+      "why": "Steady but selective HQ hiring (M&E, education, fundraising). Smaller headcount than METAdrasi/SN → fewer total slots, more competitive professional roles.",
+      "bestFitRoles": [
+        "M&E coordinator",
+        "Education coordinator",
+        "Institutional fundraising",
+        "Community centre programmes"
+      ]
+    },
+    {
+      "id": "ngo-013-international-rescue-committee-hellas",
+      "name": "International Rescue Committee Hellas",
+      "possibility": "Medium",
+      "score": 52,
+      "staff": {
+        "estimate": 114,
+        "year": 2019,
+        "source": "IRC Hellas Activity Report 2019 (may have changed)"
+      },
+      "beneficiariesDependents": {
+        "estimateLabel": "125,000+ people directly supported over first decade in Greece (incl. 31,000 children)",
+        "source": "IRC Hellas 10-year review"
+      },
+      "hiringSignal": {
+        "publicPostingsIndexed": 2,
+        "lastPublicPost": "2026-10-19",
+        "extra": "Global Workday ATS — Greece roles appear among international listings"
+      },
+      "why": "Recent openings exist (Helios+ / livelihoods) and beneficiary footprint is large, but hiring volume is lower and process is more formal/competitive than local Greek NGOs.",
+      "bestFitRoles": [
+        "Helios+ centre assistant",
+        "Job counsellor / livelihoods",
+        "Protection",
+        "MEAL"
+      ]
+    },
+    {
+      "id": "ngo-005-caritas-athens",
+      "name": "Caritas Athens",
+      "possibility": "Low / opaque",
+      "score": 28,
+      "staff": {
+        "estimate": null,
+        "source": "not found this pass"
+      },
+      "beneficiariesDependents": {
+        "estimateLabel": "Historically high material-aid & refugee service volume in Attica (exact 2024/25 headcount not verified here)",
+        "source": "caritasathens.gr programme descriptions"
+      },
+      "hiringSignal": {
+        "publicPostingsIndexed": 0,
+        "lastPublicPost": null,
+        "extra": "No public careers archive found in research pass 1"
+      },
+      "why": "Real operational footprint, but near-zero public vacancy signal → hard to time applications. Treat as speculative / network / speculative CV drop unless a call appears.",
+      "bestFitRoles": [
+        "Social services",
+        "Refugee sector support",
+        "Logistics / material aid"
+      ]
+    }
+  ],
+  "unresearchedNote": {
+    "count": 95,
+    "message": "The other 95 registry NGOs have no job-possibility score yet. Priority next research targets with likely hiring (by sector scale): Hellenic Red Cross, ARSIS, KMOP, Caritas Hellas, MSF Greece, HOME Project, Diotima, ELIX, Generation 2.0, Apostoli."
+  }
+}

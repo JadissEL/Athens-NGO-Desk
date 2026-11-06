@@ -1,0 +1,20 @@
+node_modules/
+
+# PCA agent memory (local-only)
+.cursor_memory/
+
+# Generated audit (run: npm run audit:registry-duplicates)
+data/ngos/registry_duplicate_report.json
+
+# OSINT coverage (run: npm run osint:coverage)
+data/ngos/osint_coverage_report.json
+
+# Local registry recon samples (curl / manual saves; not part of source)
+scripts/.okeanis_*.js
+scripts/.okeanis_*.html
+scripts/.migration_*.html
+
+# Steward bulk imports (keep example + README only)
+data/ngos/imports/*
+!data/ngos/imports/README.md
+!data/ngos/imports/pending_national.example.json

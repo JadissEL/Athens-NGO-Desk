@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "registry_import_batch.schema.json",
+  "title": "Steward batch for npm run import:registry",
+  "description": "Partial organisation rows before merge into athens_greece.json. Either a bare array or an object with organizations.",
+  "oneOf": [
+    {
+      "type": "array",
+      "items": { "$ref": "#/$defs/partialOrg" }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["organizations"],
+      "properties": {
+        "organizations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/partialOrg" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "partialOrg": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "nameEl": { "type": ["string", "null"] },
+        "sector": { "type": ["string", "null"] },
+        "scope": { "type": ["string", "null"] },
+        "focus": { "type": ["string", "null"] },
+        "website": { "type": ["string", "null"] },
+        "notes": { "type": ["string", "null"] }
+      }
+    }
+  }
+}
