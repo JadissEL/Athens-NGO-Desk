@@ -46,7 +46,7 @@ curl -fsS -H "Authorization: Bearer $KEY" "$API_URL/api/draft" | head -c 200
 ## 4. Static site
 
 - Host `static-site/` on static hosting.
-- Set `window.NGO_DATA_API_URL` to the **API base** (no trailing slash) so [static-site/app.js](../static-site/app.js) can fetch `/api/ngo-data` — see [DATA_PIPELINE.md](./DATA_PIPELINE.md).
+- Set `window.NGO_DATA_API_BASE` to the **API origin** (no trailing slash) in a `<script>` before `data_loader.js` so [static-site/data_loader.js](../static-site/data_loader.js) can fetch `/api/ngo-data` — see [DATA_PIPELINE.md](./DATA_PIPELINE.md) and [DEPLOYMENT_VERCEL_RENDER.md](./DEPLOYMENT_VERCEL_RENDER.md).
 
 ## 5. Secrets
 

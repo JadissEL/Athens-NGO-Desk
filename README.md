@@ -12,7 +12,7 @@ For **corrections, removals, or data handling requests**, email **desk@example.o
 - **`data/ngos/`** — Canonical JSON inputs (registry, jobs, emails, media)
 - **`scripts/`** — Merge, extract, and `build_data.js` (bundles JSON → `data.js`)
 - **`server/`** — Phase B API + steward UI (`server/README.md`)
-- **`docs/`** — [Architecture](./docs/ARCHITECTURE.md), [audiences](./docs/AUDIENCES.md), [national registry](./docs/NATIONAL_REGISTRY.md), [pipeline](./docs/DATA_PIPELINE.md), [contract](./docs/DATA_CONTRACT.md), [methodology](./docs/METHODOLOGY.md), [legal](./docs/LEGAL_NOTICE.md), [RACI](./docs/GOVERNANCE_RACI.md), [deploy preview](./docs/DEPLOY_PREVIEW.md), [staging](./docs/STAGING.md), [security](./docs/SECURITY.md)
+- **`docs/`** — [Architecture](./docs/ARCHITECTURE.md), [audiences](./docs/AUDIENCES.md), [national registry](./docs/NATIONAL_REGISTRY.md), [pipeline](./docs/DATA_PIPELINE.md), **production deploy (Vercel + Render + Clerk)** [DEPLOYMENT_VERCEL_RENDER.md](./docs/DEPLOYMENT_VERCEL_RENDER.md), [contract](./docs/DATA_CONTRACT.md), [methodology](./docs/METHODOLOGY.md), [legal](./docs/LEGAL_NOTICE.md), [RACI](./docs/GOVERNANCE_RACI.md), [deploy preview](./docs/DEPLOY_PREVIEW.md), [staging](./docs/STAGING.md), [security](./docs/SECURITY.md)
 - **`schemas/`** — JSON Schema definitions for `data/ngos/` (Ajv validation on build)
 
 ## Quick start

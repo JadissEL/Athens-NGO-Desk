@@ -1,0 +1,24 @@
+# Render Blueprint — Phase B API (`server/`)
+# https://render.com/docs/blueprint-spec
+# Prereq: create a PostgreSQL instance (EU region recommended) and set DATABASE_URL on this service.
+# After first deploy: ensure migrations ran (build runs migrate deploy) and seed/publish if DB is empty.
+
+services:
+  - type: web
+    name: athens-ngo-desk-api
+    runtime: node
+    region: frankfurt
+    rootDir: server
+    buildCommand: npm ci && npx prisma migrate deploy && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: HOST
+        value: 0.0.0.0
+      # Render injects PORT automatically — do not override unless you know the platform port.
+      # Set in Render dashboard (secret):
+      # DATABASE_URL — pooled Postgres URL
+      # CLERK_SECRET_KEY, CLERK_PUBLISHABLE_KEY
+      # CORS_ORIGIN — your Vercel site origin, e.g. https://desk.example.com

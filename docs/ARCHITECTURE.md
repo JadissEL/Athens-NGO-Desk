@@ -20,4 +20,4 @@ This project is organised as three clear layers:
 3. Open `static-site/index.html` in a browser (or serve the folder).
 4. Optional: deploy `server/`, run `prisma migrate deploy`, `npm run db:seed`, then consumers may use `GET /api/ngo-data` (same shape as `window.NGO_DATA`).
 
-See [DATA_PIPELINE.md](./DATA_PIPELINE.md) for commands and file map, [NATIONAL_REGISTRY.md](./NATIONAL_REGISTRY.md) for expanding beyond the seed list with official registers and deduplication, [DATA_CONTRACT.md](./DATA_CONTRACT.md) for JSON shapes, [PHASE_B_STACK.md](./PHASE_B_STACK.md) for API/DB stack, [DEPLOY_PREVIEW.md](./DEPLOY_PREVIEW.md) for CI preview artifacts.
+See [DATA_PIPELINE.md](./DATA_PIPELINE.md) for commands and file map, [NATIONAL_REGISTRY.md](./NATIONAL_REGISTRY.md) for expanding beyond the seed list with official registers and deduplication, [DATA_CONTRACT.md](./DATA_CONTRACT.md) for JSON shapes, [PHASE_B_STACK.md](./PHASE_B_STACK.md) for API/DB stack, [DEPLOYMENT_VERCEL_RENDER.md](./DEPLOYMENT_VERCEL_RENDER.md) for Vercel + Render + Clerk production hosting, [DEPLOY_PREVIEW.md](./DEPLOY_PREVIEW.md) for CI preview artifacts.

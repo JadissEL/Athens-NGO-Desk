@@ -19,6 +19,8 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/METHODOLOGY.md`, `doc
 
 | Date | Action |
 |------|--------|
+| 2026-11-06 | **Production deploy guide:** `docs/DEPLOYMENT_VERCEL_RENDER.md` (Vercel `static-site/` + Render `server/` + Clerk); `render.yaml` blueprint; `static-site/vercel.json`; `docs/STAGING.md` fix: `NGO_DATA_API_BASE` (was wrong name). |
+| 2026-11-06 | **Standalone git + GitHub:** repository root fixed to this folder (`git init`); initial commit; public remote **[github.com/JadissEL/Athens-NGO-Desk](https://github.com/JadissEL/Athens-NGO-Desk)** (`gh repo create` + push `main`). Prior issue: user-level git had treated **home directory** as repo root — do not use `git status` from `~` for this project. |
 | 2026-11-06 | **OSINT profile enrichment (desk-held):** `merge_osint_into_registry` ingests `job_possibility` (URLs + text) + `media_week` (fuzzy match + aliases) into `osintProfile.references` + `deskCorpus`; UI section **Desk corpus & digest**; schema `deskCorpus` + `osintMediaDigestMatch`. |
 | 2026-11-06 | **OSINT merge v2:** stronger media matching (acronyms from parentheses, single-token hits for long tokens), expanded `ORG_ALIAS_TOKENS`, `references[]` from each `jobOpenings.postings[].url` + URLs in notes/why; `identity.aliases` populated; mission row **Also known as (desk)** in org profile UI. |
 | 2026-11-06 | **OSINT merge v3:** `spontaneous_emails.json` **applyUrl** + note URLs → `references[]`; build/validate/API pass `emails` into merge; `npm run osint:coverage` → `osint_coverage_report.json` (gitignored). |
