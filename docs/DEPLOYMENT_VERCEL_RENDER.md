@@ -48,6 +48,15 @@ Optional: `STEWARD_API_KEYS` break-glass if not using Clerk alone.
 
 Note: **`GET /api/ngo-data`** merges OSINT at runtime using bundle JSON already in Postgres; `data/ngos/*.json` is **not** required on the server disk in production.
 
+### Render manual service + `render.yaml`
+
+If the API was created **manually** (not from a synced Blueprint), Render does **not** apply `render.yaml` env vars. Either:
+
+1. **Dashboard (fastest):** Web service → **Environment** → **Add** → **Link database** → choose **`athens-ngo-desk-db`** (sets `DATABASE_URL`), then **Save** and **Manual deploy**; or  
+2. **Blueprint:** [Create a Blueprint](https://dashboard.render.com) from this repo so `fromDatabase` in [`render.yaml`](../render.yaml) syncs to the service.
+
+Until `DATABASE_URL` is present, **`prisma migrate deploy` fails** during build (P1012).
+
 ## 3. Vercel — static site
 
 1. **New Project** → import the repo.
