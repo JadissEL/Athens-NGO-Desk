@@ -61,18 +61,25 @@ Until `DATABASE_URL` is present, **`prisma migrate deploy` fails** during build 
 
 The Cursor **Render MCP** only sees the workspace linked to its integration. To provision **Postgres + Web service** on another Render login (for example **bognboa@gmail.com**):
 
-1. Log into Render as that user → **Account Settings** → **API Keys** → create a key (do not paste it into chat or git).
-2. On that same account, ensure **GitHub** is connected so Render can clone `https://github.com/JadissEL/Athens-NGO-Desk`.
-3. From the repo root in PowerShell:
+#### Option A — GitHub Actions (minimal manual work)
+
+1. Log into Render as that user → **Account Settings** → **API Keys** → create a key (store only in **GitHub repo secret** `RENDER_API_KEY`, never in chat or git).
+2. In the **GitHub** repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret** → name `RENDER_API_KEY`, paste the key.
+3. Ensure **Render** can clone the repo for that account (connect GitHub when Render asks on first deploy, or connect in Render **Account Settings**).
+4. **Actions** → workflow **Provision Render API** → **Run workflow**. Wait for green; the log prints **`serviceUrl=...`**.
+
+The job runs [`scripts/render_provision_api.mjs`](../scripts/render_provision_api.mjs) (idempotent: reuses DB/service by name, merges env vars, triggers deploy). It sets **`DATABASE_URL`** from the Postgres **internal** connection string.
+
+5. When live, set **`window.NGO_DATA_API_BASE`** in `static-site/index.html` to the service URL and redeploy Vercel (or automate that separately).
+
+#### Option B — Local Node
 
 ```powershell
 $env:RENDER_API_KEY = "<your key>"
-.\scripts\render_provision_api.ps1
+node scripts/render_provision_api.mjs
 ```
 
-The script creates a **Frankfurt** Postgres plus a **Node** web service (`rootDir: server`, build includes migrate + optional seed). It sets **`DATABASE_URL`** from the DB **internal** connection string (same region as the service).
-
-4. When the deploy is **live**, set **`window.NGO_DATA_API_BASE`** in `static-site/index.html` to the new `https://*.onrender.com` URL and redeploy Vercel.
+(`render_provision_api.ps1` is a legacy non-idempotent variant; prefer the `.mjs` script.)
 
 ## 3. Vercel — static site
 

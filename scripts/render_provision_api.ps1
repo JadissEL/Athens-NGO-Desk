@@ -1,4 +1,5 @@
 ﻿# Provision Athens NGO Desk API on Render using the public API (v1).
+# Prefer: `node scripts/render_provision_api.mjs` (idempotent, merges env vars) or GitHub Action `render-provision-api.yml`.
 # Usage (PowerShell, from repo root or any cwd):
 #   $env:RENDER_API_KEY = "<from https://dashboard.render.com/u/settings#api-keys on the TARGET account>"
 #   .\scripts\render_provision_api.ps1

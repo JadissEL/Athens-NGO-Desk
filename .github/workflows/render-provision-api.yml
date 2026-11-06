@@ -1,0 +1,33 @@
+# One-time setup: add repo secret RENDER_API_KEY (Render → Account Settings → API Keys).
+# GitHub → Actions → "Provision Render API" → Run workflow.
+# Fixes broken deploys by setting DATABASE_URL from linked Postgres (internal URL).
+
+name: Provision Render API
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: render-provision-api
+  cancel-in-progress: false
+
+jobs:
+  provision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Provision Postgres + Web Service (Render API)
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          OWNER_EMAIL: bognboa@gmail.com
+          DB_NAME: athens-ngo-desk-db-bognboa
+          SERVICE_NAME: athens-ngo-desk-api-bognboa
+        run: node scripts/render_provision_api.mjs
