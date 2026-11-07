@@ -94,10 +94,25 @@ Override example (other workspace):
 
 ## 3. Vercel — static site
 
+### If `greece-ngo-desk.vercel.app` looks outdated
+
+Production may still be an **old manual deploy** not wired to GitHub. **GitHub Actions** now publishes the current UI to:
+
+**https://jadissel.github.io/Athens-NGO-Desk/**
+
+To refresh **Vercel**:
+
+1. **Project → Settings → Git** → connect **`JadissEL/Athens-NGO-Desk`** (branch `main`).
+2. Either **Root Directory:** `static-site`, **or** repo root with root [`vercel.json`](../vercel.json) (`outputDirectory: static-site`).
+3. **Redeploy** production.
+
+Optional CI: add repo secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` and run workflow **Deploy static site (Vercel)**.
+
+### First-time setup
+
 1. **New Project** → import the repo.
-2. **Root Directory:** `static-site` (important: not repo root).
-3. **Framework preset:** Other — **no build command** (or `echo skip`).
-4. **Output:** `.` (static files from `static-site`).
+2. **Root Directory:** repo root (uses [`vercel.json`](../vercel.json)) **or** `static-site` only.
+3. **Framework preset:** Other — **no build command**.
 
 ### Live API instead of bundled `data.js`
 
