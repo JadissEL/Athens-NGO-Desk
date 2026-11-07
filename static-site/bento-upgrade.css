@@ -850,6 +850,23 @@ body.desk-bento.is-landing .stage {
     max-height: calc(100vh - 11rem);
     overflow-y: auto;
   }
+
+  .jobs-split-list .table-wrap--desk,
+  .registry-split-list .table-wrap--desk {
+    max-height: calc(100vh - 11rem);
+    overflow: auto;
+  }
+}
+
+.job-row,
+.reg-row {
+  cursor: pointer;
+}
+
+.job-row.is-selected td,
+.reg-row.is-selected td {
+  background: var(--bento-mint);
+  box-shadow: inset 3px 0 0 var(--accent);
 }
 
 @media (max-width: 1023px) {

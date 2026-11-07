@@ -12,8 +12,8 @@
   <meta property="og:description" content="Openings, weekly NGO media, and what life is like for workers in Greek civil society — from major hubs to islands and regional field posts." />
   <meta property="og:image" content="hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="styles.css?v=bento-mix3" />
-  <link rel="stylesheet" href="bento-upgrade.css?v=bento-mix3" />
+  <link rel="stylesheet" href="styles.css?v=bento-mix4" />
+  <link rel="stylesheet" href="bento-upgrade.css?v=bento-mix4" />
 </head>
 <body>
   <div class="app-frame">
@@ -595,6 +595,21 @@
         <div class="registry-split" id="registry-split">
           <div class="registry-split-list">
             <div class="ngo-card-grid" id="reg-card-grid"></div>
+            <div class="table-wrap table-wrap--desk reg-table-view" hidden>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Organisation</th>
+                    <th>Sector</th>
+                    <th>Region</th>
+                    <th>Jobs</th>
+                    <th>Possibility</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="reg-body"></tbody>
+              </table>
+            </div>
           </div>
           <div class="detail detail--pane" id="reg-detail">
             <p class="registry-pane-empty" id="reg-pane-empty">Select an NGO card for scores, roles, and recent postings.</p>
@@ -618,21 +633,6 @@
               <p class="small muted" id="reg-detail-why"></p>
             </article>
           </div>
-        </div>
-        <div class="table-wrap table-wrap--desk reg-table-view" hidden>
-          <table>
-            <thead>
-              <tr>
-                <th>Organisation</th>
-                <th>Sector</th>
-                <th>Region</th>
-                <th>Jobs</th>
-                <th>Possibility</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="reg-body"></tbody>
-          </table>
         </div>
           </div>
         </div>
@@ -682,6 +682,21 @@
         <div class="jobs-split" id="jobs-split">
           <div class="jobs-split-list">
             <div class="ngo-card-grid job-card-grid" id="jobs-card-grid"></div>
+            <div class="table-wrap table-wrap--desk jobs-table-view" hidden>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Organisation</th>
+                    <th>Title</th>
+                    <th>Posted</th>
+                    <th>Deadline</th>
+                    <th>Location</th>
+                    <th>Link</th>
+                  </tr>
+                </thead>
+                <tbody id="jobs-body"></tbody>
+              </table>
+            </div>
           </div>
           <aside class="job-detail-pane" id="job-detail-pane" aria-label="Opening details" hidden>
             <div class="job-detail-pane-inner">
@@ -697,21 +712,6 @@
               </div>
             </div>
           </aside>
-        </div>
-        <div class="table-wrap table-wrap--desk jobs-table-view" hidden>
-          <table>
-            <thead>
-              <tr>
-                <th>Organisation</th>
-                <th>Title</th>
-                <th>Posted</th>
-                <th>Deadline</th>
-                <th>Location</th>
-                <th>Link</th>
-              </tr>
-            </thead>
-            <tbody id="jobs-body"></tbody>
-          </table>
         </div>
           </div>
         </div>
@@ -1343,6 +1343,6 @@
       <p class="cmd-hint small muted">↑↓ to move · Enter to go · Esc to close</p>
     </form>
   </dialog>
-  <script src="app.js?v=bento-mix3"></script>
+  <script src="app.js?v=bento-mix4"></script>
 </body>
 </html>

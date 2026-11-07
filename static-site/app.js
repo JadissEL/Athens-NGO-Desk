@@ -824,6 +824,7 @@
   }
 
   let registryView = "cards";
+  let selectedRegId = null;
 
   function preferDeskPane() {
     return window.matchMedia("(min-width: 1024px)").matches;
@@ -836,12 +837,10 @@
     const split = $("#registry-split");
     const btnCards = $("#reg-view-cards");
     const btnTable = $("#reg-view-table");
+    if (split) split.hidden = false;
     if (cards) cards.hidden = registryView !== "cards";
     if (table) table.hidden = registryView !== "table";
-    if (split) {
-      split.hidden = registryView !== "cards";
-      split.classList.toggle("registry-split--table", registryView === "table");
-    }
+    if (split) split.classList.toggle("registry-split--table", registryView === "table");
     if (btnCards) {
       btnCards.classList.toggle("active", registryView === "cards");
       btnCards.setAttribute("aria-pressed", registryView === "cards" ? "true" : "false");
@@ -914,7 +913,8 @@
             ? `${jo.totalFound}${jo.status && jo.status !== "pending" ? ` · ${jo.status}` : ""}`
             : "pending";
         const regShort = regionLabelShort(o.scope);
-        return `<tr data-id="${esc(o.id)}">
+        const regSel = selectedRegId === o.id ? " is-selected" : "";
+        return `<tr class="reg-row${regSel}" data-id="${esc(o.id)}" tabindex="0">
           <td>
             <strong><a href="#org/${esc(o.id)}" class="table-profile-link">${esc(o.name)}</a></strong>
             ${o.nameEl ? `<div class="small muted">${esc(o.nameEl)}</div>` : ""}
@@ -935,7 +935,22 @@
       .join("");
 
     $$("#reg-body [data-detail]").forEach((btn) => {
-      btn.addEventListener("click", () => openOrgSheet(btn.dataset.detail));
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openOrgSheet(btn.dataset.detail);
+      });
+    });
+    $$("#reg-body tr.reg-row").forEach((tr) => {
+      tr.addEventListener("click", (e) => {
+        if (e.target.closest("a, button")) return;
+        openOrgSheet(tr.dataset.id);
+      });
+      tr.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openOrgSheet(tr.dataset.id);
+        }
+      });
     });
     $$("#reg-body .table-profile-link").forEach((link) => {
       link.addEventListener("click", (e) => {
@@ -1004,6 +1019,7 @@
   function openOrgSheet(id) {
     const org = orgs.find((x) => x.id === id);
     if (!org) return;
+    selectedRegId = id;
     const jp = org.jobPossibility || {};
     const jo = org.jobOpenings || {};
     const sheet = $("#reg-detail-body");
@@ -1079,9 +1095,12 @@
     $$("#reg-card-grid .ngo-card").forEach((card) => {
       card.classList.toggle("is-selected", card.dataset.id === id);
     });
+    $$("#reg-body tr.reg-row").forEach((tr) => {
+      tr.classList.toggle("is-selected", tr.dataset.id === id);
+    });
     const empty = $("#reg-pane-empty");
     if (empty) empty.hidden = true;
-    if (!preferDeskPane() || registryView !== "cards") {
+    if (!preferDeskPane()) {
       $("#reg-detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   }
@@ -1092,7 +1111,9 @@
     if (sheet) sheet.hidden = true;
     const empty = $("#reg-pane-empty");
     if (empty) empty.hidden = false;
+    selectedRegId = null;
     $$("#reg-card-grid .ngo-card").forEach((c) => c.classList.remove("is-selected"));
+    $$("#reg-body tr.reg-row").forEach((tr) => tr.classList.remove("is-selected"));
   });
 
   ["q-reg", "f-sector", "f-scope", "f-score", "f-region"].forEach((id) => {
@@ -1174,13 +1195,15 @@
   function setJobsView(mode) {
     jobsView = mode === "table" ? "table" : "cards";
     const split = $("#jobs-split");
+    const cards = $("#jobs-card-grid");
     const table = document.querySelector(".jobs-table-view");
     const btnCards = $("#jobs-view-cards");
     const btnTable = $("#jobs-view-table");
     if (split) {
-      split.hidden = jobsView !== "cards";
+      split.hidden = false;
       split.classList.toggle("jobs-split--table", jobsView === "table");
     }
+    if (cards) cards.hidden = jobsView !== "cards";
     if (table) table.hidden = jobsView !== "table";
     if (btnCards) {
       btnCards.classList.toggle("active", jobsView === "cards");
@@ -1190,7 +1213,7 @@
       btnTable.classList.toggle("active", jobsView === "table");
       btnTable.setAttribute("aria-pressed", jobsView === "table" ? "true" : "false");
     }
-    if (jobsView === "cards" && preferDeskPane() && lastJobRows.length) {
+    if (preferDeskPane() && lastJobRows.length) {
       const idx = selectedJobIdx != null && lastJobRows[selectedJobIdx] ? selectedJobIdx : 0;
       showJobPane(idx);
     }
@@ -1244,9 +1267,12 @@
     });
   }
 
-  function highlightJobCard(index) {
+  function highlightJobSelection(index) {
     $$("#jobs-card-grid .job-card").forEach((el, i) => {
       el.classList.toggle("is-selected", i === index);
+    });
+    $$("#jobs-body tr.job-row").forEach((tr) => {
+      tr.classList.toggle("is-selected", Number(tr.dataset.jobIdx) === index);
     });
   }
 
@@ -1254,7 +1280,7 @@
     const r = lastJobRows[index];
     if (!r) return;
     selectedJobIdx = index;
-    highlightJobCard(index);
+    highlightJobSelection(index);
     const pane = $("#job-detail-pane");
     const empty = $("#job-pane-empty");
     const body = $("#job-pane-body");
@@ -1268,7 +1294,7 @@
   function openJobDrawer(index) {
     const r = lastJobRows[index];
     if (!r) return;
-    if (preferDeskPane() && jobsView === "cards") {
+    if (preferDeskPane() && (jobsView === "cards" || jobsView === "table")) {
       showJobPane(index);
       return;
     }
@@ -1365,7 +1391,7 @@
       selectedJobIdx = found >= 0 ? found : null;
     }
     renderJobCards(rows);
-    if (preferDeskPane() && jobsView === "cards" && rows.length) {
+    if (preferDeskPane() && rows.length && (jobsView === "cards" || jobsView === "table")) {
       const idx = selectedJobIdx != null ? selectedJobIdx : 0;
       showJobPane(idx);
     } else if (!rows.length) {
@@ -1422,17 +1448,36 @@
     }
 
     $("#jobs-body").innerHTML = rows
-      .map(
-        (r) => `<tr>
+      .map((r, i) => {
+        const sel = selectedJobIdx === i ? " is-selected" : "";
+        return `<tr class="job-row${sel}" data-job-idx="${i}" tabindex="0">
         <td><a href="#org/${esc(r.orgId)}" class="table-profile-link">${esc(r.org)}</a></td>
         <td>${esc(r.title)}${r.kind ? ` <span class="pill">${esc(r.kind)}</span>` : ""}</td>
         <td>${esc(r.postedDate || "—")}</td>
         <td>${esc(r.deadline || "—")}</td>
         <td class="small">${esc(r.location || "—")}</td>
-        <td>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Open</a>` : "—"}</td>
-      </tr>`
-      )
+        <td>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Open</a>` : `<button type="button" class="pill" data-job-idx="${i}">Detail</button>`}</td>
+      </tr>`;
+      })
       .join("");
+    $$("#jobs-body tr.job-row").forEach((tr) => {
+      tr.addEventListener("click", (e) => {
+        if (e.target.closest("a, button")) return;
+        openJobDrawer(Number(tr.dataset.jobIdx));
+      });
+      tr.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openJobDrawer(Number(tr.dataset.jobIdx));
+        }
+      });
+    });
+    $$("#jobs-body button[data-job-idx]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openJobDrawer(Number(btn.dataset.jobIdx));
+      });
+    });
     $$("#jobs-body .table-profile-link").forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -1440,6 +1485,9 @@
         if (id) openOrgProfile(id);
       });
     });
+    if (selectedJobIdx != null && preferDeskPane()) {
+      highlightJobSelection(selectedJobIdx);
+    }
   }
 
   $("#q-jobs").addEventListener("input", renderJobs);

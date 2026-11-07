@@ -106,7 +106,15 @@ To refresh **Vercel**:
 2. Either **Root Directory:** `static-site`, **or** repo root with root [`vercel.json`](../vercel.json) (`outputDirectory: static-site`).
 3. **Redeploy** production.
 
-Optional CI: add repo secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` and run workflow **Deploy static site (Vercel)**.
+Optional CI (**Deploy static site (Vercel)** on every `static-site/**` push to `main`):
+
+| GitHub secret | Where to get it |
+|---------------|-----------------|
+| `VERCEL_TOKEN` | Vercel → Account → **Tokens** |
+| `VERCEL_ORG_ID` | Vercel team **Settings** → General → **Team ID** (`team_…`) |
+| `VERCEL_PROJECT_ID` | Project → **Settings** → General → **Project ID** (`prj_…`) |
+
+After secrets are set, re-run the workflow or push to `main`. Until then, use **GitHub Pages**: https://jadissel.github.io/Athens-NGO-Desk/
 
 ### First-time setup
 
