@@ -825,6 +825,31 @@
 
   let registryView = "cards";
   let selectedRegId = null;
+  let registryPresetFocus = false;
+  let pendingRegSearchFocus = null;
+  let pendingJobSearchFocus = null;
+
+  function pickBestOrgIndex(list, q) {
+    if (!list.length) return 0;
+    const ql = String(q || "")
+      .trim()
+      .toLowerCase();
+    if (!ql) return 0;
+    const exact = list.findIndex(
+      (o) => o.name.toLowerCase() === ql || (o.nameEl && String(o.nameEl).toLowerCase() === ql)
+    );
+    if (exact >= 0) return exact;
+    const starts = list.findIndex((o) => o.name.toLowerCase().startsWith(ql));
+    if (starts >= 0) return starts;
+    const inc = list.findIndex((o) =>
+      [o.name, o.nameEl, o.sector, o.focus, o.id]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase()
+        .includes(ql)
+    );
+    return inc >= 0 ? inc : 0;
+  }
 
   function preferDeskPane() {
     return window.matchMedia("(min-width: 1024px)").matches;
@@ -959,6 +984,18 @@
         if (id) openOrgProfile(id);
       });
     });
+    if (selectedRegId && !list.some((o) => o.id === selectedRegId)) {
+      $("#reg-detail-close")?.click();
+    } else if (preferDeskPane() && list.length) {
+      if (registryPresetFocus) {
+        registryPresetFocus = false;
+        openOrgSheet(list[0].id);
+      } else if (pendingRegSearchFocus !== null) {
+        const qq = pendingRegSearchFocus;
+        pendingRegSearchFocus = null;
+        openOrgSheet(list[pickBestOrgIndex(list, qq)].id);
+      }
+    }
     syncRegistryPresetChips();
   }
 
@@ -1005,6 +1042,7 @@
       if (score) score.value = "";
     }
     syncRegistryPresetChips();
+    registryPresetFocus = true;
     renderRegistry();
   }
 
