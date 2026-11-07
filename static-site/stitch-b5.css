@@ -1,0 +1,139 @@
+/* B5 — platform polish pass (Stitch prompt B5) */
+
+body.desk-bento.stitch-b5 {
+  --stitch-glow: 0 28px 72px rgba(10, 46, 46, 0.14);
+  --stitch-glow-hover: 0 36px 88px rgba(10, 46, 46, 0.18);
+}
+
+body.stitch-b5 .bento-title {
+  font-size: clamp(2.35rem, 5vw, 3.75rem);
+  filter: drop-shadow(0 2px 12px rgba(15, 124, 124, 0.12));
+}
+
+body.stitch-b5 .bento-search-dock {
+  box-shadow: var(--stitch-glow);
+  border: 1px solid rgba(15, 124, 124, 0.18);
+}
+
+body.stitch-b5 .bento-tile {
+  min-height: 220px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.stitch-b5 .bento-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--stitch-glow-hover);
+}
+
+body.stitch-b5 .story-card {
+  box-shadow: var(--stitch-glow);
+}
+
+body.stitch-b5 .ngo-card {
+  box-shadow: var(--stitch-glow);
+}
+
+body.stitch-b5 .ngo-card:hover {
+  box-shadow: var(--stitch-glow-hover);
+}
+
+/* Work & guide page headers */
+.stitch-page-eyebrow {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+
+body.stitch-b5 .page-header h1 {
+  margin-top: 0;
+}
+
+body.stitch-b5 .page-header {
+  margin-bottom: 1.35rem;
+}
+
+body.stitch-b5 .callout.warn {
+  border-radius: var(--radius-xl);
+  border-left: 4px solid var(--sun);
+  box-shadow: 0 8px 24px rgba(217, 119, 54, 0.08);
+}
+
+body.stitch-b5 #poss-chart.bento-kpi .stat .value {
+  font-size: 2rem;
+  color: var(--sun);
+}
+
+body.stitch-b5 .score-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(15, 124, 124, 0.1);
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+body.stitch-b5 .score-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), #13a8a8);
+}
+
+body.stitch-b5 .page-toc {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(15, 124, 124, 0.1);
+  border-radius: 999px;
+  padding: 0.35rem;
+  box-shadow: 0 8px 22px rgba(15, 45, 45, 0.05);
+}
+
+body.stitch-b5 .page-toc button {
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+body.stitch-b5 .page-toc button:hover {
+  background: var(--bento-mint);
+}
+
+body.stitch-b5 input:focus-visible,
+body.stitch-b5 select:focus-visible,
+body.stitch-b5 textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+
+body.stitch-b5 .table-wrap {
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(15, 124, 124, 0.1);
+  box-shadow: var(--stitch-glow);
+  overflow: hidden;
+}
+
+body.stitch-b5 .workbench-rail .stats--compact .stat {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(15, 124, 124, 0.08);
+}
+
+@media (min-width: 1024px) {
+  body.stitch-b5 #page-apply .ngo-card-grid,
+  body.stitch-b5 #page-possibility .ngo-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.stitch-b5 #page-possibility .ngo-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1280px) {
+    body.stitch-b5 #page-possibility .ngo-card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}

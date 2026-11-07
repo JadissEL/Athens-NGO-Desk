@@ -1270,6 +1270,8 @@
           `<div class="stat"><div class="label">${esc(label)}</div><div class="value">${esc(value)}</div></div>`
       )
       .join("");
+    const trustCount = $("#stitch-trust-org-count");
+    if (trustCount) trustCount.textContent = String(orgs.length);
   }
 
   function isAthensLoc(loc) {
@@ -1890,7 +1892,7 @@
 
   $("#q-media")?.addEventListener("input", renderMedia);
 
-  document.body.classList.add("desk-bento");
+  document.body.classList.add("desk-bento", "stitch-b5");
   setRegistryView("cards");
   setJobsView("cards");
   $("#reg-view-cards")?.addEventListener("click", () => setRegistryView("cards"));
