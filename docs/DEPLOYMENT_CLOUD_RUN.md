@@ -38,17 +38,17 @@ gcloud config set project PROJECT_ID
 # Artifact Registry (one-time per region)
 gcloud services enable artifactregistry.googleapis.com run.googleapis.com
 
-gcloud artifacts repositories create athens-ngo-desk \
+gcloud artifacts repositories create greece-ngo-desk \
   --repository-format=docker \
   --location=REGION
 
-export IMAGE="REGION-docker.pkg.dev/PROJECT_ID/athens-ngo-desk/api:$(git rev-parse --short HEAD)"
+export IMAGE="REGION-docker.pkg.dev/PROJECT_ID/greece-ngo-desk/api:$(git rev-parse --short HEAD)"
 
 # From repo root (where Dockerfile lives)
 docker build -t "$IMAGE" .
 docker push "$IMAGE"
 
-gcloud run deploy athens-ngo-desk-api \
+gcloud run deploy greece-ngo-desk-api \
   --image "$IMAGE" \
   --region REGION \
   --platform managed \

@@ -18,7 +18,7 @@ For **corrections, removals, or data handling requests**, email **desk@example.o
 ## Quick start
 
 ```powershell
-cd path\to\Athens-NGO-Desk-project
+cd path\to\Greece-NGO-Desk-project
 npm ci
 npm run build:data
 Start-Process (Resolve-Path "static-site\index.html").Path

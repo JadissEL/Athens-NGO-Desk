@@ -19,6 +19,7 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_REN
 
 | Date | Action |
 |------|--------|
+| 2026-11-07 | **Greece-only branding:** product/Render resource names **`greece-ngo-desk-*`**; legacy **`athens-ngo-desk-*`** renamed in Render; npm packages `greece-ngo-desk`; UI copy “Greece NGO Desk” only (Athens remains a **geo filter**, not a product name). **Note:** Render `.onrender.com` slug may stay `athens-ngo-desk-api` until custom domain or new service. |
 | 2026-11-06 | **Render prod live:** `DATABASE_URL` via provision script; fixed `ajv/dist/2020` (`createRequire(server/package.json)` in `validate_data_schemas.js`); provision script **PATCH**es existing services (`rootDir=server`, build includes `seed_from_json.ts --if-empty`, `/api/health`). Smoke: **200** on `/api/health`, `/api/ready`, `/api/ngo-data` (~497 KB). |
 | 2026-11-06 | **Render — zero-dashboard provision:** defaults to **elantaki.dijadiss@gmail.com** workspace + names `athens-ngo-desk-db` / `athens-ngo-desk-api`; `scripts/render_provision_api.mjs` + workflow `render-provision-api.yml` (secret `RENDER_API_KEY`). |
 | 2026-11-06 | **Render — second account (API):** `scripts/render_provision_api.ps1` + deploy doc section: creates Postgres + web service via Render API when `RENDER_API_KEY` is set for that workspace (MCP cannot act as another Render user). |

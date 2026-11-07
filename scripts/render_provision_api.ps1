@@ -1,4 +1,4 @@
-﻿# Provision Athens NGO Desk API on Render using the public API (v1).
+﻿# Provision Greece NGO Desk API on Render using the public API (v1).
 # Prefer: `node scripts/render_provision_api.mjs` (idempotent, merges env vars) or GitHub Action `render-provision-api.yml`.
 # Usage (PowerShell, from repo root or any cwd):
 #   $env:RENDER_API_KEY = "<from https://dashboard.render.com/u/settings#api-keys on the TARGET account>"
@@ -37,8 +37,8 @@ if (-not $env:RENDER_API_KEY) {
 }
 
 $ownerEmail = "elantaki.dijadiss@gmail.com"
-$dbName = "athens-ngo-desk-db"
-$serviceName = "athens-ngo-desk-api"
+$dbName = "greece-ngo-desk-db"
+$serviceName = "greece-ngo-desk-api"
 $repo = "https://github.com/JadissEL/Athens-NGO-Desk"
 $branch = "main"
 $cors = "https://greece-ngo-desk.vercel.app"

@@ -6,8 +6,8 @@
  * Env:
  *   RENDER_API_KEY     (required)
  *   OWNER_EMAIL        default: elantaki.dijadiss@gmail.com
- *   DB_NAME            default: athens-ngo-desk-db
- *   SERVICE_NAME       default: athens-ngo-desk-api
+ *   DB_NAME            default: greece-ngo-desk-db (legacy alias: athens-ngo-desk-db)
+ *   SERVICE_NAME       default: greece-ngo-desk-api (legacy alias: athens-ngo-desk-api)
  *   REPO_URL           default: https://github.com/JadissEL/Athens-NGO-Desk
  *   REPO_BRANCH        default: main
  *   CORS_ORIGIN        default: https://greece-ngo-desk.vercel.app
@@ -27,8 +27,11 @@ if (!RENDER_API_KEY) {
 }
 
 const OWNER_EMAIL = process.env.OWNER_EMAIL ?? "elantaki.dijadiss@gmail.com";
-const DB_NAME = process.env.DB_NAME ?? "athens-ngo-desk-db";
-const SERVICE_NAME = process.env.SERVICE_NAME ?? "athens-ngo-desk-api";
+const DB_NAME = process.env.DB_NAME ?? "greece-ngo-desk-db";
+const SERVICE_NAME = process.env.SERVICE_NAME ?? "greece-ngo-desk-api";
+/** @deprecated Renamed to Greece NGO Desk — provision script renames these when found. */
+const LEGACY_DB_NAME = "athens-ngo-desk-db";
+const LEGACY_SERVICE_NAME = "athens-ngo-desk-api";
 const REPO_URL = process.env.REPO_URL ?? "https://github.com/JadissEL/Athens-NGO-Desk";
 const REPO_BRANCH = process.env.REPO_BRANCH ?? "main";
 const CORS_ORIGIN = process.env.CORS_ORIGIN ?? "https://greece-ngo-desk.vercel.app";
@@ -96,6 +99,7 @@ async function resolveOwnerId() {
 }
 
 async function findPostgres(ownerId) {
+  const wanted = new Set([DB_NAME, LEGACY_DB_NAME]);
   const rows = await listAll((c) => {
     const q = new URLSearchParams({ limit: "100", ownerId });
     if (c) q.set("cursor", c);
@@ -103,9 +107,21 @@ async function findPostgres(ownerId) {
   });
   for (const row of rows) {
     const p = row.postgres;
-    if (p?.name === DB_NAME) return p.id;
+    if (p?.name && wanted.has(p.name)) return { id: p.id, name: p.name };
   }
   return null;
+}
+
+async function renamePostgresIfLegacy(postgres) {
+  if (postgres.name === DB_NAME) return postgres.id;
+  if (postgres.name !== LEGACY_DB_NAME) return postgres.id;
+  try {
+    await api("PATCH", `/postgres/${postgres.id}`, { name: DB_NAME });
+    console.log(`Renamed Postgres ${LEGACY_DB_NAME} → ${DB_NAME}`);
+  } catch (e) {
+    console.warn(`Could not rename Postgres (continuing with legacy name):`, e.message);
+  }
+  return postgres.id;
 }
 
 async function createPostgres(ownerId) {
@@ -134,6 +150,7 @@ async function waitConnectionInfo(postgresId) {
 }
 
 async function findWebService(ownerId) {
+  const wanted = new Set([SERVICE_NAME, LEGACY_SERVICE_NAME]);
   const rows = await listAll((c) => {
     const q = new URLSearchParams({ limit: "100", ownerId });
     if (c) q.set("cursor", c);
@@ -141,9 +158,23 @@ async function findWebService(ownerId) {
   });
   for (const row of rows) {
     const s = row.service;
-    if (s?.name === SERVICE_NAME && s.type === "web_service") return s;
+    if (s?.name && wanted.has(s.name) && s.type === "web_service") return s;
   }
   return null;
+}
+
+async function renameWebServiceIfLegacy(service) {
+  if (service.name === SERVICE_NAME) return service;
+  if (service.name !== LEGACY_SERVICE_NAME) return service;
+  try {
+    const updated = await api("PATCH", `/services/${service.id}`, { name: SERVICE_NAME });
+    const svc = updated?.service ?? updated;
+    console.log(`Renamed web service ${LEGACY_SERVICE_NAME} → ${SERVICE_NAME}`);
+    return svc;
+  } catch (e) {
+    console.warn(`Could not rename web service (URL may stay ${LEGACY_SERVICE_NAME}.onrender.com):`, e.message);
+    return service;
+  }
 }
 
 async function listServiceEnvVars(serviceId) {
@@ -227,11 +258,13 @@ async function main() {
   const ownerId = await resolveOwnerId();
   console.log(`ownerId=${ownerId}`);
 
-  let pgId = await findPostgres(ownerId);
-  if (!pgId) {
+  let pg = await findPostgres(ownerId);
+  let pgId;
+  if (!pg) {
     console.log(`Creating Postgres ${DB_NAME}...`);
     pgId = await createPostgres(ownerId);
   } else {
+    pgId = await renamePostgresIfLegacy(pg);
     console.log(`Using existing Postgres id=${pgId}`);
   }
 
@@ -248,6 +281,7 @@ async function main() {
     serviceId = service.id;
     console.log(`serviceId=${serviceId} deployId=${created.deployId ?? "n/a"}`);
   } else {
+    service = await renameWebServiceIfLegacy(service);
     serviceId = service.id;
     console.log(`Updating env + build config on existing service id=${serviceId}`);
     try {

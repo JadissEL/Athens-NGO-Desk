@@ -52,16 +52,22 @@ Note: **`GET /api/ngo-data`** merges OSINT at runtime using bundle JSON already 
 
 If the API was created **manually** (not from a synced Blueprint), Render does **not** apply `render.yaml` env vars. Either:
 
-1. **Dashboard (fastest):** Web service → **Environment** → **Add** → **Link database** → choose **`athens-ngo-desk-db`** (sets `DATABASE_URL`), then **Save** and **Manual deploy**; or  
+1. **Dashboard (fastest):** Web service → **Environment** → **Add** → **Link database** → choose **`greece-ngo-desk-db`** (sets `DATABASE_URL`), then **Save** and **Manual deploy**; or  
 2. **Blueprint:** [Create a Blueprint](https://dashboard.render.com) from this repo so `fromDatabase` in [`render.yaml`](../render.yaml) syncs to the service.
 
 Until `DATABASE_URL` is present, **`prisma migrate deploy` fails** during build (P1012).
+
+### Greece NGO Desk naming (Render hostname)
+
+Use **`greece-ngo-desk-db`** and **`greece-ngo-desk-api`** for new resources. The provision script renames legacy **`athens-ngo-desk-*`** resources when it finds them.
+
+Render often **keeps the original `.onrender.com` slug** after rename (e.g. `athens-ngo-desk-api.onrender.com`). Set **`window.NGO_DATA_API_BASE`** to the URL shown in the Render dashboard. To drop “athens” from the public API hostname, add a **custom domain** on the web service or create a **new** web service (slug is fixed at creation).
 
 ### New Render account (e.g. second workspace / email)
 
 The Cursor **Render MCP** only sees the workspace linked to its integration. To provision **Postgres + Web service** automatically:
 
-**Default workspace** in the script / workflow is **`elantaki.dijadiss@gmail.com`**, using existing resource names **`athens-ngo-desk-db`** and **`athens-ngo-desk-api`**. For another login, set **`OWNER_EMAIL`**, **`DB_NAME`**, and **`SERVICE_NAME`** in the workflow env or when running the script.
+**Default workspace** in the script / workflow is **`elantaki.dijadiss@gmail.com`**, using existing resource names **`greece-ngo-desk-db`** and **`greece-ngo-desk-api`**. For another login, set **`OWNER_EMAIL`**, **`DB_NAME`**, and **`SERVICE_NAME`** in the workflow env or when running the script.
 
 #### Option A — GitHub Actions (minimal manual work)
 

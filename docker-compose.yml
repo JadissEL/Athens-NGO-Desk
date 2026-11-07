@@ -2,7 +2,7 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: athens-ngo-desk-pg
+    container_name: greece-ngo-desk-pg
     environment:
       POSTGRES_USER: desk
       POSTGRES_PASSWORD: desk

@@ -1,5 +1,5 @@
 {
-  "name": "athens-ngo-desk",
+  "name": "greece-ngo-desk",
   "private": true,
   "description": "Greece NGO Desk — static site with JSON-backed registry and build scripts",
   "engines": {
