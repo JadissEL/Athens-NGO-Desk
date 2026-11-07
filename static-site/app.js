@@ -629,7 +629,7 @@
 
   window.addEventListener("hashchange", () => applyRoute());
 
-  function bindCommandPalette() {
+  function bindCommandPalette(cmdIndex) {
     const dialog = $("#cmd-palette");
     const input = $("#cmd-input");
     const list = $("#cmd-results");
@@ -637,25 +637,54 @@
     if (!dialog || !input || !list) return;
 
     let highlight = 0;
-    let visible = [...CMD_ACTIONS];
+    let visible = CMD_ACTIONS.map((a) => ({ type: "page", ...a }));
+
+    function rankCmdItem(item, needle) {
+      const label = item.label.toLowerCase();
+      if (label === needle) return 0;
+      if (label.startsWith(needle)) return 1;
+      if (label.includes(needle)) return 2;
+      if ((item.hint || "").toLowerCase().includes(needle)) return 3;
+      return 9;
+    }
+
+    function runCmdItem(item) {
+      if (!item) return;
+      dialog.close();
+      if (item.type === "page") {
+        showPage(item.id);
+        return;
+      }
+      if (item.type === "org") {
+        showPage("registry");
+        requestAnimationFrame(() => openOrgSheet(item.orgId));
+        return;
+      }
+      if (item.type === "job") {
+        showPage("jobs");
+        requestAnimationFrame(() => {
+          if ($("#q-jobs")) $("#q-jobs").value = item.label;
+          pendingJobSearchFocus = item.label;
+          renderJobs();
+        });
+      }
+    }
 
     function paintResults() {
       list.innerHTML = visible
-        .map(
-          (a, i) =>
-            `<li><button type="button" role="option" data-cmd="${esc(a.id)}" aria-selected="${i === highlight ? "true" : "false"}"><strong>${esc(a.label)}</strong> <span class="small muted">${esc(a.hint)}</span></button></li>`
-        )
+        .map((a, i) => {
+          const kind =
+            a.type === "org" ? `<span class="cmd-kind">NGO</span>` : a.type === "job" ? `<span class="cmd-kind">Job</span>` : "";
+          return `<li><button type="button" role="option" data-cmd-idx="${i}" aria-selected="${i === highlight ? "true" : "false"}"><strong>${esc(a.label)}</strong> ${kind}<span class="small muted">${esc(a.hint || "")}</span></button></li>`;
+        })
         .join("");
-      list.querySelectorAll("button[data-cmd]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          showPage(btn.dataset.cmd);
-          dialog.close();
-        });
+      list.querySelectorAll("button[data-cmd-idx]").forEach((btn) => {
+        btn.addEventListener("click", () => runCmdItem(visible[Number(btn.dataset.cmdIdx)]));
       });
     }
 
     function openPalette() {
-      visible = [...CMD_ACTIONS];
+      visible = CMD_ACTIONS.map((a) => ({ type: "page", ...a }));
       highlight = 0;
       input.value = "";
       paintResults();
@@ -666,11 +695,14 @@
 
     function filterResults(q) {
       const needle = q.trim().toLowerCase();
-      visible = needle
-        ? CMD_ACTIONS.filter(
-            (a) => a.label.toLowerCase().includes(needle) || a.hint.toLowerCase().includes(needle)
-          )
-        : [...CMD_ACTIONS];
+      if (!needle) {
+        visible = CMD_ACTIONS.map((a) => ({ type: "page", ...a }));
+      } else {
+        visible = cmdIndex
+          .filter((item) => `${item.label} ${item.hint || ""}`.toLowerCase().includes(needle))
+          .sort((a, b) => rankCmdItem(a, needle) - rankCmdItem(b, needle))
+          .slice(0, 14);
+      }
       highlight = 0;
       paintResults();
     }
@@ -695,8 +727,7 @@
         paintResults();
       } else if (e.key === "Enter" && visible[highlight]) {
         e.preventDefault();
-        showPage(visible[highlight].id);
-        dialog.close();
+        runCmdItem(visible[highlight]);
       }
     });
   }
@@ -1154,12 +1185,24 @@
     $$("#reg-body tr.reg-row").forEach((tr) => tr.classList.remove("is-selected"));
   });
 
+  let registrySearchDebounce = null;
+
   ["q-reg", "f-sector", "f-scope", "f-score", "f-region"].forEach((id) => {
     const el = $(`#${id}`);
     if (!el) return;
     const handler = () => {
       markRegistryFiltersCustom();
       renderRegistry();
+      if (id === "q-reg") {
+        clearTimeout(registrySearchDebounce);
+        const q = (el.value || "").trim();
+        if (q.length < 2) return;
+        registrySearchDebounce = setTimeout(() => {
+          if (!preferDeskPane()) return;
+          const list = filteredOrgs().sort((a, b) => a.name.localeCompare(b.name));
+          if (list.length) openOrgSheet(list[pickBestOrgIndex(list, q)].id);
+        }, 450);
+      }
     };
     el.addEventListener("input", handler);
     el.addEventListener("change", handler);
@@ -1862,8 +1905,27 @@
   renderJobs();
   renderApply();
   renderPossibility();
+
+  function buildCommandIndex() {
+    return [
+      ...CMD_ACTIONS.map((a) => ({ type: "page", id: a.id, label: a.label, hint: a.hint })),
+      ...orgs.map((o) => ({
+        type: "org",
+        orgId: o.id,
+        label: o.name,
+        hint: [o.sector, regionLabelShort(o.scope)].filter(Boolean).join(" · ") || "Organisation",
+      })),
+      ...allPostings().map((r) => ({
+        type: "job",
+        jobKey: `${r.orgId}::${r.title}`,
+        label: r.title,
+        hint: `${r.org}${r.location ? ` · ${r.location}` : ""}`,
+      })),
+    ];
+  }
+
   bindNavOverflow();
-  bindCommandPalette();
+  bindCommandPalette(buildCommandIndex());
   applyRoute();
 })();
 

@@ -926,3 +926,17 @@ button.deadline-chip:focus-visible {
 #poss-cards .ngo-card {
   cursor: pointer;
 }
+
+.cmd-kind {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.12rem 0.4rem;
+  border-radius: 6px;
+  margin: 0 0.35rem;
+  background: var(--bento-mint);
+  color: var(--ink-deep);
+  vertical-align: middle;
+}
