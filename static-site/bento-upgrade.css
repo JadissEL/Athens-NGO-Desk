@@ -779,3 +779,97 @@ body.desk-bento.is-landing .stage {
 #page-funding .callout {
   border-radius: var(--radius-xl);
 }
+
+/* Master–detail workbenches (desktop) */
+.ngo-card.is-selected {
+  box-shadow: 0 0 0 2px var(--accent), 0 16px 40px rgba(15, 124, 124, 0.12);
+}
+
+.job-card {
+  cursor: pointer;
+}
+
+.registry-pane-empty,
+.job-pane-empty {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0;
+  padding: 1.25rem;
+  text-align: center;
+  background: var(--surface-card);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-xl);
+}
+
+.job-detail-pane-inner,
+.detail--pane .org-sheet {
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 16px 40px rgba(15, 45, 45, 0.08);
+}
+
+.job-pane-body,
+.job-detail-pane-inner {
+  padding: 1.15rem 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .jobs-split,
+  .registry-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .job-detail-pane,
+  .detail.detail--pane {
+    position: sticky;
+    top: 4.75rem;
+    max-height: calc(100vh - 6rem);
+    overflow: auto;
+  }
+
+  .detail.detail--pane {
+    display: block;
+    margin-top: 0;
+  }
+
+  .detail.detail--pane:not(.open) #reg-detail-body {
+    display: none;
+  }
+
+  .jobs-split-list .job-card-grid {
+    max-height: calc(100vh - 11rem);
+    overflow-y: auto;
+    padding-right: 0.25rem;
+  }
+
+  .registry-split-list .ngo-card-grid {
+    max-height: calc(100vh - 11rem);
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .job-detail-pane {
+    display: none !important;
+  }
+
+  .registry-pane-empty {
+    display: none;
+  }
+}
+
+#page-life .life-day {
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 8px 22px rgba(15, 45, 45, 0.05);
+  padding: 1rem 1.1rem;
+}
+
+#page-life .life-week {
+  gap: 0.85rem;
+}

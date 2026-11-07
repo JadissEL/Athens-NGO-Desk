@@ -825,14 +825,23 @@
 
   let registryView = "cards";
 
+  function preferDeskPane() {
+    return window.matchMedia("(min-width: 1024px)").matches;
+  }
+
   function setRegistryView(mode) {
     registryView = mode === "table" ? "table" : "cards";
     const cards = $("#reg-card-grid");
     const table = document.querySelector(".reg-table-view");
+    const split = $("#registry-split");
     const btnCards = $("#reg-view-cards");
     const btnTable = $("#reg-view-table");
     if (cards) cards.hidden = registryView !== "cards";
     if (table) table.hidden = registryView !== "table";
+    if (split) {
+      split.hidden = registryView !== "cards";
+      split.classList.toggle("registry-split--table", registryView === "table");
+    }
     if (btnCards) {
       btnCards.classList.toggle("active", registryView === "cards");
       btnCards.setAttribute("aria-pressed", registryView === "cards" ? "true" : "false");
@@ -1067,13 +1076,23 @@
       : "<li class='muted'>No public postings indexed</li>";
 
     $("#reg-detail-why").textContent = jp.why || org.notes || "";
-    $("#reg-detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    $$("#reg-card-grid .ngo-card").forEach((card) => {
+      card.classList.toggle("is-selected", card.dataset.id === id);
+    });
+    const empty = $("#reg-pane-empty");
+    if (empty) empty.hidden = true;
+    if (!preferDeskPane() || registryView !== "cards") {
+      $("#reg-detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   }
 
   $("#reg-detail-close")?.addEventListener("click", () => {
     $("#reg-detail").classList.remove("open");
     const sheet = $("#reg-detail-body");
     if (sheet) sheet.hidden = true;
+    const empty = $("#reg-pane-empty");
+    if (empty) empty.hidden = false;
+    $$("#reg-card-grid .ngo-card").forEach((c) => c.classList.remove("is-selected"));
   });
 
   ["q-reg", "f-sector", "f-scope", "f-score", "f-region"].forEach((id) => {
@@ -1150,14 +1169,18 @@
 
   let lastJobRows = [];
   let jobsView = "cards";
+  let selectedJobIdx = null;
 
   function setJobsView(mode) {
     jobsView = mode === "table" ? "table" : "cards";
-    const cards = $("#jobs-card-grid");
+    const split = $("#jobs-split");
     const table = document.querySelector(".jobs-table-view");
     const btnCards = $("#jobs-view-cards");
     const btnTable = $("#jobs-view-table");
-    if (cards) cards.hidden = jobsView !== "cards";
+    if (split) {
+      split.hidden = jobsView !== "cards";
+      split.classList.toggle("jobs-split--table", jobsView === "table");
+    }
     if (table) table.hidden = jobsView !== "table";
     if (btnCards) {
       btnCards.classList.toggle("active", jobsView === "cards");
@@ -1167,18 +1190,18 @@
       btnTable.classList.toggle("active", jobsView === "table");
       btnTable.setAttribute("aria-pressed", jobsView === "table" ? "true" : "false");
     }
+    if (jobsView === "cards" && preferDeskPane() && lastJobRows.length) {
+      const idx = selectedJobIdx != null && lastJobRows[selectedJobIdx] ? selectedJobIdx : 0;
+      showJobPane(idx);
+    }
   }
 
-  function openJobDrawer(index) {
-    const r = lastJobRows[index];
-    if (!r) return;
-    const dialog = $("#job-drawer");
-    if (!dialog) return;
-    $("#job-drawer-title").textContent = r.title || "Opening";
-    $("#job-drawer-org").innerHTML = `<a href="#org/${esc(r.orgId)}">${esc(r.org)}</a> · ${esc(
+  function fillJobDetail(r, prefix) {
+    $(`#${prefix}-title`).textContent = r.title || "Opening";
+    $(`#${prefix}-org`).innerHTML = `<a href="#org/${esc(r.orgId)}">${esc(r.org)}</a> · ${esc(
       orgSectorById[r.orgId] || ""
     )}`;
-    $("#job-drawer-facts").innerHTML = [
+    $(`#${prefix}-facts`).innerHTML = [
       ["Posted", r.postedDate || "—"],
       ["Deadline", r.deadline || "—"],
       ["Location", r.location || "—"],
@@ -1186,10 +1209,10 @@
     ]
       .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`)
       .join("");
-    $("#job-drawer-dek").textContent = r.location
+    $(`#${prefix}-dek`).textContent = r.location
       ? `Based in ${r.location}. Confirm details on the employer site before applying.`
       : "";
-    $("#job-drawer-actions").innerHTML = [
+    $(`#${prefix}-actions`).innerHTML = [
       r.url
         ? `<a class="btn btn-primary" href="${esc(r.url)}" target="_blank" rel="noopener">Apply on site</a>`
         : "",
@@ -1198,12 +1221,60 @@
     ]
       .filter(Boolean)
       .join("");
-    $$("#job-drawer-actions [data-page]").forEach((b) =>
+    $$(`#${prefix}-actions [data-page]`).forEach((b) =>
       b.addEventListener("click", () => {
-        dialog.close();
+        const dialog = $("#job-drawer");
+        if (dialog?.open) dialog.close();
         showPage(b.dataset.page);
       })
     );
+    $$(`#${prefix}-org a[href^="#org/"]`).forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = link.getAttribute("href")?.replace("#org/", "");
+        if (id) openOrgProfile(id);
+      });
+    });
+    $$(`#${prefix}-actions a[href^="#org/"]`).forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = link.getAttribute("href")?.replace("#org/", "");
+        if (id) openOrgProfile(id);
+      });
+    });
+  }
+
+  function highlightJobCard(index) {
+    $$("#jobs-card-grid .job-card").forEach((el, i) => {
+      el.classList.toggle("is-selected", i === index);
+    });
+  }
+
+  function showJobPane(index) {
+    const r = lastJobRows[index];
+    if (!r) return;
+    selectedJobIdx = index;
+    highlightJobCard(index);
+    const pane = $("#job-detail-pane");
+    const empty = $("#job-pane-empty");
+    const body = $("#job-pane-body");
+    if (!pane || !body) return;
+    pane.hidden = false;
+    if (empty) empty.hidden = true;
+    body.hidden = false;
+    fillJobDetail(r, "job-pane");
+  }
+
+  function openJobDrawer(index) {
+    const r = lastJobRows[index];
+    if (!r) return;
+    if (preferDeskPane() && jobsView === "cards") {
+      showJobPane(index);
+      return;
+    }
+    const dialog = $("#job-drawer");
+    if (!dialog) return;
+    fillJobDetail(r, "job-drawer");
     if (typeof dialog.showModal === "function") dialog.showModal();
     else dialog.setAttribute("open", "");
   }
@@ -1217,7 +1288,8 @@
         const tone = toneForId(r.orgId);
         const dl = parseDeadline(r.deadline);
         const urgent = dl && dl >= now && dl - now < 14 * 86400000;
-        return `<article class="ngo-card job-card ngo-card--${tone}">
+        const sel = selectedJobIdx === i ? " is-selected" : "";
+        return `<article class="ngo-card job-card ngo-card--${tone}${sel}" data-job-card="${i}">
           <div class="ngo-card-cap"></div>
           <div class="ngo-card-body">
             <span class="ngo-card-initials">${esc(orgInitials(r.org))}</span>
@@ -1241,7 +1313,16 @@
       })
       .join("");
     grid.querySelectorAll("[data-job-idx]").forEach((btn) => {
-      btn.addEventListener("click", () => openJobDrawer(Number(btn.dataset.jobIdx)));
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openJobDrawer(Number(btn.dataset.jobIdx));
+      });
+    });
+    grid.querySelectorAll("[data-job-card]").forEach((card) => {
+      card.addEventListener("click", (e) => {
+        if (e.target.closest("a, button")) return;
+        openJobDrawer(Number(card.dataset.jobCard));
+      });
     });
     grid.querySelectorAll(".table-profile-link").forEach((link) => {
       link.addEventListener("click", (e) => {
@@ -1270,12 +1351,32 @@
         [r.org, r.title, r.location, r.kind, orgSectorById[r.orgId]].join(" ").toLowerCase().includes(q)
       );
     }
+    const prevKey =
+      selectedJobIdx != null && lastJobRows[selectedJobIdx]
+        ? `${lastJobRows[selectedJobIdx].orgId}::${lastJobRows[selectedJobIdx].title}`
+        : null;
     lastJobRows = rows;
     const countEl = $("#jobs-result-count");
     if (countEl) {
       countEl.innerHTML = `<strong>${rows.length}</strong> opening${rows.length === 1 ? "" : "s"}`;
     }
+    if (prevKey) {
+      const found = rows.findIndex((r) => `${r.orgId}::${r.title}` === prevKey);
+      selectedJobIdx = found >= 0 ? found : null;
+    }
     renderJobCards(rows);
+    if (preferDeskPane() && jobsView === "cards" && rows.length) {
+      const idx = selectedJobIdx != null ? selectedJobIdx : 0;
+      showJobPane(idx);
+    } else if (!rows.length) {
+      selectedJobIdx = null;
+      const pane = $("#job-detail-pane");
+      const empty = $("#job-pane-empty");
+      const body = $("#job-pane-body");
+      if (pane) pane.hidden = !preferDeskPane();
+      if (empty) empty.hidden = false;
+      if (body) body.hidden = true;
+    }
 
     const now = Date.now();
     const soon = rows

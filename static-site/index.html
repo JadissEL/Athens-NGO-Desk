@@ -12,8 +12,8 @@
   <meta property="og:description" content="Openings, weekly NGO media, and what life is like for workers in Greek civil society — from major hubs to islands and regional field posts." />
   <meta property="og:image" content="hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="styles.css?v=bento-mix2" />
-  <link rel="stylesheet" href="bento-upgrade.css?v=bento-mix2" />
+  <link rel="stylesheet" href="styles.css?v=bento-mix3" />
+  <link rel="stylesheet" href="bento-upgrade.css?v=bento-mix3" />
 </head>
 <body>
   <div class="app-frame">
@@ -592,7 +592,33 @@
             <button type="button" class="view-toggle-btn" id="reg-view-table" aria-pressed="false">Table</button>
           </div>
         </div>
-        <div class="ngo-card-grid" id="reg-card-grid"></div>
+        <div class="registry-split" id="registry-split">
+          <div class="registry-split-list">
+            <div class="ngo-card-grid" id="reg-card-grid"></div>
+          </div>
+          <div class="detail detail--pane" id="reg-detail">
+            <p class="registry-pane-empty" id="reg-pane-empty">Select an NGO card for scores, roles, and recent postings.</p>
+            <article class="org-sheet panel" id="reg-detail-body" hidden>
+              <header class="org-sheet-head">
+                <div>
+                  <h2 id="reg-detail-title">Detail</h2>
+                  <p class="org-sheet-sub" id="reg-detail-sub"></p>
+                </div>
+                <button type="button" class="btn" id="reg-detail-close">Close</button>
+              </header>
+              <div class="org-sheet-grid" id="reg-detail-grid"></div>
+              <div class="org-sheet-block">
+                <h3>Best-fit roles</h3>
+                <ul id="reg-detail-roles"></ul>
+              </div>
+              <div class="org-sheet-block">
+                <h3>Recent postings</h3>
+                <ul class="posting-list" id="reg-detail-posts"></ul>
+              </div>
+              <p class="small muted" id="reg-detail-why"></p>
+            </article>
+          </div>
+        </div>
         <div class="table-wrap table-wrap--desk reg-table-view" hidden>
           <table>
             <thead>
@@ -607,27 +633,6 @@
             </thead>
             <tbody id="reg-body"></tbody>
           </table>
-        </div>
-        <div class="detail" id="reg-detail">
-          <article class="org-sheet panel" id="reg-detail-body" hidden>
-            <header class="org-sheet-head">
-              <div>
-                <h2 id="reg-detail-title">Detail</h2>
-                <p class="org-sheet-sub" id="reg-detail-sub"></p>
-              </div>
-              <button type="button" class="btn" id="reg-detail-close">Close</button>
-            </header>
-            <div class="org-sheet-grid" id="reg-detail-grid"></div>
-            <div class="org-sheet-block">
-              <h3>Best-fit roles</h3>
-              <ul id="reg-detail-roles"></ul>
-            </div>
-            <div class="org-sheet-block">
-              <h3>Recent postings</h3>
-              <ul class="posting-list" id="reg-detail-posts"></ul>
-            </div>
-            <p class="small muted" id="reg-detail-why"></p>
-          </article>
         </div>
           </div>
         </div>
@@ -674,7 +679,25 @@
             <button type="button" class="view-toggle-btn" id="jobs-view-table" aria-pressed="false">Table</button>
           </div>
         </div>
-        <div class="ngo-card-grid job-card-grid" id="jobs-card-grid"></div>
+        <div class="jobs-split" id="jobs-split">
+          <div class="jobs-split-list">
+            <div class="ngo-card-grid job-card-grid" id="jobs-card-grid"></div>
+          </div>
+          <aside class="job-detail-pane" id="job-detail-pane" aria-label="Opening details" hidden>
+            <div class="job-detail-pane-inner">
+              <p class="job-pane-empty" id="job-pane-empty">Select an opening for deadlines, location, and apply links.</p>
+              <div class="job-pane-body" id="job-pane-body" hidden>
+                <header class="job-drawer-head">
+                  <h2 id="job-pane-title">Role</h2>
+                </header>
+                <p class="job-drawer-org" id="job-pane-org"></p>
+                <dl class="fact-dl job-drawer-facts" id="job-pane-facts"></dl>
+                <p class="job-drawer-dek" id="job-pane-dek"></p>
+                <div class="job-drawer-actions" id="job-pane-actions"></div>
+              </div>
+            </div>
+          </aside>
+        </div>
         <div class="table-wrap table-wrap--desk jobs-table-view" hidden>
           <table>
             <thead>
@@ -1320,6 +1343,6 @@
       <p class="cmd-hint small muted">↑↓ to move · Enter to go · Esc to close</p>
     </form>
   </dialog>
-  <script src="app.js?v=bento-mix2"></script>
+  <script src="app.js?v=bento-mix3"></script>
 </body>
 </html>
