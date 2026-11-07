@@ -1503,6 +1503,9 @@
       selectedJobIdx = found >= 0 ? found : null;
     }
     renderJobCards(rows);
+    const paneRoot = $("#job-detail-pane");
+    if (preferDeskPane() && paneRoot) paneRoot.removeAttribute("hidden");
+
     if (preferDeskPane() && rows.length && (jobsView === "cards" || jobsView === "table")) {
       let idx = selectedJobIdx != null ? selectedJobIdx : 0;
       if (pendingJobSearchFocus !== null) {

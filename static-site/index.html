@@ -12,9 +12,10 @@
   <meta property="og:description" content="Openings, weekly NGO media, and what life is like for workers in Greek civil society — from major hubs to islands and regional field posts." />
   <meta property="og:image" content="hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="styles.css?v=aegean-stitch1" />
-  <link rel="stylesheet" href="bento-upgrade.css?v=aegean-stitch1" />
-  <link rel="stylesheet" href="stitch-polish.css?v=aegean-stitch1" />
+  <link rel="stylesheet" href="styles.css?v=aegean-stitch2" />
+  <link rel="stylesheet" href="bento-upgrade.css?v=aegean-stitch2" />
+  <link rel="stylesheet" href="stitch-polish.css?v=aegean-stitch2" />
+  <link rel="stylesheet" href="stitch-layout.css?v=aegean-stitch2" />
 </head>
 <body>
   <div class="app-frame">
@@ -109,6 +110,11 @@
             </div>
             <button type="submit" class="btn btn-primary btn-xl">Search desk</button>
           </form>
+        </div>
+        <div class="stitch-trust-strip max-content" aria-hidden="false">
+          <span><strong>104</strong> NGOs indexed</span>
+          <span><strong>Greece-wide</strong> signposting</span>
+          <span>Not a crisis hotline — verify services officially</span>
         </div>
         <div class="bento-kpi max-content" id="home-stats" aria-live="polite"></div>
         <div class="bento-audience max-content" aria-label="Start by role">
@@ -703,6 +709,7 @@
             <div class="job-detail-pane-inner">
               <p class="job-pane-empty" id="job-pane-empty">Select an opening for deadlines, location, and apply links.</p>
               <div class="job-pane-body" id="job-pane-body" hidden>
+                <p class="job-pane-eyebrow">Application panel</p>
                 <header class="job-drawer-head">
                   <h2 id="job-pane-title">Role</h2>
                 </header>
@@ -1326,6 +1333,7 @@
   <script src="data_loader.js"></script>
   <dialog class="job-drawer" id="job-drawer" aria-label="Opening details">
     <form method="dialog" class="job-drawer-inner">
+      <p class="job-pane-eyebrow">Application panel</p>
       <header class="job-drawer-head">
         <h2 id="job-drawer-title">Role</h2>
         <button type="submit" class="btn job-drawer-close" aria-label="Close">Close</button>
@@ -1344,6 +1352,6 @@
       <p class="cmd-hint small muted">↑↓ to move · Enter to go · Esc to close</p>
     </form>
   </dialog>
-  <script src="app.js?v=aegean-stitch1"></script>
+  <script src="app.js?v=aegean-stitch2"></script>
 </body>
 </html>

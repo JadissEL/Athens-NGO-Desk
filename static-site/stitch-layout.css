@@ -1,0 +1,101 @@
+/* Stitch A2/A3 — master–detail list density (single-column cards in split) */
+
+@media (min-width: 1024px) {
+  #page-jobs .jobs-split .job-card-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  #page-jobs .job-card .ngo-card-body {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "avatar title"
+      "avatar meta"
+      "avatar pills"
+      "avatar actions";
+    column-gap: 0.85rem;
+    align-items: start;
+  }
+
+  #page-jobs .job-card .ngo-card-initials {
+    grid-area: avatar;
+    margin-bottom: 0;
+  }
+
+  #page-jobs .job-card h3 {
+    grid-area: title;
+    margin: 0;
+  }
+
+  #page-jobs .job-card .ngo-card-meta {
+    grid-area: meta;
+  }
+
+  #page-jobs .job-card .ngo-card-pills {
+    grid-area: pills;
+  }
+
+  #page-jobs .job-card .ngo-card-actions {
+    grid-area: actions;
+  }
+
+  #page-jobs .job-detail-pane {
+    display: block !important;
+  }
+
+  #page-jobs .job-detail-pane[hidden] {
+    display: block !important;
+  }
+
+  #page-registry .registry-split-list .ngo-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #page-jobs .workbench-main {
+    min-width: 0;
+  }
+
+  .jobs-split {
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 400px);
+  }
+}
+
+.job-pane-eyebrow {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sun);
+  margin: 0 0 0.35rem;
+}
+
+.job-detail-pane-inner .job-pane-body {
+  padding-top: 0.25rem;
+}
+
+/* Home A1 — trust strip */
+.stitch-trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0 0 1.25rem;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(15, 124, 124, 0.1);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.stitch-trust-strip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.stitch-trust-strip strong {
+  color: var(--accent);
+  font-weight: 700;
+}
