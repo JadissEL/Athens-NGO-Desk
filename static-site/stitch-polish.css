@@ -1,0 +1,282 @@
+/* Aegean Civic Craft — Stitch-aligned polish (implement while MCP syncs) */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
+
+:root {
+  --stitch-ui: "Plus Jakarta Sans", var(--ui);
+  --stitch-glow: 0 24px 60px rgba(10, 46, 46, 0.12);
+  --stitch-glow-hover: 0 32px 70px rgba(10, 46, 46, 0.16);
+  --stitch-mesh-1: rgba(124, 213, 212, 0.22);
+  --stitch-mesh-2: rgba(217, 119, 54, 0.12);
+  --stitch-mesh-3: rgba(219, 234, 254, 0.55);
+}
+
+body.desk-bento {
+  background-color: #e9eff8;
+  background-image:
+    radial-gradient(ellipse 90% 55% at 8% -5%, var(--stitch-mesh-1), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 95% 0%, var(--stitch-mesh-2), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, var(--stitch-mesh-3), transparent 60%),
+    linear-gradient(rgba(15, 124, 124, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 124, 124, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+}
+
+body.desk-bento .glass--bento {
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(18px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.25) !important;
+  border-bottom: 1px solid rgba(15, 124, 124, 0.1);
+  box-shadow: 0 4px 24px rgba(15, 45, 45, 0.06);
+}
+
+body.desk-bento .topnav.app-bar--compact {
+  padding: 0.65rem 1.25rem;
+}
+
+body.desk-bento .btn-primary {
+  background: linear-gradient(135deg, #0a4f4f 0%, var(--accent) 52%, #13a8a8 100%);
+  box-shadow: 0 8px 22px var(--accent-glow);
+}
+
+/* Hero — editorial + floating dock */
+.bento-hero-copy {
+  position: relative;
+  padding: 0.5rem 0 0;
+}
+
+.bento-hero-copy::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  top: -0.5rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--bento-mint), transparent 70%);
+  opacity: 0.9;
+  z-index: -1;
+}
+
+.bento-title {
+  font-size: clamp(2.15rem, 4.5vw, 3.5rem);
+  background: linear-gradient(120deg, var(--ink) 0%, #0a5a5a 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bento-search-dock {
+  border: 1px solid rgba(15, 124, 124, 0.14);
+  box-shadow: var(--stitch-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-search-dock::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(216, 245, 238, 0.35), transparent 55%);
+  pointer-events: none;
+}
+
+.dock-label {
+  font-family: var(--stitch-ui);
+}
+
+.bento-kpi .stat {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.bento-kpi .stat:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--stitch-glow-hover);
+}
+
+.bento-kpi .stat::after {
+  content: "";
+  position: absolute;
+  right: -20%;
+  top: -40%;
+  width: 60%;
+  height: 120%;
+  background: linear-gradient(135deg, rgba(15, 124, 124, 0.08), transparent);
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+.bento-kpi .value {
+  font-family: var(--stitch-ui);
+  color: var(--accent);
+}
+
+/* Job-board cards */
+.ngo-card {
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(15, 124, 124, 0.1);
+  box-shadow: 0 10px 32px rgba(15, 45, 45, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.ngo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--stitch-glow-hover);
+  border-color: rgba(15, 124, 124, 0.22);
+}
+
+.ngo-card-cap {
+  height: 56px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.ngo-card-cap-badge,
+.ngo-card-score-pill {
+  font-family: var(--stitch-ui);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink-deep);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.ngo-card-score-pill {
+  color: var(--accent);
+}
+
+.ngo-card--mint .ngo-card-cap {
+  background: linear-gradient(120deg, #b8f0e4 0%, var(--bento-mint) 100%);
+}
+
+.ngo-card--sand .ngo-card-cap {
+  background: linear-gradient(120deg, #f5e6c8 0%, var(--bento-sand) 100%);
+}
+
+.ngo-card--sky .ngo-card-cap {
+  background: linear-gradient(120deg, #c5ddfc 0%, var(--bento-sky) 100%);
+}
+
+.ngo-card--coral .ngo-card-cap {
+  background: linear-gradient(120deg, #ffd8c8 0%, var(--bento-coral) 100%);
+}
+
+.ngo-card--lavender .ngo-card-cap {
+  background: linear-gradient(120deg, #ddd4ff 0%, var(--bento-lavender) 100%);
+}
+
+.ngo-card-initials {
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 0.82rem;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px rgba(15, 124, 124, 0.15), 0 6px 16px rgba(15, 45, 45, 0.1);
+}
+
+.ngo-card h3 {
+  font-family: var(--stitch-ui);
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.ngo-card.is-selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), var(--stitch-glow);
+}
+
+/* Workbench rails */
+.workbench-rail-panel,
+.discover-panel {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(15, 124, 124, 0.1);
+  box-shadow: 0 12px 36px rgba(15, 45, 45, 0.06);
+}
+
+.page-header h1 {
+  font-family: var(--display);
+  font-size: clamp(1.85rem, 3vw, 2.35rem);
+  letter-spacing: -0.02em;
+}
+
+.view-toggle {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.view-toggle-btn.active {
+  background: var(--ink-deep);
+  color: #fff;
+}
+
+/* Detail panes — HR / application panel */
+.job-detail-pane-inner,
+.detail--pane .org-sheet {
+  border: 1px solid rgba(15, 124, 124, 0.12);
+  box-shadow: var(--stitch-glow);
+}
+
+.job-detail-pane-inner::before,
+.detail--pane .org-sheet::before {
+  content: "";
+  display: block;
+  height: 4px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  margin: -1.15rem -1.25rem 1rem;
+  background: linear-gradient(90deg, var(--accent), var(--sun));
+}
+
+.job-detail-pane-inner::before {
+  margin: 0 0 1rem;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+/* Command palette */
+.cmd-palette {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--stitch-glow);
+  padding: 0;
+  max-width: min(520px, 92vw);
+}
+
+#cmd-input {
+  border-radius: 14px;
+  border: 1px solid var(--line-strong);
+  font-family: var(--stitch-ui);
+}
+
+/* Sidebar depth */
+@media (min-width: 1024px) {
+  .desk-rail {
+    background: linear-gradient(180deg, #083434 0%, #041f1f 100%);
+  }
+
+  .desk-rail-nav button.active .rail-icon {
+    transform: scale(1.08);
+  }
+
+  .rail-icon {
+    transition: transform 0.15s ease;
+  }
+}
+
+.story-card {
+  border-radius: var(--radius-2xl);
+}
+
+.story-card:hover {
+  transform: translateY(-5px);
+}

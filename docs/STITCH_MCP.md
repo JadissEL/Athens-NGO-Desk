@@ -4,6 +4,8 @@ Use **Stitch** ([Google Labs](https://stitch.withgoogle.com/)) to iterate on **G
 
 **Active Stitch project:** [Greece NGO Desk](https://stitch.withgoogle.com/) — id `14677559256789528548` · design system **Aegean Civic Craft** (`assets/d42af7c3d09e40089c1623f92d77b011`). MCP generation calls often **time out** in Cursor; screens may still finish — refresh the project in Stitch after ~2–5 minutes.
 
+If Cursor shows **Incompatible auth server** for Stitch MCP, run `gcloud auth application-default login` and reload MCP (see below). Until MCP works, paste prompts from **[STITCH_SCREEN_PROMPTS.md](STITCH_SCREEN_PROMPTS.md)** in the Stitch UI and ship CSS via **`static-site/stitch-polish.css`**.
+
 **Canonical setup:** [Stitch MCP setup](https://stitch.withgoogle.com/docs/mcp/setup/) (OAuth section).
 
 ## Prerequisites

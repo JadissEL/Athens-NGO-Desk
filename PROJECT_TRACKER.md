@@ -19,6 +19,7 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_REN
 
 | Date | Action |
 |------|--------|
+| 2026-11-07 | **Stitch visual pass (interim):** `stitch-polish.css` + job/registry card caps; [docs/STITCH_SCREEN_PROMPTS.md](docs/STITCH_SCREEN_PROMPTS.md); cache `aegean-stitch1` · Stitch MCP auth blocked in-agent — regenerate screens in Stitch UI. |
 | 2026-11-07 | **Cmd+K + registry typeahead:** mix7 — palette searches **pages, NGOs, openings** (NGO/Job badges → registry sheet / jobs pane); registry **q-reg** debounced pane focus (≥2 chars, desktop); `bento-mix7`. |
 | 2026-11-07 | **Search → detail focus:** commit `b029d9a` — hero dock picks best registry/org or job match in pane; registry **Quick** presets open first result on desktop; stale sheet closes when filter drops selection; `bento-mix6`. |
 | 2026-11-07 | **Jobs rail + guides polish:** commit `14287fb` — **Soon** deadline chips open detail pane (+ Apply ↗ link); selection scroll-into-view; possibility card clicks; Create/Fund step cards; `bento-mix5`. |

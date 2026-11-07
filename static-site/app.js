@@ -922,8 +922,12 @@
             : "Vacancies pending";
         const tone = toneForId(o.id);
         const regShort = regionLabelShort(o.scope);
+        const scorePill =
+          typeof score === "number"
+            ? `<span class="ngo-card-score-pill">${esc(score)}</span>`
+            : `<span class="ngo-card-cap-badge">${esc(band)}</span>`;
         return `<article class="ngo-card ngo-card--${tone}" data-id="${esc(o.id)}">
-          <div class="ngo-card-cap"></div>
+          <div class="ngo-card-cap">${scorePill}</div>
           <div class="ngo-card-body">
             <span class="ngo-card-initials">${esc(orgInitials(o.name))}</span>
             <h3><a href="#org/${esc(o.id)}" class="table-profile-link">${esc(o.name)}</a></h3>
@@ -1424,7 +1428,7 @@
         const urgent = dl && dl >= now && dl - now < 14 * 86400000;
         const sel = selectedJobIdx === i ? " is-selected" : "";
         return `<article class="ngo-card job-card ngo-card--${tone}${sel}" data-job-card="${i}">
-          <div class="ngo-card-cap"></div>
+          <div class="ngo-card-cap"><span class="ngo-card-cap-badge">${r.kind ? esc(r.kind) : "Opening"}</span></div>
           <div class="ngo-card-body">
             <span class="ngo-card-initials">${esc(orgInitials(r.org))}</span>
             <h3>${esc(r.title)}</h3>
