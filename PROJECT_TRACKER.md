@@ -19,6 +19,7 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_REN
 
 | Date | Action |
 |------|--------|
+| 2026-11-07 | **Stitch A3 registry in code:** list-row NGO cards, org brief eyebrow, click card → sheet, single-match auto-open; `aegean-stitch3`. |
 | 2026-11-07 | **Stitch A2 layout in code:** `stitch-layout.css` — job **list-row** cards + always-visible application panel; home trust strip; [docs/stitch/DESIGN.md](docs/stitch/DESIGN.md) + [STITCH_IMPLEMENTATION_CHECKLIST.md](docs/STITCH_IMPLEMENTATION_CHECKLIST.md); `aegean-stitch2`. |
 | 2026-11-07 | **Stitch prompt pack:** [docs/STITCH_SCREEN_PROMPTS.md](docs/STITCH_SCREEN_PROMPTS.md) — §A1–A7 specific screens + §B1–B5 platform-wide; MCP generate blocked (auth). Paste in Stitch UI in order. |
 | 2026-11-07 | **Stitch visual pass (interim):** `stitch-polish.css` + job/registry card caps; [docs/STITCH_SCREEN_PROMPTS.md](docs/STITCH_SCREEN_PROMPTS.md); cache `aegean-stitch1` · Stitch MCP auth blocked in-agent — regenerate screens in Stitch UI. |
