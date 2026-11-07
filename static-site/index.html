@@ -12,13 +12,13 @@
   <meta property="og:description" content="Openings, weekly NGO media, and what life is like for workers in Greek civil society — from major hubs to islands and regional field posts." />
   <meta property="og:image" content="hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="styles.css?v=warm-aegean1" />
+  <link rel="stylesheet" href="styles.css?v=aegean-platform3" />
 </head>
 <body>
   <div class="site">
     <div class="stage">
       <div class="glass">
-        <header class="topnav">
+        <header class="topnav app-bar">
           <a class="logo" href="#overview" data-page="overview">
             <span class="logo-mark" aria-hidden="true"></span>
             <span class="logo-text">Greece NGO Desk</span>
@@ -26,28 +26,32 @@
           <div class="nav-scroll">
             <nav class="nav-center" id="nav" aria-label="Primary">
               <button type="button" data-page="overview" class="active">Home</button>
-              <span class="sep">·</span>
-              <button type="button" data-page="media">Media</button>
-              <span class="sep">·</span>
-              <button type="button" data-page="life">Life</button>
-              <span class="sep">·</span>
-              <button type="button" data-page="jobs">Openings</button>
-              <span class="sep">·</span>
-              <button type="button" data-page="apply">Apply</button>
-              <span class="sep">·</span>
-              <button type="button" data-page="registry">Registry</button>
-              <span class="sep">·</span>
-              <button type="button" data-page="possibility">Scores</button>
-              <span class="sep">·</span>
-              <button type="button" data-page="create">Found</button>
-              <span class="sep">·</span>
-              <button type="button" data-page="funding">Fund</button>
+              <div class="nav-group" aria-label="Discover">
+                <span class="nav-group-label">Discover</span>
+                <button type="button" data-page="media">Media</button>
+                <button type="button" data-page="life">Life</button>
+              </div>
+              <div class="nav-group" aria-label="Work">
+                <span class="nav-group-label">Work</span>
+                <button type="button" data-page="jobs">Openings</button>
+                <button type="button" data-page="apply">Apply</button>
+              </div>
+              <button type="button" data-page="registry" class="nav-solo">Registry</button>
+              <div class="nav-group" aria-label="Guides">
+                <span class="nav-group-label">Guides</span>
+                <button type="button" data-page="possibility">Scores</button>
+                <button type="button" data-page="create">Found</button>
+                <button type="button" data-page="funding">Fund</button>
+              </div>
             </nav>
             <button type="button" class="nav-edge nav-edge-start" aria-label="Previous sections" tabindex="-1"></button>
             <button type="button" class="nav-edge nav-edge-end" aria-label="More sections" tabindex="-1"></button>
           </div>
           <div class="nav-actions">
-            <button type="button" class="btn btn-primary" data-page="apply">Send a CV</button>
+            <button type="button" class="btn btn-ghost cmd-trigger" id="cmd-open" aria-haspopup="dialog" aria-controls="cmd-palette" title="Search desk (Ctrl+K)">
+              Search <kbd>Ctrl</kbd><kbd>K</kbd>
+            </button>
+            <button type="button" class="btn btn-primary" data-page="apply">Apply by email</button>
           </div>
         </header>
 
@@ -58,7 +62,7 @@
           <div class="landing">
             <p class="landing-brand">Greece NGO Desk</p>
             <h1 class="landing-title">Find your place<br />in civil society.</h1>
-            <p class="landing-line">For jobseekers, funders, donors — and anyone looking for the right NGO to contact. Openings, registry, media — Greece-wide (Athens is a hub, not the border). Signposting only — not emergency or legal advice. <a href="../docs/AUDIENCES.md">Who this is for</a> · <a href="../docs/LEGAL_NOTICE.md">Legal notice</a></p>
+            <p class="landing-line">For jobseekers, funders, donors — and anyone looking for the right NGO to contact. Openings, registry, media — Greece-wide (Athens is a hub, not the border). Signposting only — not emergency or legal advice. <a href="#audiences" data-page="audiences">Who this is for</a> · <a href="#legal" data-page="legal">Legal notice</a></p>
             <div class="landing-cta">
               <button type="button" class="btn btn-primary" data-page="jobs">View openings</button>
               <button type="button" class="btn" data-page="life">Life on the desk</button>
@@ -76,6 +80,35 @@
             </div>
             <div class="hot-rail-stack" id="hot-rail"></div>
           </aside>
+        </div>
+        <div class="home-platform max-content">
+          <div class="home-stats" id="home-stats" aria-live="polite"></div>
+          <div class="audience-grid" aria-label="Start by role">
+            <article class="audience-card">
+              <h2>Jobseekers</h2>
+              <p>Openings, spontaneous CV paths, and sector context across Greece.</p>
+              <div class="audience-card-actions">
+                <button type="button" class="btn btn-primary" data-page="jobs">View openings</button>
+                <button type="button" class="btn" data-page="apply">Apply by email</button>
+              </div>
+            </article>
+            <article class="audience-card">
+              <h2>Funders &amp; donors</h2>
+              <p>Registry due diligence, media signals, and honest coverage limits.</p>
+              <div class="audience-card-actions">
+                <button type="button" class="btn btn-primary" data-page="registry">Browse registry</button>
+                <button type="button" class="btn" data-page="funding">Funding guide</button>
+              </div>
+            </article>
+            <article class="audience-card">
+              <h2>Service seekers</h2>
+              <p>Find organisations by focus and region — always verify on official sites.</p>
+              <div class="audience-card-actions">
+                <button type="button" class="btn btn-primary" data-page="registry">Find an NGO</button>
+                <button type="button" class="btn" data-page="legal">Read disclaimer</button>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -374,6 +407,13 @@
 
       <!-- OSINT ORG PROFILE (hash: #org/<id>) -->
       <section class="page" id="page-org-profile">
+        <nav class="breadcrumb" id="org-breadcrumb" aria-label="Breadcrumb">
+          <a href="#overview" data-page="overview">Home</a>
+          <span class="breadcrumb-sep" aria-hidden="true">/</span>
+          <a href="#registry" data-page="registry">Registry</a>
+          <span class="breadcrumb-sep" aria-hidden="true">/</span>
+          <span id="org-breadcrumb-name">Organisation</span>
+        </nav>
         <div class="page-header org-profile-header">
           <div class="org-profile-title-row">
             <div class="org-profile-logo-wrap" id="org-profile-logo-wrap" hidden>
@@ -392,44 +432,56 @@
         <p class="callout warn" id="org-profile-osint-banner">
           OSINT profile: synthesized from public sources and this desk&rsquo;s registry — not exhaustive. Verify on official sites.
         </p>
-        <div class="org-profile-layout">
+        <div class="org-profile-layout max-content">
           <div class="org-profile-main">
-            <div class="panel">
-              <h2>Overview</h2>
-              <p id="org-profile-narrative"></p>
-            </div>
-            <div class="panel" id="org-profile-desk-corpus-panel" hidden>
-              <h2>Desk corpus &amp; digest (OSINT)</h2>
-              <p class="small muted" id="org-profile-possibility-note"></p>
-              <div id="org-profile-media-matches"></div>
-            </div>
-            <div class="panel">
-              <h2>Mission &amp; focus</h2>
-              <dl class="fact-dl" id="org-profile-mission"></dl>
-            </div>
-            <div class="panel">
-              <h2>Employment signals (public)</h2>
-              <dl class="fact-dl" id="org-profile-employment"></dl>
-            </div>
-            <div class="panel">
-              <h2>Methodology &amp; verification</h2>
-              <dl class="fact-dl" id="org-profile-method"></dl>
-            </div>
-            <div class="panel" id="org-profile-programmes-panel" hidden>
-              <h2>Programmes (with evidence)</h2>
-              <div id="org-profile-programmes"></div>
-            </div>
+            <details class="profile-fold" open>
+              <summary>Overview</summary>
+              <div class="profile-fold-body">
+                <p id="org-profile-narrative"></p>
+              </div>
+            </details>
+            <details class="profile-fold" id="org-profile-desk-corpus-panel" hidden>
+              <summary>Desk corpus &amp; digest (OSINT)</summary>
+              <div class="profile-fold-body">
+                <p class="small muted" id="org-profile-possibility-note"></p>
+                <div id="org-profile-media-matches"></div>
+              </div>
+            </details>
+            <details class="profile-fold" open>
+              <summary>Mission &amp; focus</summary>
+              <div class="profile-fold-body">
+                <dl class="fact-dl" id="org-profile-mission"></dl>
+              </div>
+            </details>
+            <details class="profile-fold" open>
+              <summary>Employment signals (public)</summary>
+              <div class="profile-fold-body">
+                <dl class="fact-dl" id="org-profile-employment"></dl>
+              </div>
+            </details>
+            <details class="profile-fold">
+              <summary>Methodology &amp; verification</summary>
+              <div class="profile-fold-body">
+                <dl class="fact-dl" id="org-profile-method"></dl>
+              </div>
+            </details>
+            <details class="profile-fold" id="org-profile-programmes-panel" hidden>
+              <summary>Programmes (with evidence)</summary>
+              <div class="profile-fold-body">
+                <div id="org-profile-programmes"></div>
+              </div>
+            </details>
           </div>
           <aside class="org-profile-aside">
-            <div class="panel">
+            <div class="profile-aside-card">
               <h2>Quick links</h2>
               <ul class="link-stack" id="org-profile-links"></ul>
             </div>
-            <div class="panel" id="org-profile-refs-panel" hidden>
+            <div class="profile-aside-card" id="org-profile-refs-panel" hidden>
               <h2>References</h2>
-              <ul class="link-stack" id="org-profile-refs"></ul>
+              <div id="org-profile-refs" class="refs-grouped"></div>
             </div>
-            <div class="panel">
+            <div class="profile-aside-card">
               <h2>On this desk</h2>
               <dl class="fact-dl" id="org-profile-desk"></dl>
             </div>
@@ -442,15 +494,14 @@
 
       <!-- REGISTRY -->
       <section class="page" id="page-registry">
-        <div class="page-header">
+        <div class="page-header max-content">
           <h1>NGO registry</h1>
           <p class="page-header-lead">Browse by region and theme, or search — use <strong>More filters</strong> only when you need an exact scope label or score cut.</p>
           <p class="page-header-note small muted">104 organisations with work across Greece (many HQs in Athens / Attica). Not a complete national census.</p>
         </div>
-        <figure class="page-visual">
-          <img src="img/athens-agora.jpg" alt="The Parthenon on the Acropolis, Athens" width="1800" height="700" loading="lazy" />
-        </figure>
-        <div class="discover-panel registry-discover">
+        <div class="workbench max-content">
+          <aside class="workbench-rail" aria-label="Registry filters">
+        <div class="discover-panel registry-discover workbench-rail-panel">
           <div class="discover-primary">
             <div class="field grow discover-search">
               <label for="q-reg">Find an organisation</label>
@@ -500,8 +551,10 @@
             </div>
           </details>
         </div>
+          </aside>
+          <div class="workbench-main">
         <p class="registry-summary" id="reg-count"></p>
-        <div class="table-wrap">
+        <div class="table-wrap table-wrap--desk">
           <table>
             <thead>
               <tr>
@@ -537,21 +590,22 @@
             <p class="small muted" id="reg-detail-why"></p>
           </article>
         </div>
+          </div>
+        </div>
       </section>
 
       <!-- JOBS -->
       <section class="page" id="page-jobs">
-        <div class="page-header">
+        <div class="page-header max-content">
           <h1>Openings</h1>
           <p class="page-header-lead">Search first, then narrow by <strong>where</strong> the role is based and <strong>thematic sector</strong> if needed.</p>
           <p class="page-header-note small muted">Public vacancies indexed Oct 2026 — Greece-wide postings.</p>
         </div>
-        <figure class="page-visual page-visual--desk">
-          <img src="img/desk-work.jpg" alt="Desk with laptop and documents for job applications" width="1800" height="700" loading="lazy" />
-        </figure>
-        <div class="stats stats--compact" id="jobs-stats"></div>
-        <div class="deadline-rail" id="jobs-deadlines" hidden></div>
-        <div class="discover-panel jobs-discover">
+        <div class="workbench max-content">
+          <aside class="workbench-rail" aria-label="Opening filters">
+            <div class="stats stats--compact workbench-stats" id="jobs-stats"></div>
+            <div class="deadline-rail" id="jobs-deadlines" hidden></div>
+        <div class="discover-panel jobs-discover workbench-rail-panel">
           <div class="discover-primary">
             <div class="field grow discover-search">
               <label for="q-jobs">Find a role</label>
@@ -572,7 +626,9 @@
           </div>
           <p class="discover-hint small muted" id="jobs-filter-hint">“Where” uses the location text on each vacancy (not the organisation HQ).</p>
         </div>
-        <div class="table-wrap">
+          </aside>
+          <div class="workbench-main">
+        <div class="table-wrap table-wrap--desk">
           <table>
             <thead>
               <tr>
@@ -586,6 +642,8 @@
             </thead>
             <tbody id="jobs-body"></tbody>
           </table>
+        </div>
+          </div>
         </div>
       </section>
 
@@ -1120,12 +1178,76 @@
           <a href="https://okeanis.migration.gov.gr/" target="_blank" rel="noopener">Migration NGO registry (Okeanis)</a>
         </p>
       </section>
+
+      <!-- AUDIENCES (static on Vercel) -->
+      <section class="page" id="page-audiences">
+        <div class="page-header">
+          <h1>Who this desk is for</h1>
+          <p class="page-header-lead">Greece NGO Desk mirrors parts of the civic ecosystem for several groups — not only job research.</p>
+        </div>
+        <div class="max-content prose-panel">
+          <div class="panel">
+            <h2>Jobseekers &amp; career explorers</h2>
+            <p>Openings, spontaneous CV paths, sector context. Hooks: <button type="button" class="linkish" data-page="jobs">Openings</button>, <button type="button" class="linkish" data-page="apply">Apply</button>, <button type="button" class="linkish" data-page="registry">Registry</button>, <button type="button" class="linkish" data-page="life">Life</button>, <button type="button" class="linkish" data-page="media">Media</button>.</p>
+          </div>
+          <div class="panel">
+            <h2>Funders &amp; grant-makers</h2>
+            <p>Due diligence, sector coverage, who does what. Hooks: registry filters, media signals, methodology notes on org profiles.</p>
+          </div>
+          <div class="panel">
+            <h2>Donors</h2>
+            <p>Trustworthy pointers and how to give safely — with legal review for tax/ΓΓΠΣ context. Start with <button type="button" class="linkish" data-page="registry">Registry</button> and <button type="button" class="linkish" data-page="legal">Legal notice</button>.</p>
+          </div>
+          <div class="panel">
+            <h2>People seeking help</h2>
+            <p>Orientation and signposting only — not a crisis hotline. Use registry filters; always follow official contacts and emergency numbers.</p>
+          </div>
+          <p class="callout warn">No impersonation of services. Registry coverage is partial; see methodology on org profiles.</p>
+        </div>
+      </section>
+
+      <!-- LEGAL (static on Vercel) -->
+      <section class="page" id="page-legal">
+        <div class="page-header">
+          <h1>Legal notice</h1>
+          <p class="page-header-lead"><strong>Not legal advice.</strong> Orientation for job seekers and civil-society stakeholders.</p>
+        </div>
+        <div class="max-content prose-panel">
+          <div class="panel">
+            <h2>Nature of the service</h2>
+            <ul class="muted legal-list">
+              <li>Editorial directory — research-assisted listings may be incomplete or outdated.</li>
+              <li>Information is provided &ldquo;as is&rdquo; without warranty of accuracy or fitness for a particular purpose.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>Personal data (GDPR orientation)</h2>
+            <p class="small muted">Work contact emails are organisational recruiting channels — keep accurate, minimal, and reviewed. When the API is deployed, document your controller, purposes, and retention in your own privacy notice.</p>
+          </div>
+          <div class="panel">
+            <h2>Takedown / correction</h2>
+            <p>Organisations may request correction or removal by emailing the maintainer contact listed in the repository README. Steward edits are logged in the Phase B audit trail.</p>
+          </div>
+          <div class="panel">
+            <h2>Intellectual property &amp; neutrality</h2>
+            <p class="small muted">Media summaries are original with links to sources; trademarks belong to their owners. The desk aims for factual orientation — corrections welcome.</p>
+          </div>
+        </div>
+      </section>
         </main>
 
+        <nav class="mobile-dock" id="mobile-dock" aria-label="Quick navigation">
+          <button type="button" data-page="overview">Home</button>
+          <button type="button" data-page="jobs">Openings</button>
+          <button type="button" data-page="registry">Registry</button>
+          <button type="button" data-page="media">Media</button>
+          <button type="button" data-page="apply">Apply</button>
+        </nav>
+
         <footer class="footer-note">
-          Greece NGO Desk — jobs, landscape, and signposting for funders, donors & service seekers · data from <code>data/ngos/</code> ·
-          <a href="../docs/AUDIENCES.md">Audiences</a> ·
-          <a href="../docs/LEGAL_NOTICE.md">Legal notice</a>
+          Greece NGO Desk — jobs, registry, and signposting for funders, donors &amp; service seekers ·
+          <a href="#audiences" data-page="audiences">Audiences</a> ·
+          <a href="#legal" data-page="legal">Legal notice</a>
         </footer>
       </div>
     </div>
@@ -1138,6 +1260,14 @@
   </script>
   <script src="data.js"></script>
   <script src="data_loader.js"></script>
-  <script src="app.js?v=navscroll1"></script>
+  <dialog class="cmd-palette" id="cmd-palette" aria-label="Search desk">
+    <form method="dialog" class="cmd-form" id="cmd-form">
+      <label class="visually-hidden" for="cmd-input">Search pages and actions</label>
+      <input id="cmd-input" type="search" placeholder="Jump to a page or action…" autocomplete="off" />
+      <ul class="cmd-results" id="cmd-results" role="listbox"></ul>
+      <p class="cmd-hint small muted">↑↓ to move · Enter to go · Esc to close</p>
+    </form>
+  </dialog>
+  <script src="app.js?v=platform3"></script>
 </body>
 </html>

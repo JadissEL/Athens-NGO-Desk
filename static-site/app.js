@@ -136,7 +136,23 @@
     "possibility",
     "create",
     "funding",
+    "audiences",
+    "legal",
     "org-profile",
+  ];
+
+  const CMD_ACTIONS = [
+    { id: "overview", label: "Home", hint: "Landing" },
+    { id: "jobs", label: "Openings", hint: "Vacancies table" },
+    { id: "apply", label: "Apply by email", hint: "Spontaneous CVs" },
+    { id: "registry", label: "Registry", hint: "Organisations" },
+    { id: "media", label: "Media digest", hint: "Weekly stories" },
+    { id: "life", label: "Life on the desk", hint: "Worker rhythm" },
+    { id: "possibility", label: "Job possibility scores", hint: "Desk scoring" },
+    { id: "create", label: "Found an NGO", hint: "Formation guide" },
+    { id: "funding", label: "Fund an NGO", hint: "Grants & donors" },
+    { id: "audiences", label: "Who this is for", hint: "Audiences" },
+    { id: "legal", label: "Legal notice", hint: "Disclaimer" },
   ];
 
   const STAGE_BG = {
@@ -181,6 +197,9 @@
       $$("#nav button").forEach((b) => b.classList.toggle("active", b.dataset.page === id));
     }
     document.body.classList.toggle("is-landing", id === "overview");
+    $$("#mobile-dock [data-page]").forEach((b) =>
+      b.classList.toggle("active", b.dataset.page === id && id !== "org-profile")
+    );
     const activeNav = document.querySelector("#nav button.active");
     if (activeNav) revealNavButton(activeNav);
     const stage = $(".stage");
@@ -277,7 +296,9 @@
     const img = $("#org-profile-logo");
     const conf = $("#org-profile-conflict");
     if (!org) {
-      $("#org-profile-name").textContent = "Organisation not found";
+      const crumb = $("#org-breadcrumb-name");
+    if (crumb) crumb.textContent = "Not found";
+    $("#org-profile-name").textContent = "Organisation not found";
       $("#org-profile-sub").textContent = "";
       if (wrap) wrap.hidden = true;
       if (conf) conf.textContent = "";
@@ -308,7 +329,10 @@
 
     const os = org.osintProfile;
     const poss = possibilityById[org.id];
-    $("#org-profile-name").textContent = os?.identity?.primaryName || org.name;
+    const displayName = os?.identity?.primaryName || org.name;
+    const crumb = $("#org-breadcrumb-name");
+    if (crumb) crumb.textContent = displayName;
+    $("#org-profile-name").textContent = displayName;
     $("#org-profile-sub").innerHTML = [
       org.nameEl ? esc(org.nameEl) : "",
       org.sector ? esc(org.sector) : "",
@@ -354,6 +378,7 @@
       const hasMatches = Array.isArray(matches) && matches.length > 0;
       if (hasNote || hasMatches) {
         corpusPanel.hidden = false;
+        corpusPanel.open = true;
         possNoteEl.textContent = hasNote ? String(deskCorpus.possibilitySourcesNote) : "";
         possNoteEl.hidden = !hasNote;
         mediaWrap.innerHTML = hasMatches
@@ -439,6 +464,7 @@
     const progs = os?.programmes;
     if (progs && progs.length && progPanel && progWrap) {
       progPanel.hidden = false;
+      progPanel.open = true;
       progWrap.innerHTML = progs
         .map((pr) => {
           const ev = pr.evidence || [];
@@ -560,6 +586,78 @@
   });
 
   window.addEventListener("hashchange", () => applyRoute());
+
+  function bindCommandPalette() {
+    const dialog = $("#cmd-palette");
+    const input = $("#cmd-input");
+    const list = $("#cmd-results");
+    const openBtn = $("#cmd-open");
+    if (!dialog || !input || !list) return;
+
+    let highlight = 0;
+    let visible = [...CMD_ACTIONS];
+
+    function paintResults() {
+      list.innerHTML = visible
+        .map(
+          (a, i) =>
+            `<li><button type="button" role="option" data-cmd="${esc(a.id)}" aria-selected="${i === highlight ? "true" : "false"}"><strong>${esc(a.label)}</strong> <span class="small muted">${esc(a.hint)}</span></button></li>`
+        )
+        .join("");
+      list.querySelectorAll("button[data-cmd]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          showPage(btn.dataset.cmd);
+          dialog.close();
+        });
+      });
+    }
+
+    function openPalette() {
+      visible = [...CMD_ACTIONS];
+      highlight = 0;
+      input.value = "";
+      paintResults();
+      if (typeof dialog.showModal === "function") dialog.showModal();
+      else dialog.setAttribute("open", "");
+      requestAnimationFrame(() => input.focus());
+    }
+
+    function filterResults(q) {
+      const needle = q.trim().toLowerCase();
+      visible = needle
+        ? CMD_ACTIONS.filter(
+            (a) => a.label.toLowerCase().includes(needle) || a.hint.toLowerCase().includes(needle)
+          )
+        : [...CMD_ACTIONS];
+      highlight = 0;
+      paintResults();
+    }
+
+    openBtn?.addEventListener("click", openPalette);
+    window.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        openPalette();
+      }
+    });
+
+    input.addEventListener("input", () => filterResults(input.value));
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        highlight = Math.min(highlight + 1, Math.max(visible.length - 1, 0));
+        paintResults();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        highlight = Math.max(highlight - 1, 0);
+        paintResults();
+      } else if (e.key === "Enter" && visible[highlight]) {
+        e.preventDefault();
+        showPage(visible[highlight].id);
+        dialog.close();
+      }
+    });
+  }
 
   /* ---------- registry ---------- */
   const sectors = [...new Set(orgs.map((o) => o.sector).filter(Boolean))].sort();
@@ -886,6 +984,24 @@
     return rows.sort((a, b) => String(b.postedDate).localeCompare(String(a.postedDate)));
   }
 
+  function renderHomeStats() {
+    const el = $("#home-stats");
+    if (!el) return;
+    const postings = allPostings();
+    const hiringOrgs = orgs.filter((o) => orgHasVacancyResearch(o)).length;
+    el.innerHTML = [
+      ["Organisations", String(orgs.length)],
+      ["Indexed openings", String(postings.length)],
+      ["With vacancy research", String(hiringOrgs)],
+      ["Media stories", String(articles.length)],
+    ]
+      .map(
+        ([label, value]) =>
+          `<div class="stat"><div class="label">${esc(label)}</div><div class="value">${esc(value)}</div></div>`
+      )
+      .join("");
+  }
+
   function isAthensLoc(loc) {
     const s = String(loc || "").toLowerCase();
     if (!s) return false;
@@ -1178,12 +1294,14 @@
   $("#q-media")?.addEventListener("input", renderMedia);
 
   renderHotRail();
+  renderHomeStats();
   renderMedia();
   renderRegistry();
   renderJobs();
   renderApply();
   renderPossibility();
   bindNavOverflow();
+  bindCommandPalette();
   applyRoute();
 })();
 
