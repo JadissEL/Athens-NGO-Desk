@@ -12,13 +12,31 @@
   <meta property="og:description" content="Openings, weekly NGO media, and what life is like for workers in Greek civil society — from major hubs to islands and regional field posts." />
   <meta property="og:image" content="hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="styles.css?v=aegean-platform4" />
+  <link rel="stylesheet" href="styles.css?v=bento-mix1" />
+  <link rel="stylesheet" href="bento-upgrade.css?v=bento-mix1" />
 </head>
 <body>
-  <div class="site">
-    <div class="stage">
-      <div class="glass">
-        <header class="topnav app-bar">
+  <div class="app-frame">
+    <aside class="desk-rail" id="desk-rail" aria-label="Desk navigation">
+      <a class="desk-rail-mark" href="#overview" data-page="overview" title="Greece NGO Desk">
+        <span class="logo-mark" aria-hidden="true"></span>
+      </a>
+      <nav class="desk-rail-nav" id="desk-rail-nav">
+        <button type="button" data-page="overview" class="active" title="Home"><span class="rail-icon" aria-hidden="true">⌂</span><span class="rail-label">Home</span></button>
+        <button type="button" data-page="jobs" title="Openings"><span class="rail-icon" aria-hidden="true">◆</span><span class="rail-label">Jobs</span></button>
+        <button type="button" data-page="registry" title="Registry"><span class="rail-icon" aria-hidden="true">▦</span><span class="rail-label">NGOs</span></button>
+        <button type="button" data-page="media" title="Media"><span class="rail-icon" aria-hidden="true">☰</span><span class="rail-label">Media</span></button>
+        <button type="button" data-page="apply" title="Apply"><span class="rail-icon" aria-hidden="true">✉</span><span class="rail-label">Apply</span></button>
+        <button type="button" data-page="life" title="Life"><span class="rail-icon" aria-hidden="true">◎</span><span class="rail-label">Life</span></button>
+        <button type="button" data-page="funding" title="Fund"><span class="rail-icon" aria-hidden="true">€</span><span class="rail-label">Fund</span></button>
+      </nav>
+      <button type="button" class="desk-rail-more" id="desk-rail-more" title="More sections">⋯</button>
+    </aside>
+    <div class="desk-main">
+  <div class="site site--bento">
+    <div class="stage stage--bento">
+      <div class="glass glass--bento">
+        <header class="topnav app-bar app-bar--compact">
           <a class="logo" href="#overview" data-page="overview">
             <span class="logo-mark" aria-hidden="true"></span>
             <span class="logo-text">Greece NGO Desk</span>
@@ -58,58 +76,62 @@
         <main class="content">
       <!-- LANDING -->
       <section class="page active" id="page-overview">
-        <div class="landing-hero">
-          <div class="landing">
-            <p class="landing-brand">Greece NGO Desk</p>
-            <h1 class="landing-title">Find your place<br />in civil society.</h1>
-            <p class="landing-line">For jobseekers, funders, donors — and anyone looking for the right NGO to contact. Openings, registry, media — Greece-wide (Athens is a hub, not the border). Signposting only — not emergency or legal advice. <a href="#audiences" data-page="audiences">Who this is for</a> · <a href="#legal" data-page="legal">Legal notice</a></p>
-            <div class="landing-cta">
-              <button type="button" class="btn btn-primary" data-page="jobs">View openings</button>
-              <button type="button" class="btn" data-page="life">Life on the desk</button>
-            </div>
-            <p class="photo-credit">
-              Photo · Acropolis at golden hour —
-              <a href="https://unsplash.com/photos/yqBvJJ8jGBQ" target="_blank" rel="noopener">Constantinos Kollias</a>
-              / Unsplash
-            </p>
+        <div class="bento-hero max-content">
+          <div class="bento-hero-copy">
+            <p class="eyebrow">Greece-wide · Civic signposting</p>
+            <h1 class="bento-title">Find NGOs, roles &amp; stories that matter.</h1>
+            <p class="bento-lead">A premium desk for jobseekers, funders, donors, and anyone who needs the right organisation — not a hotline. Athens is a hub, not the border. <a href="#audiences" data-page="audiences">Audiences</a> · <a href="#legal" data-page="legal">Legal</a></p>
           </div>
-          <aside class="hot-rail" aria-label="Hottest NGO stories">
-            <div class="hot-rail-head">
-              <span>Hot this week</span>
-              <button type="button" class="hot-rail-all" data-page="media">All media →</button>
+          <form class="bento-search-dock" id="hero-search-form" autocomplete="off">
+            <p class="dock-label">Search the desk</p>
+            <div class="dock-field">
+              <label for="hero-q">Keywords</label>
+              <input id="hero-q" type="search" placeholder="Organisation, role, shelter, legal aid…" />
             </div>
-            <div class="hot-rail-stack" id="hot-rail"></div>
-          </aside>
+            <div class="dock-row">
+              <div class="dock-field">
+                <label for="hero-intent">Looking for</label>
+                <select id="hero-intent">
+                  <option value="registry">NGOs (registry)</option>
+                  <option value="jobs">Openings</option>
+                  <option value="media">Media digest</option>
+                </select>
+              </div>
+              <div class="dock-field">
+                <label for="hero-region">Region</label>
+                <select id="hero-region">
+                  <option value="">All Greece</option>
+                  <option value="athens">Athens / Attica</option>
+                  <option value="national">Greece-wide orgs</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-xl">Search desk</button>
+          </form>
         </div>
-        <div class="home-platform max-content">
-          <div class="home-stats" id="home-stats" aria-live="polite"></div>
-          <div class="audience-grid" aria-label="Start by role">
-            <article class="audience-card">
-              <h2>Jobseekers</h2>
-              <p>Openings, spontaneous CV paths, and sector context across Greece.</p>
-              <div class="audience-card-actions">
-                <button type="button" class="btn btn-primary" data-page="jobs">View openings</button>
-                <button type="button" class="btn" data-page="apply">Apply by email</button>
-              </div>
-            </article>
-            <article class="audience-card">
-              <h2>Funders &amp; donors</h2>
-              <p>Registry due diligence, media signals, and honest coverage limits.</p>
-              <div class="audience-card-actions">
-                <button type="button" class="btn btn-primary" data-page="registry">Browse registry</button>
-                <button type="button" class="btn" data-page="funding">Funding guide</button>
-              </div>
-            </article>
-            <article class="audience-card">
-              <h2>Service seekers</h2>
-              <p>Find organisations by focus and region — always verify on official sites.</p>
-              <div class="audience-card-actions">
-                <button type="button" class="btn btn-primary" data-page="registry">Find an NGO</button>
-                <button type="button" class="btn" data-page="legal">Read disclaimer</button>
-              </div>
-            </article>
-          </div>
+        <div class="bento-kpi max-content" id="home-stats" aria-live="polite"></div>
+        <div class="bento-audience max-content" aria-label="Start by role">
+          <article class="bento-tile bento-tile--mint">
+            <h2>Jobseekers</h2>
+            <p>Openings, CV paths, sector context.</p>
+            <button type="button" class="btn btn-dark" data-page="jobs">View openings</button>
+          </article>
+          <article class="bento-tile bento-tile--sand">
+            <h2>Funders &amp; donors</h2>
+            <p>Due diligence, signals, honest limits.</p>
+            <button type="button" class="btn btn-dark" data-page="registry">Browse registry</button>
+          </article>
+          <article class="bento-tile bento-tile--sky">
+            <h2>Service seekers</h2>
+            <p>Match by focus &amp; region — verify officially.</p>
+            <button type="button" class="btn btn-dark" data-page="registry">Find an NGO</button>
+          </article>
         </div>
+        <div class="bento-section-head max-content">
+          <h2>Hot this week</h2>
+          <button type="button" class="btn btn-ghost" data-page="media">All media →</button>
+        </div>
+        <div class="story-card-grid max-content" id="hot-rail" aria-label="Hottest NGO stories"></div>
       </section>
 
       <!-- MEDIA -->
@@ -553,8 +575,15 @@
         </div>
           </aside>
           <div class="workbench-main">
-        <p class="registry-summary" id="reg-count"></p>
-        <div class="table-wrap table-wrap--desk">
+        <div class="results-toolbar">
+          <p class="registry-summary" id="reg-count"></p>
+          <div class="view-toggle" role="group" aria-label="Registry view">
+            <button type="button" class="view-toggle-btn active" id="reg-view-cards" aria-pressed="true">Cards</button>
+            <button type="button" class="view-toggle-btn" id="reg-view-table" aria-pressed="false">Table</button>
+          </div>
+        </div>
+        <div class="ngo-card-grid" id="reg-card-grid"></div>
+        <div class="table-wrap table-wrap--desk reg-table-view" hidden>
           <table>
             <thead>
               <tr>
@@ -1252,6 +1281,8 @@
       </div>
     </div>
   </div>
+    </div>
+  </div>
 
   <script>
     // Live API (Render). Falls back to data.js if fetch fails.
@@ -1268,6 +1299,6 @@
       <p class="cmd-hint small muted">↑↓ to move · Enter to go · Esc to close</p>
     </form>
   </dialog>
-  <script src="app.js?v=platform3"></script>
+  <script src="app.js?v=bento-mix1"></script>
 </body>
 </html>

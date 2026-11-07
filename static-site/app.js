@@ -200,13 +200,18 @@
     $$("#mobile-dock [data-page]").forEach((b) =>
       b.classList.toggle("active", b.dataset.page === id && id !== "org-profile")
     );
-    const activeNav = document.querySelector("#nav button.active");
-    if (activeNav) revealNavButton(activeNav);
-    const stage = $(".stage");
+    $$("#desk-rail-nav [data-page], .desk-rail-mark[data-page]").forEach((b) =>
+      b.classList.toggle("active", b.dataset.page === id && id !== "org-profile")
+    );
     const bgKey = id === "org-profile" ? "org-profile" : id;
-    if (stage && STAGE_BG[bgKey]) {
+    const stage = $(".stage");
+    if (stage && stage.classList.contains("stage--bento")) {
+      stage.style.backgroundImage = "none";
+    } else if (stage && STAGE_BG[bgKey]) {
       stage.style.backgroundImage = `linear-gradient(120deg, rgba(15, 20, 25, 0.55), rgba(15, 20, 25, 0.28)), url("${STAGE_BG[bgKey]}")`;
     }
+    const activeNav = document.querySelector("#nav button.active");
+    if (activeNav) revealNavButton(activeNav);
   }
 
   /* Keep the active item inside the phone nav scroller without moving the page. */
@@ -764,10 +769,94 @@
     return `<strong>${list.length}</strong> organisation${list.length === 1 ? "" : "s"}${suffix}`;
   }
 
+  const CARD_TONES = ["mint", "sand", "sky", "coral", "lavender"];
+
+  function orgInitials(name) {
+    const parts = String(name || "")
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2);
+    return parts.map((p) => p[0]).join("").toUpperCase() || "NG";
+  }
+
+  function toneForId(id) {
+    let h = 0;
+    const s = String(id || "");
+    for (let i = 0; i < s.length; i++) h = (h + s.charCodeAt(i) * 17) % CARD_TONES.length;
+    return CARD_TONES[h];
+  }
+
+  let registryView = "cards";
+
+  function setRegistryView(mode) {
+    registryView = mode === "table" ? "table" : "cards";
+    const cards = $("#reg-card-grid");
+    const table = document.querySelector(".reg-table-view");
+    const btnCards = $("#reg-view-cards");
+    const btnTable = $("#reg-view-table");
+    if (cards) cards.hidden = registryView !== "cards";
+    if (table) table.hidden = registryView !== "table";
+    if (btnCards) {
+      btnCards.classList.toggle("active", registryView === "cards");
+      btnCards.setAttribute("aria-pressed", registryView === "cards" ? "true" : "false");
+    }
+    if (btnTable) {
+      btnTable.classList.toggle("active", registryView === "table");
+      btnTable.setAttribute("aria-pressed", registryView === "table" ? "true" : "false");
+    }
+  }
+
+  function renderRegistryCards(list) {
+    const grid = $("#reg-card-grid");
+    if (!grid) return;
+    grid.innerHTML = list
+      .map((o) => {
+        const jp = o.jobPossibility || {};
+        const jo = o.jobOpenings || {};
+        const band = jp.band || (jp.status === "scored" ? "Scored" : "Unscored");
+        const score = jp.score != null ? jp.score : "—";
+        const jobs =
+          jo.totalFound != null
+            ? `${jo.totalFound} role${jo.totalFound === 1 ? "" : "s"}`
+            : "Vacancies pending";
+        const tone = toneForId(o.id);
+        const regShort = regionLabelShort(o.scope);
+        return `<article class="ngo-card ngo-card--${tone}" data-id="${esc(o.id)}">
+          <div class="ngo-card-cap"></div>
+          <div class="ngo-card-body">
+            <span class="ngo-card-initials">${esc(orgInitials(o.name))}</span>
+            <h3><a href="#org/${esc(o.id)}" class="table-profile-link">${esc(o.name)}</a></h3>
+            <p class="ngo-card-meta">${esc(o.sector || "Sector n/a")} · ${esc(regShort)}</p>
+            <div class="ngo-card-pills">
+              <span class="pill ${bandClass(jp.band)}">${esc(typeof score === "number" ? `${score}` : band)}</span>
+              <span class="pill">${esc(jobs)}</span>
+            </div>
+            <div class="ngo-card-actions">
+              <a class="btn" href="#org/${esc(o.id)}">Profile</a>
+              <button type="button" class="btn btn-primary" data-detail="${esc(o.id)}">Detail</button>
+            </div>
+          </div>
+        </article>`;
+      })
+      .join("");
+
+    grid.querySelectorAll("[data-detail]").forEach((btn) => {
+      btn.addEventListener("click", () => openOrgSheet(btn.dataset.detail));
+    });
+    grid.querySelectorAll(".table-profile-link").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = link.getAttribute("href")?.replace("#org/", "");
+        if (id) openOrgProfile(id);
+      });
+    });
+  }
+
   function renderRegistry() {
     const list = filteredOrgs().sort((a, b) => a.name.localeCompare(b.name));
     const countEl = $("#reg-count");
     if (countEl) countEl.innerHTML = registrySummaryLine(list);
+    renderRegistryCards(list);
     $("#reg-body").innerHTML = list
       .map((o) => {
         const jp = o.jobPossibility || {};
@@ -1214,16 +1303,19 @@
     const rail = $("#hot-rail");
     if (!rail) return;
     const week = mediaMeta.weekLabel ? ` · ${mediaMeta.weekLabel}` : "";
-    const headSpan = $(".hot-rail-head span");
-    if (headSpan) headSpan.textContent = `Hot this week${week}`;
+    const headH2 = document.querySelector(".bento-section-head h2");
+    if (headH2) headH2.textContent = `Hot this week${week}`;
 
+    const tones = CARD_TONES;
     rail.innerHTML = hotArticles()
       .map(
         (a, i) => `
-      <button type="button" class="hot-card" data-media-id="${esc(a.id)}" style="animation-delay:${i * 0.08}s">
-        <span class="hot-card-date">${esc(formatMediaDate(a.date))}</span>
-        <span class="hot-card-title">${esc(a.title)}</span>
-        <span class="hot-card-dek">${esc(a.dek || "")}</span>
+      <button type="button" class="story-card story-card--${tones[i % tones.length]}" data-media-id="${esc(a.id)}">
+        <div class="story-card-cap"><span class="story-card-date">${esc(formatMediaDate(a.date))}</span></div>
+        <div class="story-card-body">
+          <span class="story-card-title">${esc(a.title)}</span>
+          <span class="story-card-dek">${esc(a.dek || "")}</span>
+        </div>
       </button>`
       )
       .join("");
@@ -1292,6 +1384,34 @@
   }
 
   $("#q-media")?.addEventListener("input", renderMedia);
+
+  document.body.classList.add("desk-bento");
+  setRegistryView("cards");
+  $("#reg-view-cards")?.addEventListener("click", () => setRegistryView("cards"));
+  $("#reg-view-table")?.addEventListener("click", () => setRegistryView("table"));
+  $("#desk-rail-more")?.addEventListener("click", () => showPage("possibility"));
+  $("#hero-search-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const intent = $("#hero-intent")?.value || "registry";
+    const q = ($("#hero-q")?.value || "").trim();
+    const region = $("#hero-region")?.value || "";
+    showPage(intent);
+    requestAnimationFrame(() => {
+      if (intent === "registry") {
+        if ($("#q-reg")) $("#q-reg").value = q;
+        if (region && $("#f-region")) $("#f-region").value = region;
+        renderRegistry();
+      } else if (intent === "jobs") {
+        if ($("#q-jobs")) $("#q-jobs").value = q;
+        if (region === "athens" && $("#f-jobs-region")) $("#f-jobs-region").value = "athens";
+        else if (region && $("#f-jobs-region")) $("#f-jobs-region").value = "all";
+        renderJobs();
+      } else if (intent === "media" && $("#q-media")) {
+        $("#q-media").value = q;
+        renderMedia();
+      }
+    });
+  });
 
   renderHotRail();
   renderHomeStats();
