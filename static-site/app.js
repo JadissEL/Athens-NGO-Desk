@@ -523,14 +523,11 @@
       .join("");
 
     const refs = os?.references;
-    const refsPanel = $("#org-profile-refs-panel");
     const refsUl = $("#org-profile-refs");
-    if (refs && refs.length && refsPanel && refsUl) {
-      refsPanel.hidden = false;
+    if (refs && refs.length && refsUl) {
       refsUl.innerHTML = renderReferencesGrouped(refs);
-    } else if (refsPanel) {
-      refsPanel.hidden = true;
-      if (refsUl) refsUl.innerHTML = "";
+    } else if (refsUl) {
+      refsUl.innerHTML = "";
     }
 
     const scoreLabel =
@@ -567,7 +564,47 @@
       .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${ddHtml(v)}</dd>`)
       .join("");
 
+    const idName = $("#org-identity-name");
+    const idSub = $("#org-identity-sub");
+    const idQuick = $("#org-identity-quick");
+    const idWrap = $("#org-identity-logo-wrap");
+    const idImg = $("#org-identity-logo");
+    if (idName) idName.textContent = displayName;
+    if (idSub) idSub.innerHTML = $("#org-profile-sub").innerHTML;
+    if (idQuick) {
+      const links = $("#org-profile-links").innerHTML;
+      idQuick.innerHTML = links ? `<ul class="link-stack">${links}</ul>` : "";
+    }
+    if (idImg && idWrap && img && img.src && !wrap.hidden) {
+      idWrap.hidden = false;
+      idImg.src = img.src;
+      idImg.alt = img.alt;
+    } else if (idWrap) {
+      idWrap.hidden = true;
+    }
+    const foldRefs = $("#fold-refs");
+    if (foldRefs) foldRefs.hidden = !(refs && refs.length);
+    setOrgTab("overview");
+
     window.scrollTo(0, 0);
+  }
+
+  function setOrgTab(tab) {
+    $$("#org-tabs [data-org-tab]").forEach((btn) => {
+      const on = btn.dataset.orgTab === tab;
+      btn.classList.toggle("active", on);
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    $$(".profile-fold[data-org-panel]").forEach((el) => {
+      el.hidden = el.dataset.orgPanel !== tab;
+    });
+  }
+
+  if (!$("#org-tabs")?.dataset.bound) {
+    $("#org-tabs").dataset.bound = "1";
+    $$("#org-tabs [data-org-tab]").forEach((btn) => {
+      btn.addEventListener("click", () => setOrgTab(btn.dataset.orgTab));
+    });
   }
 
   function applyRoute() {
@@ -1111,6 +1148,110 @@
     return Number.isFinite(t) ? t : null;
   }
 
+  let lastJobRows = [];
+  let jobsView = "cards";
+
+  function setJobsView(mode) {
+    jobsView = mode === "table" ? "table" : "cards";
+    const cards = $("#jobs-card-grid");
+    const table = document.querySelector(".jobs-table-view");
+    const btnCards = $("#jobs-view-cards");
+    const btnTable = $("#jobs-view-table");
+    if (cards) cards.hidden = jobsView !== "cards";
+    if (table) table.hidden = jobsView !== "table";
+    if (btnCards) {
+      btnCards.classList.toggle("active", jobsView === "cards");
+      btnCards.setAttribute("aria-pressed", jobsView === "cards" ? "true" : "false");
+    }
+    if (btnTable) {
+      btnTable.classList.toggle("active", jobsView === "table");
+      btnTable.setAttribute("aria-pressed", jobsView === "table" ? "true" : "false");
+    }
+  }
+
+  function openJobDrawer(index) {
+    const r = lastJobRows[index];
+    if (!r) return;
+    const dialog = $("#job-drawer");
+    if (!dialog) return;
+    $("#job-drawer-title").textContent = r.title || "Opening";
+    $("#job-drawer-org").innerHTML = `<a href="#org/${esc(r.orgId)}">${esc(r.org)}</a> · ${esc(
+      orgSectorById[r.orgId] || ""
+    )}`;
+    $("#job-drawer-facts").innerHTML = [
+      ["Posted", r.postedDate || "—"],
+      ["Deadline", r.deadline || "—"],
+      ["Location", r.location || "—"],
+      ["Type", r.kind || "—"],
+    ]
+      .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`)
+      .join("");
+    $("#job-drawer-dek").textContent = r.location
+      ? `Based in ${r.location}. Confirm details on the employer site before applying.`
+      : "";
+    $("#job-drawer-actions").innerHTML = [
+      r.url
+        ? `<a class="btn btn-primary" href="${esc(r.url)}" target="_blank" rel="noopener">Apply on site</a>`
+        : "",
+      `<button type="button" class="btn" data-page="apply">Spontaneous CV</button>`,
+      `<a class="btn" href="#org/${esc(r.orgId)}">Org profile</a>`,
+    ]
+      .filter(Boolean)
+      .join("");
+    $$("#job-drawer-actions [data-page]").forEach((b) =>
+      b.addEventListener("click", () => {
+        dialog.close();
+        showPage(b.dataset.page);
+      })
+    );
+    if (typeof dialog.showModal === "function") dialog.showModal();
+    else dialog.setAttribute("open", "");
+  }
+
+  function renderJobCards(rows) {
+    const grid = $("#jobs-card-grid");
+    if (!grid) return;
+    const now = Date.now();
+    grid.innerHTML = rows
+      .map((r, i) => {
+        const tone = toneForId(r.orgId);
+        const dl = parseDeadline(r.deadline);
+        const urgent = dl && dl >= now && dl - now < 14 * 86400000;
+        return `<article class="ngo-card job-card ngo-card--${tone}">
+          <div class="ngo-card-cap"></div>
+          <div class="ngo-card-body">
+            <span class="ngo-card-initials">${esc(orgInitials(r.org))}</span>
+            <h3>${esc(r.title)}</h3>
+            <p class="ngo-card-meta"><a href="#org/${esc(r.orgId)}" class="table-profile-link">${esc(r.org)}</a> · ${esc(r.location || "Greece")}</p>
+            <div class="ngo-card-pills">
+              ${r.kind ? `<span class="pill">${esc(r.kind)}</span>` : ""}
+              ${r.postedDate ? `<span class="pill">Posted ${esc(r.postedDate)}</span>` : ""}
+              ${urgent ? `<span class="pill pill-urgent">Deadline ${esc(r.deadline)}</span>` : r.deadline ? `<span class="pill">${esc(r.deadline)}</span>` : ""}
+            </div>
+            <div class="ngo-card-actions">
+              <button type="button" class="btn" data-job-idx="${i}">Details</button>
+              ${
+                r.url
+                  ? `<a class="btn btn-primary" href="${esc(r.url)}" target="_blank" rel="noopener">Apply</a>`
+                  : `<button type="button" class="btn btn-primary" data-job-idx="${i}">Details</button>`
+              }
+            </div>
+          </div>
+        </article>`;
+      })
+      .join("");
+    grid.querySelectorAll("[data-job-idx]").forEach((btn) => {
+      btn.addEventListener("click", () => openJobDrawer(Number(btn.dataset.jobIdx)));
+    });
+    grid.querySelectorAll(".table-profile-link").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = link.getAttribute("href")?.replace("#org/", "");
+        if (id) openOrgProfile(id);
+      });
+    });
+  }
+
   function renderJobs() {
     const q = ($("#q-jobs").value || "").trim().toLowerCase();
     const region = $("#f-jobs-region")?.value || "all";
@@ -1129,6 +1270,12 @@
         [r.org, r.title, r.location, r.kind, orgSectorById[r.orgId]].join(" ").toLowerCase().includes(q)
       );
     }
+    lastJobRows = rows;
+    const countEl = $("#jobs-result-count");
+    if (countEl) {
+      countEl.innerHTML = `<strong>${rows.length}</strong> opening${rows.length === 1 ? "" : "s"}`;
+    }
+    renderJobCards(rows);
 
     const now = Date.now();
     const soon = rows
@@ -1214,7 +1361,8 @@
       return String(a.name).localeCompare(String(b.name));
     });
     $("#apply-emails").innerHTML = ranked
-      .map((c) => {
+      .map((c, i) => {
+        const tone = toneForId(c.orgId || String(i));
         const mail = c.email
           ? `<a class="email-link" href="mailto:${esc(c.email)}?subject=${encodeURIComponent(
               "Spontaneous application — Greece NGO Desk"
@@ -1222,32 +1370,53 @@
           : c.applyUrl
             ? `<a href="${esc(c.applyUrl)}" target="_blank" rel="noopener">Apply via ATS</a>`
             : "—";
-        return `<article class="email-card${c.email ? "" : " email-card--ats"}">
-          <h3>${esc(c.name)}</h3>
-          <div class="email-kind">${esc(c.kind || "")}</div>
-          <div class="email-addr">${mail}</div>
-          ${c.note ? `<p class="small muted">${esc(c.note)}</p>` : ""}
+        const profile =
+          c.orgId ? `<a class="btn" href="#org/${esc(c.orgId)}">Profile</a>` : "";
+        return `<article class="ngo-card ngo-card--${tone}">
+          <div class="ngo-card-cap"></div>
+          <div class="ngo-card-body">
+            <span class="ngo-card-initials">${esc(orgInitials(c.name))}</span>
+            <h3>${esc(c.name)}</h3>
+            <p class="ngo-card-meta">${esc(c.kind || "Contact")}</p>
+            <div class="ngo-card-pills">${c.email ? `<span class="pill">Email</span>` : `<span class="pill">ATS</span>`}</div>
+            <div class="email-addr">${mail}</div>
+            ${c.note ? `<p class="small muted">${esc(c.note)}</p>` : ""}
+            <div class="ngo-card-actions">
+              ${profile}
+              ${c.email ? `<a class="btn btn-primary email-link" href="mailto:${esc(c.email)}?subject=${encodeURIComponent("Spontaneous application — Greece NGO Desk")}">Send CV</a>` : ""}
+            </div>
+          </div>
         </article>`;
       })
       .join("");
+    $$("#apply-emails a[href^='#org/']").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = link.getAttribute("href")?.replace("#org/", "");
+        if (id) openOrgProfile(id);
+      });
+    });
   }
 
   /* ---------- possibility ---------- */
   function renderPossibility() {
     const ranked = [...possibility].sort((a, b) => b.score - a.score);
-    $("#poss-chart").innerHTML = ranked
-      .map(
-        (o) => `
-      <div class="chart-row">
-        <div>${esc(o.name)}</div>
-        <div class="bar"><i style="width:${o.score}%"></i></div>
-        <div class="n">${o.score}</div>
-      </div>`
-      )
-      .join("");
+    const chartEl = $("#poss-chart");
+    if (chartEl) {
+      chartEl.innerHTML = ranked
+        .slice(0, 4)
+        .map(
+          (o) =>
+            `<div class="stat"><div class="label">${esc(o.name)}</div><div class="value">${esc(o.score)}</div></div>`
+        )
+        .join("");
+    }
 
+    const orgByPossId = Object.fromEntries(orgs.map((o) => [o.id, o]));
     $("#poss-cards").innerHTML = ranked
-      .map((o) => {
+      .map((o, i) => {
+        const org = orgByPossId[o.id];
+        const tone = toneForId(o.id || String(i));
         const staff =
           o.staff?.estimate != null
             ? `${o.staff.estimate}${o.staff.year ? ` (${o.staff.year})` : ""}`
@@ -1257,17 +1426,33 @@
           (o.beneficiariesDependents?.estimate != null
             ? String(o.beneficiariesDependents.estimate)
             : "—");
-        const roles = (o.bestFitRoles || []).map((r) => `<li>${esc(r)}</li>`).join("");
-        return `<article class="card">
-          <h3>${esc(o.name)} <span class="pill ${bandClass(o.possibility)}">${esc(o.score)} · ${esc(o.possibility)}</span></h3>
-          <div class="meta">Staff: ${esc(staff)} · Dependents / people served: ${esc(deps)}</div>
-          <div class="score-bar" title="Score ${o.score}"><span style="width:${o.score}%"></span></div>
-          <p class="small muted" style="margin:0.75rem 0">${esc(o.why)}</p>
-          <ul>${roles}</ul>
-          <p class="small muted">Public posts indexed: ${esc(o.hiringSignal?.publicPostingsIndexed ?? "—")} · Last: ${esc(o.hiringSignal?.lastPublicPost || "—")}</p>
+        const name = org?.name || o.name;
+        return `<article class="ngo-card ngo-card--${tone}">
+          <div class="ngo-card-cap"></div>
+          <div class="ngo-card-body">
+            <span class="ngo-card-initials">${esc(orgInitials(name))}</span>
+            <h3>${org ? `<a href="#org/${esc(o.id)}" class="table-profile-link">${esc(name)}</a>` : esc(name)}</h3>
+            <div class="ngo-card-pills">
+              <span class="pill ${bandClass(o.possibility)}">${esc(o.score)} · ${esc(o.possibility)}</span>
+            </div>
+            <p class="ngo-card-meta">Staff: ${esc(staff)} · People: ${esc(deps)}</p>
+            <div class="score-bar" title="Score ${o.score}"><span style="width:${o.score}%"></span></div>
+            <p class="small muted">${esc(o.why)}</p>
+            <div class="ngo-card-actions">
+              ${org ? `<a class="btn btn-primary" href="#org/${esc(o.id)}">Profile</a>` : ""}
+              <button type="button" class="btn" data-page="jobs">Openings</button>
+            </div>
+          </div>
         </article>`;
       })
       .join("");
+    $$("#poss-cards .table-profile-link, #poss-cards a[href^='#org/']").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = link.getAttribute("href")?.replace("#org/", "");
+        if (id) openOrgProfile(id);
+      });
+    });
   }
 
   $$("[data-scroll]").forEach((btn) => {
@@ -1354,15 +1539,16 @@
     const feed = $("#media-feed");
     if (!feed) return;
     feed.innerHTML = list
-      .map((a) => {
+      .map((a, i) => {
         const tags = (a.tags || []).map((t) => `<span class="media-tag">${esc(t)}</span>`).join("");
-        const paras = (a.body || []).map((p) => `<p>${esc(p)}</p>`).join("");
+        const paras = (a.body || []).slice(0, 3).map((p) => `<p>${esc(p)}</p>`).join("");
+        const tone = CARD_TONES[i % CARD_TONES.length];
         return `
-        <article class="media-article" id="article-${esc(a.id)}">
-          <div class="media-article-media">
-            <img src="${esc(a.image || "img/athens-agora.jpg")}" alt="${esc(a.imageAlt || a.title)}" loading="lazy" width="900" height="600" />
+        <article class="ngo-card media-feed-card ngo-card--${tone}" id="article-${esc(a.id)}">
+          <div class="media-feed-card-img">
+            <img src="${esc(a.image || "img/athens-agora.jpg")}" alt="${esc(a.imageAlt || a.title)}" loading="lazy" />
           </div>
-          <div class="media-article-body">
+          <div class="ngo-card-body">
             <div class="media-article-meta">
               <time datetime="${esc(a.date)}">${esc(formatMediaDate(a.date))}</time>
               ${a.hot ? `<span class="media-hot">Hot</span>` : ""}
@@ -1372,11 +1558,13 @@
             <p class="media-dek">${esc(a.dek || "")}</p>
             <div class="media-copy">${paras}</div>
             <div class="media-tags">${tags}</div>
-            ${
-              a.sourceUrl
-                ? `<a class="btn" href="${esc(a.sourceUrl)}" target="_blank" rel="noopener">Read source ↗</a>`
-                : ""
-            }
+            <div class="ngo-card-actions">
+              ${
+                a.sourceUrl
+                  ? `<a class="btn btn-primary" href="${esc(a.sourceUrl)}" target="_blank" rel="noopener">Read source ↗</a>`
+                  : ""
+              }
+            </div>
           </div>
         </article>`;
       })
@@ -1387,8 +1575,11 @@
 
   document.body.classList.add("desk-bento");
   setRegistryView("cards");
+  setJobsView("cards");
   $("#reg-view-cards")?.addEventListener("click", () => setRegistryView("cards"));
   $("#reg-view-table")?.addEventListener("click", () => setRegistryView("table"));
+  $("#jobs-view-cards")?.addEventListener("click", () => setJobsView("cards"));
+  $("#jobs-view-table")?.addEventListener("click", () => setJobsView("table"));
   $("#desk-rail-more")?.addEventListener("click", () => showPage("possibility"));
   $("#hero-search-form")?.addEventListener("submit", (e) => {
     e.preventDefault();

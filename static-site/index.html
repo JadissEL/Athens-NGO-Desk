@@ -12,8 +12,8 @@
   <meta property="og:description" content="Openings, weekly NGO media, and what life is like for workers in Greek civil society — from major hubs to islands and regional field posts." />
   <meta property="og:image" content="hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="styles.css?v=bento-mix1" />
-  <link rel="stylesheet" href="bento-upgrade.css?v=bento-mix1" />
+  <link rel="stylesheet" href="styles.css?v=bento-mix2" />
+  <link rel="stylesheet" href="bento-upgrade.css?v=bento-mix2" />
 </head>
 <body>
   <div class="app-frame">
@@ -140,17 +140,14 @@
           <h1>Media</h1>
           <p id="media-week-label">Weekly NGO digest for Greece civil society.</p>
         </div>
-        <figure class="page-visual">
-          <img src="img/athens-agora.jpg" alt="Acropolis of Athens" width="1800" height="700" loading="lazy" />
-        </figure>
-        <div class="media-toolbar">
+        <div class="media-toolbar max-content">
           <p class="media-intro" id="media-intro"></p>
           <div class="field">
             <label for="q-media">Filter</label>
             <input id="q-media" type="search" placeholder="METAdrasi, hiring, AMIF…" />
           </div>
         </div>
-        <div class="media-feed" id="media-feed"></div>
+        <div class="ngo-card-grid media-card-grid max-content" id="media-feed"></div>
         <p class="small muted" id="media-disclaimer"></p>
       </section>
 
@@ -436,81 +433,94 @@
           <span class="breadcrumb-sep" aria-hidden="true">/</span>
           <span id="org-breadcrumb-name">Organisation</span>
         </nav>
-        <div class="page-header org-profile-header">
-          <div class="org-profile-title-row">
-            <div class="org-profile-logo-wrap" id="org-profile-logo-wrap" hidden>
-              <img id="org-profile-logo" src="" alt="" width="120" height="120" loading="lazy" referrerpolicy="no-referrer" />
-            </div>
-            <div>
-              <h1 id="org-profile-name">Organisation</h1>
-              <p class="org-profile-sub" id="org-profile-sub"></p>
-            </div>
-          </div>
-          <p class="small muted" id="org-profile-conflict"></p>
+        <p class="small muted max-content" id="org-profile-conflict"></p>
+        <h1 class="visually-hidden" id="org-profile-name">Organisation</h1>
+        <p class="visually-hidden org-profile-sub" id="org-profile-sub"></p>
+        <div class="org-profile-logo-wrap" id="org-profile-logo-wrap" hidden aria-hidden="true">
+          <img id="org-profile-logo" src="" alt="" width="1" height="1" loading="lazy" referrerpolicy="no-referrer" />
         </div>
-        <figure class="page-visual">
-          <img src="img/athens-agora.jpg" alt="Athens" width="1800" height="700" loading="lazy" />
-        </figure>
-        <p class="callout warn" id="org-profile-osint-banner">
+        <p class="callout warn max-content" id="org-profile-osint-banner">
           OSINT profile: synthesized from public sources and this desk&rsquo;s registry — not exhaustive. Verify on official sites.
         </p>
-        <div class="org-profile-layout max-content">
+        <div class="org-desk max-content">
+          <aside class="org-identity-card" id="org-identity-card">
+            <div class="org-profile-logo-wrap org-identity-logo" id="org-identity-logo-wrap" hidden>
+              <img id="org-identity-logo" src="" alt="" width="96" height="96" loading="lazy" referrerpolicy="no-referrer" />
+            </div>
+            <p class="org-identity-eyebrow">Organisation profile</p>
+            <h2 class="org-identity-name" id="org-identity-name"></h2>
+            <p class="org-identity-sub" id="org-identity-sub"></p>
+            <div class="org-identity-actions">
+              <button type="button" class="btn btn-primary" data-page="apply">Send a CV</button>
+              <button type="button" class="btn" data-page="registry">&larr; Registry</button>
+            </div>
+            <div class="org-identity-links" id="org-identity-quick"></div>
+          </aside>
+          <div class="org-desk-main">
+            <nav class="org-tabs" id="org-tabs" role="tablist" aria-label="Profile sections">
+              <button type="button" role="tab" class="active" data-org-tab="overview" aria-selected="true">Overview</button>
+              <button type="button" role="tab" data-org-tab="mission" aria-selected="false">Mission</button>
+              <button type="button" role="tab" data-org-tab="jobs" aria-selected="false">Jobs</button>
+              <button type="button" role="tab" data-org-tab="desk" aria-selected="false">Desk data</button>
+              <button type="button" role="tab" data-org-tab="refs" aria-selected="false">Sources</button>
+            </nav>
+        <div class="org-profile-layout org-profile-layout--desk">
           <div class="org-profile-main">
-            <details class="profile-fold" open>
+            <details class="profile-fold" id="fold-overview" open data-org-panel="overview">
               <summary>Overview</summary>
               <div class="profile-fold-body">
                 <p id="org-profile-narrative"></p>
               </div>
             </details>
-            <details class="profile-fold" id="org-profile-desk-corpus-panel" hidden>
+            <details class="profile-fold" id="org-profile-desk-corpus-panel" hidden data-org-panel="overview">
               <summary>Desk corpus &amp; digest (OSINT)</summary>
               <div class="profile-fold-body">
                 <p class="small muted" id="org-profile-possibility-note"></p>
                 <div id="org-profile-media-matches"></div>
               </div>
             </details>
-            <details class="profile-fold" open>
+            <details class="profile-fold" id="fold-mission" open data-org-panel="mission">
               <summary>Mission &amp; focus</summary>
               <div class="profile-fold-body">
                 <dl class="fact-dl" id="org-profile-mission"></dl>
               </div>
             </details>
-            <details class="profile-fold" open>
+            <details class="profile-fold" id="fold-employment" open data-org-panel="jobs">
               <summary>Employment signals (public)</summary>
               <div class="profile-fold-body">
                 <dl class="fact-dl" id="org-profile-employment"></dl>
               </div>
             </details>
-            <details class="profile-fold">
+            <details class="profile-fold" id="fold-method" data-org-panel="desk">
               <summary>Methodology &amp; verification</summary>
               <div class="profile-fold-body">
                 <dl class="fact-dl" id="org-profile-method"></dl>
               </div>
             </details>
-            <details class="profile-fold" id="org-profile-programmes-panel" hidden>
+            <details class="profile-fold" id="org-profile-programmes-panel" hidden data-org-panel="desk">
               <summary>Programmes (with evidence)</summary>
               <div class="profile-fold-body">
                 <div id="org-profile-programmes"></div>
               </div>
             </details>
+            <details class="profile-fold" id="fold-desk" open data-org-panel="desk">
+              <summary>On this desk</summary>
+              <div class="profile-fold-body">
+                <dl class="fact-dl" id="org-profile-desk"></dl>
+              </div>
+            </details>
+            <details class="profile-fold" id="fold-refs" data-org-panel="refs">
+              <summary>References &amp; sources</summary>
+              <div class="profile-fold-body">
+                <div id="org-profile-refs-panel">
+                  <div id="org-profile-refs" class="refs-grouped"></div>
+                </div>
+              </div>
+            </details>
+            <ul class="link-stack visually-hidden" id="org-profile-links" aria-hidden="true"></ul>
           </div>
-          <aside class="org-profile-aside">
-            <div class="profile-aside-card">
-              <h2>Quick links</h2>
-              <ul class="link-stack" id="org-profile-links"></ul>
-            </div>
-            <div class="profile-aside-card" id="org-profile-refs-panel" hidden>
-              <h2>References</h2>
-              <div id="org-profile-refs" class="refs-grouped"></div>
-            </div>
-            <div class="profile-aside-card">
-              <h2>On this desk</h2>
-              <dl class="fact-dl" id="org-profile-desk"></dl>
-            </div>
-            <p class="small muted" id="org-profile-back">
-              <button type="button" class="btn" data-page="registry">&larr; Back to registry</button>
-            </p>
-          </aside>
+        </div>
+          </div>
         </div>
       </section>
 
@@ -657,7 +667,15 @@
         </div>
           </aside>
           <div class="workbench-main">
-        <div class="table-wrap table-wrap--desk">
+        <div class="results-toolbar">
+          <p class="registry-summary" id="jobs-result-count"></p>
+          <div class="view-toggle" role="group" aria-label="Openings view">
+            <button type="button" class="view-toggle-btn active" id="jobs-view-cards" aria-pressed="true">Cards</button>
+            <button type="button" class="view-toggle-btn" id="jobs-view-table" aria-pressed="false">Table</button>
+          </div>
+        </div>
+        <div class="ngo-card-grid job-card-grid" id="jobs-card-grid"></div>
+        <div class="table-wrap table-wrap--desk jobs-table-view" hidden>
           <table>
             <thead>
               <tr>
@@ -678,14 +696,11 @@
 
       <!-- APPLY / SPONTANEOUS EMAILS -->
       <section class="page" id="page-apply">
-        <div class="page-header">
+        <div class="page-header max-content">
           <h1>Spontaneous candidature</h1>
           <p id="apply-tip">Send CV + short letter when no matching vacancy is posted.</p>
         </div>
-        <figure class="page-visual page-visual--faces">
-          <img src="img/community.jpg" alt="Volunteers distributing aid at a community station" width="1800" height="700" loading="lazy" />
-        </figure>
-        <div class="email-grid" id="apply-emails"></div>
+        <div class="ngo-card-grid max-content" id="apply-emails"></div>
       </section>
 
       <!-- POSSIBILITY -->
@@ -697,17 +712,11 @@
             beneficiaries / programme dependents 20%.
           </p>
         </div>
-        <figure class="page-visual page-visual--team">
-          <img src="img/planning.jpg" alt="Team collaborating around a table" width="1600" height="900" loading="lazy" />
-        </figure>
-        <div class="callout warn">
+        <div class="callout warn max-content">
           Score = opportunity volume, not probability of getting an offer. NGO roles in Greece are competitive.
         </div>
-        <div class="panel">
-          <h2>Ranked scores</h2>
-          <div class="chart" id="poss-chart"></div>
-        </div>
-        <div class="cards" id="poss-cards"></div>
+        <div class="bento-kpi max-content" id="poss-chart"></div>
+        <div class="ngo-card-grid max-content" id="poss-cards"></div>
       </section>
 
       <!-- CREATE NGO -->
@@ -1291,6 +1300,18 @@
   </script>
   <script src="data.js"></script>
   <script src="data_loader.js"></script>
+  <dialog class="job-drawer" id="job-drawer" aria-label="Opening details">
+    <form method="dialog" class="job-drawer-inner">
+      <header class="job-drawer-head">
+        <h2 id="job-drawer-title">Role</h2>
+        <button type="submit" class="btn job-drawer-close" aria-label="Close">Close</button>
+      </header>
+      <p class="job-drawer-org" id="job-drawer-org"></p>
+      <dl class="fact-dl job-drawer-facts" id="job-drawer-facts"></dl>
+      <p class="job-drawer-dek" id="job-drawer-dek"></p>
+      <div class="job-drawer-actions" id="job-drawer-actions"></div>
+    </form>
+  </dialog>
   <dialog class="cmd-palette" id="cmd-palette" aria-label="Search desk">
     <form method="dialog" class="cmd-form" id="cmd-form">
       <label class="visually-hidden" for="cmd-input">Search pages and actions</label>
@@ -1299,6 +1320,6 @@
       <p class="cmd-hint small muted">↑↓ to move · Enter to go · Esc to close</p>
     </form>
   </dialog>
-  <script src="app.js?v=bento-mix1"></script>
+  <script src="app.js?v=bento-mix2"></script>
 </body>
 </html>

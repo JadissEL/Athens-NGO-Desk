@@ -577,3 +577,205 @@ body.desk-bento.is-landing .stage {
   font-size: 0.78rem;
   border-radius: 10px;
 }
+
+.job-card-grid {
+  margin-bottom: 1rem;
+}
+
+.pill-urgent {
+  color: var(--sun);
+  border-color: rgba(217, 119, 54, 0.45);
+  background: var(--sun-soft);
+}
+
+.media-card-grid {
+  margin-bottom: 2rem;
+}
+
+.media-feed-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.media-feed-card-img {
+  min-height: 180px;
+  background: #1a222c;
+}
+
+.media-feed-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  min-height: 180px;
+}
+
+.media-feed-card .ngo-card-body {
+  padding: 1.1rem 1.2rem;
+}
+
+.media-feed-card h2 {
+  font-family: var(--ui);
+  font-size: 1.15rem;
+  margin: 0.35rem 0;
+}
+
+@media (max-width: 767px) {
+  .media-feed-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Org profile — HR-style split */
+.org-desk {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .org-desk {
+    grid-template-columns: 300px minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.org-identity-card {
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  box-shadow: 0 16px 40px rgba(15, 45, 45, 0.08);
+  position: sticky;
+  top: 4.5rem;
+}
+
+.org-identity-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 0 0 0.35rem;
+}
+
+.org-identity-name {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  margin: 0 0 0.35rem;
+  line-height: 1.2;
+}
+
+.org-identity-sub {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.85rem;
+}
+
+.org-identity-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.org-identity-links .link-stack {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.org-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+  padding: 0.25rem;
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.org-tabs button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.org-tabs button.active {
+  background: var(--ink-deep);
+  color: #fff;
+}
+
+.org-profile-layout--desk {
+  display: block;
+}
+
+.org-profile-layout--desk .org-profile-main {
+  max-width: none;
+}
+
+/* Job detail drawer */
+.job-drawer {
+  border: 0;
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+  margin: 0 0 0 auto;
+  max-width: min(420px, 100vw);
+  width: 100%;
+  min-height: 100dvh;
+  padding: 0;
+  box-shadow: -12px 0 40px rgba(15, 45, 45, 0.15);
+}
+
+.job-drawer::backdrop {
+  background: rgba(10, 30, 30, 0.35);
+}
+
+.job-drawer-inner {
+  padding: 1.25rem;
+  height: 100%;
+}
+
+.job-drawer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.job-drawer-head h2 {
+  font-family: var(--ui);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Guide pages → card surfaces */
+#page-life .panel,
+#page-create .panel,
+#page-funding .panel,
+#page-audiences .panel,
+#page-legal .panel {
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 28px rgba(15, 45, 45, 0.06);
+  margin-bottom: 0.85rem;
+  padding: 1.1rem 1.2rem;
+}
+
+#page-life .callout,
+#page-create .callout,
+#page-funding .callout {
+  border-radius: var(--radius-xl);
+}
