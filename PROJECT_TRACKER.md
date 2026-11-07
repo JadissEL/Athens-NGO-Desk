@@ -19,6 +19,7 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_REN
 
 | Date | Action |
 |------|--------|
+| 2026-11-07 | **Jobs rail + guides polish:** commit `14287fb` — **Soon** deadline chips open detail pane (+ Apply ↗ link); selection scroll-into-view; possibility card clicks; Create/Fund step cards; `bento-mix5`. |
 | 2026-11-07 | **Table + detail pane:** commit `67fd4cb` — jobs/registry **table inside split**; row click + highlight; drawer only on mobile; Vercel secrets table in deploy doc; `bento-mix4`. |
 | 2026-11-07 | **Workbench master–detail (desktop):** commit `19caf5b` — jobs **split pane** (card list + sticky detail; drawer on mobile), registry **side sheet** in grid, selected-card chrome, Life **guide-day** cards; cache `bento-mix3`. |
 | 2026-11-07 | **Bento card system (site-wide):** commit `524aa5c` — registry/jobs **Cards↔Table** toggles, **job detail drawer**, apply/media/possibility **ngo-card** grids, org profile **HR split** (identity aside + tabbed folds), guide panels card surfaces; live **GitHub Pages** (`bento-mix2` cache busters). |
