@@ -19,6 +19,7 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_REN
 
 | Date | Action |
 |------|--------|
+| 2026-11-07 | **Table + detail pane:** commit `67fd4cb` — jobs/registry **table inside split**; row click + highlight; drawer only on mobile; Vercel secrets table in deploy doc; `bento-mix4`. |
 | 2026-11-07 | **Workbench master–detail (desktop):** commit `19caf5b` — jobs **split pane** (card list + sticky detail; drawer on mobile), registry **side sheet** in grid, selected-card chrome, Life **guide-day** cards; cache `bento-mix3`. |
 | 2026-11-07 | **Bento card system (site-wide):** commit `524aa5c` — registry/jobs **Cards↔Table** toggles, **job detail drawer**, apply/media/possibility **ngo-card** grids, org profile **HR split** (identity aside + tabbed folds), guide panels card surfaces; live **GitHub Pages** (`bento-mix2` cache busters). |
 | 2026-11-07 | **Stitch + platform UX (v2 shipped):** commit `f03d64f` —  workbench **280px filter rails** (registry/jobs), **sticky scroll tables**, org profile **accordion folds** + sticky aside, **mobile dock** (&lt;768px only), platform content width on long-form pages, primary button + chip critic pass. Stitch project `14677559256789528548` (screens may finish async in UI). |
