@@ -596,7 +596,9 @@
       btn.setAttribute("aria-selected", on ? "true" : "false");
     });
     $$(".profile-fold[data-org-panel]").forEach((el) => {
-      el.hidden = el.dataset.orgPanel !== tab;
+      const show = el.dataset.orgPanel === tab;
+      el.hidden = !show;
+      if (show && el.tagName === "DETAILS") el.open = true;
     });
   }
 
