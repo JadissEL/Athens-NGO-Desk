@@ -1289,6 +1289,13 @@
     if (empty) empty.hidden = true;
     body.hidden = false;
     fillJobDetail(r, "job-pane");
+    requestAnimationFrame(() => {
+      const target =
+        jobsView === "table"
+          ? $(`#jobs-body tr[data-job-idx="${index}"]`)
+          : $(`#jobs-card-grid [data-job-card="${index}"]`);
+      target?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    });
   }
 
   function openJobDrawer(index) {
@@ -1433,14 +1440,24 @@
         rail.innerHTML =
           `<div class="deadline-label">Soon</div>` +
           soon
-            .map(
-              (r) => `<a class="deadline-chip" href="${esc(r.url || "#")}" ${
-                r.url ? 'target="_blank" rel="noopener"' : ""
-              }><strong>${esc(r.org)}</strong><span>${esc(r.title)}</span><em>${esc(
-                r.deadline
-              )}</em></a>`
-            )
+            .map((r) => {
+              const idx = rows.findIndex(
+                (x) => x.orgId === r.orgId && x.title === r.title && x.deadline === r.deadline
+              );
+              const apply = r.url
+                ? `<span class="deadline-chip-apply"><a class="deadline-chip-external" href="${esc(r.url)}" target="_blank" rel="noopener">Apply ↗</a></span>`
+                : "";
+              return `<button type="button" class="deadline-chip" data-job-idx="${idx >= 0 ? idx : 0}" title="Show in detail pane">
+                <strong>${esc(r.org)}</strong><span>${esc(r.title)}</span><em>${esc(r.deadline)}</em>${apply}
+              </button>`;
+            })
             .join("");
+        $$("#jobs-deadlines .deadline-chip[data-job-idx]").forEach((btn) => {
+          btn.addEventListener("click", () => openJobDrawer(Number(btn.dataset.jobIdx)));
+        });
+        $$("#jobs-deadlines .deadline-chip-external").forEach((a) => {
+          a.addEventListener("click", (e) => e.stopPropagation());
+        });
       } else {
         rail.hidden = true;
         rail.innerHTML = "";
@@ -1599,6 +1616,20 @@
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const id = link.getAttribute("href")?.replace("#org/", "");
+        if (id) openOrgProfile(id);
+      });
+    });
+    $$("#poss-cards [data-page]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        showPage(btn.dataset.page);
+      });
+    });
+    $$("#poss-cards .ngo-card").forEach((card) => {
+      card.addEventListener("click", (e) => {
+        if (e.target.closest("a, button")) return;
+        const link = card.querySelector("a[href^='#org/']");
+        const id = link?.getAttribute("href")?.replace("#org/", "");
         if (id) openOrgProfile(id);
       });
     });
