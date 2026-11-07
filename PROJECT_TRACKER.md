@@ -19,7 +19,7 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_REN
 
 | Date | Action |
 |------|--------|
-| 2026-11-06 | **Render prod:** `DATABASE_URL` set via `render_provision_api.mjs`; runtime crash `Cannot find module 'ajv/dist/2020'` — `ajv` + `ajv-formats` in `server/package.json` plus **`scripts/validate_data_schemas.js` loads Ajv via `createRequire(server/package.json)`** so resolution reaches `server/node_modules` when Render `rootDir` is `server` (plain `require()` from `scripts/` does not). |
+| 2026-11-06 | **Render prod live:** `DATABASE_URL` via provision script; fixed `ajv/dist/2020` (`createRequire(server/package.json)` in `validate_data_schemas.js`); provision script **PATCH**es existing services (`rootDir=server`, build includes `seed_from_json.ts --if-empty`, `/api/health`). Smoke: **200** on `/api/health`, `/api/ready`, `/api/ngo-data` (~497 KB). |
 | 2026-11-06 | **Render — zero-dashboard provision:** defaults to **elantaki.dijadiss@gmail.com** workspace + names `athens-ngo-desk-db` / `athens-ngo-desk-api`; `scripts/render_provision_api.mjs` + workflow `render-provision-api.yml` (secret `RENDER_API_KEY`). |
 | 2026-11-06 | **Render — second account (API):** `scripts/render_provision_api.ps1` + deploy doc section: creates Postgres + web service via Render API when `RENDER_API_KEY` is set for that workspace (MCP cannot act as another Render user). |
 | 2026-11-06 | **Google Cloud Run:** root `Dockerfile` + `server/docker-entrypoint.sh` (`prisma migrate deploy` then `node dist/index.js`); `prisma` moved to runtime deps for migrate in prod image; `docs/DEPLOYMENT_CLOUD_RUN.md` (build/push, env, seed once). |

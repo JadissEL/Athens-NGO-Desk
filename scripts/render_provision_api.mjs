@@ -207,6 +207,21 @@ async function triggerDeploy(serviceId) {
   });
 }
 
+/** Align existing dashboard-created services with blueprint: rootDir server, seed on first build. */
+async function patchWebServiceToServerRoot(serviceId) {
+  const body = {
+    rootDir: "server",
+    serviceDetails: {
+      healthCheckPath: "/api/health",
+      envSpecificDetails: {
+        buildCommand: BUILD_CMD,
+        startCommand: START_CMD,
+      },
+    },
+  };
+  return api("PATCH", `/services/${serviceId}`, body);
+}
+
 async function main() {
   console.log(`Owner email: ${OWNER_EMAIL}`);
   const ownerId = await resolveOwnerId();
@@ -234,7 +249,13 @@ async function main() {
     console.log(`serviceId=${serviceId} deployId=${created.deployId ?? "n/a"}`);
   } else {
     serviceId = service.id;
-    console.log(`Updating env on existing service id=${serviceId}`);
+    console.log(`Updating env + build config on existing service id=${serviceId}`);
+    try {
+      await patchWebServiceToServerRoot(serviceId);
+      console.log("Patched rootDir=server and buildCommand (migrate + seed --if-empty).");
+    } catch (e) {
+      console.warn("PATCH service failed (build may stay dashboard-default):", e.message);
+    }
     const existing = await listServiceEnvVars(serviceId);
     const merged = mergeEnv(existing, [
       { key: "DATABASE_URL", value: internalUrl },
