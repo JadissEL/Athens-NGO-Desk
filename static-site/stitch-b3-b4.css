@@ -1,0 +1,197 @@
+/* B3 — Guides & trust (readable column + card panels) */
+
+.guide-prose,
+.prose-panel {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+#page-life .page-header,
+#page-create .page-header,
+#page-funding .page-header,
+#page-audiences .page-header,
+#page-legal .page-header {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#page-life .page-toc,
+#page-create .page-toc {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#page-life .page-visual,
+#page-life .callout,
+#page-life .panel,
+#page-create .panel,
+#page-create .callout,
+#page-create .steps,
+#page-funding .panel,
+#page-funding .callout,
+#page-funding .steps {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#page-audiences .prose-panel .panel,
+#page-legal .prose-panel .panel {
+  border-radius: var(--radius-xl);
+  box-shadow: var(--stitch-glow, 0 24px 60px rgba(10, 46, 46, 0.1));
+  margin-bottom: 1rem;
+  padding: 1.15rem 1.25rem;
+}
+
+#page-audiences .prose-panel .panel h2,
+#page-legal .prose-panel .panel h2 {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 1.05rem;
+  margin-top: 0;
+}
+
+.guide-audience-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .guide-audience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* B4 — Mobile & tablet adaptation */
+
+@media (max-width: 1023px) {
+  .desk-rail {
+    display: none !important;
+  }
+
+  .topnav.app-bar--compact .nav-scroll {
+    display: flex;
+  }
+
+  .topnav.app-bar--compact .logo-text {
+    font-size: 0.9rem;
+  }
+
+  .cmd-trigger kbd {
+    display: none;
+  }
+
+  .jobs-split,
+  .registry-split {
+    grid-template-columns: 1fr !important;
+  }
+
+  .job-detail-pane {
+    display: none !important;
+  }
+
+  .registry-split .detail--pane {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  body.desk-bento .content {
+    padding-bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-dock {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 80;
+    padding: 0.4rem 0.35rem calc(0.45rem + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(180deg, rgba(8, 52, 52, 0.97) 0%, rgba(4, 28, 28, 0.99) 100%);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(124, 213, 212, 0.22);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-dock button {
+    color: rgba(232, 244, 244, 0.72);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .mobile-dock button.active {
+    color: #fff;
+    background: rgba(124, 213, 212, 0.18);
+    border-radius: 12px;
+  }
+
+  .bento-hero {
+    grid-template-columns: 1fr !important;
+  }
+
+  .bento-audience {
+    grid-template-columns: 1fr !important;
+  }
+
+  .bento-kpi {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .story-card-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .workbench {
+    grid-template-columns: 1fr !important;
+  }
+
+  .workbench-rail {
+    position: static;
+  }
+
+  .ngo-card-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  #page-jobs .job-card .ngo-card-body,
+  #page-registry .reg-card .ngo-card-body {
+    display: block;
+  }
+
+  #page-registry .reg-card .ngo-card-cap {
+    display: flex;
+  }
+
+  #page-registry .reg-card .reg-card-score-desk {
+    display: none;
+  }
+
+  .btn-primary.nav-actions {
+    font-size: 0.78rem;
+    padding: 0.45rem 0.65rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.65rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bento-audience {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bento-kpi {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .ngo-card-grid:not(.media-card-grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
