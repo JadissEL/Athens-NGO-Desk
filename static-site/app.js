@@ -993,7 +993,7 @@
       } else if (pendingRegSearchFocus !== null) {
         const qq = pendingRegSearchFocus;
         pendingRegSearchFocus = null;
-        openOrgSheet(list[pickBestOrgIndex(list, qq)].id);
+        if (String(qq).trim()) openOrgSheet(list[pickBestOrgIndex(list, qq)].id);
       }
     }
     syncRegistryPresetChips();
@@ -1230,6 +1230,26 @@
   let jobsView = "cards";
   let selectedJobIdx = null;
 
+  function pickBestJobIndex(rows, q) {
+    if (!rows.length) return 0;
+    const ql = String(q || "")
+      .trim()
+      .toLowerCase();
+    if (!ql) return 0;
+    const exactTitle = rows.findIndex((r) => r.title.toLowerCase() === ql);
+    if (exactTitle >= 0) return exactTitle;
+    const exactOrg = rows.findIndex((r) => r.org.toLowerCase() === ql);
+    if (exactOrg >= 0) return exactOrg;
+    const starts = rows.findIndex(
+      (r) => r.title.toLowerCase().startsWith(ql) || r.org.toLowerCase().startsWith(ql)
+    );
+    if (starts >= 0) return starts;
+    const inc = rows.findIndex((r) =>
+      [r.org, r.title, r.location, r.kind, orgSectorById[r.orgId]].join(" ").toLowerCase().includes(ql)
+    );
+    return inc >= 0 ? inc : 0;
+  }
+
   function setJobsView(mode) {
     jobsView = mode === "table" ? "table" : "cards";
     const split = $("#jobs-split");
@@ -1437,8 +1457,18 @@
     }
     renderJobCards(rows);
     if (preferDeskPane() && rows.length && (jobsView === "cards" || jobsView === "table")) {
-      const idx = selectedJobIdx != null ? selectedJobIdx : 0;
+      let idx = selectedJobIdx != null ? selectedJobIdx : 0;
+      if (pendingJobSearchFocus !== null) {
+        idx = pickBestJobIndex(rows, pendingJobSearchFocus);
+        pendingJobSearchFocus = null;
+        selectedJobIdx = idx;
+      }
       showJobPane(idx);
+    } else if (pendingJobSearchFocus !== null && rows.length) {
+      const idx = pickBestJobIndex(rows, pendingJobSearchFocus);
+      pendingJobSearchFocus = null;
+      selectedJobIdx = idx;
+      openJobDrawer(idx);
     } else if (!rows.length) {
       selectedJobIdx = null;
       const pane = $("#job-detail-pane");
@@ -1809,11 +1839,14 @@
       if (intent === "registry") {
         if ($("#q-reg")) $("#q-reg").value = q;
         if (region && $("#f-region")) $("#f-region").value = region;
+        markRegistryFiltersCustom();
+        pendingRegSearchFocus = q.trim() ? q : null;
         renderRegistry();
       } else if (intent === "jobs") {
         if ($("#q-jobs")) $("#q-jobs").value = q;
         if (region === "athens" && $("#f-jobs-region")) $("#f-jobs-region").value = "athens";
         else if (region && $("#f-jobs-region")) $("#f-jobs-region").value = "all";
+        pendingJobSearchFocus = q.trim() ? q : null;
         renderJobs();
       } else if (intent === "media" && $("#q-media")) {
         $("#q-media").value = q;
