@@ -19,6 +19,7 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_REN
 
 | Date | Action |
 |------|--------|
+| 2026-11-07 | **Stitch B5 polish:** `stitch-b5.css`, live org count on home trust strip, Apply/Scores eyebrows, deeper shadows; `aegean-stitch5`. |
 | 2026-11-07 | **Stitch A4/A5 in code:** org profile tab **card panels** (no accordion chrome on desktop); media **magazine column** + filter toolbar card; `aegean-stitch4`. |
 | 2026-11-07 | **Stitch A3 registry in code:** list-row NGO cards, org brief eyebrow, click card → sheet, single-match auto-open; `aegean-stitch3`. |
 | 2026-11-07 | **Stitch A2 layout in code:** `stitch-layout.css` — job **list-row** cards + always-visible application panel; home trust strip; [docs/stitch/DESIGN.md](docs/stitch/DESIGN.md) + [STITCH_IMPLEMENTATION_CHECKLIST.md](docs/STITCH_IMPLEMENTATION_CHECKLIST.md); `aegean-stitch2`. |
