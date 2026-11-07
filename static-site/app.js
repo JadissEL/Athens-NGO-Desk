@@ -926,9 +926,10 @@
           typeof score === "number"
             ? `<span class="ngo-card-score-pill">${esc(score)}</span>`
             : `<span class="ngo-card-cap-badge">${esc(band)}</span>`;
-        return `<article class="ngo-card ngo-card--${tone}" data-id="${esc(o.id)}">
+        return `<article class="ngo-card reg-card ngo-card--${tone}" data-id="${esc(o.id)}">
           <div class="ngo-card-cap">${scorePill}</div>
           <div class="ngo-card-body">
+            <div class="reg-card-score-desk">${scorePill}</div>
             <span class="ngo-card-initials">${esc(orgInitials(o.name))}</span>
             <h3><a href="#org/${esc(o.id)}" class="table-profile-link">${esc(o.name)}</a></h3>
             <p class="ngo-card-meta">${esc(o.sector || "Sector n/a")} · ${esc(regShort)}</p>
@@ -945,8 +946,17 @@
       })
       .join("");
 
+    grid.querySelectorAll(".reg-card").forEach((card) => {
+      card.addEventListener("click", (e) => {
+        if (e.target.closest("a, button")) return;
+        openOrgSheet(card.dataset.id);
+      });
+    });
     grid.querySelectorAll("[data-detail]").forEach((btn) => {
-      btn.addEventListener("click", () => openOrgSheet(btn.dataset.detail));
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openOrgSheet(btn.dataset.detail);
+      });
     });
     grid.querySelectorAll(".table-profile-link").forEach((link) => {
       link.addEventListener("click", (e) => {
@@ -1029,6 +1039,8 @@
         const qq = pendingRegSearchFocus;
         pendingRegSearchFocus = null;
         if (String(qq).trim()) openOrgSheet(list[pickBestOrgIndex(list, qq)].id);
+      } else if (list.length === 1) {
+        openOrgSheet(list[0].id);
       }
     }
     syncRegistryPresetChips();
@@ -1175,6 +1187,11 @@
     if (empty) empty.hidden = true;
     if (!preferDeskPane()) {
       $("#reg-detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    } else {
+      requestAnimationFrame(() => {
+        const card = $(`#reg-card-grid .reg-card[data-id="${CSS.escape(id)}"]`);
+        card?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      });
     }
   }
 

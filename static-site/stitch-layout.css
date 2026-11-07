@@ -49,16 +49,112 @@
   }
 
   #page-registry .registry-split-list .ngo-card-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
-  #page-jobs .workbench-main {
+  #page-registry .reg-card .ngo-card-body {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "avatar title score"
+      "avatar meta score"
+      "avatar pills actions";
+    column-gap: 0.85rem;
+    align-items: center;
+  }
+
+  #page-registry .reg-card .ngo-card-initials {
+    grid-area: avatar;
+    margin-bottom: 0;
+  }
+
+  #page-registry .reg-card h3 {
+    grid-area: title;
+    margin: 0;
+  }
+
+  #page-registry .reg-card .ngo-card-meta {
+    grid-area: meta;
+  }
+
+  #page-registry .reg-card .ngo-card-pills {
+    grid-area: pills;
+  }
+
+  #page-registry .reg-card .ngo-card-actions {
+    grid-area: actions;
+    justify-content: flex-end;
+  }
+
+  #page-registry .reg-card .ngo-card-cap {
+    display: none;
+  }
+
+  #page-registry .reg-card .ngo-card-score-pill,
+  #page-registry .reg-card .ngo-card-cap-badge {
+    grid-area: score;
+    align-self: start;
+    margin-top: 0.15rem;
+  }
+
+  #page-registry .reg-card .ngo-card-body::after {
+    content: none;
+  }
+
+  /* Score badge duplicated from cap into body flow — render in pills row on desktop via cap hidden; show score in grid */
+  .reg-card-score-desk {
+    display: none;
+  }
+
+  #page-registry .reg-card .reg-card-score-desk {
+    display: block;
+    grid-area: score;
+  }
+
+  #page-registry .reg-card {
+    cursor: pointer;
+  }
+
+  #page-registry .registry-split {
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
+  }
+
+  #page-registry .detail.detail--pane {
+    display: block !important;
+  }
+
+  #page-org-profile .org-identity-card {
+    box-shadow: var(--stitch-glow, 0 24px 60px rgba(10, 46, 46, 0.12));
+    border: 1px solid rgba(15, 124, 124, 0.12);
+  }
+
+  #page-org-profile .org-desk {
+    gap: 1.5rem;
+  }
+
+  #page-media .media-feed-card {
+    border-radius: var(--radius-2xl);
+  }
+
+  #page-jobs .workbench-main,
+  #page-registry .workbench-main {
     min-width: 0;
   }
 
   .jobs-split {
     grid-template-columns: minmax(0, 1fr) minmax(340px, 400px);
   }
+}
+
+.reg-pane-eyebrow {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.35rem;
 }
 
 .job-pane-eyebrow {
