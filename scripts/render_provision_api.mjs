@@ -34,14 +34,16 @@ const LEGACY_DB_NAME = "athens-ngo-desk-db";
 const LEGACY_SERVICE_NAME = "athens-ngo-desk-api";
 const REPO_URL = process.env.REPO_URL ?? "https://github.com/JadissEL/Athens-NGO-Desk";
 const REPO_BRANCH = process.env.REPO_BRANCH ?? "main";
-const CORS_ORIGIN = process.env.CORS_ORIGIN ?? "https://greece-ngo-desk.vercel.app";
+const CORS_ORIGIN =
+  process.env.CORS_ORIGIN ??
+  "https://jadissel.github.io,https://greece-ngo-desk.vercel.app";
 const REGION = process.env.REGION ?? "frankfurt";
 const PG_PLAN = process.env.PG_PLAN ?? "basic_256mb";
 const SERVICE_PLAN = process.env.SERVICE_PLAN ?? "starter";
 const PG_VERSION = Number(process.env.PG_VERSION ?? 16);
 
 const BUILD_CMD =
-  "npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty";
+  "npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty && npm run db:seed:hospitality && npm run db:seed:events";
 const START_CMD = "npm start";
 
 function headers(extra = {}) {

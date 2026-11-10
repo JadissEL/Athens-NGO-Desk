@@ -40,7 +40,7 @@ Then use the steward UI to **Publish** so `GET /api/ngo-data` returns 200 (not 4
 | `CLERK_SECRET_KEY` | yes* | Server verifies steward JWTs (*if using Clerk) |
 | `CLERK_PUBLISHABLE_KEY` | yes* | `GET /api/steward-config` for steward UI |
 | `CLERK_AUTHORIZED_PARTIES` | recommended | Origins allowed for session tokens — include **Vercel URL** and **Render API URL** if steward loads from API host |
-| `CORS_ORIGIN` | yes for browser | Your Vercel origin, e.g. `https://your-desk.vercel.app` (not `*` in production) |
+| `CORS_ORIGIN` | yes for browser | Static site origin(s), comma-separated if several — e.g. `https://jadissel.github.io,https://greece-ngo-desk.vercel.app` (not `*` in production) |
 | `PORT` | auto | Render sets `PORT`; server reads it |
 | `HOST` | optional | Default `0.0.0.0` |
 

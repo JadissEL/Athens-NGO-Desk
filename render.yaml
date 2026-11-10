@@ -11,7 +11,7 @@ services:
     runtime: node
     region: frankfurt
     rootDir: server
-    buildCommand: npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty
+    buildCommand: npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty && npm run db:seed:hospitality && npm run db:seed:events
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:

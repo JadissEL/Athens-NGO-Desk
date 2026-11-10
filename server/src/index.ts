@@ -91,7 +91,11 @@ export async function buildServer() {
     trustProxy: true,
   });
 
-  const corsOrigin = process.env.CORS_ORIGIN ?? true;
+  const corsRaw = process.env.CORS_ORIGIN?.trim();
+  const corsOrigin =
+    corsRaw && corsRaw.includes(",")
+      ? corsRaw.split(",").map((o) => o.trim()).filter(Boolean)
+      : corsRaw || true;
   await app.register(cors, { origin: corsOrigin, credentials: true });
 
   const publicMax = Math.max(50, Number(process.env.RATE_LIMIT_PUBLIC_MAX ?? 300));
