@@ -12,6 +12,8 @@
 - **Public organisation contact points:** Work contact emails published with **organisational** recruiting purpose may constitute **professional/business** contact data. They must be **accurate, minimal, and regularly reviewed**. Prefer official channels cited on the employer’s site.
 - **No user accounts (static bundle):** Opening `static-site/index.html` locally does not create a backend profile in this repo.
 - **Phase B API:** If you deploy the `server/`, document your **controller**, **purposes**, **retention**, and **subprocessors** in your own privacy notice; align storage with **EU data residency** choices in [PHASE_B_STACK.md](./PHASE_B_STACK.md).
+- **Hospitality applications:** In-portal job applications and CV uploads are **personal data** for recruitment. See [TOURISM_EMPLOYMENT.md](./TOURISM_EMPLOYMENT.md). The desk is **not** a licensed employment agency and does not guarantee hire or provide immigration legal advice.
+- **Civic events & threads:** Event listings may combine steward data and **third-party feeds** (subject to those sites’ terms). Collaboration **messages** between NGOs are personal/organisational data — see [NGO_EVENTS.md](./NGO_EVENTS.md). Automated Facebook ingestion requires an approved API token; the desk is not an event ticketing service.
 
 ## Takedown / correction requests
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Greece NGO Desk — Jobs, Registry & Weekly NGO Media</title>
   <meta name="description" content="Greece-wide NGO desk: openings, spontaneous CV emails, life of NGO workers, registry, and a weekly media digest of Greek civil-society news." />
   <meta name="keywords" content="Greece NGO, Greek civil society, NGO worker life, METAdrasi, ARSIS, ActionAid Hellas, refugee jobs Greece, Thessaloniki NGO, AMIF, NGO news Greece, EEA Civil Society Fund" />
@@ -12,34 +12,30 @@
   <meta property="og:description" content="Openings, weekly NGO media, and what life is like for workers in Greek civil society — from major hubs to islands and regional field posts." />
   <meta property="og:image" content="hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="styles.css?v=aegean-stitch6" />
-  <link rel="stylesheet" href="bento-upgrade.css?v=aegean-stitch6" />
-  <link rel="stylesheet" href="stitch-polish.css?v=aegean-stitch6" />
-  <link rel="stylesheet" href="stitch-layout.css?v=aegean-stitch6" />
-  <link rel="stylesheet" href="stitch-b5.css?v=aegean-stitch6" />
-  <link rel="stylesheet" href="stitch-b3-b4.css?v=aegean-stitch6" />
+  <link rel="stylesheet" href="styles.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="bento-upgrade.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-polish.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-layout.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-b5.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-b3-b4.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-landing.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-colors.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-media.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-life.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-fund.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-apply.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-trust.css?v=aegean-stitch31" />
+  <link rel="stylesheet" href="stitch-mobile.css?v=aegean-stitch32" />
+  <link rel="stylesheet" href="stitch-employer.css?v=aegean-stitch33" />
+  <link rel="stylesheet" href="stitch-events.css?v=aegean-stitch33" />
 </head>
 <body>
   <div class="app-frame">
-    <aside class="desk-rail" id="desk-rail" aria-label="Desk navigation">
-      <a class="desk-rail-mark" href="#overview" data-page="overview" title="Greece NGO Desk">
-        <span class="logo-mark" aria-hidden="true"></span>
-      </a>
-      <nav class="desk-rail-nav" id="desk-rail-nav">
-        <button type="button" data-page="overview" class="active" title="Home"><span class="rail-icon" aria-hidden="true">⌂</span><span class="rail-label">Home</span></button>
-        <button type="button" data-page="jobs" title="Openings"><span class="rail-icon" aria-hidden="true">◆</span><span class="rail-label">Jobs</span></button>
-        <button type="button" data-page="registry" title="Registry"><span class="rail-icon" aria-hidden="true">▦</span><span class="rail-label">NGOs</span></button>
-        <button type="button" data-page="media" title="Media"><span class="rail-icon" aria-hidden="true">☰</span><span class="rail-label">Media</span></button>
-        <button type="button" data-page="apply" title="Apply"><span class="rail-icon" aria-hidden="true">✉</span><span class="rail-label">Apply</span></button>
-        <button type="button" data-page="life" title="Life"><span class="rail-icon" aria-hidden="true">◎</span><span class="rail-label">Life</span></button>
-        <button type="button" data-page="funding" title="Fund"><span class="rail-icon" aria-hidden="true">€</span><span class="rail-label">Fund</span></button>
-      </nav>
-      <button type="button" class="desk-rail-more" id="desk-rail-more" title="More sections">⋯</button>
-    </aside>
     <div class="desk-main">
   <div class="site site--bento">
     <div class="stage stage--bento">
       <div class="glass glass--bento">
+        <div class="desk-header-stack">
         <header class="topnav app-bar app-bar--compact">
           <a class="logo" href="#overview" data-page="overview">
             <span class="logo-mark" aria-hidden="true"></span>
@@ -51,6 +47,7 @@
               <div class="nav-group" aria-label="Discover">
                 <span class="nav-group-label">Discover</span>
                 <button type="button" data-page="media">Media</button>
+                <button type="button" data-page="events">Events</button>
                 <button type="button" data-page="life">Life</button>
               </div>
               <div class="nav-group" aria-label="Work">
@@ -76,17 +73,52 @@
             <button type="button" class="btn btn-primary" data-page="apply">Apply by email</button>
           </div>
         </header>
+        <nav class="desk-nav-bar" id="desk-rail" aria-label="Desk navigation">
+          <div class="desk-nav-bar-inner max-content">
+            <div class="desk-rail-nav" id="desk-rail-nav" role="navigation">
+              <button type="button" data-page="overview" class="active" title="Home"><span class="rail-icon" aria-hidden="true">⌂</span><span class="rail-label">Home</span></button>
+              <button type="button" data-page="jobs" title="Openings"><span class="rail-icon" aria-hidden="true">◆</span><span class="rail-label">Jobs</span></button>
+              <button type="button" data-page="registry" title="Registry"><span class="rail-icon" aria-hidden="true">▦</span><span class="rail-label">NGOs</span></button>
+              <button type="button" data-page="media" title="Media"><span class="rail-icon" aria-hidden="true">☰</span><span class="rail-label">Media</span></button>
+              <button type="button" data-page="events" title="Events"><span class="rail-icon" aria-hidden="true">◷</span><span class="rail-label">Events</span></button>
+              <button type="button" data-page="apply" title="Apply"><span class="rail-icon" aria-hidden="true">✉</span><span class="rail-label">Apply</span></button>
+              <button type="button" data-page="life" title="Life"><span class="rail-icon" aria-hidden="true">◎</span><span class="rail-label">Life</span></button>
+              <button type="button" data-page="funding" title="Fund"><span class="rail-icon" aria-hidden="true">€</span><span class="rail-label">Fund</span></button>
+              <button type="button" data-page="create" title="Found an NGO"><span class="rail-icon" aria-hidden="true">✦</span><span class="rail-label">Found</span></button>
+            </div>
+            <button type="button" class="desk-rail-more" id="desk-rail-more" title="Scores and more">More</button>
+          </div>
+        </nav>
+        </div>
 
         <main class="content">
       <!-- LANDING -->
       <section class="page active" id="page-overview">
-        <div class="bento-hero max-content">
-          <div class="bento-hero-copy">
+        <div class="landing-canvas max-content">
+        <div class="landing-hero-surface">
+        <div class="bento-hero landing-hero">
+          <div class="bento-hero-copy landing-hero-copy">
             <p class="eyebrow">Greece-wide · Civic signposting</p>
-            <h1 class="bento-title">Find NGOs, roles &amp; stories that matter.</h1>
-            <p class="bento-lead">A premium desk for jobseekers, funders, donors, and anyone who needs the right organisation — not a hotline. Athens is a hub, not the border. <a href="#audiences" data-page="audiences">Audiences</a> · <a href="#legal" data-page="legal">Legal</a></p>
+            <h1 class="bento-title landing-title"><span class="landing-title-accent">Find NGOs,</span> roles &amp; stories that matter.</h1>
+            <p class="bento-lead landing-lead">A premium desk for jobseekers, funders, donors, and anyone who needs the right organisation — not a hotline. Athens is a hub, not the border.</p>
+            <div class="landing-cta-row">
+              <button type="button" class="btn btn-primary btn-landing-primary" data-page="jobs">Explore openings →</button>
+              <button type="button" class="btn btn-landing-secondary" data-page="registry">Browse registry</button>
+            </div>
+            <ul class="landing-trust-bullets" aria-label="Trust and scope">
+              <li><strong id="stitch-trust-org-count">—</strong> NGOs indexed</li>
+              <li>Greece-wide signposting</li>
+              <li>Not a crisis hotline — verify officially</li>
+            </ul>
+            <p class="landing-meta-links"><a href="#audiences" data-page="audiences">Audiences</a> · <a href="#legal" data-page="legal">Legal</a></p>
           </div>
-          <form class="bento-search-dock" id="hero-search-form" autocomplete="off">
+          <div class="landing-hero-visual">
+          <div class="landing-hero-mosaic" aria-hidden="true">
+            <img class="landing-mosaic-a" src="img/athens-street.jpg" alt="" width="800" height="1000" loading="eager" decoding="async" />
+            <img class="landing-mosaic-b" src="img/community.jpg" alt="" width="600" height="400" loading="lazy" />
+            <img class="landing-mosaic-c" src="img/together.jpg" alt="" width="600" height="400" loading="lazy" />
+          </div>
+          <form class="bento-search-dock landing-search-dock" id="hero-search-form" autocomplete="off">
             <p class="dock-label">Search the desk</p>
             <div class="dock-field">
               <label for="hero-q">Keywords</label>
@@ -112,83 +144,132 @@
             </div>
             <button type="submit" class="btn btn-primary btn-xl">Search desk</button>
           </form>
+          </div>
         </div>
-        <div class="stitch-trust-strip max-content" aria-hidden="false">
-          <span><strong id="stitch-trust-org-count">—</strong> NGOs indexed</span>
-          <span><strong>Greece-wide</strong> signposting</span>
-          <span>Not a crisis hotline — verify services officially</span>
         </div>
-        <div class="bento-kpi max-content" id="home-stats" aria-live="polite"></div>
-        <div class="bento-audience max-content" aria-label="Start by role">
-          <article class="bento-tile bento-tile--mint">
-            <h2>Jobseekers</h2>
-            <p>Openings, CV paths, sector context.</p>
-            <button type="button" class="btn btn-dark" data-page="jobs">View openings</button>
+        <div class="landing-promo-bar" aria-label="Media digest">
+          <p id="landing-promo-text">Weekly NGO media for Greece civil society — <button type="button" class="landing-promo-link" data-page="media">Read this week’s digest</button></p>
+        </div>
+        <div class="landing-scene-strip" aria-hidden="true">
+          <figure><img src="img/athens-agora.jpg" alt="" width="640" height="420" loading="lazy" /></figure>
+          <figure><img src="img/desk-work.jpg" alt="" width="640" height="420" loading="lazy" /></figure>
+          <figure><img src="img/funding-collab.jpg" alt="" width="640" height="420" loading="lazy" /></figure>
+          <figure><img src="img/planning.jpg" alt="" width="640" height="420" loading="lazy" /></figure>
+        </div>
+        <div class="landing-main-surface" aria-label="Desk at a glance">
+        <div class="bento-kpi" id="home-stats" aria-live="polite"></div>
+        <div class="bento-audience" aria-label="Start by role">
+          <article class="bento-tile bento-tile--mint landing-tile">
+            <div class="landing-tile-photo">
+              <img src="img/desk-work.jpg" alt="Desk work at an NGO office" width="640" height="360" loading="lazy" />
+            </div>
+            <div class="landing-tile-copy">
+              <h2>Jobseekers</h2>
+              <p>Openings, CV paths, sector context.</p>
+              <button type="button" class="btn btn-dark" data-page="jobs">View openings</button>
+            </div>
           </article>
-          <article class="bento-tile bento-tile--sand">
-            <h2>Funders &amp; donors</h2>
-            <p>Due diligence, signals, honest limits.</p>
-            <button type="button" class="btn btn-dark" data-page="registry">Browse registry</button>
+          <article class="bento-tile bento-tile--sand landing-tile">
+            <div class="landing-tile-photo">
+              <img src="img/funding-collab.jpg" alt="Collaborators planning a funded project" width="640" height="360" loading="lazy" />
+            </div>
+            <div class="landing-tile-copy">
+              <h2>Funders &amp; donors</h2>
+              <p>Due diligence, signals, honest limits.</p>
+              <form class="landing-tile-actions" action="#" role="group" aria-label="Funder actions">
+                <button type="button" class="btn btn-dark" data-page="registry">Browse registry</button>
+                <button type="button" class="btn btn-ghost" data-page="audiences">Who we serve</button>
+              </form>
+            </div>
           </article>
-          <article class="bento-tile bento-tile--sky">
-            <h2>Service seekers</h2>
-            <p>Match by focus &amp; region — verify officially.</p>
-            <button type="button" class="btn btn-dark" data-page="registry">Find an NGO</button>
+          <article class="bento-tile bento-tile--sky landing-tile">
+            <div class="landing-tile-photo">
+              <img src="img/community.jpg" alt="Community aid and volunteer team" width="640" height="360" loading="lazy" />
+            </div>
+            <div class="landing-tile-copy">
+              <h2>Service seekers</h2>
+              <p>Match by focus &amp; region — verify officially.</p>
+              <button type="button" class="btn btn-dark" data-page="registry">Find an NGO</button>
+            </div>
           </article>
         </div>
-        <div class="bento-section-head max-content">
+        </div>
+        <div class="landing-stories-surface">
+        <div class="bento-section-head">
           <h2>Hot this week</h2>
           <button type="button" class="btn btn-ghost" data-page="media">All media →</button>
         </div>
-        <div class="story-card-grid max-content" id="hot-rail" aria-label="Hottest NGO stories"></div>
+        <div class="story-card-grid" id="hot-rail" aria-label="Hottest NGO stories"></div>
+        </div>
+        <div class="landing-channel-strip" aria-label="Desk sections">
+          <span>Registry</span>
+          <span>Openings</span>
+          <span>Media digest</span>
+          <span>Apply by email</span>
+          <span>NGO scores</span>
+        </div>
+        </div>
       </section>
 
       <!-- MEDIA -->
       <section class="page" id="page-media">
-        <div class="page-header max-content">
-          <p class="media-page-eyebrow">Weekly digest</p>
-          <h1>Media</h1>
-          <p id="media-week-label">Weekly NGO digest for Greece civil society.</p>
-        </div>
+        <header class="media-blog-header max-content">
+          <div>
+            <p class="media-page-eyebrow">Weekly digest</p>
+            <h1 class="media-blog-title">Media</h1>
+            <p id="media-week-label" class="muted">Weekly NGO digest for Greece civil society.</p>
+          </div>
+        </header>
         <div class="media-toolbar max-content media-toolbar--stitch">
           <p class="media-intro" id="media-intro"></p>
-          <div class="field">
-            <label for="q-media">Filter</label>
+          <div class="field grow">
+            <label for="q-media">Filter stories</label>
             <input id="q-media" type="search" placeholder="METAdrasi, hiring, AMIF…" />
           </div>
         </div>
-        <div class="ngo-card-grid media-card-grid max-content" id="media-feed"></div>
-        <p class="small muted" id="media-disclaimer"></p>
+        <div class="media-bento max-content" id="media-feed" aria-live="polite"></div>
+        <p class="small muted max-content" id="media-disclaimer"></p>
       </section>
 
       <!-- LIFE OF NGO WORKERS -->
-      <section class="page" id="page-life">
-        <div class="page-header max-content">
-          <p class="stitch-page-eyebrow">Discover · Guides</p>
-          <h1>Life of an NGO worker</h1>
-          <p>
-            How people actually spend their weeks in Greek civil society — places, recurring events,
-            and the rhythm behind the job ads (often anchored in Athens with field time elsewhere).
-          </p>
+      <section class="page life-magazine" id="page-life">
+        <div class="life-mag max-content">
+          <header class="life-mag-top">
+            <h1 class="life-mag-brand">Life</h1>
+            <button type="button" class="life-mag-viewall btn btn-ghost" data-page="jobs">View openings ↗</button>
+          </header>
+          <div class="life-mag-hero">
+            <div class="life-mag-hero-copy">
+              <div class="life-mag-kicker">
+                <span class="life-mag-tag">Guides</span>
+                <span class="life-mag-date">Greece-wide</span>
+              </div>
+              <h2 class="life-mag-headline">How NGO workers actually spend their weeks</h2>
+              <p class="life-mag-dek">
+                Places, recurring events, and the rhythm behind the job ads — often anchored in Athens with field time elsewhere.
+              </p>
+              <p class="life-mag-byline"><span class="life-mag-plus" aria-hidden="true">+</span> Greece NGO Desk orientation</p>
+            </div>
+            <figure class="life-mag-hero-media">
+              <img src="img/community.jpg" alt="Volunteers and staff at a community aid station" width="1800" height="700" loading="lazy" />
+            </figure>
+          </div>
+          <nav class="page-toc life-mag-toc" aria-label="On this page">
+            <button type="button" data-scroll="life-rhythm">Rhythm</button>
+            <button type="button" data-scroll="life-places">Places</button>
+            <button type="button" data-scroll="life-events">Events</button>
+            <button type="button" data-scroll="life-roles">By role</button>
+            <button type="button" data-scroll="life-honest">Honest notes</button>
+          </nav>
+          <div class="callout life-mag-callout">
+            Orientation for candidates and founders — drawn from how NGOs in Greece typically organise
+            (shelters, community centres, HQ hubs, island and mainland field posts). Not every organisation looks the same;
+            project funding reshapes calendars overnight.
+          </div>
         </div>
-        <nav class="page-toc" aria-label="On this page">
-          <button type="button" data-scroll="life-rhythm">Rhythm</button>
-          <button type="button" data-scroll="life-places">Places</button>
-          <button type="button" data-scroll="life-events">Events</button>
-          <button type="button" data-scroll="life-roles">By role</button>
-          <button type="button" data-scroll="life-honest">Honest notes</button>
-        </nav>
-        <figure class="page-visual page-visual--faces">
-          <img src="img/community.jpg" alt="Volunteers and staff at a community aid station" width="1800" height="700" loading="lazy" />
-        </figure>
 
-        <div class="callout">
-          Orientation for candidates and founders — drawn from how NGOs in Greece typically organise
-          (shelters, community centres, HQ hubs, island and mainland field posts). Not every organisation looks the same;
-          project funding reshapes calendars overnight.
-        </div>
-
-        <div class="panel" id="life-rhythm">
+        <div class="life-mag-body max-content">
+        <div class="panel life-mag-panel" id="life-rhythm">
           <h2>1. What the week usually feels like</h2>
           <p class="life-lead">
             NGO life around major hubs (often Attica) is less “9–5 office” and more <strong>project cycles</strong>: donor deadlines,
@@ -215,7 +296,7 @@
           </div>
         </div>
 
-        <div class="panel" id="life-places">
+        <div class="panel life-mag-panel life-mag-panel--split" id="life-places">
           <h2>2. Places NGO workers live in</h2>
           <p class="life-lead">Most careers bounce between two or three of these — rarely only a laptop café.</p>
           <div class="life-places">
@@ -270,7 +351,7 @@
           </div>
         </div>
 
-        <div class="panel" id="life-events">
+        <div class="panel life-mag-panel" id="life-events">
           <h2>3. Events they are mostly in</h2>
           <p class="life-lead">
             If you join an NGO in Greece, expect these gatherings far more often than black-tie galas.
@@ -327,7 +408,7 @@
           </div>
         </div>
 
-        <div class="panel" id="life-roles">
+        <div class="panel life-mag-panel" id="life-roles">
           <h2>4. A day, by role type</h2>
           <div class="criteria-grid">
             <div>
@@ -373,7 +454,7 @@
           </div>
         </div>
 
-        <div class="panel" id="life-honest">
+        <div class="panel life-mag-panel" id="life-honest">
           <h2>5. Honest notes (before you romanticise it)</h2>
           <div class="steps">
             <div class="step">
@@ -429,7 +510,8 @@
           </div>
         </div>
 
-        <p class="sources">
+        </div>
+        <p class="sources max-content">
           Composite orientation from Greece NGO Desk practice patterns (shelters, AMIF partners, community centres, civil-society
           funding calendars). Cross-check any employer’s handbook, rota, and safeguarding policy before you decide.
         </p>
@@ -447,7 +529,7 @@
         <p class="small muted max-content" id="org-profile-conflict"></p>
         <h1 class="visually-hidden" id="org-profile-name">Organisation</h1>
         <p class="visually-hidden org-profile-sub" id="org-profile-sub"></p>
-        <div class="org-profile-logo-wrap" id="org-profile-logo-wrap" hidden aria-hidden="true">
+        <div class="org-profile-logo-wrap" id="org-profile-logo-wrap" aria-hidden="true">
           <img id="org-profile-logo" src="" alt="" width="1" height="1" loading="lazy" referrerpolicy="no-referrer" />
         </div>
         <p class="callout warn max-content" id="org-profile-osint-banner">
@@ -455,7 +537,7 @@
         </p>
         <div class="org-desk max-content">
           <aside class="org-identity-card" id="org-identity-card">
-            <div class="org-profile-logo-wrap org-identity-logo" id="org-identity-logo-wrap" hidden>
+            <div class="org-profile-logo-wrap org-identity-logo" id="org-identity-logo-wrap">
               <img id="org-identity-logo" src="" alt="" width="96" height="96" loading="lazy" referrerpolicy="no-referrer" />
             </div>
             <p class="org-identity-eyebrow">Organisation profile</p>
@@ -483,7 +565,7 @@
                 <p id="org-profile-narrative"></p>
               </div>
             </details>
-            <details class="profile-fold" id="org-profile-desk-corpus-panel" hidden data-org-panel="overview">
+            <details class="profile-fold" id="org-profile-desk-corpus-panel" data-org-panel="overview">
               <summary>Desk corpus &amp; digest (OSINT)</summary>
               <div class="profile-fold-body">
                 <p class="small muted" id="org-profile-possibility-note"></p>
@@ -508,7 +590,7 @@
                 <dl class="fact-dl" id="org-profile-method"></dl>
               </div>
             </details>
-            <details class="profile-fold" id="org-profile-programmes-panel" hidden data-org-panel="desk">
+            <details class="profile-fold" id="org-profile-programmes-panel" data-org-panel="desk">
               <summary>Programmes (with evidence)</summary>
               <div class="profile-fold-body">
                 <div id="org-profile-programmes"></div>
@@ -606,7 +688,7 @@
         <div class="registry-split" id="registry-split">
           <div class="registry-split-list">
             <div class="ngo-card-grid" id="reg-card-grid"></div>
-            <div class="table-wrap table-wrap--desk reg-table-view" hidden>
+            <div class="table-wrap table-wrap--desk reg-table-view">
               <table>
                 <thead>
                   <tr>
@@ -650,6 +732,53 @@
         </div>
       </section>
 
+      <!-- EVENTS -->
+      <section class="page" id="page-events">
+        <div class="page-header max-content">
+          <h1>Civic events</h1>
+          <p class="page-header-lead">Forums, fundraisers, and NGO convenings in Greece — published by stewards and approved scraped listings.</p>
+          <p class="page-header-note small muted">Not ticketing or emergency coordination. See <code>docs/NGO_EVENTS.md</code>.</p>
+        </div>
+        <div class="workbench max-content">
+          <aside class="workbench-rail" aria-label="Event filters">
+            <div class="stats stats--compact workbench-stats" id="events-stats"></div>
+            <div class="discover-panel jobs-discover workbench-rail-panel">
+              <div class="discover-primary">
+                <div class="field grow discover-search">
+                  <label for="q-events">Find an event</label>
+                  <input id="q-events" type="search" placeholder="Title, host, city…" autocomplete="off" />
+                </div>
+                <div class="field discover-source">
+                  <label for="f-events-source">Source</label>
+                  <select id="f-events-source">
+                    <option value="all">All published</option>
+                    <option value="steward">Steward-entered</option>
+                    <option value="scrape">Scraped (approved)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <div class="workbench-main">
+            <p class="registry-summary" id="events-result-count"></p>
+            <div class="events-split" id="events-split">
+              <div class="ngo-card-grid" id="events-card-grid"></div>
+              <aside class="job-detail-pane" id="event-detail-pane">
+                <p class="job-pane-empty" id="event-pane-empty">Select an event for details and NGO collaboration.</p>
+                <div class="job-pane-body" id="event-pane-body" hidden>
+                  <p class="job-pane-eyebrow">Event panel</p>
+                  <h2 id="event-pane-title">Event</h2>
+                  <p class="job-drawer-org" id="event-pane-hosts"></p>
+                  <dl class="fact-dl" id="event-pane-facts"></dl>
+                  <p class="job-drawer-dek" id="event-pane-dek"></p>
+                  <div id="event-pane-collab" class="event-collab-panel"></div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- JOBS -->
       <section class="page" id="page-jobs">
         <div class="page-header max-content">
@@ -660,7 +789,7 @@
         <div class="workbench max-content">
           <aside class="workbench-rail" aria-label="Opening filters">
             <div class="stats stats--compact workbench-stats" id="jobs-stats"></div>
-            <div class="deadline-rail" id="jobs-deadlines" hidden></div>
+            <div class="deadline-rail" id="jobs-deadlines"></div>
         <div class="discover-panel jobs-discover workbench-rail-panel">
           <div class="discover-primary">
             <div class="field grow discover-search">
@@ -679,8 +808,23 @@
               <label for="f-jobs-sector">Thematic sector</label>
               <select id="f-jobs-sector"><option value="">All sectors</option></select>
             </div>
+            <div class="field discover-source">
+              <label for="f-jobs-source">Source</label>
+              <select id="f-jobs-source">
+                <option value="all">All openings</option>
+                <option value="ngo">NGO (indexed)</option>
+                <option value="hospitality">Hospitality &amp; tourism</option>
+              </select>
+            </div>
+            <div class="field discover-entry">
+              <label for="f-jobs-entry">Hospitality</label>
+              <select id="f-jobs-entry">
+                <option value="">Any level</option>
+                <option value="training">Training / entry-friendly</option>
+              </select>
+            </div>
           </div>
-          <p class="discover-hint small muted" id="jobs-filter-hint">“Where” uses the location text on each vacancy (not the organisation HQ).</p>
+          <p class="discover-hint small muted" id="jobs-filter-hint">“Where” uses the location text on each vacancy (not the organisation HQ). Hospitality roles apply <strong>on this desk</strong> when verified employers post them.</p>
         </div>
           </aside>
           <div class="workbench-main">
@@ -694,7 +838,7 @@
         <div class="jobs-split" id="jobs-split">
           <div class="jobs-split-list">
             <div class="ngo-card-grid job-card-grid" id="jobs-card-grid"></div>
-            <div class="table-wrap table-wrap--desk jobs-table-view" hidden>
+            <div class="table-wrap table-wrap--desk jobs-table-view">
               <table>
                 <thead>
                   <tr>
@@ -710,7 +854,7 @@
               </table>
             </div>
           </div>
-          <aside class="job-detail-pane" id="job-detail-pane" aria-label="Opening details" hidden>
+          <aside class="job-detail-pane" id="job-detail-pane" aria-label="Opening details">
             <div class="job-detail-pane-inner">
               <p class="job-pane-empty" id="job-pane-empty">Select an opening for deadlines, location, and apply links.</p>
               <div class="job-pane-body" id="job-pane-body" hidden>
@@ -731,251 +875,506 @@
       </section>
 
       <!-- APPLY / SPONTANEOUS EMAILS -->
-      <section class="page" id="page-apply">
-        <div class="page-header max-content">
-          <p class="stitch-page-eyebrow">Work</p>
-          <h1>Spontaneous candidature</h1>
-          <p id="apply-tip">Send CV + short letter when no matching vacancy is posted.</p>
+      <section class="page apply-workbench-page" id="page-apply">
+        <div class="apply-shell max-content">
+          <div class="apply-intro">
+            <p class="stitch-page-eyebrow">Work</p>
+            <h1>Spontaneous candidature</h1>
+            <p id="apply-tip">Send CV + short letter when no matching vacancy is posted.</p>
+          </div>
+          <figure class="apply-visual">
+            <img src="img/community.jpg" alt="Collaborative work at a community desk" width="1200" height="520" loading="lazy" />
+          </figure>
+          <div class="apply-toolbar">
+            <label class="apply-toolbar-label" for="q-apply">Filter contacts</label>
+            <input id="q-apply" type="search" placeholder="Organisation, kind, or email…" autocomplete="off" />
+            <p class="small muted apply-toolbar-meta" id="apply-count" aria-live="polite"></p>
+          </div>
         </div>
         <div class="ngo-card-grid max-content" id="apply-emails"></div>
       </section>
 
       <!-- POSSIBILITY -->
-      <section class="page" id="page-possibility">
-        <div class="page-header max-content">
-          <p class="stitch-page-eyebrow">Guides · Desk scoring</p>
-          <h1>Job-finding possibility</h1>
-          <p>
-            Relative score (0–100): hiring activity 40% · recency 20% · staff scale 20% ·
-            beneficiaries / programme dependents 20%.
-          </p>
+      <section class="page poss-wizard-page" id="page-possibility">
+        <div class="fund-wizard max-content">
+          <header class="fund-wizard-head">
+            <p class="stitch-page-eyebrow">Guides · Desk scoring</p>
+            <h1 class="fund-wizard-title">Job-finding possibility</h1>
+          </header>
+          <nav class="fund-stepper" aria-label="Possibility guide steps">
+            <button type="button" class="fund-stepper-btn is-active" data-poss-step="overview"><span class="fund-stepper-num">01</span> Overview</button>
+            <button type="button" class="fund-stepper-btn" data-poss-step="method"><span class="fund-stepper-num">02</span> Method</button>
+            <button type="button" class="fund-stepper-btn" data-poss-step="rankings"><span class="fund-stepper-num">03</span> Rankings</button>
+          </nav>
+          <div class="fund-workbench">
+            <div class="fund-main">
+              <div class="fund-step is-active" data-poss-panel="overview">
+                <div class="fund-fields" data-poss-fields>
+                  <div class="fund-field">
+                    <p class="fund-field-value">0–100 relative</p>
+                    <p class="fund-field-label">Scale</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value" id="poss-scored-count">— scored</p>
+                    <p class="fund-field-label">Desk coverage</p>
+                  </div>
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">40 · 20 · 20 · 20</p>
+                    <p class="fund-field-label">Weights (%)</p>
+                  </div>
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">Hiring · recency · staff · programmes</p>
+                    <p class="fund-field-label">Signals</p>
+                  </div>
+                </div>
+                <p class="fund-step-lead" id="poss-overview-lead">
+                  Relative score: hiring activity 40% · recency 20% · staff scale 20% ·
+                  beneficiaries / programme dependents 20%.
+                </p>
+                <div class="callout warn fund-callout-inline">
+                  Score = opportunity volume, not probability of getting an offer. NGO roles in Greece are competitive.
+                </div>
+              </div>
+
+              <div class="fund-step" data-poss-panel="method">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">Public vacancies + disclosed scale</p>
+                    <p class="fund-field-label">Data basis</p>
+                  </div>
+                </div>
+                <div class="panel" id="poss-method-panel">
+                  <h2>How the desk weights each signal</h2>
+                  <div class="criteria-grid" id="poss-method-weights">
+                    <div>
+                      <h3>Hiring activity (40%)</h3>
+                      <p class="small muted" data-poss-method="hiringActivity">Indexed public openings + known annual hire volume when disclosed.</p>
+                    </div>
+                    <div>
+                      <h3>Recency (20%)</h3>
+                      <p class="small muted" data-poss-method="recency">How recently the last public vacancy appeared.</p>
+                    </div>
+                    <div>
+                      <h3>Staff scale (20%)</h3>
+                      <p class="small muted" data-poss-method="staffScale">Workforce size — proxy for replacement and project churn.</p>
+                    </div>
+                    <div>
+                      <h3>Programme scale (20%)</h3>
+                      <p class="small muted" data-poss-method="beneficiaryScale">People served / supported across programmes.</p>
+                    </div>
+                  </div>
+                  <h3 style="margin-top:1.25rem;font-size:0.92rem">Score bands</h3>
+                  <ul class="small muted" id="poss-method-bands"></ul>
+                  <h3 style="margin-top:1rem;font-size:0.92rem">Caveats</h3>
+                  <ul class="small muted" id="poss-caveats-list"></ul>
+                </div>
+              </div>
+
+              <div class="fund-step" data-poss-panel="rankings">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field">
+                    <p class="fund-field-value" id="poss-rank-count">—</p>
+                    <p class="fund-field-label">Organisations</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">Top 4 KPI strip</p>
+                    <p class="fund-field-label">Quick scan</p>
+                  </div>
+                </div>
+                <div class="bento-kpi poss-rank-kpi" id="poss-chart"></div>
+                <div class="ngo-card-grid poss-rank-grid" id="poss-cards"></div>
+              </div>
+            </div>
+
+            <aside class="fund-aside" aria-live="polite">
+              <article class="fund-aside-card is-active" data-poss-summary="overview">
+                <h2 class="fund-aside-kicker">Your focus</h2>
+                <p class="fund-aside-title">Where hiring looks active</p>
+                <p class="fund-aside-body">
+                  Start with overview, read the method, then open rankings. Unscored orgs are unmeasured — not impossible.
+                </p>
+                <figure class="fund-aside-media">
+                  <img src="img/planning.jpg" alt="" width="600" height="360" loading="lazy" />
+                </figure>
+                <button type="button" class="fund-aside-action btn" data-poss-step-jump="rankings">See rankings →</button>
+              </article>
+              <article class="fund-aside-card" data-poss-summary="method">
+                <h2 class="fund-aside-kicker">Method</h2>
+                <p class="fund-aside-title">Four weighted signals</p>
+                <ul class="fund-aside-list">
+                  <li><strong>40%</strong> hiring activity</li>
+                  <li><strong>20%</strong> recency</li>
+                  <li><strong>20%</strong> staff scale</li>
+                  <li><strong>20%</strong> programme scale</li>
+                </ul>
+                <button type="button" class="fund-aside-action btn" data-page="jobs">Browse openings</button>
+              </article>
+              <article class="fund-aside-card" data-poss-summary="rankings">
+                <h2 class="fund-aside-kicker">Rankings</h2>
+                <p class="fund-aside-title">Sorted by desk score</p>
+                <p class="fund-aside-body">
+                  Tap a card for the OSINT profile, or jump to live vacancies. Cross-check registry notes before you apply.
+                </p>
+                <button type="button" class="fund-aside-action btn btn-primary" data-page="registry">Open registry</button>
+              </article>
+            </aside>
+          </div>
         </div>
-        <div class="callout warn max-content">
-          Score = opportunity volume, not probability of getting an offer. NGO roles in Greece are competitive.
-        </div>
-        <div class="bento-kpi max-content" id="poss-chart"></div>
-        <div class="ngo-card-grid max-content" id="poss-cards"></div>
       </section>
 
+
       <!-- CREATE NGO -->
-      <section class="page" id="page-create">
-        <div class="page-header max-content">
-          <p class="stitch-page-eyebrow">Guides · Formation</p>
-          <h1>Create an NGO in Greece</h1>
-          <p>
-            Exact steps, conditions and criteria. “ΜΚΟ” is a common label, not a standalone legal type.
-            Choose a legal form first, then tax / registry obligations, then optional sector registries.
-          </p>
-        </div>
-        <nav class="page-toc" aria-label="On this page">
-          <button type="button" data-scroll="create-forms">Forms</button>
-          <button type="button" data-scroll="create-statute">Statute</button>
-          <button type="button" data-scroll="create-steps-somateio">Σωματείο</button>
-          <button type="button" data-scroll="create-steps-amke">ΑΜΚΕ</button>
-          <button type="button" data-scroll="create-registries">Registries</button>
-          <button type="button" data-scroll="create-checklist">Checklist</button>
-        </nav>
-        <figure class="page-visual">
-          <img src="img/documents.jpg" alt="Hands reviewing and signing documents" width="1800" height="700" loading="lazy" />
-        </figure>
+      <section class="page create-wizard-page" id="page-create">
+        <div class="fund-wizard max-content">
+          <header class="fund-wizard-head">
+            <p class="stitch-page-eyebrow">Guides · Formation</p>
+            <h1 class="fund-wizard-title">Create an NGO in Greece</h1>
+          </header>
+          <nav class="fund-stepper" aria-label="Formation guide steps">
+            <button type="button" class="fund-stepper-btn is-active" data-create-step="overview"><span class="fund-stepper-num">01</span> Overview</button>
+            <button type="button" class="fund-stepper-btn" data-create-step="forms"><span class="fund-stepper-num">02</span> Legal form</button>
+            <button type="button" class="fund-stepper-btn" data-create-step="statute"><span class="fund-stepper-num">03</span> Statute</button>
+            <button type="button" class="fund-stepper-btn" data-create-step="somateio"><span class="fund-stepper-num">04</span> Σωματείο</button>
+            <button type="button" class="fund-stepper-btn" data-create-step="amke"><span class="fund-stepper-num">05</span> ΑΜΚΕ</button>
+            <button type="button" class="fund-stepper-btn" data-create-step="close"><span class="fund-stepper-num">06</span> Registries</button>
+          </nav>
+          <div class="fund-workbench">
+            <div class="fund-main">
+              <div class="fund-step is-active" data-create-panel="overview">
+                <div class="fund-fields" data-create-fields>
+                  <div class="fund-field">
+                    <p class="fund-field-value">Σωματείο or ΑΜΚΕ</p>
+                    <p class="fund-field-label">Typical forms</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">20 founders · 2 partners</p>
+                    <p class="fund-field-label">Minimum size</p>
+                  </div>
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">Court (σωματείο) or ΓΕΜΗ (ΑΜΚΕ)</p>
+                    <p class="fund-field-label">Registration route</p>
+                  </div>
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">ΑΦΜ · bank · sector registries</p>
+                    <p class="fund-field-label">After recognition</p>
+                  </div>
+                </div>
+                <p class="fund-step-lead">
+                  Exact steps, conditions and criteria. “ΜΚΟ” is a common label, not a standalone legal type.
+                  Choose a legal form first, then tax and registry obligations, then optional sector registries.
+                </p>
+                <div class="callout fund-callout-inline">
+                  Practical orientation based on Civil Code rules for <strong>σωματείο</strong> and
+                  <strong>ΑΜΚΕ</strong>, ΓΕΜΗ guidance, and ΥΠΕΣ / Ο.Κοι.Π. registry criteria (ν. 4873/2021).
+                  It is <strong>not legal advice</strong> — confirm with a lawyer / accountant and the competent authority
+                  before filing.
+                </div>
+              </div>
 
-        <div class="callout">
-          This is a practical orientation based on Civil Code rules for <strong>σωματείο</strong> and
-          <strong>ΑΜΚΕ</strong>, ΓΕΜΗ guidance, and ΥΠΕΣ / Ο.Κοι.Π. registry criteria (ν. 4873/2021).
-          It is <strong>not legal advice</strong> — confirm with a lawyer / accountant and the competent authority
-          before filing.
-        </div>
+              <div class="fund-step" data-create-panel="forms">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field">
+                    <p class="fund-field-value">≥ 20 natural persons</p>
+                    <p class="fund-field-label">Σωματείο</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">≥ 2 partners</p>
+                    <p class="fund-field-label">ΑΜΚΕ</p>
+                  </div>
+                </div>
+                <div class="panel" id="create-forms">
+                  <h2>Conditions — pick the legal form</h2>
+                  <div class="criteria-grid">
+                    <div>
+                      <h3>Σωματείο (association) — ΑΚ 78–107</h3>
+                      <ul>
+                        <li><strong>Minimum founders:</strong> 20 natural persons.</li>
+                        <li><strong>Purpose:</strong> non-profit; must not contradict law, morals, or public order.</li>
+                        <li><strong>Seat:</strong> Greek municipality (application at local Ειρηνοδικείο).</li>
+                        <li><strong>Governing docs:</strong> καταστατικό + πρακτικό ίδρυσης + temporary board list.</li>
+                        <li><strong>Personality:</strong> after court διάταξη, publication, and registration in the book of associations.</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3>ΑΜΚΕ — Αστική Μη Κερδοσκοπική Εταιρεία (ΑΚ 741–784)</h3>
+                      <ul>
+                        <li><strong>Minimum partners:</strong> 2 natural or legal persons.</li>
+                        <li><strong>No profit distribution</strong> to partners; surplus stays for the purpose.</li>
+                        <li><strong>Legal personality (784 ΑΚ):</strong> written statute + economic (non-commercial) purpose + ΓΕΜΗ publicity.</li>
+                        <li><strong>Name:</strong> must include “Αστική Εταιρεία” or “Αστική Μη Κερδοσκοπική Εταιρεία” / Α.Μ.Κ.Ε.</li>
+                        <li><strong>Formation:</strong> one-stop shop / ΥΓΕΜΗ (e-ΥΜΣ available for model statutes).</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p class="small muted" style="margin-top:0.75rem">
+                    Other vehicles exist (κοινωφελές ίδρυμα, επιτροπή εράνων, etc.) but σωματείο and ΑΜΚΕ cover most “NGO” startups.
+                  </p>
+                </div>
+              </div>
 
-        <div class="panel" id="create-forms">
-          <h2>1. Conditions — pick the legal form</h2>
-          <div class="criteria-grid">
-            <div>
-              <h3>Σωματείο (association) — ΑΚ 78–107</h3>
-              <ul>
-                <li><strong>Minimum founders:</strong> 20 natural persons.</li>
-                <li><strong>Purpose:</strong> non-profit; must not contradict law, morals, or public order.</li>
-                <li><strong>Seat:</strong> Greek municipality (application at local Ειρηνοδικείο).</li>
-                <li><strong>Governing docs:</strong> καταστατικό + πρακτικό ίδρυσης + temporary board list.</li>
-                <li><strong>Personality:</strong> after court διάταξη, publication, and registration in the book of associations.</li>
-              </ul>
-            </div>
-            <div>
-              <h3>ΑΜΚΕ — Αστική Μη Κερδοσκοπική Εταιρεία (ΑΚ 741–784)</h3>
-              <ul>
-                <li><strong>Minimum partners:</strong> 2 natural or legal persons.</li>
-                <li><strong>No profit distribution</strong> to partners; surplus stays for the purpose.</li>
-                <li><strong>Legal personality (784 ΑΚ):</strong> written statute + economic (non-commercial) purpose + ΓΕΜΗ publicity.</li>
-                <li><strong>Name:</strong> must include “Αστική Εταιρεία” or “Αστική Μη Κερδοσκοπική Εταιρεία” / Α.Μ.Κ.Ε.</li>
-                <li><strong>Formation:</strong> one-stop shop / ΥΓΕΜΗ (e-ΥΜΣ available for model statutes).</li>
-              </ul>
-            </div>
-          </div>
-          <p class="small muted" style="margin-top:0.75rem">
-            Other vehicles exist (κοινωφελές ίδρυμα, επιτροπή εράνων, etc.) but σωματείο and ΑΜΚΕ cover most “NGO” startups.
-          </p>
-        </div>
+              <div class="fund-step" data-create-panel="statute">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">Purpose · governance · dissolution</p>
+                    <p class="fund-field-label">Must cover</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <h2 id="create-statute">Criteria the statute must cover</h2>
+                  <div class="criteria-grid">
+                    <div>
+                      <h3>Σωματείο καταστατικό (mandatory)</h3>
+                      <ul>
+                        <li>Purpose, name, seat</li>
+                        <li>Admission, withdrawal, expulsion; rights &amp; duties of members</li>
+                        <li>Resources / funding</li>
+                        <li>Judicial &amp; extrajudicial representation</li>
+                        <li>Administration bodies; how they are formed / removed</li>
+                        <li>General assembly: convening, quorum, decisions</li>
+                        <li>Amendment of statute; dissolution terms</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3>ΑΜΚΕ καταστατικό (core)</h3>
+                      <ul>
+                        <li>Name (+ optional distinctive title) and international rendering</li>
+                        <li>Seat (municipality)</li>
+                        <li>Purpose / activities (often via ΚΑΔ on e-ΥΜΣ)</li>
+                        <li>Duration (fixed or indefinite)</li>
+                        <li>Partners, contributions, shares</li>
+                        <li>Management / representation</li>
+                        <li>Purpose must not violate public order or χρηστά ήθη</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        <div class="panel">
-          <h2 id="create-statute">2. Criteria the statute must cover</h2>
-          <div class="criteria-grid">
-            <div>
-              <h3>Σωματείο καταστατικό (mandatory)</h3>
-              <ul>
-                <li>Purpose, name, seat</li>
-                <li>Admission, withdrawal, expulsion; rights &amp; duties of members</li>
-                <li>Resources / funding</li>
-                <li>Judicial &amp; extrajudicial representation</li>
-                <li>Administration bodies; how they are formed / removed</li>
-                <li>General assembly: convening, quorum, decisions</li>
-                <li>Amendment of statute; dissolution terms</li>
-              </ul>
-            </div>
-            <div>
-              <h3>ΑΜΚΕ καταστατικό (core)</h3>
-              <ul>
-                <li>Name (+ optional distinctive title) and international rendering</li>
-                <li>Seat (municipality)</li>
-                <li>Purpose / activities (often via ΚΑΔ on e-ΥΜΣ)</li>
-                <li>Duration (fixed or indefinite)</li>
-                <li>Partners, contributions, shares</li>
-                <li>Management / representation</li>
-                <li>Purpose must not violate public order or χρηστά ήθη</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+              <div class="fund-step" data-create-panel="somateio">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field">
+                    <p class="fund-field-value">Ειρηνοδικείο → Πρωτοδικείο</p>
+                    <p class="fund-field-label">Route</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">6 stages</p>
+                    <p class="fund-field-label">On this step</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <h2 id="create-steps-somateio">Steps — Σωματείο</h2>
+                  <div class="steps fund-flow-list">
+                    <div class="step">
+                      <div>
+                        <h3>Gather 20 founding members</h3>
+                        <p>Agree purpose, name, seat, and temporary administration.</p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div>
+                        <h3>Draft and sign founding package</h3>
+                        <ul>
+                          <li>Καταστατικό signed by all founders (usually 3 originals + copy)</li>
+                          <li>Πρακτικό ίδρυσης (2 originals)</li>
+                          <li>List of temporary board members (2 originals)</li>
+                          <li>Application to Ειρηνοδικείο of the seat (lawyer-signed)</li>
+                          <li>Draft διάταξη for the judge</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div>
+                        <h3>Court review &amp; διάταξη</h3>
+                        <p>
+                          Judge checks file completeness, mandatory statute clauses, and whether the purpose
+                          contradicts law / morals / public order (not “usefulness”).
+                        </p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div>
+                        <h3>Publish &amp; notify</h3>
+                        <p>
+                          Publish summary as ordered; serve διάταξη on Εισαγγελία Πρωτοδικών and competent Περιφέρεια.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div>
+                        <h3>Register in βιβλίο σωματείων</h3>
+                        <p>Registration at competent Πρωτοδικείο completes recognition.</p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div>
+                        <h3>Tax start</h3>
+                        <p>Obtain ΑΦΜ / start of operations at ΔΟΥ without delay; open bank account; bookkeeping setup.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        <div class="panel">
-          <h2 id="create-steps-somateio">3. Steps — Σωματείο</h2>
-          <div class="steps">
-            <div class="step">
-              <div>
-                <h3>Gather 20 founding members</h3>
-                <p>Agree purpose, name, seat, and temporary administration.</p>
+              <div class="fund-step" data-create-panel="amke">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">e-ΥΜΣ model statute · ΓΕΜΗ</p>
+                    <p class="fund-field-label">Formation tools</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <h2 id="create-steps-amke">Steps — ΑΜΚΕ with legal personality</h2>
+                  <div class="steps fund-flow-list">
+                    <div class="step">
+                      <div>
+                        <h3>Agree partners (≥2) and purpose</h3>
+                        <p>Economic but non-commercial / non-profit-distributing purpose; choose ΚΑΔ activities.</p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div>
+                        <h3>Prepare written statute</h3>
+                        <p>
+                          Use official model statute (ΥΑ 5186/2024) via e-ΥΜΣ where eligible, or file completed statute
+                          at ΥΓΕΜΗ of the chamber.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div>
+                        <h3>Register in ΓΕΜΗ</h3>
+                        <p>
+                          Legal personality arises with ΓΕΜΗ filing/publication for ΑΜΚΕ of art. 784 ΑΚ
+                          (post-2011, ΓΕΜΗ replaced πρωτοδικείο commercial-partnership registers for this purpose).
+                        </p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div>
+                        <h3>Tax &amp; compliance</h3>
+                        <ul>
+                          <li>ΑΦΜ, ΚΑΔ, bank account</li>
+                          <li>Link entity AFM to legal representative AFM (within 30 days of changes)</li>
+                          <li>Ultimate beneficial owners registry</li>
+                          <li>Annual income declaration (form Ν); myDATA; VAT returns if in VAT regime</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fund-step" data-create-panel="close">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field">
+                    <p class="fund-field-value">Ο.Κοι.Π. · migration</p>
+                    <p class="fund-field-label">Sector gates</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">Pre-filing checklist</p>
+                    <p class="fund-field-label">Step 06</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <h2 id="create-registries">Extra criteria — state &amp; sector registries</h2>
+                  <div class="criteria-grid">
+                    <div>
+                      <h3>Ο.Κοι.Π. / ΥΠΕΣ (ν. 4873/2021)</h3>
+                      <ul>
+                        <li>Eligible forms include σωματείο and ΑΜΚΕ seated in Greece</li>
+                        <li><strong>Independence</strong> from state, parties, unions, commercial chambers, etc.</li>
+                        <li><strong>Ειδικό Μητρώο</strong> (for many state-funding paths): ≥ 3 years since establishment</li>
+                        <li>Limits on related-party contracts and on regular state operating grants (&gt;30% of operating budget excl. payroll → barrier)</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3>Migration / asylum NGO registry</h3>
+                      <ul>
+                        <li>Separate registration may be required to operate certain migration programmes</li>
+                        <li>Official list: <a href="https://okeanis.migration.gov.gr/" target="_blank" rel="noopener">okeanis.migration.gov.gr (Μητρώο ΜΚΟ)</a></li>
+                        <li>National ΜΚΟ registry entry point: <a href="https://www.gov.gr/el/services/1001849/metroo-ellenikon-kai-xenon-me-kubernetikon-organoseon-mko" target="_blank" rel="noopener">gov.gr</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <h2 id="create-checklist">Practical checklist (conditions before you file)</h2>
+                  <ul>
+                    <li>Clear non-profit purpose and activities that do not require a reserved licence you do not hold</li>
+                    <li>Enough founders (20 for σωματείο / 2 for ΑΜΚΕ)</li>
+                    <li>Seat address and contact person</li>
+                    <li>Draft statute covering all mandatory clauses</li>
+                    <li>Budget for court / ΓΕΜΗ fees, lawyer, accountant, first months of operations</li>
+                    <li>Plan for governance, safeguarding (if working with children/vulnerable groups), and accounting</li>
+                    <li>If seeking public funds later: design independence and related-party rules to meet Ο.Κοι.Π. criteria</li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div class="step">
-              <div>
-                <h3>Draft and sign founding package</h3>
-                <ul>
-                  <li>Καταστατικό signed by all founders (usually 3 originals + copy)</li>
-                  <li>Πρακτικό ίδρυσης (2 originals)</li>
-                  <li>List of temporary board members (2 originals)</li>
-                  <li>Application to Ειρηνοδικείο of the seat (lawyer-signed)</li>
-                  <li>Draft διάταξη for the judge</li>
+
+            <aside class="fund-aside" aria-live="polite">
+              <article class="fund-aside-card is-active" data-create-summary="overview">
+                <h2 class="fund-aside-kicker">Your focus</h2>
+                <p class="fund-aside-title">Formation before funding</p>
+                <p class="fund-aside-body">
+                  Walk legal form → statute → court or ΓΕΜΗ route → registries. Funding steps live on the Fund guide once you have ΑΦΜ and a bank account.
+                </p>
+                <figure class="fund-aside-media">
+                  <img src="img/documents.jpg" alt="" width="600" height="360" loading="lazy" />
+                </figure>
+                <button type="button" class="fund-aside-action btn" data-page="funding">Funding guide →</button>
+              </article>
+              <article class="fund-aside-card" data-create-summary="forms">
+                <h2 class="fund-aside-kicker">Legal form</h2>
+                <p class="fund-aside-title">Σωματείο vs ΑΜΚΕ</p>
+                <ul class="fund-aside-list">
+                  <li><strong>20</strong> founders vs <strong>2</strong> partners</li>
+                  <li>Court book vs ΓΕΜΗ one-stop</li>
                 </ul>
-              </div>
-            </div>
-            <div class="step">
-              <div>
-                <h3>Court review &amp; διάταξη</h3>
-                <p>
-                  Judge checks file completeness, mandatory statute clauses, and whether the purpose
-                  contradicts law / morals / public order (not “usefulness”).
+                <p class="fund-aside-body warn-copy">
+                  Pick the form that matches your governance culture and funder expectations — switching later is painful.
                 </p>
-              </div>
-            </div>
-            <div class="step">
-              <div>
-                <h3>Publish &amp; notify</h3>
-                <p>
-                  Publish summary as ordered; serve διάταξη on Εισαγγελία Πρωτοδικών and competent Περιφέρεια.
+                <button type="button" class="fund-aside-action btn" data-create-step-jump="statute">Statute criteria →</button>
+              </article>
+              <article class="fund-aside-card" data-create-summary="statute">
+                <h2 class="fund-aside-kicker">Statute</h2>
+                <p class="fund-aside-title">Mandatory clauses</p>
+                <p class="fund-aside-body">
+                  Judges and ΓΕΜΗ reject incomplete καταστατικά. Mirror mandatory lists before you print signatures.
                 </p>
-              </div>
-            </div>
-            <div class="step">
-              <div>
-                <h3>Register in βιβλίο σωματείων</h3>
-                <p>Registration at competent Πρωτοδικείο completes recognition.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div>
-                <h3>Tax start</h3>
-                <p>Obtain ΑΦΜ / start of operations at ΔΟΥ without delay; open bank account; bookkeeping setup.</p>
-              </div>
-            </div>
+                <button type="button" class="fund-aside-action btn" data-create-step-jump="somateio">Σωματείο steps →</button>
+              </article>
+              <article class="fund-aside-card" data-create-summary="somateio">
+                <h2 class="fund-aside-kicker">Σωματείο</h2>
+                <p class="fund-aside-title">Court-led route</p>
+                <p class="fund-aside-body">
+                  Ειρηνοδικείο filing → διάταξη → publication → βιβλίο σωματείων → ΑΦΜ. Budget lawyer time and court fees.
+                </p>
+                <button type="button" class="fund-aside-action btn" data-create-step-jump="amke">Compare ΑΜΚΕ →</button>
+              </article>
+              <article class="fund-aside-card" data-create-summary="amke">
+                <h2 class="fund-aside-kicker">ΑΜΚΕ</h2>
+                <p class="fund-aside-title">ΓΕΜΗ route</p>
+                <p class="fund-aside-body">
+                  Faster for small teams; personality with ΓΕΜΗ publication. Plan UBO, myDATA, and form Ν from day one.
+                </p>
+                <a class="fund-aside-action btn" href="https://gemi.ebeh.gr/images/KATASTATIKO_ASTIKHS_ETAIREIAS_784_AK.pdf" target="_blank" rel="noopener">Model statute (PDF) ↗</a>
+              </article>
+              <article class="fund-aside-card" data-create-summary="close">
+                <h2 class="fund-aside-kicker">Registries</h2>
+                <p class="fund-aside-title">Ο.Κοι.Π. &amp; checklist</p>
+                <ol class="fund-aside-ol">
+                  <li>Independence from parties / state bodies</li>
+                  <li>Ειδικό Μητρώο often needs ≥3 years</li>
+                  <li>Migration programmes: Okeanis registry</li>
+                </ol>
+                <button type="button" class="fund-aside-action btn btn-primary" data-page="registry">Browse desk registry</button>
+              </article>
+            </aside>
           </div>
         </div>
 
-        <div class="panel">
-          <h2 id="create-steps-amke">4. Steps — ΑΜΚΕ with legal personality</h2>
-          <div class="steps">
-            <div class="step">
-              <div>
-                <h3>Agree partners (≥2) and purpose</h3>
-                <p>Economic but non-commercial / non-profit-distributing purpose; choose ΚΑΔ activities.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div>
-                <h3>Prepare written statute</h3>
-                <p>
-                  Use official model statute (ΥΑ 5186/2024) via e-ΥΜΣ where eligible, or file completed statute
-                  at ΥΓΕΜΗ of the chamber.
-                </p>
-              </div>
-            </div>
-            <div class="step">
-              <div>
-                <h3>Register in ΓΕΜΗ</h3>
-                <p>
-                  Legal personality arises with ΓΕΜΗ filing/publication for ΑΜΚΕ of art. 784 ΑΚ
-                  (post-2011, ΓΕΜΗ replaced πρωτοδικείο commercial-partnership registers for this purpose).
-                </p>
-              </div>
-            </div>
-            <div class="step">
-              <div>
-                <h3>Tax &amp; compliance</h3>
-                <ul>
-                  <li>ΑΦΜ, ΚΑΔ, bank account</li>
-                  <li>Link entity AFM to legal representative AFM (within 30 days of changes)</li>
-                  <li>Ultimate beneficial owners registry</li>
-                  <li>Annual income declaration (form Ν); myDATA; VAT returns if in VAT regime</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h2 id="create-registries">5. Extra criteria — state &amp; sector registries</h2>
-          <div class="criteria-grid">
-            <div>
-              <h3>Ο.Κοι.Π. / ΥΠΕΣ (ν. 4873/2021)</h3>
-              <ul>
-                <li>Eligible forms include σωματείο and ΑΜΚΕ seated in Greece</li>
-                <li><strong>Independence</strong> from state, parties, unions, commercial chambers, etc.</li>
-                <li><strong>Ειδικό Μητρώο</strong> (for many state-funding paths): ≥ 3 years since establishment</li>
-                <li>Limits on related-party contracts and on regular state operating grants (&gt;30% of operating budget excl. payroll → barrier)</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Migration / asylum NGO registry</h3>
-              <ul>
-                <li>Separate registration may be required to operate certain migration programmes</li>
-                <li>Official list: <a href="https://okeanis.migration.gov.gr/" target="_blank" rel="noopener">okeanis.migration.gov.gr (Μητρώο ΜΚΟ)</a></li>
-                <li>National ΜΚΟ registry entry point: <a href="https://www.gov.gr/el/services/1001849/metroo-ellenikon-kai-xenon-me-kubernetikon-organoseon-mko" target="_blank" rel="noopener">gov.gr</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h2 id="create-checklist">6. Practical checklist (conditions before you file)</h2>
-          <ul>
-            <li>Clear non-profit purpose and activities that do not require a reserved licence you do not hold</li>
-            <li>Enough founders (20 for σωματείο / 2 for ΑΜΚΕ)</li>
-            <li>Seat address and contact person</li>
-            <li>Draft statute covering all mandatory clauses</li>
-            <li>Budget for court / ΓΕΜΗ fees, lawyer, accountant, first months of operations</li>
-            <li>Plan for governance, safeguarding (if working with children/vulnerable groups), and accounting</li>
-            <li>If seeking public funds later: design independence and related-party rules to meet Ο.Κοι.Π. criteria</li>
-          </ul>
-        </div>
-
-        <p class="sources">
+        <p class="sources max-content">
           Sources (verify before acting):
           <a href="https://gmikoniatislaw.gr/ypiresia/idrisi-somateiou/" target="_blank" rel="noopener">Σωματείο procedure summary</a> ·
           <a href="https://gemi.ebeh.gr/images/KATASTATIKO_ASTIKHS_ETAIREIAS_784_AK.pdf" target="_blank" rel="noopener">ΓΕΜΗ model ΑΜΚΕ statute</a> ·
@@ -985,49 +1384,97 @@
         </p>
       </section>
 
+
       <!-- FUNDING -->
-      <section class="page" id="page-funding">
-        <div class="page-header max-content">
-          <p class="stitch-page-eyebrow">Guides · Fund</p>
-          <h1>Funding for NGOs</h1>
-          <p>
-            How a Greek NGO gets funded: what founders must have in place, the practical steps to raise money,
-            and the main funding sources (EU, national, foundations, private).
-          </p>
-        </div>
-        <figure class="page-visual">
-          <img src="img/funding-collab.jpg" alt="People collaborating on a shared project" width="1800" height="700" loading="lazy" />
-        </figure>
+      <section class="page fund-wizard-page" id="page-funding">
+        <div class="fund-wizard max-content">
+          <header class="fund-wizard-head">
+            <p class="stitch-page-eyebrow">Guides · Fund</p>
+            <h1 class="fund-wizard-title">Funding for NGOs</h1>
+          </header>
+          <nav class="fund-stepper" aria-label="Funding guide steps">
+            <button type="button" class="fund-stepper-btn is-active" data-fund-step="overview"><span class="fund-stepper-num">01</span> Overview</button>
+            <button type="button" class="fund-stepper-btn" data-fund-step="readiness"><span class="fund-stepper-num">02</span> Readiness</button>
+            <button type="button" class="fund-stepper-btn" data-fund-step="process"><span class="fund-stepper-num">03</span> Process</button>
+            <button type="button" class="fund-stepper-btn" data-fund-step="sources"><span class="fund-stepper-num">04</span> Sources</button>
+            <button type="button" class="fund-stepper-btn" data-fund-step="gates"><span class="fund-stepper-num">05</span> Eligibility</button>
+            <button type="button" class="fund-stepper-btn" data-fund-step="path"><span class="fund-stepper-num">06</span> Starter path</button>
+          </nav>
+          <div class="fund-workbench">
+            <div class="fund-main">
+              <div class="fund-step is-active" data-fund-panel="overview">
+                <div class="fund-fields" data-fund-fields>
+                  <div class="fund-field">
+                    <p class="fund-field-value">Greece · EU programmes</p>
+                    <p class="fund-field-label">Scope</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">Founders &amp; fundraisers</p>
+                    <p class="fund-field-label">Audience</p>
+                  </div>
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">Registered NGO with ΑΦΜ &amp; bank account</p>
+                    <p class="fund-field-label">Prerequisite</p>
+                  </div>
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">ΕΣΠΑ · AMIF · EEA · foundations · donors</p>
+                    <p class="fund-field-label">Primary sources</p>
+                  </div>
+                </div>
+                <p class="fund-step-lead">
+                  How a Greek NGO gets funded: what founders must have in place, the practical steps to raise money,
+                  and the main funding sources (EU, national, foundations, private).
+                </p>
+                <div class="callout fund-callout-inline">
+                  Orientation only — each call has its own eligibility rules. Always read the official πρόσκληση.
+                  Legal formation steps live on the <button type="button" class="linkish" data-page="create">Create an NGO</button> page;
+                  this guide is about money after (and while) you exist.
+                </div>
+              </div>
 
-        <div class="callout">
-          Orientation only — each call has its own eligibility rules. Always read the official πρόσκληση.
-          Legal formation steps live on the <strong>Create an NGO</strong> page; this page is about money after (and while) you exist.
-        </div>
-
+              <div class="fund-step" data-fund-panel="readiness">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field">
+                    <p class="fund-field-value">Σωματείο or ΑΜΚΕ + ΑΦΜ</p>
+                    <p class="fund-field-label">Legal personality</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">Board independence · bank account</p>
+                    <p class="fund-field-label">Governance</p>
+                  </div>
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">Καταστατικό · financials · safeguarding policies</p>
+                    <p class="fund-field-label">Document pack</p>
+                  </div>
+                </div>
         <div class="panel">
-          <h2>1. Must-haves (founders &amp; organisation) before most funders say yes</h2>
+          <h2>Must-haves before most funders say yes</h2>
+          <p class="small muted" style="margin-top:0">
+            How to <strong>form</strong> the NGO (legal form, statute, court/ΓΕΜΗ, ΑΦΜ, sector registries) lives on the
+            <button type="button" class="linkish" data-page="create">Found an NGO</button> guide —
+            <a href="#create/forms">legal form</a> · <a href="#create/statute">statute</a> · <a href="#create/close">registries</a>.
+            This step is what funders usually verify <em>on top of</em> registration.
+          </p>
           <div class="criteria-grid">
             <div>
-              <h3>Must founders / legal base</h3>
+              <h3>Baseline (summary)</h3>
               <ul>
-                <li><strong>Legal personality:</strong> registered σωματείο (≥20 founders) or ΑΜΚΕ (≥2 partners) with ΑΦΜ</li>
-                <li><strong>Statute:</strong> clear non-profit purpose matching the funding theme</li>
-                <li><strong>Seat in Greece</strong> and ability to implement activities in Greece (often mandatory)</li>
-                <li><strong>Bank account</strong> in the organisation’s name</li>
-                <li><strong>Legal representative</strong> who can sign grants and bind the entity</li>
-                <li><strong>Governance:</strong> board / partners who are independent from political parties &amp; public bodies (needed for Ο.Κοι.Π. / many public grants)</li>
+                <li>Legal personality with ΑΦΜ and a bank account in the organisation’s name</li>
+                <li>Statute purpose aligned with the call; seat and activities implementable in Greece</li>
+                <li>Legal representative who can sign grants; governance that can pass independence checks</li>
               </ul>
+              <p class="small muted">Full formation detail: <a href="#create">Found guide</a>.</p>
             </div>
             <div>
-              <h3>Must documents funders usually ask</h3>
+              <h3>Documents funders usually request</h3>
               <ul>
-                <li>Καταστατικό + certificate of registration (ΓΕΜΗ or Πρωτοδικείο βιβλίο σωματείων)</li>
-                <li>Recent financials: έντυπο Ν / Ε3, or audited statements (some calls: 2 years; size caps apply)</li>
-                <li>UBO / beneficial owners declaration where required</li>
-                <li>CV of key staff / project manager; organisational track record</li>
+                <li>Καταστατικό + registration certificate (ΓΕΜΗ or βιβλίο σωματείων)</li>
+                <li>Recent financials: έντυπο Ν / Ε3 or audited statements (some calls: 2 years; turnover caps)</li>
+                <li>UBO / beneficial owners where required</li>
+                <li>CV of project lead; track record and prior projects</li>
                 <li>Safeguarding / child-protection policy if working with minors</li>
-                <li>For migration work: check <a href="https://okeanis.migration.gov.gr/" target="_blank" rel="noopener">Migration NGO registry (Okeanis)</a></li>
-                <li>For state funding paths: ΥΠΕΣ Ο.Κοι.Π. / Ειδικό Μητρώο (often ≥3 years of existence)</li>
+                <li>Sector μητρώο when the call requires it — see <a href="#create/close">Found → Registries</a> (e.g. <a href="https://okeanis.migration.gov.gr/" target="_blank" rel="noopener">Okeanis</a> for migration programmes)</li>
+                <li>Ειδικό Μητρώο / Ο.Κοι.Π. paths: often ≥3 years’ existence — criteria in <a href="#create/close">Registries</a></li>
               </ul>
             </div>
           </div>
@@ -1036,16 +1483,28 @@
             (b) partner as co-beneficiary under a larger lead NGO until you reach the age / turnover thresholds.
           </div>
         </div>
+              </div>
 
+              <div class="fund-step" data-fund-panel="process">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">Shell → programme → proposal → report</p>
+                    <p class="fund-field-label">Funding loop</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">8 stages</p>
+                    <p class="fund-field-label">On this step</p>
+                  </div>
+                </div>
         <div class="panel">
           <h2>2. Steps — how an NGO gets funded</h2>
-          <div class="steps">
+          <div class="steps fund-flow-list">
             <div class="step">
               <div>
                 <h3>Stabilise the legal shell</h3>
                 <p>
                   Finish registration, ΑΦΜ, bank account, basic bookkeeping (myDATA). Without this, institutional money is almost impossible.
-                  See <em>Create an NGO</em> for formation steps.
+                  Formation walkthrough: <a href="#create/forms">Found → legal form</a> · <a href="#create/somateio">Σωματείο</a> · <a href="#create/amke">ΑΜΚΕ</a>.
                 </p>
               </div>
             </div>
@@ -1118,10 +1577,22 @@
             </div>
           </div>
         </div>
+              </div>
 
+              <div class="fund-step" data-fund-panel="sources">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field">
+                    <p class="fund-field-value">ΕΣΠΑ · AMIF · EEA · EU portals</p>
+                    <p class="fund-field-label">Public money</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">Foundations · CSR · municipal contracts</p>
+                    <p class="fund-field-label">Private &amp; local</p>
+                  </div>
+                </div>
         <div class="panel">
           <h2>3. Funding sources (Greece / EU)</h2>
-          <div class="cards">
+          <div class="cards fund-source-cards">
             <article class="card">
               <h3>ΕΣΠΑ / national EU funds</h3>
               <div class="meta">Managed in Greece · large share of NGO money</div>
@@ -1194,9 +1665,25 @@
             </article>
           </div>
         </div>
+              </div>
 
+              <div class="fund-step" data-fund-panel="gates">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field">
+                    <p class="fund-field-value">≥2–3 years · independence · finances</p>
+                    <p class="fund-field-label">Common gates</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">Registries · co-funding reserve</p>
+                    <p class="fund-field-label">Sector-specific</p>
+                  </div>
+                </div>
         <div class="panel">
-          <h2>4. Typical eligibility thresholds (examples)</h2>
+          <h2>Typical eligibility thresholds (examples)</h2>
+          <p class="small muted" style="margin-top:0">
+            Independence, Ειδικό Μητρώο, and sector registry rules you design at founding are spelled out on
+            <a href="#create/close">Found → Registries</a>. The table below is how calls usually test you at application time.
+          </p>
           <table>
             <thead>
               <tr>
@@ -1234,19 +1721,95 @@
             </tbody>
           </table>
         </div>
+              </div>
 
+              <div class="fund-step" data-fund-panel="path">
+                <div class="fund-fields fund-fields--step">
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">Found → pilot → foundation → consortium → hire on grants</p>
+                    <p class="fund-field-label">Starter sequence</p>
+                  </div>
+                </div>
         <div class="panel">
-          <h2>5. Practical starter path for a new NGO</h2>
+          <h2>Practical starter path for a new NGO</h2>
           <ol class="muted" style="margin:0;padding-left:1.2rem">
-            <li>Found legally (σωματείο or ΑΜΚΕ) → ΑΦΜ → bank → basic website &amp; policies.</li>
+            <li>Found legally (<a href="#create/forms">Found guide</a>) → ΑΦΜ → bank → basic website &amp; policies.</li>
             <li>Run a small pilot with volunteer time + private donations (prove you can deliver).</li>
             <li>Apply to a foundation / EEA CSF small or organisational call when eligible.</li>
             <li>Join a consortium as partner on ΕΣΠΑ / AMIF once you have 12–36 months of accounts.</li>
             <li>Hire only against signed grants; keep overhead low until multi-year funding exists.</li>
           </ol>
         </div>
+              </div>
+            </div>
 
-        <p class="sources">
+            <aside class="fund-aside" aria-live="polite">
+              <article class="fund-aside-card is-active" data-fund-summary="overview">
+                <h2 class="fund-aside-kicker">Your focus</h2>
+                <p class="fund-aside-title">Institutional &amp; private funding in Greece</p>
+                <p class="fund-aside-body">
+                  Use the stepper to walk readiness → process → sources. Every call has its own πρόσκληση — this desk does not replace legal advice.
+                </p>
+                <figure class="fund-aside-media">
+                  <img src="img/funding-collab.jpg" alt="" width="600" height="360" loading="lazy" />
+                </figure>
+                <button type="button" class="fund-aside-action btn" data-page="create">Create an NGO first →</button>
+              </article>
+              <article class="fund-aside-card" data-fund-summary="readiness">
+                <h2 class="fund-aside-kicker">Readiness</h2>
+                <p class="fund-aside-title">Funder checklist (not formation)</p>
+                <ul class="fund-aside-list">
+                  <li>Baseline ops + independence summary</li>
+                  <li>Financials · UBO · safeguarding · track record</li>
+                </ul>
+                <p class="fund-aside-body warn-copy">
+                  New orgs: start with donations or partner as co-beneficiary until age / turnover thresholds clear.
+                </p>
+                <button type="button" class="fund-aside-action btn" data-page="create">Found an NGO first →</button>
+              </article>
+              <article class="fund-aside-card" data-fund-summary="process">
+                <h2 class="fund-aside-kicker">Process</h2>
+                <p class="fund-aside-title">8-step funding loop</p>
+                <p class="fund-aside-body">
+                  Shell → programme → map sources → eligibility → consortium → proposal → report → diversify. Missed reporting blocks the next call.
+                </p>
+                <button type="button" class="fund-aside-action btn" data-fund-step-jump="sources">Jump to sources →</button>
+              </article>
+              <article class="fund-aside-card" data-fund-summary="sources">
+                <h2 class="fund-aside-kicker">Sources</h2>
+                <p class="fund-aside-title">Where money usually lives</p>
+                <ul class="fund-aside-list">
+                  <li>ΕΣΠΑ / national EU (~80% via Member States)</li>
+                  <li>AMIF · EEA CSF · EU direct portals</li>
+                  <li>Foundations · donors · municipal contracts</li>
+                </ul>
+                <a class="fund-aside-action btn" href="https://www.espa.gr/" target="_blank" rel="noopener">Browse ΕΣΠΑ ↗</a>
+              </article>
+              <article class="fund-aside-card" data-fund-summary="gates">
+                <h2 class="fund-aside-kicker">Eligibility</h2>
+                <p class="fund-aside-title">Typical gates</p>
+                <p class="fund-aside-body">
+                  ≥2–3 years existence, independence, clean finances, sector registries, and co-funding — registry design: <a href="#create/close">Found</a>.
+                </p>
+                <button type="button" class="fund-aside-action btn" data-fund-step-jump="path">See starter path →</button>
+              </article>
+              <article class="fund-aside-card" data-fund-summary="path">
+                <h2 class="fund-aside-kicker">Starter path</h2>
+                <p class="fund-aside-title">Five moves for a new NGO</p>
+                <ol class="fund-aside-ol">
+                  <li>Found legally → ΑΦΜ → bank</li>
+                  <li>Pilot with volunteers + small donations</li>
+                  <li>Foundation / EEA when eligible</li>
+                  <li>Consortium partner on ΕΣΠΑ / AMIF</li>
+                  <li>Hire only on signed grants</li>
+                </ol>
+                <button type="button" class="fund-aside-action btn btn-primary" data-page="registry">Find partner NGOs</button>
+              </article>
+            </aside>
+          </div>
+        </div>
+
+        <p class="sources max-content">
           Sources:
           <a href="https://commission.europa.eu/funding-and-tenders/how-apply/eligibility-who-can-get-funding/funding-opportunities-ngos_el" target="_blank" rel="noopener">European Commission — funding for NGOs</a> ·
           <a href="https://www.espa.gr/" target="_blank" rel="noopener">ΕΣΠΑ</a> ·
@@ -1257,75 +1820,283 @@
         </p>
       </section>
 
-      <!-- AUDIENCES (static on Vercel) -->
-      <section class="page" id="page-audiences">
-        <div class="page-header max-content">
-          <p class="stitch-page-eyebrow">Trust · Audiences</p>
-          <h1>Who this desk is for</h1>
-          <p class="page-header-lead">Greece NGO Desk mirrors parts of the civic ecosystem for several groups — not only job research.</p>
-        </div>
-        <div class="max-content prose-panel">
-          <div class="panel">
-            <h2>Jobseekers &amp; career explorers</h2>
-            <p>Openings, spontaneous CV paths, sector context. Hooks: <button type="button" class="linkish" data-page="jobs">Openings</button>, <button type="button" class="linkish" data-page="apply">Apply</button>, <button type="button" class="linkish" data-page="registry">Registry</button>, <button type="button" class="linkish" data-page="life">Life</button>, <button type="button" class="linkish" data-page="media">Media</button>.</p>
+<!-- EMPLOYER (hospitality) -->
+      <section class="page trust-wizard-page" id="page-employer">
+        <div class="fund-wizard max-content">
+          <header class="fund-wizard-head">
+            <p class="stitch-page-eyebrow">Work · Hospitality employers</p>
+            <h1 class="fund-wizard-title">Post a tourism &amp; hospitality role</h1>
+            <p class="page-header-lead small muted">Verified employers reach job seekers on the desk — including people in difficult situations — with applications in one inbox. Not a licensed employment agency.</p>
+          </header>
+          <nav class="fund-stepper" aria-label="Employer steps">
+            <button type="button" class="fund-stepper-btn is-active" data-employer-step="register"><span class="fund-stepper-num">01</span> Register</button>
+            <button type="button" class="fund-stepper-btn" data-employer-step="post"><span class="fund-stepper-num">02</span> Post job</button>
+            <button type="button" class="fund-stepper-btn" data-employer-step="inbox"><span class="fund-stepper-num">03</span> Inbox</button>
+          </nav>
+          <p id="employer-status" class="apply-status small" role="status" aria-live="polite"></p>
+          <div class="fund-workbench">
+            <div class="fund-main">
+              <div class="employer-signin-box" id="employer-signin">
+                <p class="small muted">Sign in to register your company and manage applications.</p>
+                <button type="button" class="btn btn-primary" id="employer-clerk-signin">Sign in</button>
+              </div>
+              <div id="employer-signed-in" hidden>
+                <p class="small muted">Signed in. <button type="button" class="linkish" id="employer-clerk-signout">Sign out</button></p>
+              </div>
+              <div class="fund-step is-active" data-employer-panel="register">
+                <form id="employer-register-form" class="job-portal-apply" hidden>
+                  <h2>Company profile</h2>
+                  <div class="field field--wide"><label for="emp-legal">Legal name</label><input id="emp-legal" name="legalName" required /></div>
+                  <div class="field"><label for="emp-trade">Trade name</label><input id="emp-trade" name="tradeName" required /></div>
+                  <div class="field"><label for="emp-type">Type</label>
+                    <select id="emp-type" name="employerType" required>
+                      <option value="hotel">Hotel</option>
+                      <option value="tour_operator">Tour operator</option>
+                      <option value="restaurant_group">Restaurant group</option>
+                      <option value="cruise">Cruise / marina</option>
+                      <option value="other">Other hospitality</option>
+                    </select>
+                  </div>
+                  <div class="field"><label for="emp-region">Region</label><input id="emp-region" name="region" placeholder="Attica, Crete…" /></div>
+                  <div class="field"><label for="emp-email">Contact email</label><input id="emp-email" name="contactEmail" type="email" required /></div>
+                  <div class="field"><label for="emp-web">Website</label><input id="emp-web" name="website" type="url" placeholder="https://…" /></div>
+                  <div class="field"><label for="emp-afm">ΑΦΜ (optional)</label><input id="emp-afm" name="afm" /></div>
+                  <button type="submit" class="btn btn-primary">Save profile</button>
+                </form>
+                <div id="employer-pending" class="callout warn" hidden>
+                  <p>Verification status: <strong id="employer-pending-status">pending</strong>. A desk steward will confirm your business before you can publish jobs.</p>
+                </div>
+              </div>
+              <div class="fund-step" data-employer-panel="post" id="employer-verified-tools" hidden>
+                <form id="employer-job-form" class="job-portal-apply">
+                  <h2>Publish a job</h2>
+                  <div class="field field--wide"><label for="job-title">Title</label><input id="job-title" name="title" required /></div>
+                  <div class="field"><label for="job-loc">Location</label><input id="job-loc" name="location" required placeholder="City, island" /></div>
+                  <div class="field"><label for="job-contract">Contract</label><input id="job-contract" name="contractType" placeholder="seasonal, full-time…" /></div>
+                  <div class="field"><label for="job-langs">Languages required (comma-separated)</label><input id="job-langs" name="languagesRequired" placeholder="Greek, English" /></div>
+                  <div class="field"><label for="job-season">Season</label><input id="job-season" name="seasonality" placeholder="May–Sep" /></div>
+                  <div class="field"><label for="job-pay">Pay band (optional text)</label><input id="job-pay" name="payBandText" /></div>
+                  <div class="field field--wide"><label for="job-desc">Description</label><textarea id="job-desc" name="description" rows="5"></textarea></div>
+                  <label class="consent"><input type="checkbox" name="trainingProvided" /> Training provided</label>
+                  <label class="consent"><input type="checkbox" name="noExperienceRequired" /> No experience required</label>
+                  <div class="field field--wide"><button type="submit" class="btn btn-primary">Publish on desk</button></div>
+                </form>
+                <div id="employer-jobs-list" class="small muted" style="margin-top:1rem"></div>
+              </div>
+              <div class="fund-step" data-employer-panel="inbox">
+                <h2>Application inbox</h2>
+                <div id="employer-inbox"></div>
+              </div>
+            </div>
+            <aside class="fund-aside">
+              <article class="fund-aside-card is-active" data-employer-summary="register">
+                <h2 class="fund-aside-kicker">Trust</h2>
+                <p class="fund-aside-title">Verification first</p>
+                <p class="fund-aside-body">We verify hospitality employers manually in v1. See <code>docs/TOURISM_EMPLOYMENT.md</code> for GDPR and fair-hire rules.</p>
+              </article>
+            </aside>
           </div>
-          <div class="panel">
-            <h2>Funders &amp; grant-makers</h2>
-            <p>Due diligence, sector coverage, who does what. Hooks: registry filters, media signals, methodology notes on org profiles.</p>
-          </div>
-          <div class="panel">
-            <h2>Donors</h2>
-            <p>Trustworthy pointers and how to give safely — with legal review for tax/ΓΓΠΣ context. Start with <button type="button" class="linkish" data-page="registry">Registry</button> and <button type="button" class="linkish" data-page="legal">Legal notice</button>.</p>
-          </div>
-          <div class="panel">
-            <h2>People seeking help</h2>
-            <p>Orientation and signposting only — not a crisis hotline. Use registry filters; always follow official contacts and emergency numbers.</p>
-          </div>
-          <p class="callout warn">No impersonation of services. Registry coverage is partial; see methodology on org profiles.</p>
         </div>
       </section>
 
-      <!-- LEGAL (static on Vercel) -->
-      <section class="page" id="page-legal">
-        <div class="page-header max-content">
-          <p class="stitch-page-eyebrow">Trust · Legal</p>
-          <h1>Legal notice</h1>
-          <p class="page-header-lead"><strong>Not legal advice.</strong> Orientation for job seekers and civil-society stakeholders.</p>
+<!-- AUDIENCES -->
+      <section class="page trust-wizard-page" id="page-audiences">
+        <div class="fund-wizard max-content">
+          <header class="fund-wizard-head">
+            <p class="stitch-page-eyebrow">Trust · Audiences</p>
+            <h1 class="fund-wizard-title">Who this desk is for</h1>
+          </header>
+          <nav class="fund-stepper" aria-label="Audiences guide steps">
+            <button type="button" class="fund-stepper-btn is-active" data-aud-step="overview"><span class="fund-stepper-num">01</span> Overview</button>
+            <button type="button" class="fund-stepper-btn" data-aud-step="groups"><span class="fund-stepper-num">02</span> Groups</button>
+            <button type="button" class="fund-stepper-btn" data-aud-step="limits"><span class="fund-stepper-num">03</span> Limits</button>
+          </nav>
+          <div class="fund-workbench">
+            <div class="fund-main">
+              <div class="fund-step is-active" data-aud-panel="overview">
+                <div class="fund-fields">
+                  <div class="fund-field">
+                    <p class="fund-field-value">4 audiences</p>
+                    <p class="fund-field-label">Primary groups</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">Signposting</p>
+                    <p class="fund-field-label">Not a hotline</p>
+                  </div>
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">Jobs · funders · donors · help</p>
+                    <p class="fund-field-label">Desk hooks</p>
+                  </div>
+                </div>
+                <p class="fund-step-lead page-header-lead">
+                  Greece NGO Desk mirrors parts of the civic ecosystem for several groups — not only job research.
+                </p>
+              </div>
+
+              <div class="fund-step" data-aud-panel="groups">
+                <div class="prose-panel trust-prose">
+                  <div class="panel">
+                    <h2>Jobseekers &amp; career explorers</h2>
+                    <p>Openings, spontaneous CV paths, sector context. Hooks: <button type="button" class="linkish" data-page="jobs">Openings</button>, <button type="button" class="linkish" data-page="apply">Apply</button>, <button type="button" class="linkish" data-page="registry">Registry</button>, <button type="button" class="linkish" data-page="life">Life</button>, <button type="button" class="linkish" data-page="media">Media</button>.</p>
+                  </div>
+                  <div class="panel">
+                    <h2>Hospitality &amp; tourism jobseekers</h2>
+                    <p>Seasonal and entry-level roles from <strong>verified employers</strong> — apply on the desk without hunting hotel career sites. Filter <em>Hospitality &amp; tourism</em> on <button type="button" class="linkish" data-page="jobs">Openings</button>. Policy: <code>docs/TOURISM_EMPLOYMENT.md</code>.</p>
+                  </div>
+                  <div class="panel">
+                    <h2>Funders &amp; grant-makers</h2>
+                    <p>Due diligence, sector coverage, who does what. Hooks: registry filters, media signals, methodology notes on org profiles.</p>
+                  </div>
+                  <div class="panel">
+                    <h2>Donors</h2>
+                    <p>Trustworthy pointers and how to give safely — with legal review for tax/ΓΓΠΣ context. Start with <button type="button" class="linkish" data-page="registry">Registry</button> and <button type="button" class="linkish" data-page="legal">Legal notice</button>.</p>
+                  </div>
+                  <div class="panel">
+                    <h2>People seeking help</h2>
+                    <p>Orientation and signposting only — not a crisis hotline. Use registry filters; always follow official contacts and emergency numbers.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fund-step" data-aud-panel="limits">
+                <div class="callout warn fund-callout-inline">
+                  No impersonation of services. Registry coverage is partial; see methodology on org profiles.
+                </div>
+                <div class="panel">
+                  <h2>Principles</h2>
+                  <ul class="muted">
+                    <li><strong>No impersonation:</strong> crisis and legal emergencies belong to official hotlines and licensed professionals.</li>
+                    <li><strong>Honest limits:</strong> listings are research-assisted and may be incomplete or outdated.</li>
+                    <li><strong>Steward quality:</strong> funders and donors care about accuracy — corrections and takedowns are part of the desk.</li>
+                  </ul>
+                  <p class="small muted" style="margin-top:0.75rem">Full policy text: <button type="button" class="linkish" data-page="legal">Legal notice</button> · product scope in <code>docs/AUDIENCES.md</code> in the repository.</p>
+                </div>
+              </div>
+            </div>
+
+            <aside class="fund-aside" aria-live="polite">
+              <article class="fund-aside-card is-active" data-aud-summary="overview">
+                <h2 class="fund-aside-kicker">Trust</h2>
+                <p class="fund-aside-title">More than job search</p>
+                <p class="fund-aside-body">Use step 02 to see which desk areas match your role — then jump straight there.</p>
+                <figure class="fund-aside-media">
+                  <img src="img/together.jpg" alt="" width="600" height="360" loading="lazy" />
+                </figure>
+                <button type="button" class="fund-aside-action btn" data-aud-step-jump="groups">See groups →</button>
+              </article>
+              <article class="fund-aside-card" data-aud-summary="groups">
+                <h2 class="fund-aside-kicker">Groups</h2>
+                <p class="fund-aside-title">Pick your lane</p>
+                <ul class="fund-aside-list">
+                  <li>Jobseekers → openings &amp; apply</li>
+                  <li>Funders → registry + funding guide</li>
+                  <li>Donors → legal + registry</li>
+                  <li>Help seekers → filters + official links</li>
+                </ul>
+                <button type="button" class="fund-aside-action btn" data-page="funding">Funding guide</button>
+              </article>
+              <article class="fund-aside-card" data-aud-summary="limits">
+                <h2 class="fund-aside-kicker">Limits</h2>
+                <p class="fund-aside-title">Read before you rely</p>
+                <p class="fund-aside-body">Partial coverage, no warranty, no crisis handling — verify with official channels.</p>
+                <button type="button" class="fund-aside-action btn btn-primary" data-page="legal">Legal notice →</button>
+              </article>
+            </aside>
+          </div>
         </div>
-        <div class="max-content prose-panel">
-          <div class="panel">
-            <h2>Nature of the service</h2>
-            <ul class="muted legal-list">
-              <li>Editorial directory — research-assisted listings may be incomplete or outdated.</li>
-              <li>Information is provided &ldquo;as is&rdquo; without warranty of accuracy or fitness for a particular purpose.</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h2>Personal data (GDPR orientation)</h2>
-            <p class="small muted">Work contact emails are organisational recruiting channels — keep accurate, minimal, and reviewed. When the API is deployed, document your controller, purposes, and retention in your own privacy notice.</p>
-          </div>
-          <div class="panel">
-            <h2>Takedown / correction</h2>
-            <p>Organisations may request correction or removal by emailing the maintainer contact listed in the repository README. Steward edits are logged in the Phase B audit trail.</p>
-          </div>
-          <div class="panel">
-            <h2>Intellectual property &amp; neutrality</h2>
-            <p class="small muted">Media summaries are original with links to sources; trademarks belong to their owners. The desk aims for factual orientation — corrections welcome.</p>
+      </section>
+
+      <!-- LEGAL -->
+      <section class="page trust-wizard-page" id="page-legal">
+        <div class="fund-wizard max-content">
+          <header class="fund-wizard-head">
+            <p class="stitch-page-eyebrow">Trust · Legal</p>
+            <h1 class="fund-wizard-title">Legal notice</h1>
+          </header>
+          <nav class="fund-stepper" aria-label="Legal notice steps">
+            <button type="button" class="fund-stepper-btn is-active" data-legal-step="overview"><span class="fund-stepper-num">01</span> Overview</button>
+            <button type="button" class="fund-stepper-btn" data-legal-step="terms"><span class="fund-stepper-num">02</span> Terms</button>
+          </nav>
+          <div class="fund-workbench">
+            <div class="fund-main">
+              <div class="fund-step is-active" data-legal-panel="overview">
+                <div class="fund-fields">
+                  <div class="fund-field fund-field--wide">
+                    <p class="fund-field-value">Editorial directory</p>
+                    <p class="fund-field-label">Nature</p>
+                  </div>
+                  <div class="fund-field">
+                    <p class="fund-field-value">GDPR orientation</p>
+                    <p class="fund-field-label">Data</p>
+                  </div>
+                </div>
+                <p class="fund-step-lead page-header-lead"><strong>Not legal advice.</strong> Orientation for job seekers and civil-society stakeholders.</p>
+                <div class="callout fund-callout-inline">
+                  Information is provided &ldquo;as is&rdquo; without warranty of accuracy or fitness for a particular purpose. Always verify with primary sources.
+                </div>
+              </div>
+
+              <div class="fund-step" data-legal-panel="terms">
+                <div class="prose-panel trust-prose">
+                  <div class="panel">
+                    <h2>Nature of the service</h2>
+                    <ul class="muted legal-list">
+                      <li>Editorial directory — research-assisted listings may be incomplete or outdated.</li>
+                      <li>Information is provided &ldquo;as is&rdquo; without warranty of accuracy or fitness for a particular purpose.</li>
+                    </ul>
+                  </div>
+                  <div class="panel">
+                    <h2>Personal data (GDPR orientation)</h2>
+                    <p class="small muted">Work contact emails are organisational recruiting channels — keep accurate, minimal, and reviewed. When the API is deployed, document your controller, purposes, and retention in your own privacy notice.</p>
+                    <p class="small muted">Hospitality <strong>in-portal applications</strong> and CV uploads are personal data shared with verified employers — not a licensed employment agency. See <code>docs/TOURISM_EMPLOYMENT.md</code>.</p>
+                  </div>
+                  <div class="panel">
+                    <h2>Takedown / correction</h2>
+                    <p>Organisations may request correction or removal by emailing the maintainer contact listed in the repository README. Steward edits are logged in the Phase B audit trail.</p>
+                  </div>
+                  <div class="panel">
+                    <h2>Intellectual property &amp; neutrality</h2>
+                    <p class="small muted">Media summaries are original with links to sources; trademarks belong to their owners. The desk aims for factual orientation — corrections welcome.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="fund-aside" aria-live="polite">
+              <article class="fund-aside-card is-active" data-legal-summary="overview">
+                <h2 class="fund-aside-kicker">Disclaimer</h2>
+                <p class="fund-aside-title">Orientation only</p>
+                <p class="fund-aside-body">This desk does not replace lawyers, accountants, or emergency services.</p>
+                <figure class="fund-aside-media">
+                  <img src="img/athens-agora.jpg" alt="" width="600" height="360" loading="lazy" />
+                </figure>
+                <button type="button" class="fund-aside-action btn" data-legal-step-jump="terms">Full terms →</button>
+              </article>
+              <article class="fund-aside-card" data-legal-summary="terms">
+                <h2 class="fund-aside-kicker">Terms</h2>
+                <p class="fund-aside-title">Takedown &amp; IP</p>
+                <p class="fund-aside-body">Correction requests go to the maintainer email in the repo README. Phase B stewards leave an audit trail.</p>
+                <button type="button" class="fund-aside-action btn btn-primary" data-page="audiences">Who we serve</button>
+              </article>
+            </aside>
           </div>
         </div>
       </section>
         </main>
 
-        <nav class="mobile-dock" id="mobile-dock" aria-label="Quick navigation">
+        <nav class="mobile-dock mobile-dock--scroll" id="mobile-dock" aria-label="Quick navigation">
           <button type="button" data-page="overview">Home</button>
-          <button type="button" data-page="jobs">Openings</button>
-          <button type="button" data-page="registry">Registry</button>
+          <button type="button" data-page="jobs">Jobs</button>
+          <button type="button" data-page="registry">NGOs</button>
           <button type="button" data-page="media">Media</button>
+          <button type="button" data-page="life">Life</button>
           <button type="button" data-page="apply">Apply</button>
+          <button type="button" id="mobile-dock-more" aria-haspopup="dialog" aria-controls="cmd-palette">More</button>
         </nav>
 
         <footer class="footer-note">
           Greece NGO Desk — jobs, registry, and signposting for funders, donors &amp; service seekers ·
+          <a href="#employer" data-page="employer">Hospitality employers</a> ·
           <a href="#audiences" data-page="audiences">Audiences</a> ·
           <a href="#legal" data-page="legal">Legal notice</a>
         </footer>
@@ -1363,6 +2134,8 @@
       <p class="cmd-hint small muted">↑↓ to move · Enter to go · Esc to close</p>
     </form>
   </dialog>
-  <script src="app.js?v=aegean-stitch6"></script>
+  <script src="event-collab.js?v=aegean-stitch33"></script>
+  <script src="employer-portal.js?v=aegean-stitch33"></script>
+  <script src="app.js?v=aegean-stitch33"></script>
 </body>
 </html>

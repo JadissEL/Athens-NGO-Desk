@@ -1,0 +1,253 @@
+/* Mobile & tablet — responsive adaptations (desktop-first platform; ≥1024 primary) */
+
+/* Safe areas + prevent horizontal page scroll */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body.desk-bento {
+  overflow-x: clip;
+}
+
+@media (max-width: 1023px) {
+  body.desk-bento .content {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+
+  .max-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .table-wrap,
+  .registry-table-wrap,
+  .jobs-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .org-identity-card {
+    position: static;
+    top: auto;
+  }
+
+  .workbench-rail {
+    position: static;
+    max-height: none;
+  }
+}
+
+/* Phone */
+@media (max-width: 767px) {
+  .topnav.app-bar--compact .nav-actions .btn-primary[data-page="apply"] {
+    display: none;
+  }
+
+  .topnav .cmd-trigger kbd {
+    display: none;
+  }
+
+  .topnav .cmd-trigger {
+    min-height: 44px;
+    padding-inline: 0.65rem;
+  }
+
+  .fund-wizard-title,
+  #page-overview .landing-title.bento-title {
+    font-size: clamp(1.45rem, 6.5vw, 1.85rem);
+  }
+
+  /* Guide wizards — scrollable stepper, stacked workbench */
+  .fund-stepper {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    gap: 0.5rem 1rem;
+    padding-bottom: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .fund-stepper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .fund-stepper-btn {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    min-height: 44px;
+    padding: 0.45rem 0.25rem;
+    font-size: 0.62rem;
+  }
+
+  .fund-workbench {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .fund-main {
+    order: 1;
+    width: 100%;
+  }
+
+  .fund-aside {
+    order: 2;
+    position: static;
+    top: auto;
+    width: 100%;
+  }
+
+  .fund-aside-media img {
+    max-height: 140px;
+  }
+
+  .fund-fields {
+    grid-template-columns: 1fr;
+    padding-left: 0.5rem;
+  }
+
+  .fund-step-lead {
+    max-width: none;
+    font-size: 0.9rem;
+  }
+
+  /* Touch-friendly controls */
+  .btn,
+  .linkish,
+  .fund-stepper-btn,
+  .mobile-dock button,
+  .desk-rail-nav button,
+  .nav-center button,
+  .org-tabs button,
+  .cmd-results button {
+    min-height: 44px;
+  }
+
+  .linkish {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0;
+  }
+
+  .ngo-card-grid,
+  body.stitch-b5 #page-apply .ngo-card-grid,
+  body.stitch-b5 #page-possibility .ngo-card-grid,
+  #page-possibility .poss-rank-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .landing-hero-mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: 0;
+  }
+
+  .landing-mosaic-a {
+    grid-row: auto;
+    aspect-ratio: 4 / 5;
+    max-height: 220px;
+  }
+
+  .landing-scene-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-cta-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .landing-tile-actions {
+    flex-direction: column;
+  }
+
+  .landing-tile-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .apply-visual {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Command palette — near full-screen on phone */
+  .cmd-palette {
+    width: min(100vw - 1.25rem, 100%);
+    max-width: none;
+    max-height: min(88dvh, 100%);
+    margin: auto;
+  }
+
+  .cmd-results {
+    max-height: min(50dvh, 22rem);
+  }
+
+  .cmd-results button {
+    padding: 0.65rem 0.5rem;
+    text-align: left;
+  }
+
+  /* Bottom dock — horizontal scroll, larger targets */
+  .mobile-dock.mobile-dock--scroll {
+    display: flex !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    gap: 0.15rem;
+    padding-inline: max(0.35rem, env(safe-area-inset-left))
+      max(0.35rem, env(safe-area-inset-right));
+  }
+
+  .mobile-dock.mobile-dock--scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-dock.mobile-dock--scroll button {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    min-width: 3.6rem;
+    min-height: 48px;
+    padding: 0.4rem 0.35rem;
+    font-size: 0.56rem;
+  }
+
+  .footer-note {
+    font-size: 0.72rem;
+    line-height: 1.45;
+    text-align: center;
+    padding-inline: 0.5rem;
+  }
+
+  .life-mag-hero,
+  .life-mag-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .fund-stepper {
+    flex-wrap: wrap;
+    row-gap: 0.65rem;
+  }
+
+  .fund-stepper-btn {
+    min-height: 40px;
+  }
+
+  .bento-audience {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .landing-scene-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

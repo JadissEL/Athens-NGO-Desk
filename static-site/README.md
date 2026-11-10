@@ -11,6 +11,10 @@ npm run build:data
 Start-Process (Resolve-Path "static-site\index.html").Path
 ```
 
+## Mobile
+
+- **Desktop-first** layout (≥1024px); phone uses scrollable top nav, **bottom dock** (Home · Jobs · NGOs · Media · Life · Apply · **More** → search), single-column cards, and horizontally scrollable guide steppers. Styles: `stitch-mobile.css` (safe areas, touch targets ≥44px). Preview: narrow DevTools or `npm run test:e2e:static` (includes `e2e/mobile-layout.spec.js`).
+
 ## Design
 
 - **Home**: full-bleed Acropolis hero — brand, headline, line, two CTAs; **three hot-story cards** stacked on the right

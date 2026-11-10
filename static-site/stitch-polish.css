@@ -258,14 +258,10 @@ body.desk-bento .btn-primary {
   font-family: var(--stitch-ui);
 }
 
-/* Sidebar depth */
+/* Desk nav bar — horizontal under logo */
 @media (min-width: 1024px) {
-  .desk-rail {
-    background: linear-gradient(180deg, #083434 0%, #041f1f 100%);
-  }
-
   .desk-rail-nav button.active .rail-icon {
-    transform: scale(1.08);
+    transform: scale(1.06);
   }
 
   .rail-icon {

@@ -26,6 +26,8 @@ Start-Process (Resolve-Path "static-site\index.html").Path
 
 After editing anything under `data/ngos/`, run `npm run build:data` again.
 
+**Guide wizard smoke (optional):** `npx playwright install chromium` then `npm run test:e2e:static` — serves `static-site/` on port 8765 and checks Create/Fund step routing. CI: GitHub Actions workflow **Static site E2E (guides)** (`workflow_dispatch`).
+
 **Add national org rows (steward JSON):** `npm run validate:import -- data/ngos/imports/your_batch.json`, optional `npm run import:registry -- --dry-run data/ngos/imports/your_batch.json`, then `npm run import:registry -- …`, `npm run audit:registry-duplicates`, `npm run validate`, `npm run build:data`. See [data/ngos/imports/README.md](data/ngos/imports/README.md).
 
 ## This folder

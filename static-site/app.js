@@ -14,6 +14,31 @@
     return;
   }
 
+  let hospitalityJobs = [];
+  if (window.HOSPITALITY_JOBS_LOADED) {
+    try {
+      hospitalityJobs = (await window.HOSPITALITY_JOBS_LOADED) || [];
+    } catch (e) {
+      console.warn("Hospitality jobs load error", e);
+    }
+  }
+
+  let civicEvents = [];
+  if (window.CIVIC_EVENTS_LOADED) {
+    try {
+      civicEvents = (await window.CIVIC_EVENTS_LOADED) || [];
+    } catch (e) {
+      console.warn("Civic events load error", e);
+    }
+  }
+
+  function hospitalityApiBase() {
+    const h =
+      typeof window.HOSPITALITY_API_BASE === "string" ? window.HOSPITALITY_API_BASE.trim() : "";
+    const n = typeof window.NGO_DATA_API_BASE === "string" ? window.NGO_DATA_API_BASE.trim() : "";
+    return (h || n).replace(/\/$/, "");
+  }
+
   const orgs = DATA.registry.organizations || [];
   const possibility = DATA.possibility?.organizations || [];
   const possibilityById = Object.fromEntries((possibility || []).map((p) => [p.id, p]));
@@ -132,18 +157,58 @@
     "life",
     "registry",
     "jobs",
+    "events",
     "apply",
     "possibility",
     "create",
     "funding",
     "audiences",
     "legal",
+    "employer",
     "org-profile",
+  ];
+
+  const FUND_STEPS = new Set(["overview", "readiness", "process", "sources", "gates", "path"]);
+  const CREATE_STEPS = new Set(["overview", "forms", "statute", "somateio", "amke", "close"]);
+  const POSS_STEPS = new Set(["overview", "method", "rankings"]);
+  const AUD_STEPS = new Set(["overview", "groups", "limits"]);
+  const LEGAL_STEPS = new Set(["overview", "terms"]);
+  const LEGACY_CREATE_HASH = {
+    "create-forms": "create/forms",
+    "create-statute": "create/statute",
+    "create-steps-somateio": "create/somateio",
+    "create-steps-amke": "create/amke",
+    "create-registries": "create/close",
+    "create-checklist": "create/close",
+  };
+  let goFundStep = null;
+  let goCreateStep = null;
+  let goPossStep = null;
+  let goAudStep = null;
+  let goLegalStep = null;
+
+  function rewriteLegacyHash() {
+    const raw = (location.hash || "").replace(/^#/, "");
+    const target = LEGACY_CREATE_HASH[raw];
+    if (!target || raw === target) return;
+    history.replaceState(null, "", `#${target}`);
+  }
+
+  const CMD_GUIDE_ROUTES = [
+    { id: "create/forms", label: "Formation — legal form", hint: "Create guide · step 02" },
+    { id: "create/statute", label: "Formation — statute", hint: "Create guide · step 03" },
+    { id: "funding/readiness", label: "Funding — readiness", hint: "Fund guide · step 02" },
+    { id: "funding/sources", label: "Funding — sources", hint: "Fund guide · step 04" },
+    { id: "possibility/method", label: "Scores — methodology", hint: "Possibility · step 02" },
+    { id: "possibility/rankings", label: "Scores — rankings", hint: "Possibility · step 03" },
+    { id: "audiences/groups", label: "Audiences — groups", hint: "Trust · step 02" },
+    { id: "legal/terms", label: "Legal — full terms", hint: "Trust · step 02" },
   ];
 
   const CMD_ACTIONS = [
     { id: "overview", label: "Home", hint: "Landing" },
     { id: "jobs", label: "Openings", hint: "Vacancies table" },
+    { id: "events", label: "Civic events", hint: "NGO calendar" },
     { id: "apply", label: "Apply by email", hint: "Spontaneous CVs" },
     { id: "registry", label: "Registry", hint: "Organisations" },
     { id: "media", label: "Media digest", hint: "Weekly stories" },
@@ -153,6 +218,7 @@
     { id: "funding", label: "Fund an NGO", hint: "Grants & donors" },
     { id: "audiences", label: "Who this is for", hint: "Audiences" },
     { id: "legal", label: "Legal notice", hint: "Disclaimer" },
+    { id: "employer", label: "Post hospitality job", hint: "Employer workbench" },
   ];
 
   const STAGE_BG = {
@@ -160,11 +226,15 @@
     media: "img/athens-agora.jpg",
     life: "img/community.jpg",
     jobs: "img/desk-work.jpg",
+    events: "img/community.jpg",
     apply: "img/community.jpg",
     registry: "img/athens-agora.jpg",
     possibility: "img/planning.jpg",
     create: "img/documents.jpg",
     funding: "img/funding-collab.jpg",
+    audiences: "img/together.jpg",
+    legal: "img/athens-agora.jpg",
+    employer: "img/desk-work.jpg",
     "org-profile": "img/athens-agora.jpg",
   };
 
@@ -177,6 +247,31 @@
     const orgMatch = /^org\/(.+)$/.exec(raw);
     if (orgMatch) {
       return { kind: "org", orgId: decodeURIComponent(orgMatch[1]) };
+    }
+    const fundMatch = /^funding(?:\/|:)([a-z]+)$/.exec(raw);
+    if (fundMatch) {
+      const fundStep = FUND_STEPS.has(fundMatch[1]) ? fundMatch[1] : "overview";
+      return { kind: "page", page: "funding", fundStep };
+    }
+    const createMatch = /^create(?:\/|:)([a-z]+)$/.exec(raw);
+    if (createMatch) {
+      const createStep = CREATE_STEPS.has(createMatch[1]) ? createMatch[1] : "overview";
+      return { kind: "page", page: "create", createStep };
+    }
+    const possMatch = /^possibility(?:\/|:)([a-z]+)$/.exec(raw);
+    if (possMatch) {
+      const possStep = POSS_STEPS.has(possMatch[1]) ? possMatch[1] : "overview";
+      return { kind: "page", page: "possibility", possStep };
+    }
+    const audMatch = /^audiences(?:\/|:)([a-z]+)$/.exec(raw);
+    if (audMatch) {
+      const audStep = AUD_STEPS.has(audMatch[1]) ? audMatch[1] : "overview";
+      return { kind: "page", page: "audiences", audStep };
+    }
+    const legalMatch = /^legal(?:\/|:)([a-z]+)$/.exec(raw);
+    if (legalMatch) {
+      const legalStep = LEGAL_STEPS.has(legalMatch[1]) ? legalMatch[1] : "overview";
+      return { kind: "page", page: "legal", legalStep };
     }
     const page = PAGES.includes(raw) && raw !== "org-profile" ? raw : "overview";
     return { kind: "page", page };
@@ -193,14 +288,14 @@
       $$(".page").forEach((p) => p.classList.toggle("active", p.id === "page-org-profile"));
       $$("#nav button").forEach((b) => b.classList.remove("active"));
     } else {
-      $$(".page").forEach((p) => p.classList.toggle("active", p.id === `page-${id}`));
-      $$("#nav button").forEach((b) => b.classList.toggle("active", b.dataset.page === id));
+    $$(".page").forEach((p) => p.classList.toggle("active", p.id === `page-${id}`));
+    $$("#nav button").forEach((b) => b.classList.toggle("active", b.dataset.page === id));
     }
     document.body.classList.toggle("is-landing", id === "overview");
     $$("#mobile-dock [data-page]").forEach((b) =>
       b.classList.toggle("active", b.dataset.page === id && id !== "org-profile")
     );
-    $$("#desk-rail-nav [data-page], .desk-rail-mark[data-page]").forEach((b) =>
+    $$("#desk-rail-nav [data-page]").forEach((b) =>
       b.classList.toggle("active", b.dataset.page === id && id !== "org-profile")
     );
     const bgKey = id === "org-profile" ? "org-profile" : id;
@@ -288,6 +383,13 @@
   function showPage(pageId) {
     if (!PAGES.includes(pageId) || pageId === "org-profile") return;
     location.hash = pageId;
+  }
+
+  function navigateHash(route) {
+    const target = (route || "").replace(/^#/, "");
+    if (!target) return;
+    if (location.hash.replace(/^#/, "") === target) applyRoute();
+    else location.hash = target;
   }
 
   function openOrgProfile(orgId) {
@@ -610,6 +712,7 @@
   }
 
   function applyRoute() {
+    rewriteLegacyHash();
     const r = parseHash();
     if (r.kind === "org") {
       showPageInternal("org-profile");
@@ -617,6 +720,21 @@
       return;
     }
     showPageInternal(r.page);
+    if (r.page === "funding" && goFundStep) {
+      goFundStep(r.fundStep && FUND_STEPS.has(r.fundStep) ? r.fundStep : "overview");
+    }
+    if (r.page === "create" && goCreateStep) {
+      goCreateStep(r.createStep && CREATE_STEPS.has(r.createStep) ? r.createStep : "overview");
+    }
+    if (r.page === "possibility" && goPossStep) {
+      goPossStep(r.possStep && POSS_STEPS.has(r.possStep) ? r.possStep : "overview");
+    }
+    if (r.page === "audiences" && goAudStep) {
+      goAudStep(r.audStep && AUD_STEPS.has(r.audStep) ? r.audStep : "overview");
+    }
+    if (r.page === "legal" && goLegalStep) {
+      goLegalStep(r.legalStep && LEGAL_STEPS.has(r.legalStep) ? r.legalStep : "overview");
+    }
     window.scrollTo(0, 0);
   }
 
@@ -657,6 +775,10 @@
         showPage(item.id);
         return;
       }
+      if (item.type === "route") {
+        navigateHash(item.id);
+        return;
+      }
       if (item.type === "org") {
         showPage("registry");
         requestAnimationFrame(() => openOrgSheet(item.orgId));
@@ -676,7 +798,13 @@
       list.innerHTML = visible
         .map((a, i) => {
           const kind =
-            a.type === "org" ? `<span class="cmd-kind">NGO</span>` : a.type === "job" ? `<span class="cmd-kind">Job</span>` : "";
+            a.type === "org"
+              ? `<span class="cmd-kind">NGO</span>`
+              : a.type === "job"
+                ? `<span class="cmd-kind">Job</span>`
+                : a.type === "route"
+                  ? `<span class="cmd-kind">Guide</span>`
+                  : "";
           return `<li><button type="button" role="option" data-cmd-idx="${i}" aria-selected="${i === highlight ? "true" : "false"}"><strong>${esc(a.label)}</strong> ${kind}<span class="small muted">${esc(a.hint || "")}</span></button></li>`;
         })
         .join("");
@@ -1188,7 +1316,7 @@
     const empty = $("#reg-pane-empty");
     if (empty) empty.hidden = true;
     if (!preferDeskPane()) {
-      $("#reg-detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    $("#reg-detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
     } else {
       requestAnimationFrame(() => {
         const card = $(`#reg-card-grid .reg-card[data-id="${CSS.escape(id)}"]`);
@@ -1234,12 +1362,32 @@
   /* ---------- jobs ---------- */
   const orgSectorById = Object.fromEntries(orgs.map((o) => [o.id, o.sector]));
 
+  function hospitalityToRows(items) {
+    return (items || []).map((j) => ({
+      source: "hospitality",
+      org: j.employerDisplayName || "Employer",
+      orgId: `hos-${j.employerSlug || j.id}`,
+      title: j.title,
+      postedDate: j.publishedAt ? String(j.publishedAt).slice(0, 10) : "",
+      deadline: j.closesAt ? String(j.closesAt).slice(0, 10) : "",
+      location: j.location || "",
+      url: "",
+      kind: j.contractType || "Hospitality",
+      applyMode: "portal",
+      hospitalityJobId: j.id,
+      description: j.description || "",
+      fairHireFlags: j.fairHireFlags,
+      languagesRequired: j.languagesRequired || [],
+    }));
+  }
+
   function allPostings() {
     const rows = [];
     for (const o of orgs) {
       const posts = o.jobOpenings?.postings || [];
       for (const p of posts) {
         rows.push({
+          source: "ngo",
           org: o.name,
           orgId: o.id,
           title: p.title,
@@ -1248,10 +1396,13 @@
           location: p.location || "",
           url: p.url || "",
           kind: p.kind || "",
+          applyMode: "external",
+          hospitalityJobId: null,
         });
       }
     }
-    return rows.sort((a, b) => String(b.postedDate).localeCompare(String(a.postedDate)));
+    const merged = [...rows, ...hospitalityToRows(hospitalityJobs)];
+    return merged.sort((a, b) => String(b.postedDate).localeCompare(String(a.postedDate)));
   }
 
   function renderHomeStats() {
@@ -1259,9 +1410,12 @@
     if (!el) return;
     const postings = allPostings();
     const hiringOrgs = orgs.filter((o) => orgHasVacancyResearch(o)).length;
+    const hospitalityCount = postings.filter((p) => p.source === "hospitality").length;
     el.innerHTML = [
       ["Organisations", String(orgs.length)],
       ["Indexed openings", String(postings.length)],
+      ["Hospitality on desk", hospitalityCount ? String(hospitalityCount) : "—"],
+      ["Upcoming events", civicEvents.length ? String(civicEvents.length) : "—"],
       ["With vacancy research", String(hiringOrgs)],
       ["Media stories", String(articles.length)],
     ]
@@ -1272,6 +1426,11 @@
       .join("");
     const trustCount = $("#stitch-trust-org-count");
     if (trustCount) trustCount.textContent = String(orgs.length);
+    const promo = $("#landing-promo-text");
+    if (promo) {
+      const week = mediaMeta.weekLabel ? ` (${esc(mediaMeta.weekLabel)})` : "";
+      promo.innerHTML = `Weekly NGO media for Greece civil society${week} — <button type="button" class="landing-promo-link" data-page="media">Read this week’s digest</button>`;
+    }
   }
 
   function isAthensLoc(loc) {
@@ -1345,11 +1504,146 @@
     }
   }
 
+  function ensurePortalApplySlot(prefix) {
+    const actions = $(`#${prefix}-actions`);
+    if (!actions?.parentElement) return null;
+    let slot = $(`#${prefix}-portal-apply`);
+    if (!slot) {
+      slot = document.createElement("div");
+      slot.id = `${prefix}-portal-apply`;
+      slot.className = "job-portal-apply";
+      slot.hidden = true;
+      actions.parentElement.appendChild(slot);
+    }
+    return slot;
+  }
+
+  async function submitPortalApply(form, jobId, statusEl) {
+    const base = hospitalityApiBase();
+    if (!base) {
+      if (statusEl) {
+        statusEl.textContent = "API not configured — cannot submit.";
+        statusEl.className = "apply-status is-err";
+      }
+      return;
+    }
+    if (statusEl) {
+      statusEl.textContent = "Sending…";
+      statusEl.className = "apply-status";
+    }
+  let cvStorageKey = "";
+    const fileInput = form.querySelector('input[type="file"][name="cv"]');
+    const file = fileInput?.files?.[0];
+    try {
+      if (file) {
+        const fd = new FormData();
+        fd.append("file", file);
+        const up = await fetch(`${base}/api/hospitality/applications/cv-upload`, {
+          method: "POST",
+          body: fd,
+        });
+        const upJson = await up.json();
+        if (!up.ok) throw new Error(upJson.error || "CV upload failed");
+        cvStorageKey = upJson.storageKey;
+      }
+      const langs = (form.languages.value || "")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+      const body = {
+        jobId,
+        seekerName: form.seekerName.value.trim(),
+        seekerEmail: form.seekerEmail.value.trim(),
+        seekerPhone: form.seekerPhone.value.trim(),
+        languages: langs,
+        workAuthorization: form.workAuthorization.value.trim(),
+        residenceRegion: form.residenceRegion.value.trim(),
+        coverMessage: form.coverMessage.value.trim(),
+        cvStorageKey: cvStorageKey || undefined,
+        gdprConsent: true,
+      };
+      const res = await fetch(`${base}/api/hospitality/applications`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Application failed");
+      if (statusEl) {
+        statusEl.textContent =
+          "Application sent. The employer may contact you — this desk does not guarantee hire.";
+        statusEl.className = "apply-status is-ok";
+      }
+      form.reset();
+    } catch (e) {
+      if (statusEl) {
+        statusEl.textContent = e && e.message ? e.message : "Could not submit.";
+        statusEl.className = "apply-status is-err";
+      }
+    }
+  }
+
+  function renderPortalApplyForm(prefix, r) {
+    const slot = ensurePortalApplySlot(prefix);
+    if (!slot) return;
+    if (r.source !== "hospitality" || r.applyMode !== "portal" || !r.hospitalityJobId) {
+      slot.hidden = true;
+      slot.innerHTML = "";
+      return;
+    }
+    slot.hidden = false;
+    const flags = r.fairHireFlags || {};
+    const badges = [
+      flags.trainingProvided ? "Training provided" : "",
+      flags.noExperienceRequired ? "Entry-friendly" : "",
+    ]
+      .filter(Boolean)
+      .join(" · ");
+    slot.innerHTML = `
+      <h3>Apply on this desk</h3>
+      ${badges ? `<p class="small muted">${esc(badges)}</p>` : ""}
+      <form class="job-portal-apply-form" data-job-id="${esc(r.hospitalityJobId)}">
+        <div class="field"><label>Name</label><input name="seekerName" required autocomplete="name" /></div>
+        <div class="field"><label>Email</label><input name="seekerEmail" type="email" required autocomplete="email" /></div>
+        <div class="field"><label>Phone</label><input name="seekerPhone" autocomplete="tel" /></div>
+        <div class="field"><label>Languages (comma-separated)</label><input name="languages" placeholder="Greek, English, …" /></div>
+        <div class="field"><label>Work authorization (self-declared)</label><input name="workAuthorization" placeholder="e.g. EU citizen, permit in progress" /></div>
+        <div class="field"><label>Where you live</label><input name="residenceRegion" placeholder="Region or city" /></div>
+        <div class="field field--wide"><label>Short message</label><textarea name="coverMessage" rows="3"></textarea></div>
+        <div class="field field--wide"><label>CV (PDF/DOC, max 5 MB)</label><input name="cv" type="file" accept=".pdf,.doc,.docx,.odt,.txt" /></div>
+        <div class="field field--wide consent">
+          <label><input type="checkbox" name="gdprConsent" required /> I agree my data will be shared with this employer for recruitment. See docs/TOURISM_EMPLOYMENT.md.</label>
+        </div>
+        <div class="field field--wide"><button type="submit" class="btn btn-primary">Submit application</button></div>
+        <p class="apply-status" id="${prefix}-apply-status" role="status"></p>
+      </form>`;
+    const form = slot.querySelector("form");
+    const statusEl = $(`#${prefix}-apply-status`);
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.gdprConsent.checked) {
+        if (statusEl) {
+          statusEl.textContent = "Consent is required.";
+          statusEl.className = "apply-status is-err";
+        }
+        return;
+      }
+      submitPortalApply(form, r.hospitalityJobId, statusEl);
+    });
+  }
+
   function fillJobDetail(r, prefix) {
+    const src =
+      r.source === "hospitality"
+        ? `<span class="job-source-pill">Hospitality &amp; tourism</span>`
+        : `<span class="job-source-pill">NGO indexed</span>`;
     $(`#${prefix}-title`).textContent = r.title || "Opening";
-    $(`#${prefix}-org`).innerHTML = `<a href="#org/${esc(r.orgId)}">${esc(r.org)}</a> · ${esc(
-      orgSectorById[r.orgId] || ""
-    )}`;
+    const sector = r.source === "ngo" ? orgSectorById[r.orgId] || "" : r.kind || "Hospitality";
+    const orgHtml =
+      r.source === "hospitality"
+        ? `${esc(r.org)}`
+        : `<a href="#org/${esc(r.orgId)}">${esc(r.org)}</a>`;
+    $(`#${prefix}-org`).innerHTML = `${orgHtml} · ${esc(sector)} · ${src}`;
     $(`#${prefix}-facts`).innerHTML = [
       ["Posted", r.postedDate || "—"],
       ["Deadline", r.deadline || "—"],
@@ -1358,18 +1652,29 @@
     ]
       .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`)
       .join("");
-    $(`#${prefix}-dek`).textContent = r.location
-      ? `Based in ${r.location}. Confirm details on the employer site before applying.`
-      : "";
-    $(`#${prefix}-actions`).innerHTML = [
-      r.url
-        ? `<a class="btn btn-primary" href="${esc(r.url)}" target="_blank" rel="noopener">Apply on site</a>`
-        : "",
-      `<button type="button" class="btn" data-page="apply">Spontaneous CV</button>`,
-      `<a class="btn" href="#org/${esc(r.orgId)}">Org profile</a>`,
-    ]
-      .filter(Boolean)
-      .join("");
+    if (r.source === "hospitality") {
+      const extra = r.description ? String(r.description).slice(0, 600) : "";
+      $(`#${prefix}-dek`).textContent = extra || `Based in ${r.location || "Greece"}. Apply below — verified employer.`;
+    } else {
+      $(`#${prefix}-dek`).textContent = r.location
+        ? `Based in ${r.location}. Confirm details on the employer site before applying.`
+        : "";
+    }
+    const actions = [];
+    if (r.applyMode === "portal") {
+      actions.push(
+        `<button type="button" class="btn btn-primary" data-portal-scroll="${prefix}">Apply on this desk</button>`
+      );
+    } else if (r.url) {
+      actions.push(
+        `<a class="btn btn-primary" href="${esc(r.url)}" target="_blank" rel="noopener">Apply on site</a>`
+      );
+    }
+    if (r.source === "ngo") {
+      actions.push(`<button type="button" class="btn" data-page="apply">Spontaneous CV</button>`);
+      actions.push(`<a class="btn" href="#org/${esc(r.orgId)}">Org profile</a>`);
+    }
+    $(`#${prefix}-actions`).innerHTML = actions.filter(Boolean).join("");
     $$(`#${prefix}-actions [data-page]`).forEach((b) =>
       b.addEventListener("click", () => {
         const dialog = $("#job-drawer");
@@ -1377,6 +1682,12 @@
         showPage(b.dataset.page);
       })
     );
+    $$(`#${prefix}-actions [data-portal-scroll]`).forEach((b) => {
+      b.addEventListener("click", () => {
+        const slot = ensurePortalApplySlot(prefix);
+        slot?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    });
     $$(`#${prefix}-org a[href^="#org/"]`).forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -1391,6 +1702,7 @@
         if (id) openOrgProfile(id);
       });
     });
+    renderPortalApplyForm(prefix, r);
   }
 
   function highlightJobSelection(index) {
@@ -1448,12 +1760,17 @@
         const dl = parseDeadline(r.deadline);
         const urgent = dl && dl >= now && dl - now < 14 * 86400000;
         const sel = selectedJobIdx === i ? " is-selected" : "";
+        const orgLine =
+          r.source === "hospitality"
+            ? esc(r.org)
+            : `<a href="#org/${esc(r.orgId)}" class="table-profile-link">${esc(r.org)}</a>`;
+        const cap = r.source === "hospitality" ? "Hospitality" : r.kind ? esc(r.kind) : "Opening";
         return `<article class="ngo-card job-card ngo-card--${tone}${sel}" data-job-card="${i}">
-          <div class="ngo-card-cap"><span class="ngo-card-cap-badge">${r.kind ? esc(r.kind) : "Opening"}</span></div>
+          <div class="ngo-card-cap"><span class="ngo-card-cap-badge">${cap}</span></div>
           <div class="ngo-card-body">
             <span class="ngo-card-initials">${esc(orgInitials(r.org))}</span>
             <h3>${esc(r.title)}</h3>
-            <p class="ngo-card-meta"><a href="#org/${esc(r.orgId)}" class="table-profile-link">${esc(r.org)}</a> · ${esc(r.location || "Greece")}</p>
+            <p class="ngo-card-meta">${orgLine} · ${esc(r.location || "Greece")}</p>
             <div class="ngo-card-pills">
               ${r.kind ? `<span class="pill">${esc(r.kind)}</span>` : ""}
               ${r.postedDate ? `<span class="pill">Posted ${esc(r.postedDate)}</span>` : ""}
@@ -1462,9 +1779,11 @@
             <div class="ngo-card-actions">
               <button type="button" class="btn" data-job-idx="${i}">Details</button>
               ${
-                r.url
-                  ? `<a class="btn btn-primary" href="${esc(r.url)}" target="_blank" rel="noopener">Apply</a>`
-                  : `<button type="button" class="btn btn-primary" data-job-idx="${i}">Details</button>`
+                r.applyMode === "portal"
+                  ? `<button type="button" class="btn btn-primary" data-job-idx="${i}">Apply here</button>`
+                  : r.url
+                    ? `<a class="btn btn-primary" href="${esc(r.url)}" target="_blank" rel="noopener">Apply</a>`
+                    : `<button type="button" class="btn btn-primary" data-job-idx="${i}">Details</button>`
               }
             </div>
           </div>
@@ -1496,14 +1815,24 @@
     const q = ($("#q-jobs").value || "").trim().toLowerCase();
     const region = $("#f-jobs-region")?.value || "all";
     const sector = $("#f-jobs-sector")?.value || "";
+    const source = $("#f-jobs-source")?.value || "all";
+    const entry = $("#f-jobs-entry")?.value || "";
     let rows = allPostings();
+    if (source === "ngo") rows = rows.filter((r) => r.source !== "hospitality");
+    else if (source === "hospitality") rows = rows.filter((r) => r.source === "hospitality");
     if (region === "athens") {
       rows = rows.filter((r) => isAthensLoc(r.location));
     } else if (region === "other") {
       rows = rows.filter((r) => r.location && !isAthensLoc(r.location));
     }
     if (sector) {
-      rows = rows.filter((r) => orgSectorById[r.orgId] === sector);
+      rows = rows.filter((r) => r.source === "ngo" && orgSectorById[r.orgId] === sector);
+    }
+    if (entry === "training") {
+      rows = rows.filter((r) => {
+        const f = r.fairHireFlags || {};
+        return f.trainingProvided || f.noExperienceRequired;
+      });
     }
     if (q) {
       rows = rows.filter((r) =>
@@ -1606,13 +1935,23 @@
     $("#jobs-body").innerHTML = rows
       .map((r, i) => {
         const sel = selectedJobIdx === i ? " is-selected" : "";
+        const orgCell =
+          r.source === "hospitality"
+            ? esc(r.org)
+            : `<a href="#org/${esc(r.orgId)}" class="table-profile-link">${esc(r.org)}</a>`;
+        const act =
+          r.applyMode === "portal"
+            ? `<button type="button" class="pill" data-job-idx="${i}">Apply</button>`
+            : r.url
+              ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Open</a>`
+              : `<button type="button" class="pill" data-job-idx="${i}">Detail</button>`;
         return `<tr class="job-row${sel}" data-job-idx="${i}" tabindex="0">
-        <td><a href="#org/${esc(r.orgId)}" class="table-profile-link">${esc(r.org)}</a></td>
+        <td>${orgCell}</td>
         <td>${esc(r.title)}${r.kind ? ` <span class="pill">${esc(r.kind)}</span>` : ""}</td>
         <td>${esc(r.postedDate || "—")}</td>
         <td>${esc(r.deadline || "—")}</td>
         <td class="small">${esc(r.location || "—")}</td>
-        <td>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Open</a>` : `<button type="button" class="pill" data-job-idx="${i}">Detail</button>`}</td>
+        <td>${act}</td>
       </tr>`;
       })
       .join("");
@@ -1649,6 +1988,121 @@
   $("#q-jobs").addEventListener("input", renderJobs);
   $("#f-jobs-region")?.addEventListener("change", renderJobs);
   $("#f-jobs-sector")?.addEventListener("change", renderJobs);
+  $("#f-jobs-source")?.addEventListener("change", renderJobs);
+  $("#f-jobs-entry")?.addEventListener("change", renderJobs);
+
+  /* ---------- civic events ---------- */
+  let lastEventRows = [];
+  let selectedEventIdx = null;
+
+  function formatEventWhen(iso) {
+    if (!iso) return "—";
+    try {
+      return new Date(iso).toLocaleString(undefined, {
+        dateStyle: "medium",
+        timeStyle: "short",
+      });
+    } catch {
+      return iso.slice(0, 16);
+    }
+  }
+
+  function showEventPane(index) {
+    const r = lastEventRows[index];
+    if (!r) return;
+    selectedEventIdx = index;
+    const pane = $("#event-detail-pane");
+    const empty = $("#event-pane-empty");
+    const body = $("#event-pane-body");
+    if (!pane || !body) return;
+    pane.hidden = false;
+    if (empty) empty.hidden = true;
+    body.hidden = false;
+    $("#event-pane-title").textContent = r.title || "Event";
+    const hosts = (r.hostOrgNames || r.hostOrgIds || []).join(" · ") || "—";
+    $("#event-pane-hosts").textContent = `Hosts: ${hosts}`;
+    $("#event-pane-facts").innerHTML = [
+      ["When", formatEventWhen(r.startsAt)],
+      ["Where", r.isOnline ? "Online" : r.location || "—"],
+      ["Source", r.source || "—"],
+    ]
+      .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`)
+      .join("");
+    $("#event-pane-dek").textContent = r.description
+      ? String(r.description).slice(0, 900)
+      : "";
+    const collab = $("#event-pane-collab");
+    if (collab && window.mountEventCollab) {
+      window.mountEventCollab(collab, r.id);
+    }
+    $$("#events-card-grid .event-card").forEach((el, i) => {
+      el.classList.toggle("is-selected", i === index);
+    });
+  }
+
+  function renderEvents() {
+    const q = ($("#q-events")?.value || "").trim().toLowerCase();
+    const source = $("#f-events-source")?.value || "all";
+    let rows = [...civicEvents];
+    if (source !== "all") rows = rows.filter((r) => r.source === source);
+    if (q) {
+      rows = rows.filter((r) =>
+        [r.title, r.description, r.location, ...(r.hostOrgNames || [])]
+          .join(" ")
+          .toLowerCase()
+          .includes(q)
+      );
+    }
+    rows.sort((a, b) => String(a.startsAt).localeCompare(String(b.startsAt)));
+    lastEventRows = rows;
+    const countEl = $("#events-result-count");
+    if (countEl) {
+      countEl.innerHTML = `<strong>${rows.length}</strong> event${rows.length === 1 ? "" : "s"}`;
+    }
+  $("#events-stats").innerHTML = [
+      ["Showing", String(rows.length)],
+      ["Next", rows[0] ? formatEventWhen(rows[0].startsAt) : "—"],
+    ]
+      .map(([label, value]) => `<div class="stat"><div class="label">${esc(label)}</div><div class="value">${esc(value)}</div></div>`)
+      .join("");
+    const grid = $("#events-card-grid");
+    if (!grid) return;
+    grid.innerHTML = rows
+      .map(
+        (r, i) => `<article class="ngo-card event-card ngo-card--m${i % 5}${selectedEventIdx === i ? " is-selected" : ""}" data-event-card="${i}">
+          <div class="ngo-card-cap"><span class="ngo-card-cap-badge">${esc(r.source || "event")}</span></div>
+          <div class="ngo-card-body">
+            <h3>${esc(r.title)}</h3>
+            <p class="ngo-card-meta">${esc(formatEventWhen(r.startsAt))} · ${esc(r.location || (r.isOnline ? "Online" : "Greece"))}</p>
+            <p class="small muted">${esc((r.hostOrgNames || []).slice(0, 2).join(" · ") || "")}</p>
+            <div class="ngo-card-actions"><button type="button" class="btn" data-event-idx="${i}">Details</button></div>
+          </div>
+        </article>`
+      )
+      .join("");
+    grid.querySelectorAll("[data-event-idx]").forEach((btn) => {
+      btn.addEventListener("click", () => showEventPane(Number(btn.dataset.eventIdx)));
+    });
+    grid.querySelectorAll("[data-event-card]").forEach((card) => {
+      card.addEventListener("click", (e) => {
+        if (e.target.closest("button")) return;
+        showEventPane(Number(card.dataset.eventCard));
+      });
+    });
+    if (preferDeskPane() && rows.length) {
+      const idx = selectedEventIdx != null && rows[selectedEventIdx] ? selectedEventIdx : 0;
+      showEventPane(idx);
+    } else if (!rows.length) {
+      selectedEventIdx = null;
+      const empty = $("#event-pane-empty");
+      const body = $("#event-pane-body");
+      if (empty) empty.hidden = false;
+      if (body) body.hidden = true;
+    }
+  }
+
+  $("#q-events")?.addEventListener("input", renderEvents);
+  $("#f-events-source")?.addEventListener("change", renderEvents);
 
   /* ---------- apply / spontaneous emails ---------- */
   function renderApply() {
@@ -1656,6 +2110,7 @@
     if (tip && $("#apply-tip")) {
       $("#apply-tip").textContent = tip;
     }
+    const query = ($("#q-apply")?.value || "").trim().toLowerCase();
     const ranked = [...emails].sort((a, b) => {
       const ae = a.email ? 0 : 1;
       const be = b.email ? 0 : 1;
@@ -1665,7 +2120,19 @@
       if (ap !== bp) return ap - bp;
       return String(a.name).localeCompare(String(b.name));
     });
-    $("#apply-emails").innerHTML = ranked
+    const filtered = ranked.filter((c) => {
+      if (!query) return true;
+      const blob = [c.name, c.kind, c.email, c.note, c.orgId].filter(Boolean).join(" ").toLowerCase();
+      return blob.includes(query);
+    });
+    const countEl = $("#apply-count");
+    if (countEl) {
+      countEl.textContent =
+        filtered.length === ranked.length
+          ? `${ranked.length} contact${ranked.length === 1 ? "" : "s"}`
+          : `Showing ${filtered.length} of ${ranked.length}`;
+    }
+    $("#apply-emails").innerHTML = filtered
       .map((c, i) => {
         const tone = toneForId(c.orgId || String(i));
         const mail = c.email
@@ -1681,11 +2148,11 @@
           <div class="ngo-card-cap"></div>
           <div class="ngo-card-body">
             <span class="ngo-card-initials">${esc(orgInitials(c.name))}</span>
-            <h3>${esc(c.name)}</h3>
+          <h3>${esc(c.name)}</h3>
             <p class="ngo-card-meta">${esc(c.kind || "Contact")}</p>
             <div class="ngo-card-pills">${c.email ? `<span class="pill">Email</span>` : `<span class="pill">ATS</span>`}</div>
-            <div class="email-addr">${mail}</div>
-            ${c.note ? `<p class="small muted">${esc(c.note)}</p>` : ""}
+          <div class="email-addr">${mail}</div>
+          ${c.note ? `<p class="small muted">${esc(c.note)}</p>` : ""}
             <div class="ngo-card-actions">
               ${profile}
               ${c.email ? `<a class="btn btn-primary email-link" href="mailto:${esc(c.email)}?subject=${encodeURIComponent("Spontaneous application — Greece NGO Desk")}">Send CV</a>` : ""}
@@ -1703,18 +2170,49 @@
     });
   }
 
+  $("#q-apply")?.addEventListener("input", renderApply);
+
   /* ---------- possibility ---------- */
+  function renderPossibilityMeta() {
+    const meta = DATA.possibility?.meta;
+    const scored = possibility.filter((o) => o.score != null).length;
+    const scoredEl = $("#poss-scored-count");
+    if (scoredEl) scoredEl.textContent = `${scored} / ${possibility.length} scored`;
+    const rankCount = $("#poss-rank-count");
+    if (rankCount) rankCount.textContent = String(possibility.length);
+    const lead = $("#poss-overview-lead");
+    if (lead && meta?.question) lead.textContent = meta.question;
+    const method = meta?.method;
+    if (method) {
+      $$("[data-poss-method]").forEach((el) => {
+        const key = el.dataset.possMethod;
+        if (key && method[key]) el.textContent = method[key];
+      });
+      const bandsEl = $("#poss-method-bands");
+      if (bandsEl && method.bands) {
+        bandsEl.innerHTML = Object.entries(method.bands)
+          .map(([label, range]) => `<li><strong>${esc(label)}</strong> — ${esc(range)}</li>`)
+          .join("");
+      }
+    }
+    const caveatsEl = $("#poss-caveats-list");
+    if (caveatsEl && Array.isArray(meta?.caveats)) {
+      caveatsEl.innerHTML = meta.caveats.map((c) => `<li>${esc(c)}</li>`).join("");
+    }
+  }
+
   function renderPossibility() {
-    const ranked = [...possibility].sort((a, b) => b.score - a.score);
+    renderPossibilityMeta();
+    const ranked = [...possibility].sort((a, b) => (b.score ?? -1) - (a.score ?? -1));
     const chartEl = $("#poss-chart");
     if (chartEl) {
       chartEl.innerHTML = ranked
         .slice(0, 4)
-        .map(
+      .map(
           (o) =>
             `<div class="stat"><div class="label">${esc(o.name)}</div><div class="value">${esc(o.score)}</div></div>`
-        )
-        .join("");
+      )
+      .join("");
     }
 
     const orgByPossId = Object.fromEntries(orgs.map((o) => [o.id, o]));
@@ -1741,7 +2239,7 @@
               <span class="pill ${bandClass(o.possibility)}">${esc(o.score)} · ${esc(o.possibility)}</span>
             </div>
             <p class="ngo-card-meta">Staff: ${esc(staff)} · People: ${esc(deps)}</p>
-            <div class="score-bar" title="Score ${o.score}"><span style="width:${o.score}%"></span></div>
+          <div class="score-bar" title="Score ${o.score}"><span style="width:${o.score}%"></span></div>
             <p class="small muted">${esc(o.why)}</p>
             <div class="ngo-card-actions">
               ${org ? `<a class="btn btn-primary" href="#org/${esc(o.id)}">Profile</a>` : ""}
@@ -1781,6 +2279,206 @@
     });
   });
 
+  function bindFundWizard() {
+    const page = $("#page-funding");
+    if (!page) return;
+    const stepButtons = $$(".fund-stepper [data-fund-step]", page);
+    const panels = $$("[data-fund-panel]", page);
+    const summaries = $$("[data-fund-summary]", page);
+
+    function setFundStep(step) {
+      const id = FUND_STEPS.has(step) ? step : "overview";
+      stepButtons.forEach((btn) => {
+        const on = btn.dataset.fundStep === id;
+        btn.classList.toggle("is-active", on);
+        btn.setAttribute("aria-current", on ? "step" : "false");
+      });
+      panels.forEach((panel) => {
+        panel.classList.toggle("is-active", panel.dataset.fundPanel === id);
+      });
+      summaries.forEach((card) => {
+        card.classList.toggle("is-active", card.dataset.fundSummary === id);
+      });
+      if (page.classList.contains("active")) {
+        const hash = id === "overview" ? "funding" : `funding/${id}`;
+        if (location.hash.replace(/^#/, "") !== hash) {
+          history.replaceState(null, "", `#${hash}`);
+        }
+      }
+    }
+
+    goFundStep = setFundStep;
+
+    stepButtons.forEach((btn) => {
+      btn.addEventListener("click", () => setFundStep(btn.dataset.fundStep));
+    });
+
+    $$("[data-fund-step-jump]", page).forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const step = btn.dataset.fundStepJump;
+        if (step) setFundStep(step);
+      });
+    });
+  }
+
+  bindFundWizard();
+
+  function bindCreateWizard() {
+    const page = $("#page-create");
+    if (!page) return;
+    const stepButtons = $$(".fund-stepper [data-create-step]", page);
+    const panels = $$("[data-create-panel]", page);
+    const summaries = $$("[data-create-summary]", page);
+
+    function setCreateStep(step) {
+      const id = CREATE_STEPS.has(step) ? step : "overview";
+      stepButtons.forEach((btn) => {
+        const on = btn.dataset.createStep === id;
+        btn.classList.toggle("is-active", on);
+        btn.setAttribute("aria-current", on ? "step" : "false");
+      });
+      panels.forEach((panel) => {
+        panel.classList.toggle("is-active", panel.dataset.createPanel === id);
+      });
+      summaries.forEach((card) => {
+        card.classList.toggle("is-active", card.dataset.createSummary === id);
+      });
+      if (page.classList.contains("active")) {
+        const hash = id === "overview" ? "create" : `create/${id}`;
+        if (location.hash.replace(/^#/, "") !== hash) {
+          history.replaceState(null, "", `#${hash}`);
+        }
+      }
+    }
+
+    goCreateStep = setCreateStep;
+
+    stepButtons.forEach((btn) => {
+      btn.addEventListener("click", () => setCreateStep(btn.dataset.createStep));
+    });
+
+    $$("[data-create-step-jump]", page).forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const step = btn.dataset.createStepJump;
+        if (step) setCreateStep(step);
+      });
+    });
+  }
+
+  bindCreateWizard();
+
+  function bindPossWizard() {
+    const page = $("#page-possibility");
+    if (!page) return;
+    const stepButtons = $$(".fund-stepper [data-poss-step]", page);
+    const panels = $$("[data-poss-panel]", page);
+    const summaries = $$("[data-poss-summary]", page);
+
+    function setPossStep(step) {
+      const id = POSS_STEPS.has(step) ? step : "overview";
+      stepButtons.forEach((btn) => {
+        const on = btn.dataset.possStep === id;
+        btn.classList.toggle("is-active", on);
+        btn.setAttribute("aria-current", on ? "step" : "false");
+      });
+      panels.forEach((panel) => {
+        panel.classList.toggle("is-active", panel.dataset.possPanel === id);
+      });
+      summaries.forEach((card) => {
+        card.classList.toggle("is-active", card.dataset.possSummary === id);
+      });
+      if (page.classList.contains("active")) {
+        const hash = id === "overview" ? "possibility" : `possibility/${id}`;
+        if (location.hash.replace(/^#/, "") !== hash) {
+          history.replaceState(null, "", `#${hash}`);
+        }
+      }
+    }
+
+    goPossStep = setPossStep;
+
+    stepButtons.forEach((btn) => {
+      btn.addEventListener("click", () => setPossStep(btn.dataset.possStep));
+    });
+
+    $$("[data-poss-step-jump]", page).forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const step = btn.dataset.possStepJump;
+        if (step) setPossStep(step);
+      });
+    });
+  }
+
+  bindPossWizard();
+
+  function bindStepWizard({ pageSel, stepAttr, panelAttr, summaryAttr, jumpAttr, steps, setterRef }) {
+    const page = $(pageSel);
+    if (!page) return;
+    const stepButtons = $$(`.fund-stepper [${stepAttr}]`, page);
+    const panels = $$(`[${panelAttr}]`, page);
+    const summaries = $$(`[${summaryAttr}]`, page);
+    const pageKey = pageSel.replace("#page-", "");
+
+    function setStep(step) {
+      const id = steps.has(step) ? step : "overview";
+      stepButtons.forEach((btn) => {
+        const val = btn.getAttribute(stepAttr);
+        const on = val === id;
+        btn.classList.toggle("is-active", on);
+        btn.setAttribute("aria-current", on ? "step" : "false");
+      });
+      panels.forEach((panel) => {
+        const on = panel.getAttribute(panelAttr) === id;
+        panel.classList.toggle("is-active", on);
+      });
+      summaries.forEach((card) => {
+        const on = card.getAttribute(summaryAttr) === id;
+        card.classList.toggle("is-active", on);
+      });
+      if (page.classList.contains("active")) {
+        const hash = id === "overview" ? pageKey : `${pageKey}/${id}`;
+        if (location.hash.replace(/^#/, "") !== hash) {
+          history.replaceState(null, "", `#${hash}`);
+        }
+      }
+    }
+
+    setterRef.current = setStep;
+
+    stepButtons.forEach((btn) => {
+      btn.addEventListener("click", () => setStep(btn.getAttribute(stepAttr)));
+    });
+    $$(`[${jumpAttr}]`, page).forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const step = btn.getAttribute(jumpAttr);
+        if (step) setStep(step);
+      });
+    });
+  }
+
+  const audSetter = { current: null };
+  const legalSetter = { current: null };
+  bindStepWizard({
+    pageSel: "#page-audiences",
+    stepAttr: "data-aud-step",
+    panelAttr: "data-aud-panel",
+    summaryAttr: "data-aud-summary",
+    jumpAttr: "data-aud-step-jump",
+    steps: AUD_STEPS,
+    setterRef: audSetter,
+  });
+  bindStepWizard({
+    pageSel: "#page-legal",
+    stepAttr: "data-legal-step",
+    panelAttr: "data-legal-panel",
+    summaryAttr: "data-legal-summary",
+    jumpAttr: "data-legal-step-jump",
+    steps: LEGAL_STEPS,
+    setterRef: legalSetter,
+  });
+  goAudStep = (step) => audSetter.current?.(step);
+  goLegalStep = (step) => legalSetter.current?.(step);
+
   /* ---------- media / hot rail ---------- */
   function formatMediaDate(iso) {
     if (!iso) return "";
@@ -1812,16 +2510,21 @@
 
     const tones = CARD_TONES;
     rail.innerHTML = hotArticles()
-      .map(
-        (a, i) => `
-      <button type="button" class="story-card story-card--${tones[i % tones.length]}" data-media-id="${esc(a.id)}">
-        <div class="story-card-cap"><span class="story-card-date">${esc(formatMediaDate(a.date))}</span></div>
+      .map((a, i) => {
+        const img = esc(a.image || "img/athens-agora.jpg");
+        const alt = esc(a.imageAlt || a.title);
+        return `
+      <button type="button" class="story-card story-card--${tones[i % tones.length]} story-card--photo" data-media-id="${esc(a.id)}">
+        <div class="story-card-media">
+          <img src="${img}" alt="${alt}" loading="lazy" decoding="async" />
+          <span class="story-card-date">${esc(formatMediaDate(a.date))}</span>
+        </div>
         <div class="story-card-body">
           <span class="story-card-title">${esc(a.title)}</span>
           <span class="story-card-dek">${esc(a.dek || "")}</span>
         </div>
-      </button>`
-      )
+      </button>`;
+      })
       .join("");
 
     $$("#hot-rail [data-media-id]").forEach((btn) => {
@@ -1833,6 +2536,85 @@
         });
       });
     });
+  }
+
+  function mediaDeskCategory(a) {
+    const blob = [a.title, a.dek, ...(a.tags || [])].join(" ").toLowerCase();
+    if (/hiring|job|vacanc|staff/.test(blob)) return "Work";
+    if (/fund|grant|donor|amif|erasmus/.test(blob)) return "Funding";
+    if (/protect|refugee|migration|legal/.test(blob)) return "Protection";
+    return "Civic";
+  }
+
+  function mediaMetaLine(a) {
+    const cat = mediaDeskCategory(a);
+    const hot = a.hot ? ' · <span class="media-hot">Hot</span>' : "";
+    return `${esc(cat)} · ${esc(formatMediaDate(a.date))}${hot}`;
+  }
+
+  function mediaSourceBtn(a) {
+    return a.sourceUrl
+      ? `<a class="btn btn-primary" href="${esc(a.sourceUrl)}" target="_blank" rel="noopener">Read source ↗</a>`
+      : "";
+  }
+
+  function renderMediaBentoFeature(a) {
+    const img = esc(a.image || "img/athens-agora.jpg");
+    return `
+      <article class="media-bento-card media-bento-feature" id="article-${esc(a.id)}">
+        <img src="${img}" alt="${esc(a.imageAlt || a.title)}" loading="lazy" />
+        <div class="media-bento-caption">
+          <p class="media-bento-meta">${mediaMetaLine(a)}</p>
+          <h2>${esc(a.title)}</h2>
+          <div class="media-bento-actions">${mediaSourceBtn(a)}</div>
+        </div>
+      </article>`;
+  }
+
+  function renderMediaBentoEditorial(a) {
+    const snippet = (a.body || []).slice(0, 1).map((p) => `<p>${esc(p)}</p>`).join("");
+    return `
+      <article class="media-bento-card media-bento-editorial media-bento--tint-a" id="article-${esc(a.id)}">
+        <p class="media-bento-meta">${mediaMetaLine(a)}</p>
+        <h2>${esc(a.title)}</h2>
+        <p class="media-dek">${esc(a.dek || "")}</p>
+        <div class="media-copy">${snippet}</div>
+        <div class="media-bento-actions">${mediaSourceBtn(a)}</div>
+      </article>`;
+  }
+
+  function renderMediaBentoTall(a) {
+    const img = esc(a.image || "img/community.jpg");
+    return `
+      <article class="media-bento-card media-bento-tall media-bento--tint-b" id="article-${esc(a.id)}">
+        <p class="media-bento-meta">${mediaMetaLine(a)}</p>
+        <h2>${esc(a.title)}</h2>
+        <p class="media-dek">${esc(a.dek || "")}</p>
+        <div class="media-bento-thumb"><img src="${img}" alt="" loading="lazy" /></div>
+        <div class="media-bento-actions">${mediaSourceBtn(a)}</div>
+      </article>`;
+  }
+
+  function renderMediaBentoVisual(a) {
+    const img = esc(a.image || "img/athens-agora.jpg");
+    return `
+      <article class="media-bento-card media-bento-visual" id="article-${esc(a.id)}">
+        <img src="${img}" alt="${esc(a.imageAlt || a.title)}" loading="lazy" />
+        <div class="media-bento-visual-body">
+          <p class="media-bento-meta">${mediaMetaLine(a)} · ${esc(a.source || "Digest")}</p>
+          <h2>${esc(a.title)}</h2>
+        </div>
+      </article>`;
+  }
+
+  function renderMediaBentoCompact(a) {
+    return `
+      <article class="media-bento-card media-bento-compact" id="article-${esc(a.id)}">
+        <p class="media-bento-meta">${mediaMetaLine(a)}</p>
+        <h2>${esc(a.title)}</h2>
+        <p class="media-dek">${esc(a.dek || "")}</p>
+        <div class="media-bento-actions">${mediaSourceBtn(a)}</div>
+      </article>`;
   }
 
   function renderMedia() {
@@ -1857,37 +2639,26 @@
 
     const feed = $("#media-feed");
     if (!feed) return;
-    feed.innerHTML = list
-      .map((a, i) => {
-        const tags = (a.tags || []).map((t) => `<span class="media-tag">${esc(t)}</span>`).join("");
-        const paras = (a.body || []).slice(0, 3).map((p) => `<p>${esc(p)}</p>`).join("");
-        const tone = CARD_TONES[i % CARD_TONES.length];
-        return `
-        <article class="ngo-card media-feed-card ngo-card--${tone}" id="article-${esc(a.id)}">
-          <div class="media-feed-card-img">
-            <img src="${esc(a.image || "img/athens-agora.jpg")}" alt="${esc(a.imageAlt || a.title)}" loading="lazy" />
-          </div>
-          <div class="ngo-card-body">
-            <div class="media-article-meta">
-              <time datetime="${esc(a.date)}">${esc(formatMediaDate(a.date))}</time>
-              ${a.hot ? `<span class="media-hot">Hot</span>` : ""}
-              <span class="media-source">${esc(a.source || "")}</span>
-            </div>
-            <h2>${esc(a.title)}</h2>
-            <p class="media-dek">${esc(a.dek || "")}</p>
-            <div class="media-copy">${paras}</div>
-            <div class="media-tags">${tags}</div>
-            <div class="ngo-card-actions">
-              ${
-                a.sourceUrl
-                  ? `<a class="btn btn-primary" href="${esc(a.sourceUrl)}" target="_blank" rel="noopener">Read source ↗</a>`
-                  : ""
-              }
-            </div>
-          </div>
-        </article>`;
-      })
-      .join("");
+
+    if (!list.length) {
+      feed.innerHTML = `<p class="muted">No stories match this filter.</p>`;
+      return;
+    }
+
+    const slots = [];
+    const [first, second, third, fourth, ...rest] = list;
+    if (first) slots.push(renderMediaBentoFeature(first));
+    if (second) slots.push(renderMediaBentoEditorial(second));
+    if (third) slots.push(renderMediaBentoTall(third));
+    if (fourth) slots.push(renderMediaBentoVisual(fourth));
+
+    if (rest.length) {
+      slots.push(
+        `<div class="media-bento-more">${rest.map((a) => renderMediaBentoCompact(a)).join("")}</div>`
+      );
+    }
+
+    feed.innerHTML = slots.join("");
   }
 
   $("#q-media")?.addEventListener("input", renderMedia);
@@ -1900,6 +2671,7 @@
   $("#jobs-view-cards")?.addEventListener("click", () => setJobsView("cards"));
   $("#jobs-view-table")?.addEventListener("click", () => setJobsView("table"));
   $("#desk-rail-more")?.addEventListener("click", () => showPage("possibility"));
+  $("#mobile-dock-more")?.addEventListener("click", () => $("#cmd-open")?.click());
   $("#hero-search-form")?.addEventListener("submit", (e) => {
     e.preventDefault();
     const intent = $("#hero-intent")?.value || "registry";
@@ -1931,11 +2703,13 @@
   renderMedia();
   renderRegistry();
   renderJobs();
+  renderEvents();
   renderApply();
   renderPossibility();
 
   function buildCommandIndex() {
     return [
+      ...CMD_GUIDE_ROUTES.map((a) => ({ type: "route", id: a.id, label: a.label, hint: a.hint })),
       ...CMD_ACTIONS.map((a) => ({ type: "page", id: a.id, label: a.label, hint: a.hint })),
       ...orgs.map((o) => ({
         type: "org",

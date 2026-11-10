@@ -47,6 +47,13 @@ Each organisation can carry an **`osintProfile`** object (merged at **build time
   - **Deduping:** reference URLs are deduped after **normalising** scheme/host/path (query stripped) so the same page is not listed twice under different query strings.
   - **`scaleSignals` (merged):** when the registry `jobPossibility` row lacks staff/beneficiary labels but **`job_possibility.json`** has them, the merged profile fills **`staffEstimate`** / **`beneficiariesLabel`** from the possibility dataset; **`sourcesNote`** explains the merge when both corpora exist.
 - **Not automatic:** live crawling of every NGO website, full social-graph mapping, or exhaustive registry reconciliation — those require steward time or `osint_profiles.json` enrichment.
+
+## Civic events (Phase B lane)
+
+- **Published events** may be steward-entered or **scraped** from ICS/RSS/HTML/API adapters configured per source ([NGO_EVENTS.md](./NGO_EVENTS.md)).
+- **Scraped rows** default to **`pending_review`**; they are **not** shown on the public calendar until a steward publishes or merges them.
+- **Deduping** uses `externalKey` + source URL; stewards resolve ambiguous duplicates manually.
+- **NGO-to-NGO threads** on events are **not** public chat; participation requires steward-assigned org membership.
 - **UI:** `#org/<organisation-id>` — e.g. `#org/ngo-001-metadrasi`.
 
 ## Versioning

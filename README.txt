@@ -1,4 +1,4 @@
-﻿Greece NGO Desk — bundle from CVfinalizer repo
+Greece NGO Desk — bundle from CVfinalizer repo
 Generated: 2026-11-06 16:13
 
 Contents

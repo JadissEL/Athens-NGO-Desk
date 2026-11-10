@@ -8,6 +8,8 @@ import { createRequire } from "module";
 import { prisma } from "./lib/prisma.js";
 import { assertBundleShape, type NgoDataBundle } from "./lib/bundle.js";
 import { authorizeSteward, getActorSubject, getClerkVerifyOptions } from "./lib/auth.js";
+import { registerHospitalityRoutes } from "./routes/hospitality.js";
+import { registerCivicEventRoutes } from "./routes/civicEvents.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -101,6 +103,12 @@ export async function buildServer() {
     skipOnError: true,
   });
   const publicApi = { config: { rateLimit: { max: publicMax, timeWindow: publicWindow } } };
+  const applyMax = Math.max(10, Number(process.env.RATE_LIMIT_APPLY_MAX ?? 30));
+  const applyWindow = process.env.RATE_LIMIT_APPLY_WINDOW_MS ?? "1 minute";
+  const applyApi = { config: { rateLimit: { max: applyMax, timeWindow: applyWindow } } };
+  const messageMax = Math.max(10, Number(process.env.RATE_LIMIT_MESSAGE_MAX ?? 60));
+  const messageWindow = process.env.RATE_LIMIT_MESSAGE_WINDOW_MS ?? "1 minute";
+  const messageApi = { config: { rateLimit: { max: messageMax, timeWindow: messageWindow } } };
 
   await app.register(fastifyStatic, {
     root: path.join(serverRoot, "public"),
@@ -137,6 +145,9 @@ export async function buildServer() {
       return { ok: true, db: true };
     }
   );
+
+  await registerHospitalityRoutes(app, { publicApi, applyApi });
+  await registerCivicEventRoutes(app, { publicApi, messageApi });
 
   app.get("/api/ngo-data", { ...publicApi }, async (_req, reply) => {
     const row = await prisma.publishedBundle.findUnique({ where: { id: 1 } });

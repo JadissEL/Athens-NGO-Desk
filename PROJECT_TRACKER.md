@@ -141,3 +141,52 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_REN
 
 - **Ask:** You can do more.
 - **Outcome:** `validate:import`, `--dry-run`, `registry_import_batch.schema.json`, CI step; fixed `merge_osint_into_registry.js` confidence block + `osintProfile.references` required in `athens_greece.schema.json`.
+
+### 2026-11-09 — Static UI polish (Life, Fund, landing)
+
+- **Ask:** Life magazine layout; Fund stepper workbench; landing photos; fix empty Fund steps.
+- **Outcome:** `stitch-life.css`, `stitch-fund.css`, `stitch-landing.css`; Fund wizard steps 01–06 with left fields + right aside; landing hero mosaic, scene strip, photo story cards; cache `aegean-stitch25`; restored registry/job pane `hidden` defaults; deep links `#funding/readiness` (etc.).
+
+### 2026-11-09 — Create NGO wizard (parity with Fund)
+
+- **Ask:** Continue platform polish — Create guide stepper.
+- **Outcome:** `#page-create.create-wizard-page` mirroring Fund workbench (steps 01–06: Overview → Registries); `bindCreateWizard()`, `CREATE_STEPS`, deep links `#create/statute` (etc.); B3/bento exclusions for wizard layout; cache `aegean-stitch26`.
+
+### 2026-11-09 — Guide hardening + landing + E2E
+
+- **Ask:** Continue platform polish.
+- **Outcome:** Legacy fragment hashes (`#create-statute` → `#create/statute`, etc.); subtle hero photo wash on landing `landing-hero-surface`; Playwright `e2e/guide-wizards.spec.js` + `npm run test:e2e:static`; workflow `static-e2e.yml` (manual); cache `aegean-stitch27`.
+
+### 2026-11-09 — Scores wizard + Apply workbench
+
+- **Ask:** Continue platform polish.
+- **Outcome:** `#page-possibility.poss-wizard-page` (Overview / Method / Rankings) fed from `job_possibility.json` meta; Apply intro + photo + `#q-apply` filter; desk rail **Found**; `stitch-apply.css`; GitHub Pages deploy gated on guide smoke; cache `aegean-stitch28`.
+
+### 2026-11-09 — Trust wizards + command palette guides
+
+- **Ask:** Continue platform polish.
+- **Outcome:** Audiences (3-step) & Legal (2-step) `trust-wizard-page`; Ctrl+K **Guide** routes (`create/statute`, `funding/readiness`, …); `stitch-trust.css`; home funders tile → Audiences; cache `aegean-stitch29`.
+
+### 2026-11-09 — Mobile-friendly pass
+
+- **Ask:** Ensure platform is mobile friendly.
+- **Outcome:** `stitch-mobile.css` (stepper scroll, stacked wizards, 1-col grids, safe areas, cmd palette); scrollable dock + Life + **More** (search); `viewport-fit=cover`; `e2e/mobile-layout.spec.js`; cache `aegean-stitch30`.
+
+### 2026-11-10 — Found/Fund content dedupe
+
+- **Ask:** Reduce repetition between Found and Fund guides.
+- **Outcome:** Fund Readiness/Eligibility/Process trimmed to funder checklist + links to `#create/*`; Found keeps full formation detail; cache `aegean-stitch31`.
+
+### 2026-11-10 — Hospitality & tourism jobs lane (native apply)
+
+- **Ask:** Implement hospitality employment lane per plan (employers Clerk, in-portal apply, unified jobs UI).
+- **Outcome:** Prisma `HospitalityEmployer` / `HospitalityJob` / `JobApplication` + migration `20251110190000_hospitality_lane`; Fastify `server/src/routes/hospitality.ts` (public list/apply, CV upload, employer CRUD/inbox, steward verify); docs [TOURISM_EMPLOYMENT.md](docs/TOURISM_EMPLOYMENT.md) + AUDIENCES/LEGAL; static `#employer` workbench (`employer-portal.js`), jobs source/entry filters + portal apply in pane/drawer; pilot seed `npm run db:seed:hospitality`; Playwright `e2e/hospitality-jobs.spec.js` (14/14 e2e green); cache `aegean-stitch32`.
+
+**Deploy note:** Run `npx prisma migrate deploy` on Neon + `npm run db:seed:hospitality` for demo employers; set `CORS_ORIGIN` to include static host.
+
+### 2026-11-10 — NGO civic events, scrape, collaboration threads
+
+- **Ask:** NGOs publish/scrape events; internal NGO-to-NGO collaboration on events.
+- **Outcome:** Prisma civic event lane + scrape sources/runs + `OrgMember` + `EventThread*`; `server/src/routes/civicEvents.ts` + scrape adapters (ICS/RSS/HTML + gated Eventbrite/Facebook); steward [`steward/events.html`](server/public/steward/events.html); public `#events` + `event-collab.js`; [docs/NGO_EVENTS.md](docs/NGO_EVENTS.md); `e2e/civic-events.spec.js`; cache `aegean-stitch33`.
+
+**Deploy note:** `npx prisma migrate deploy` + `npm run db:seed:events`; configure scrape env flags before enabling broad adapters.

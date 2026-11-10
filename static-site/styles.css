@@ -2486,9 +2486,9 @@ body.is-landing .home-platform {
 }
 
 @media (min-width: 1024px) {
-  body:not(.is-landing) .page .panel,
-  body:not(.is-landing) .page .callout,
-  body:not(.is-landing) .page .page-toc,
+  body:not(.is-landing) .page .panel:not(.life-mag-panel),
+  body:not(.is-landing) .page .callout:not(.life-mag-callout),
+  body:not(.is-landing) .page .page-toc:not(.life-mag-toc),
   body:not(.is-landing) .page .media-toolbar,
   body:not(.is-landing) .page .email-grid,
   body:not(.is-landing) .page .prose-panel {

@@ -1,0 +1,85 @@
+/* Hospitality employer wizard + in-portal apply */
+.job-source-pill {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+.job-portal-apply {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.job-portal-apply h3 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.job-portal-apply .field {
+  margin-bottom: 0.65rem;
+}
+
+.job-portal-apply label {
+  display: block;
+  font-size: 0.82rem;
+  margin-bottom: 0.25rem;
+}
+
+.job-portal-apply input,
+.job-portal-apply textarea,
+.job-portal-apply select {
+  width: 100%;
+  max-width: 28rem;
+}
+
+.job-portal-apply .consent {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  max-width: 36rem;
+}
+
+.job-portal-apply .apply-status {
+  margin-top: 0.75rem;
+  font-size: 0.88rem;
+}
+
+.job-portal-apply .apply-status.is-ok {
+  color: #7dcea0;
+}
+
+.job-portal-apply .apply-status.is-err {
+  color: #f5b7b1;
+}
+
+.employer-signin-box {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.5rem;
+  max-width: 28rem;
+}
+
+.employer-inbox-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.employer-inbox-table th,
+.employer-inbox-table td {
+  text-align: left;
+  padding: 0.45rem 0.35rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 1024px) {
+  .job-portal-apply form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem 1rem;
+  }
+  .job-portal-apply .field--wide {
+    grid-column: 1 / -1;
+  }
+}

@@ -16,10 +16,15 @@
     "smoke:api": "node scripts/smoke_api.js",
     "audit:registry-duplicates": "node scripts/audit_registry_duplicates.js",
     "import:registry": "node scripts/import_registry_rows.js",
-    "osint:coverage": "node scripts/report_osint_coverage.js"
+    "osint:coverage": "node scripts/report_osint_coverage.js",
+    "test:e2e:static": "playwright test",
+    "test:e2e:static:ui": "playwright test --ui"
   },
   "dependencies": {
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0"
   }
 }

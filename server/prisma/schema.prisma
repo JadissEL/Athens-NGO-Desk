@@ -9,24 +9,24 @@ datasource db {
 
 /// Single-row draft workspace for stewards (JSON mirrors window.NGO_DATA keys).
 model DraftBundle {
-  id           Int      @id @default(1)
-  registry     Json
-  possibility  Json
-  summary      Json
-  emails       Json
-  media        Json
-  updatedAt    DateTime @updatedAt
+  id        Int      @id @default(1)
+  registry  Json
+  possibility Json
+  summary   Json
+  emails    Json
+  media     Json
+  updatedAt DateTime @updatedAt
 }
 
 /// Single-row published snapshot served by GET /api/ngo-data
 model PublishedBundle {
-  id           Int      @id @default(1)
-  registry     Json
-  possibility  Json
-  summary      Json
-  emails       Json
-  media        Json
-  publishedAt  DateTime
+  id          Int      @id @default(1)
+  registry    Json
+  possibility Json
+  summary     Json
+  emails      Json
+  media       Json
+  publishedAt DateTime
 }
 
 /// Append-only audit trail for steward actions and publishes
@@ -38,4 +38,174 @@ model AuditLog {
   entityType String?
   entityId   String?
   detail     Json?
+}
+
+/// Hospitality & tourism employer profile (Clerk owner).
+model HospitalityEmployer {
+  id                 String   @id @default(cuid())
+  slug               String   @unique
+  legalName          String
+  tradeName          String
+  employerType       String
+  region             String?
+  address            String?
+  website            String?
+  contactEmail       String
+  clerkUserId        String   @unique
+  verificationStatus String   @default("pending")
+  afm                String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  jobs               HospitalityJob[]
+
+  @@index([verificationStatus])
+}
+
+/// Employer-posted vacancy (native apply lane).
+model HospitalityJob {
+  id                 String   @id @default(cuid())
+  employerId         String
+  employer           HospitalityEmployer @relation(fields: [employerId], references: [id], onDelete: Cascade)
+  title              String
+  description        String   @default("")
+  location           String
+  contractType       String?
+  languagesRequired  String[] @default([])
+  languagesPreferred String[] @default([])
+  seasonality        String?
+  payBandText        String?
+  fairHireFlags      Json?
+  status             String   @default("draft")
+  publishedAt        DateTime?
+  closesAt           DateTime?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  applications       JobApplication[]
+
+  @@index([status, publishedAt])
+}
+
+/// Seeker application for a hospitality job.
+model JobApplication {
+  id                String   @id @default(cuid())
+  jobId             String
+  job               HospitalityJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  seekerName        String
+  seekerEmail       String
+  seekerPhone       String?
+  languages         String[] @default([])
+  workAuthorization String?
+  residenceRegion   String?
+  coverMessage      String?
+  cvStorageKey      String?
+  gdprConsentAt     DateTime
+  status            String   @default("submitted")
+  clientIp          String?
+  userAgent         String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([jobId, createdAt])
+}
+
+/// Civic / NGO-related public event (steward or scrape).
+model CivicEvent {
+  id             String    @id @default(cuid())
+  title          String
+  description    String    @default("")
+  startsAt       DateTime
+  endsAt         DateTime?
+  timezone       String    @default("Europe/Athens")
+  location       String?
+  isOnline       Boolean   @default(false)
+  registryOrgId  String?
+  hostOrgIds     String[]  @default([])
+  tags           String[]  @default([])
+  source         String
+  sourceUrl      String?
+  externalKey    String?
+  status         String    @default("draft")
+  publishedAt    DateTime?
+  scrapeMeta     Json?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  threads        EventThread[]
+
+  @@unique([source, externalKey])
+  @@index([status, startsAt])
+}
+
+model EventScrapeSource {
+  id            String   @id @default(cuid())
+  type          String
+  url           String
+  registryOrgId String?
+  enabled       Boolean  @default(true)
+  lastRunAt     DateTime?
+  lastError     String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  runs          EventScrapeRun[]
+}
+
+model EventScrapeRun {
+  id         String   @id @default(cuid())
+  sourceId   String
+  source     EventScrapeSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  startedAt  DateTime @default(now())
+  finishedAt DateTime?
+  found      Int      @default(0)
+  inserted   Int      @default(0)
+  updated    Int      @default(0)
+  errors     Json?
+}
+
+/// Steward-assigned Clerk user ↔ registry org (v1 thread gate).
+model OrgMember {
+  id            String   @id @default(cuid())
+  registryOrgId String
+  clerkUserId   String
+  role          String   @default("contact")
+  assignedBy    String
+  createdAt     DateTime @default(now())
+
+  @@unique([registryOrgId, clerkUserId])
+  @@index([clerkUserId])
+}
+
+model EventThread {
+  id                   String   @id @default(cuid())
+  eventId              String
+  event                CivicEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  subject              String
+  createdByOrgId       String
+  createdByClerkUserId String
+  status               String   @default("open")
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  participants         EventThreadParticipant[]
+  messages             EventThreadMessage[]
+}
+
+model EventThreadParticipant {
+  id            String      @id @default(cuid())
+  threadId      String
+  thread        EventThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  registryOrgId String
+  joinedAt      DateTime    @default(now())
+
+  @@unique([threadId, registryOrgId])
+}
+
+model EventThreadMessage {
+  id                 String      @id @default(cuid())
+  threadId           String
+  thread             EventThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  authorOrgId        String
+  authorClerkUserId  String
+  body               String
+  createdAt          DateTime    @default(now())
+  deletedAt          DateTime?
+
+  @@index([threadId, createdAt])
 }

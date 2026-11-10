@@ -35,84 +35,125 @@ body.desk-bento {
   flex-direction: column;
 }
 
-.desk-rail {
+.desk-nav-bar {
   display: none;
 }
 
+.desk-header-stack {
+  position: sticky;
+  top: 0;
+  z-index: 70;
+}
+
 @media (min-width: 1024px) {
-  .desk-rail {
+  body.desk-bento {
+    --desk-header-offset: 7.35rem;
+  }
+
+  body.desk-bento .workbench-rail {
+    top: var(--desk-header-offset);
+  }
+
+  body.desk-bento .job-detail-pane,
+  body.desk-bento .detail.detail--pane {
+    top: var(--desk-header-offset);
+  }
+
+  .desk-nav-bar {
+    display: block;
+    background: rgba(255, 251, 246, 0.97);
+    border-bottom: 1px solid rgba(15, 124, 124, 0.12);
+    padding: 0.35rem clamp(1rem, 2vw, 2rem) 0.5rem;
+    backdrop-filter: blur(14px) saturate(1.15);
+    -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  }
+
+  .desk-nav-bar-inner {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width: var(--rail-w);
-    padding: 1rem 0.5rem;
-    background: linear-gradient(180deg, #0a3d3d 0%, #062626 100%);
-    color: #e8f4f4;
-    position: sticky;
-    top: 0;
-    height: 100dvh;
-    z-index: 60;
-    box-shadow: 4px 0 24px rgba(6, 38, 38, 0.18);
-  }
-
-  .desk-rail-mark {
-    display: flex;
-    padding: 0.35rem;
-    margin-bottom: 1rem;
-  }
-
-  .desk-rail-mark .logo-mark {
-    border-color: #7cd5d4;
-    box-shadow: 0 0 0 3px rgba(124, 213, 212, 0.25);
+    gap: 0.75rem;
+    justify-content: space-between;
   }
 
   .desk-rail-nav {
     display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.2rem 0.35rem;
     flex: 1;
-    width: 100%;
+    min-width: 0;
   }
 
   .desk-rail-nav button {
     appearance: none;
     border: 0;
     background: transparent;
-    color: rgba(232, 244, 244, 0.72);
+    color: var(--ink-soft);
     font-family: var(--ui);
-    font-size: 0.62rem;
-    font-weight: 600;
-    padding: 0.55rem 0.35rem;
-    border-radius: 14px;
+    font-size: 0.78rem;
+    font-weight: 650;
+    padding: 0.42rem 0.8rem;
+    border-radius: 999px;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
+    flex-direction: row;
     align-items: center;
-    gap: 0.2rem;
-    width: 100%;
+    gap: 0.35rem;
+    width: auto;
+    white-space: nowrap;
   }
 
-  .desk-rail-nav button:hover,
+  .desk-rail-nav button:hover {
+    background: rgba(15, 124, 124, 0.07);
+    color: var(--ink);
+  }
+
   .desk-rail-nav button.active {
-    background: rgba(124, 213, 212, 0.16);
-    color: #fff;
+    background: var(--accent-soft);
+    color: var(--accent-hover);
+    font-weight: 700;
   }
 
   .rail-icon {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     line-height: 1;
+    opacity: 0.9;
+  }
+
+  .rail-label {
+    line-height: 1.2;
   }
 
   .desk-rail-more {
     appearance: none;
-    border: 0;
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 12px;
+    flex-shrink: 0;
+    border: 1px solid rgba(15, 124, 124, 0.18);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--ink-soft);
+    min-height: 2.15rem;
+    padding: 0.38rem 0.9rem;
+    border-radius: 999px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-family: var(--ui);
+    font-size: 0.75rem;
+    font-weight: 650;
+  }
+
+  .desk-rail-more:hover {
+    border-color: rgba(15, 124, 124, 0.35);
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .topnav.app-bar--compact {
+    border-bottom: 0;
+    box-shadow: none;
+  }
+
+  body.desk-bento .glass--bento {
+    border-bottom: 0;
+    box-shadow: 0 4px 24px rgba(15, 45, 45, 0.06);
   }
 
   .topnav.app-bar--compact .nav-scroll {
@@ -761,11 +802,11 @@ body.desk-bento.is-landing .stage {
 }
 
 /* Guide pages → card surfaces */
-#page-life .panel,
-#page-create .panel,
-#page-funding .panel,
-#page-audiences .panel,
-#page-legal .panel {
+#page-life .panel:not(.life-mag-panel),
+#page-create:not(.create-wizard-page) .panel,
+#page-funding:not(.fund-wizard-page) .panel,
+#page-audiences:not(.trust-wizard-page) .panel,
+#page-legal:not(.trust-wizard-page) .panel {
   background: var(--surface-card);
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
@@ -774,9 +815,9 @@ body.desk-bento.is-landing .stage {
   padding: 1.1rem 1.2rem;
 }
 
-#page-life .callout,
-#page-create .callout,
-#page-funding .callout {
+#page-life .callout:not(.life-mag-callout),
+#page-create:not(.create-wizard-page) .callout,
+#page-funding:not(.fund-wizard-page) .callout {
   border-radius: var(--radius-xl);
 }
 
@@ -914,8 +955,8 @@ button.deadline-chip:focus-visible {
   color: var(--accent);
 }
 
-#page-create .steps > *,
-#page-funding .steps > * {
+#page-create:not(.create-wizard-page) .steps > *,
+#page-funding:not(.fund-wizard-page) .steps > * {
   background: var(--surface-card);
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);

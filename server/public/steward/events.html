@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Steward — Civic events</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; background: #0f1419; color: #e8eaed; }
+    body { max-width: 1040px; margin: 0 auto; padding: 1.5rem; }
+    h1 { font-size: 1.25rem; }
+    a { color: #8ab4f8; }
+    label { display: block; margin-top: 0.5rem; font-size: 0.85rem; color: #9aa0a6; }
+    input, select, textarea, button {
+      padding: 0.45rem 0.6rem; margin-top: 0.2rem;
+      background: #1f2937; border: 1px solid #3d4a5c; color: #e8eaed; border-radius: 6px;
+    }
+    textarea { width: 100%; min-height: 80px; }
+    button { cursor: pointer; width: auto; margin-right: 0.5rem; margin-top: 0.75rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 1rem; }
+    th, td { border-bottom: 1px solid #3d4a5c; text-align: left; padding: 0.4rem; }
+    .muted { color: #9aa0a6; font-size: 0.85rem; }
+    .err { color: #f28b82; }
+    .ok { color: #81c995; }
+    nav { margin-bottom: 1rem; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav><a href="/steward/index.html">← Registry steward</a> · <a href="/desk-docs/NGO_EVENTS.md" target="_blank" rel="noopener">NGO events doc</a></nav>
+  <h1>Civic events</h1>
+  <p class="muted">Steward publish (v1). Scraped rows need review. Broad adapters need env tokens — see server `.env.example`.</p>
+  <p id="status" class="muted" role="status"></p>
+
+  <section>
+    <h2>Create / publish event</h2>
+    <form id="event-form" class="grid">
+      <h3 class="grid" style="grid-column:1/-1;margin:0">New event</h3>
+      <label style="grid-column:1/-1">Title <input name="title" required /></label>
+      <label>Starts (ISO) <input name="startsAt" type="datetime-local" required /></label>
+      <label>Host org id <input name="registryOrgId" placeholder="ngo-001-example" /></label>
+      <label style="grid-column:1/-1">Location <input name="location" /></label>
+      <label style="grid-column:1/-1">Description <textarea name="description"></textarea></label>
+      <label style="grid-column:1/-1">Source URL <input name="sourceUrl" type="url" /></label>
+      <label><input type="checkbox" name="isOnline" /> Online</label>
+      <label>Status
+        <select name="status">
+          <option value="draft">draft</option>
+          <option value="published">published</option>
+        </select>
+      </label>
+      <div style="grid-column:1/-1"><button type="submit">Save event</button></div>
+    </form>
+  </section>
+
+  <section>
+    <h2>Pending scrape review</h2>
+    <button type="button" id="btn-refresh-pending">Refresh</button>
+    <table id="pending-table"><thead><tr><th>Title</th><th>When</th><th></th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <section>
+    <h2>Scrape sources</h2>
+    <form id="source-form">
+      <label>Type
+        <select name="type">
+          <option value="ics">ics</option>
+          <option value="rss">rss</option>
+          <option value="html_list">html_list</option>
+          <option value="public_calendar">public_calendar</option>
+          <option value="eventbrite">eventbrite</option>
+          <option value="facebook">facebook</option>
+        </select>
+      </label>
+      <label>URL <input name="url" type="url" required /></label>
+      <label>Registry org id (optional) <input name="registryOrgId" /></label>
+      <button type="submit">Add source</button>
+      <button type="button" id="btn-run-scrape">Run all scrapes</button>
+    </form>
+    <table id="sources-table"><thead><tr><th>Type</th><th>URL</th><th>Last run</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <section>
+    <h2>Org members (thread access)</h2>
+    <form id="member-form">
+      <label>Registry org id <input name="registryOrgId" required /></label>
+      <label>Clerk user id (sub) <input name="clerkUserId" required /></label>
+      <label>Role <select name="role"><option value="contact">contact</option><option value="admin">admin</option></select></label>
+      <button type="submit">Assign member</button>
+    </form>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@5/dist/clerk.browser.js" async data-clerk-publishable-key=""></script>
+  <script>
+    const status = document.getElementById("status");
+    const base = () => location.origin;
+    let clerk = null;
+
+    function showErr(e) { status.textContent = e && e.message ? e.message : String(e); status.className = "err"; }
+    function showOk(t) { status.textContent = t; status.className = "ok"; }
+
+    async function authHeaders() {
+      const h = { "Content-Type": "application/json" };
+      const key = document.getElementById("steward-key")?.value?.trim();
+      if (clerk && clerk.session) {
+        const t = await clerk.session.getToken();
+        if (t) h.Authorization = "Bearer " + t;
+        return h;
+      }
+      if (key) h.Authorization = "Bearer " + key;
+      return h;
+    }
+
+    async function initAuth() {
+      const cfg = await fetch(base() + "/api/steward-config").then((r) => r.json());
+      if (cfg.clerkPublishableKey && window.Clerk) {
+        await window.Clerk.load({ publishableKey: cfg.clerkPublishableKey });
+        clerk = window.Clerk;
+      }
+    }
+
+    function toIsoLocalInput(d) {
+      const pad = (n) => String(n).padStart(2, "0");
+      return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+
+    document.getElementById("event-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const f = e.target;
+      const starts = new Date(f.startsAt.value);
+      const body = {
+        title: f.title.value.trim(),
+        description: f.description.value.trim(),
+        startsAt: starts.toISOString(),
+        registryOrgId: f.registryOrgId.value.trim() || null,
+        hostOrgIds: f.registryOrgId.value.trim() ? [f.registryOrgId.value.trim()] : [],
+        location: f.location.value.trim(),
+        sourceUrl: f.sourceUrl.value.trim(),
+        isOnline: f.isOnline.checked,
+        status: f.status.value,
+      };
+      try {
+        const r = await fetch(base() + "/api/steward/events", {
+          method: "POST",
+          headers: await authHeaders(),
+          body: JSON.stringify(body),
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || r.statusText);
+        showOk("Event saved: " + j.event.id);
+        f.reset();
+        loadPending();
+      } catch (err) { showErr(err); }
+    });
+
+    async function loadPending() {
+      const r = await fetch(base() + "/api/steward/events/pending", { headers: await authHeaders() });
+      const j = await r.json();
+      const tbody = document.querySelector("#pending-table tbody");
+      if (!r.ok) throw new Error(j.error || r.statusText);
+      tbody.innerHTML = (j.items || []).map((ev) => `<tr>
+        <td>${escapeHtml(ev.title)}</td>
+        <td>${escapeHtml(ev.startsAt)}</td>
+        <td>
+          <button type="button" data-pub="${ev.id}">Publish</button>
+          <button type="button" data-rej="${ev.id}">Reject</button>
+        </td>
+      </tr>`).join("");
+      tbody.querySelectorAll("[data-pub]").forEach((btn) => btn.addEventListener("click", () => review(btn.dataset.pub, "publish")));
+      tbody.querySelectorAll("[data-rej]").forEach((btn) => btn.addEventListener("click", () => review(btn.dataset.rej, "reject")));
+    }
+
+    async function review(id, action) {
+      try {
+        const r = await fetch(base() + "/api/steward/events/" + encodeURIComponent(id) + "/review", {
+          method: "PATCH",
+          headers: await authHeaders(),
+          body: JSON.stringify({ action }),
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || r.statusText);
+        showOk("Reviewed " + id);
+        loadPending();
+      } catch (e) { showErr(e); }
+    }
+
+    async function loadSources() {
+      const r = await fetch(base() + "/api/steward/event-sources", { headers: await authHeaders() });
+      const j = await r.json();
+      const tbody = document.querySelector("#sources-table tbody");
+      if (!r.ok) throw new Error(j.error || r.statusText);
+      tbody.innerHTML = (j.items || []).map((s) => `<tr>
+        <td>${escapeHtml(s.type)}</td>
+        <td>${escapeHtml(s.url)}</td>
+        <td>${escapeHtml(s.lastRunAt || "—")}</td>
+      </tr>`).join("");
+    }
+
+    document.getElementById("source-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const f = e.target;
+      try {
+        const r = await fetch(base() + "/api/steward/event-sources", {
+          method: "POST",
+          headers: await authHeaders(),
+          body: JSON.stringify({
+            type: f.type.value,
+            url: f.url.value.trim(),
+            registryOrgId: f.registryOrgId.value.trim() || null,
+          }),
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || r.statusText);
+        showOk("Source added");
+        f.url.value = "";
+        loadSources();
+      } catch (err) { showErr(err); }
+    });
+
+    document.getElementById("btn-run-scrape").addEventListener("click", async () => {
+      try {
+        const r = await fetch(base() + "/api/steward/scrape/run", {
+          method: "POST",
+          headers: await authHeaders(),
+          body: "{}",
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || r.statusText);
+        showOk("Scrape run finished");
+        loadPending();
+        loadSources();
+      } catch (e) { showErr(e); }
+    });
+
+    document.getElementById("member-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const f = e.target;
+      try {
+        const r = await fetch(base() + "/api/steward/org-members", {
+          method: "POST",
+          headers: await authHeaders(),
+          body: JSON.stringify({
+            registryOrgId: f.registryOrgId.value.trim(),
+            clerkUserId: f.clerkUserId.value.trim(),
+            role: f.role.value,
+          }),
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || r.statusText);
+        showOk("Member assigned");
+        f.reset();
+      } catch (err) { showErr(err); }
+    });
+
+    document.getElementById("btn-refresh-pending").addEventListener("click", () => loadPending().catch(showErr));
+
+    function escapeHtml(s) {
+      return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    }
+
+    initAuth()
+      .then(() => Promise.all([loadPending(), loadSources()]))
+      .catch(showErr);
+
+    const keyWrap = document.createElement("details");
+    keyWrap.innerHTML = "<summary>Break-glass API key</summary><input id='steward-key' type='password' />";
+    document.body.insertBefore(keyWrap, document.querySelector("section"));
+  </script>
+</body>
+</html>

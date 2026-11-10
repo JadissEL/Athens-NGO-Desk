@@ -1,0 +1,150 @@
+/* Unified Aegean palette — cool stone canvas, sea-glass accent (no orange/cream clash) */
+
+:root {
+  --canvas: #f0f3f3;
+  --canvas-warm: #f0f3f3;
+  --bg: #f0f3f3;
+  --bg-deep: #f0f3f3;
+  --surface-solid: #f0f3f3;
+  --surface-card: #ffffff;
+  --surface-muted: #e8eded;
+  --surface-dim: #dde5e5;
+  --surface-warm: #f0f3f3;
+  --ink: #152828;
+  --ink-soft: #3a4a4a;
+  --ink-deep: #0c2424;
+  --muted: #5a6b6b;
+  --line: #d2dcdc;
+  --line-strong: #b8caca;
+  --accent: #127272;
+  --accent-hover: #0e5a5a;
+  --accent-soft: #e4f0f0;
+  --accent-glow: rgba(18, 114, 114, 0.2);
+  --sun: #c4853f;
+  --sun-soft: #f5efe6;
+  --bento-mint: #f4f9f8;
+  --bento-sand: #f6f5f3;
+  --bento-sky: #f3f6f8;
+  --bento-coral: #f6f3f2;
+  --bento-lavender: #f4f3f6;
+  --stitch-mesh-1: rgba(18, 114, 114, 0.07);
+  --stitch-mesh-2: rgba(18, 114, 114, 0.04);
+  --stitch-mesh-3: transparent;
+}
+
+body.desk-bento {
+  background-color: var(--canvas);
+  background-image: radial-gradient(ellipse 120% 70% at 50% -15%, var(--stitch-mesh-1), transparent 55%);
+}
+
+body.desk-bento .glass--bento {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-bottom: 1px solid var(--line);
+  box-shadow: none;
+}
+
+body.desk-bento .desk-header-stack,
+body.desk-bento.is-landing .desk-header-stack {
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--line);
+}
+
+body.desk-bento .desk-nav-bar {
+  background: transparent;
+}
+
+body.desk-bento .btn-primary {
+  background: var(--accent);
+  border-color: var(--accent-hover);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+body.desk-bento .btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: #0a4848;
+}
+
+body.desk-bento .bento-title {
+  color: var(--ink);
+  background: none;
+  -webkit-text-fill-color: unset;
+  filter: none;
+}
+
+body.stitch-b5 .bento-title {
+  filter: none;
+}
+
+.eyebrow,
+.stitch-page-eyebrow {
+  color: var(--accent-hover);
+}
+
+.bento-tile--mint,
+.bento-tile--sand,
+.bento-tile--sky {
+  background: var(--surface-card);
+}
+
+.bento-tile--mint {
+  border-top: 3px solid rgba(18, 114, 114, 0.45);
+}
+
+.bento-tile--sand {
+  border-top: 3px solid rgba(90, 107, 107, 0.35);
+}
+
+.bento-tile--sky {
+  border-top: 3px solid rgba(18, 114, 114, 0.28);
+}
+
+.btn-dark {
+  background: var(--ink-deep);
+}
+
+.btn-dark:hover {
+  background: var(--accent-hover);
+}
+
+body.desk-bento.is-landing {
+  background-color: var(--canvas);
+  background-image: radial-gradient(ellipse 120% 70% at 50% -15%, var(--stitch-mesh-1), transparent 55%);
+}
+
+.landing-hero-surface {
+  background: var(--surface-card);
+  border-color: var(--line);
+  box-shadow: 0 16px 40px rgba(12, 36, 36, 0.06);
+}
+
+#page-overview .landing-title-accent {
+  background: linear-gradient(115deg, var(--accent-hover) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.landing-main-surface .bento-kpi .stat:hover {
+  background: var(--accent-soft);
+}
+
+#page-jobs .jobs-split-list .job-card:hover {
+  background: var(--accent-soft);
+}
+
+#page-jobs .jobs-split-list .job-card.is-selected {
+  background: var(--accent-soft);
+}
+
+.ngo-card--mint .ngo-card-cap,
+.ngo-card--sand .ngo-card-cap,
+.ngo-card--sky .ngo-card-cap,
+.ngo-card--coral .ngo-card-cap,
+.ngo-card--lavender .ngo-card-cap {
+  background: var(--accent-soft);
+}
+
+.logo-mark {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}

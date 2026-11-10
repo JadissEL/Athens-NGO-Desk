@@ -1,0 +1,30 @@
+/* Trust pages — audiences & legal workbench */
+
+#page-audiences.trust-wizard-page .trust-prose,
+#page-legal.trust-wizard-page .trust-prose {
+  max-width: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+#page-audiences.trust-wizard-page .trust-prose .panel,
+#page-legal.trust-wizard-page .trust-prose .panel {
+  background: var(--surface-card, #fff);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 28px rgba(15, 45, 45, 0.06);
+  padding: 1.1rem 1.2rem;
+  margin: 0;
+}
+
+#page-audiences.trust-wizard-page .trust-prose .panel h2,
+#page-legal.trust-wizard-page .trust-prose .panel h2 {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.98rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-top: 0;
+}

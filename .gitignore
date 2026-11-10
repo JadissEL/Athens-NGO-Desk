@@ -1,5 +1,10 @@
 node_modules/
 
+# Playwright (npm run test:e2e:static)
+test-results/
+playwright-report/
+blob-report/
+
 # PCA agent memory (local-only)
 .cursor_memory/
 

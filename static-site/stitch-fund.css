@@ -1,0 +1,401 @@
+/* Fund page — stepper + workbench (character-builder style, Aegean tokens) */
+
+.fund-wizard-page,
+.create-wizard-page,
+.poss-wizard-page,
+.trust-wizard-page {
+  padding-bottom: 2rem;
+}
+
+.fund-wizard-head {
+  margin-bottom: 0.75rem;
+}
+
+.fund-wizard-title {
+  margin: 0.2rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.85rem, 3.5vw, 2.35rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+/* Stepper */
+.fund-stepper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1.25rem;
+  margin: 0 0 1.35rem;
+  padding: 0 0 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.fund-stepper-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  padding: 0.25rem 0;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.fund-stepper-num {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--line-strong, var(--line));
+}
+
+.fund-stepper-btn.is-active {
+  color: var(--accent);
+}
+
+.fund-stepper-btn.is-active .fund-stepper-num {
+  color: var(--accent);
+}
+
+.fund-stepper-btn:hover {
+  color: var(--ink);
+}
+
+/* Workbench */
+.fund-workbench {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .fund-workbench {
+    grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.75fr);
+    gap: 2rem 2.5rem;
+  }
+
+  .fund-aside {
+    position: sticky;
+    top: calc(var(--desk-header-offset, 5.5rem) + 0.75rem);
+  }
+}
+
+.fund-main {
+  min-height: 280px;
+}
+
+.fund-step:not(.is-active) {
+  display: none !important;
+}
+
+.fund-step.is-active {
+  display: block !important;
+  animation: fade 0.2s ease;
+}
+
+.fund-fields--step {
+  margin-bottom: 1.1rem;
+}
+
+/* Overview fields (underlined rows) */
+.fund-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem 2rem;
+  margin-bottom: 1.25rem;
+  padding-left: 0.65rem;
+  border-left: 3px solid var(--accent);
+}
+
+.fund-field--wide {
+  grid-column: 1 / -1;
+}
+
+.fund-field-value {
+  margin: 0 0 0.35rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--line-strong, var(--line));
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.fund-field-label {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fund-step-lead {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 40rem;
+}
+
+.fund-callout-inline {
+  margin: 0;
+  border-radius: 0 12px 12px 0;
+  max-width: 42rem;
+}
+
+/* Left column — flat panels */
+#page-funding.fund-wizard-page .fund-main .panel,
+#page-funding.fund-wizard-page .fund-callout-inline,
+#page-create.create-wizard-page .fund-main .panel,
+#page-create.create-wizard-page .fund-callout-inline,
+#page-possibility.poss-wizard-page .fund-main .panel,
+#page-possibility.poss-wizard-page .fund-callout-inline,
+#page-audiences.trust-wizard-page .fund-main .panel,
+#page-audiences.trust-wizard-page .fund-callout-inline,
+#page-legal.trust-wizard-page .fund-main .panel,
+#page-legal.trust-wizard-page .fund-callout-inline {
+  max-width: none;
+  margin-inline: 0;
+}
+
+#page-funding.fund-wizard-page .fund-main .panel,
+#page-create.create-wizard-page .fund-main .panel,
+#page-possibility.poss-wizard-page .fund-main .panel,
+#page-audiences.trust-wizard-page .fund-main .panel,
+#page-legal.trust-wizard-page .fund-main .panel {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+#page-funding .criteria-grid,
+#page-create .criteria-grid {
+  display: grid;
+  gap: 1.25rem 2rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  #page-funding .criteria-grid,
+  #page-create .criteria-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+#page-funding .criteria-grid h3,
+#page-create .criteria-grid h3 {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+#page-funding .panel table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  margin-top: 0.5rem;
+}
+
+#page-funding .panel table th,
+#page-funding .panel table td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+#page-funding .panel table th {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface-card);
+}
+
+#page-funding.fund-wizard-page .fund-main .panel h2,
+#page-create.create-wizard-page .fund-main .panel h2,
+#page-possibility.poss-wizard-page .fund-main .panel h2 {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+/* Process list — no numbered step circles */
+#page-funding .fund-flow-list,
+#page-create .fund-flow-list,
+#page-create .create-flow-list {
+  counter-reset: none;
+  gap: 0;
+}
+
+#page-funding .fund-flow-list .step,
+#page-create .fund-flow-list .step {
+  display: block;
+  grid-template-columns: unset;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0.95rem 0 1rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+#page-funding .fund-flow-list .step::before,
+#page-create .fund-flow-list .step::before {
+  content: none;
+  display: none;
+}
+
+#page-funding .fund-flow-list .step:last-child,
+#page-create .fund-flow-list .step:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+#page-funding .fund-flow-list .step h3,
+#page-create .fund-flow-list .step h3 {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.98rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+/* Source cards — compact grid in wizard */
+#page-funding .fund-source-cards {
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+@media (min-width: 768px) {
+  #page-funding .fund-source-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+#page-funding .fund-source-cards .card {
+  border-radius: 16px;
+  background: var(--surface-card);
+}
+
+/* Aside summary cards */
+.fund-aside-card:not(.is-active) {
+  display: none !important;
+}
+
+.fund-aside-card {
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.15rem 1.2rem 1.25rem;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface-card) 92%, var(--bento-mint, #e8f4f4) 8%);
+  box-shadow: 0 14px 36px rgba(12, 36, 36, 0.06);
+}
+
+.fund-aside-card.is-active {
+  display: flex;
+}
+
+.fund-aside-kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fund-aside-title {
+  margin: 0;
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.fund-aside-body {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.fund-aside-body.warn-copy {
+  font-size: 0.84rem;
+  color: var(--ink);
+  padding: 0.55rem 0.65rem;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
+}
+
+.fund-aside-list,
+.fund-aside-ol {
+  margin: 0.15rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.fund-aside-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.fund-aside-list li {
+  padding: 0.2rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.fund-aside-list li:last-child {
+  border-bottom: 0;
+}
+
+.fund-aside-media {
+  margin: 0.35rem 0 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.fund-aside-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 160px;
+  object-fit: cover;
+}
+
+.fund-aside-action {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  font-size: 0.78rem;
+}
+
+@media (max-width: 1023px) {
+  .fund-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .fund-stepper {
+    gap: 0.5rem 0.85rem;
+  }
+}

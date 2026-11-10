@@ -15,7 +15,8 @@ Track parity between [STITCH_SCREEN_PROMPTS.md](STITCH_SCREEN_PROMPTS.md) and `s
 | Wide | Prompt | Status |
 |------|--------|--------|
 | B5 Polish | B5 | **`stitch-b5.css`** + `body.stitch-b5` — **aegean-stitch5** |
-| B3 Guides | B3 | Life/Create/Fund step cards (partial) |
+| B3 Guides | B3 | Done — `stitch-b3-b4.css` + eyebrows on Life/Create/Fund/Audiences/Legal |
+| B4 Mobile | B4 | Done — dock, hide rail, split stacks \<768px |
 
 **CSS load order:** `bento-upgrade.css` → `stitch-polish.css` → `stitch-layout.css` → `stitch-b5.css`.
 

@@ -1,0 +1,441 @@
+/* Life page — editorial magazine layout (desk-first, Aegean tokens) */
+
+#page-life {
+  padding-top: 0.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.life-mag {
+  margin-bottom: 1.5rem;
+}
+
+.life-mag-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.life-mag-brand {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2.75rem, 6vw, 4.25rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--ink);
+}
+
+.life-mag-viewall {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 0.35rem 0.15rem;
+  border: 0;
+  background: transparent;
+}
+
+.life-mag-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: 1.25rem 2rem;
+  align-items: start;
+  margin-bottom: 1.35rem;
+}
+
+.life-mag-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.life-mag-tag {
+  display: inline-block;
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 0.28rem 0.55rem;
+  line-height: 1.2;
+}
+
+.life-mag-date {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.life-mag-headline {
+  margin: 0 0 0.75rem;
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: clamp(1.35rem, 2.8vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.life-mag-dek {
+  margin: 0 0 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 28rem;
+}
+
+.life-mag-byline {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.life-mag-plus {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.life-mag-hero-media {
+  margin: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  box-shadow: 0 18px 48px rgba(12, 36, 36, 0.08);
+}
+
+.life-mag-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.life-mag-toc {
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.life-mag-toc button {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  padding: 0.35rem 0.75rem;
+}
+
+.life-mag-callout {
+  margin: 0 0 0.25rem;
+  padding: 0.85rem 0 0.85rem 1rem;
+  border-radius: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 0;
+  border-left: 3px solid var(--accent);
+  box-shadow: none;
+}
+
+/* Body — asymmetric magazine grid on desktop */
+.life-mag-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+#page-life.life-magazine .life-mag-body .life-mag-panel {
+  max-width: none !important;
+  width: 100%;
+  margin: 0 !important;
+  margin-inline: 0 !important;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+
+#page-life.life-magazine .life-mag-callout {
+  max-width: none;
+  margin-inline: 0;
+}
+
+#page-life.life-magazine .life-mag-toc.page-toc {
+  max-width: none;
+  margin-inline: 0;
+}
+
+.life-mag-panel h2 {
+  margin: 0 0 0.5rem;
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.life-mag-panel .life-lead {
+  margin-bottom: 1.15rem;
+}
+
+/* Rhythm — four-up editorial slots */
+#page-life .life-week {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+#page-life .life-day {
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  padding: 1rem 1.05rem;
+  box-shadow: 0 10px 28px rgba(12, 36, 36, 0.04);
+}
+
+#page-life .life-day h3 {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.55rem;
+}
+
+/* Places — tight editorial cards */
+#page-life .life-places {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+#page-life .life-place {
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  box-shadow: 0 10px 28px rgba(12, 36, 36, 0.04);
+}
+
+#page-life .life-place-tag {
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+}
+
+#page-life .life-place h3 {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Events — stacked list (right rail pattern) */
+#page-life .cards.life-event-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  grid-template-columns: unset;
+}
+
+#page-life .life-event-cards .card {
+  border: 0;
+  border-radius: 0;
+  border-top: 1px solid var(--line);
+  box-shadow: none;
+  background: transparent;
+  padding: 1.1rem 0 1.15rem;
+}
+
+#page-life .life-event-cards .card:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+#page-life .life-event-cards .card h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: clamp(0.95rem, 1.5vw, 1.12rem);
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+#page-life .life-event-cards .card .meta {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+/* Roles — two-column magazine */
+#life-roles .grid-2 {
+  gap: 1.25rem 2rem;
+}
+
+#life-roles h3 {
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+/* Honest notes — flat editorial list (not wizard .step cards) */
+#life-honest .steps {
+  counter-reset: none;
+  gap: 0;
+  width: 100%;
+}
+
+#life-honest .step {
+  display: block;
+  grid-template-columns: unset;
+  gap: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0.95rem 0 1rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+#life-honest .step::before {
+  content: none;
+  display: none;
+}
+
+#life-honest .step:last-of-type {
+  border-bottom: 1px solid var(--line);
+}
+
+#life-honest .step > div {
+  min-width: 0;
+}
+
+#life-honest .step h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--stitch-ui, var(--ui));
+  font-size: clamp(0.92rem, 1.4vw, 1.02rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+#life-honest .step p {
+  margin: 0;
+  max-width: none;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.life-cta-row {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+#page-life .sources {
+  margin-top: 2rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+@media (min-width: 1024px) {
+  .life-mag-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    column-gap: 2.75rem;
+    row-gap: 2.5rem;
+    align-items: start;
+  }
+
+  #life-rhythm {
+    grid-column: 1 / -1;
+  }
+
+  #life-places {
+    grid-column: 1;
+  }
+
+  #life-events {
+    grid-column: 2;
+    align-self: start;
+  }
+
+  #life-roles,
+  #life-honest {
+    grid-column: 1 / -1;
+  }
+
+  #life-places .life-places {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1280px) {
+  #life-places .life-places {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1023px) {
+  .life-mag-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .life-mag-hero-media {
+    order: -1;
+  }
+
+  .life-mag-hero-media img {
+    min-height: 220px;
+    max-height: 320px;
+  }
+
+  #page-life .life-week {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #page-life .life-places {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  #page-life .life-week {
+    grid-template-columns: 1fr;
+  }
+}

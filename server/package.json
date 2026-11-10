@@ -15,7 +15,10 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
-    "db:seed": "tsx scripts/seed_from_json.ts"
+    "db:seed": "tsx scripts/seed_from_json.ts",
+    "db:seed:hospitality": "tsx scripts/seed_hospitality_pilot.ts",
+    "db:seed:events": "tsx scripts/seed_civic_events_demo.ts",
+    "scrape:events": "tsx scripts/scrape_civic_events.ts"
   },
   "dependencies": {
     "ajv": "^8.20.0",
@@ -25,9 +28,13 @@
     "@fastify/rate-limit": "^11.2.2",
     "@fastify/static": "^10.1.10",
     "@prisma/client": "^6.3.1",
+    "@fastify/multipart": "^9.0.3",
     "fastify": "^5.2.1",
+    "zod": "^3.24.2",
     "jose": "^6.2.15",
+    "fast-xml-parser": "^4.5.1",
     "jsonwebtoken": "^9.0.3",
+    "node-ical": "^0.19.0",
     "prisma": "^6.3.1"
   },
   "devDependencies": {
