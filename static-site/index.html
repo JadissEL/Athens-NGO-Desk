@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="stitch-trust.css?v=aegean-stitch31" />
   <link rel="stylesheet" href="stitch-mobile.css?v=aegean-stitch32" />
   <link rel="stylesheet" href="stitch-employer.css?v=aegean-stitch33" />
+  <link rel="stylesheet" href="stitch-platform-login.css?v=aegean-stitch34" />
   <link rel="stylesheet" href="stitch-events.css?v=aegean-stitch33" />
 </head>
 <body>
@@ -70,6 +71,7 @@
             <button type="button" class="btn btn-ghost cmd-trigger" id="cmd-open" aria-haspopup="dialog" aria-controls="cmd-palette" title="Search desk (Ctrl+K)">
               Search <kbd>Ctrl</kbd><kbd>K</kbd>
             </button>
+            <button type="button" class="btn btn-ghost" id="desk-auth-btn">Sign in</button>
             <button type="button" class="btn btn-primary" data-page="apply">Apply by email</button>
           </div>
         </header>
@@ -1899,6 +1901,42 @@
         </div>
       </section>
 
+      <section class="page trust-wizard-page" id="page-account">
+        <div class="fund-wizard max-content">
+          <header class="fund-wizard-head">
+            <p class="stitch-page-eyebrow">Account</p>
+            <h1 class="fund-wizard-title">Sign in &amp; choose your dashboard</h1>
+            <p class="small muted">One login for the desk. Your dashboard type is a <strong>preference</strong> (not role-based permissions). Employer inbox and NGO threads still use their own verification rules.</p>
+          </header>
+          <div id="account-signed-out">
+            <p class="small muted">Use email or social sign-in via Clerk.</p>
+            <button type="button" class="btn btn-primary" id="account-signin">Sign in or register</button>
+          </div>
+          <div id="account-signed-in" hidden>
+            <p class="small">Current preference: <strong id="account-current-type">—</strong></p>
+            <div class="account-toolbar">
+              <label class="small">Dashboard type
+                <select id="account-dashboard-type" aria-label="Dashboard type">
+                  <option value="">Loading…</option>
+                </select>
+              </label>
+              <button type="button" class="btn btn-primary" id="account-open-dashboard">Open dashboard</button>
+              <button type="button" class="btn" id="account-save-dashboard">Save preference</button>
+              <button type="button" class="btn btn-ghost" id="account-signout">Sign out</button>
+            </div>
+            <div class="account-card-grid" aria-label="Dashboard types">
+              <article class="account-card"><h3>Jobseeker</h3><p class="small muted">Openings, apply paths, registry.</p></article>
+              <article class="account-card"><h3>Hospitality employer</h3><p class="small muted">Post jobs and manage applications.</p></article>
+              <article class="account-card"><h3>NGO &amp; events</h3><p class="small muted">Calendar and collaboration threads.</p></article>
+              <article class="account-card"><h3>Funder</h3><p class="small muted">Grants and due diligence guides.</p></article>
+              <article class="account-card"><h3>Donor</h3><p class="small muted">Trust, audiences, how to give safely.</p></article>
+              <article class="account-card"><h3>Desk steward</h3><p class="small muted">Data quality console (separate UI on API host).</p></article>
+            </div>
+          </div>
+          <p class="small muted" id="account-status" role="status"></p>
+        </div>
+      </section>
+
 <!-- AUDIENCES -->
       <section class="page trust-wizard-page" id="page-audiences">
         <div class="fund-wizard max-content">
@@ -2134,8 +2172,9 @@
       <p class="cmd-hint small muted">↑↓ to move · Enter to go · Esc to close</p>
     </form>
   </dialog>
-  <script src="event-collab.js?v=aegean-stitch33"></script>
-  <script src="employer-portal.js?v=aegean-stitch33"></script>
-  <script src="app.js?v=aegean-stitch33"></script>
+  <script src="platform-auth.js?v=aegean-stitch34"></script>
+  <script src="event-collab.js?v=aegean-stitch34"></script>
+  <script src="employer-portal.js?v=aegean-stitch34"></script>
+  <script src="app.js?v=aegean-stitch34"></script>
 </body>
 </html>

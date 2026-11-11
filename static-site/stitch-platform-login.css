@@ -1,0 +1,44 @@
+/* Account hub — platform login (desktop-first) */
+#page-account .fund-wizard-title {
+  margin-bottom: 0.35rem;
+}
+
+.account-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .account-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.account-card {
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius-md, 12px);
+  border: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.08));
+  background: var(--surface-raised, #fff);
+}
+
+.account-card h3 {
+  font-size: 1rem;
+  margin: 0 0 0.35rem;
+}
+
+.account-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+#desk-auth-btn {
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

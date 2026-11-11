@@ -14,9 +14,11 @@
   }
 
   let clerk = null;
-  let clerkPublishableKey = "";
 
   async function api(path, opts = {}) {
+    if (window.PlatformAuth?.apiFetch) {
+      return window.PlatformAuth.apiFetch(path, opts);
+    }
     const base = apiBase();
     if (!base) throw new Error("API base not configured");
     const headers = { ...(opts.headers || {}) };
@@ -187,34 +189,25 @@
   }
 
   async function loadClerk() {
-    const cfg = await fetch(apiBase() + "/api/steward-config").then((r) => r.json());
-    clerkPublishableKey = cfg.clerkPublishableKey || "";
-    if (!clerkPublishableKey) {
+    if (!window.PlatformAuth) {
+      showEmployerStatus("Platform auth module not loaded.", false);
+      return;
+    }
+    const ok = await window.PlatformAuth.init();
+    if (!ok) {
       showEmployerStatus("Clerk is not configured on the API host.", false);
       return;
     }
-    if (window.Clerk) {
-      clerk = window.Clerk;
-      return;
-    }
-    await new Promise((resolve, reject) => {
-      const s = document.createElement("script");
-      s.src = "https://cdn.jsdelivr.net/npm/@clerk/clerk-js@5/dist/clerk.browser.js";
-      s.async = true;
-      s.dataset.clerkPublishableKey = clerkPublishableKey;
-      s.onload = () => resolve();
-      s.onerror = () => reject(new Error("Clerk JS load failed"));
-      document.head.appendChild(s);
-    });
-    clerk = window.Clerk;
-    await clerk.load({ publishableKey: clerkPublishableKey });
+    clerk = window.PlatformAuth.getClerk();
   }
 
   function bindEmployerUi() {
     $$("[data-employer-step]").forEach((btn) => {
       btn.addEventListener("click", () => setEmployerStep(btn.dataset.employerStep));
     });
-    $("#employer-clerk-signin")?.addEventListener("click", () => clerk?.openSignIn());
+    $("#employer-clerk-signin")?.addEventListener("click", () =>
+      window.PlatformAuth?.openSignIn() ?? clerk?.openSignIn()
+    );
     $("#employer-clerk-signout")?.addEventListener("click", () => clerk?.signOut());
 
     $("#employer-register-form")?.addEventListener("submit", async (e) => {

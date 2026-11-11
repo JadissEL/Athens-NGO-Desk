@@ -26,3 +26,4 @@ The desk is **not** only for people researching NGO jobs. It aims to mirror part
 - [LEGAL_NOTICE.md](./LEGAL_NOTICE.md) — disclaimers and contact.
 - [METHODOLOGY.md](./METHODOLOGY.md) — how quantitative claims are framed.
 - [GOVERNANCE_RACI.md](./GOVERNANCE_RACI.md) — who owns product and data quality.
+- [PLATFORM_LOGIN.md](./PLATFORM_LOGIN.md) — one sign-in, dashboard preference (not RBAC).

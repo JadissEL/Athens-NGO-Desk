@@ -209,3 +209,10 @@ model EventThreadMessage {
 
   @@index([threadId, createdAt])
 }
+
+/// Signed-in desk user: preferred dashboard (no RBAC — UI routing only).
+model PlatformUserPreference {
+  clerkUserId   String   @id
+  dashboardType String
+  updatedAt     DateTime @updatedAt
+}

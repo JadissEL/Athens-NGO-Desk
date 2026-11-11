@@ -19,6 +19,7 @@ See `docs/ARCHITECTURE.md`, `docs/DATA_PIPELINE.md`, `docs/DEPLOYMENT_VERCEL_REN
 
 | Date | Action |
 |------|--------|
+| 2026-11-11 | **Platform login (no RBAC):** unified Clerk + `#account` dashboard picker; `PlatformUserPreference` + `/api/platform/*`; `platform-auth.js`; docs [PLATFORM_LOGIN.md](docs/PLATFORM_LOGIN.md). |
 | 2026-11-10 | **Prod post-deploy:** Render `CORS_ORIGIN` includes GitHub Pages + Vercel; build runs `db:seed:hospitality` + `db:seed:events`; API accepts comma-separated CORS (`752c20d`). |
 | 2026-11-07 | **Stitch B5 polish:** `stitch-b5.css`, live org count on home trust strip, Apply/Scores eyebrows, deeper shadows; `aegean-stitch5`. |
 | 2026-11-07 | **Stitch A4/A5 in code:** org profile tab **card panels** (no accordion chrome on desktop); media **magazine column** + filter toolbar card; `aegean-stitch4`. |

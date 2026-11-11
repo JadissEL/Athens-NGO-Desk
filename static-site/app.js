@@ -165,6 +165,7 @@
     "audiences",
     "legal",
     "employer",
+    "account",
     "org-profile",
   ];
 
@@ -219,6 +220,7 @@
     { id: "audiences", label: "Who this is for", hint: "Audiences" },
     { id: "legal", label: "Legal notice", hint: "Disclaimer" },
     { id: "employer", label: "Post hospitality job", hint: "Employer workbench" },
+    { id: "account", label: "Sign in & dashboards", hint: "Account hub" },
   ];
 
   const STAGE_BG = {
@@ -235,6 +237,7 @@
     audiences: "img/together.jpg",
     legal: "img/athens-agora.jpg",
     employer: "img/desk-work.jpg",
+    account: "img/together.jpg",
     "org-profile": "img/athens-agora.jpg",
   };
 
@@ -384,6 +387,7 @@
     if (!PAGES.includes(pageId) || pageId === "org-profile") return;
     location.hash = pageId;
   }
+  window.showPage = showPage;
 
   function navigateHash(route) {
     const target = (route || "").replace(/^#/, "");

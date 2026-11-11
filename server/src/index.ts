@@ -10,6 +10,7 @@ import { assertBundleShape, type NgoDataBundle } from "./lib/bundle.js";
 import { authorizeSteward, getActorSubject, getClerkVerifyOptions } from "./lib/auth.js";
 import { registerHospitalityRoutes } from "./routes/hospitality.js";
 import { registerCivicEventRoutes } from "./routes/civicEvents.js";
+import { registerPlatformRoutes } from "./routes/platform.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -152,6 +153,7 @@ export async function buildServer() {
 
   await registerHospitalityRoutes(app, { publicApi, applyApi });
   await registerCivicEventRoutes(app, { publicApi, messageApi });
+  await registerPlatformRoutes(app);
 
   app.get("/api/ngo-data", { ...publicApi }, async (_req, reply) => {
     const row = await prisma.publishedBundle.findUnique({ where: { id: 1 } });

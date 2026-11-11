@@ -10,29 +10,18 @@
 
   async function ensureClerk() {
     if (clerk) return clerk;
-    const base = apiBase();
-    if (!base) return null;
-    const cfg = await fetch(base + "/api/steward-config").then((r) => r.json());
-    if (!cfg.clerkPublishableKey) return null;
-    if (!window.Clerk) {
-      await new Promise((resolve, reject) => {
-        const s = document.createElement("script");
-        s.src = "https://cdn.jsdelivr.net/npm/@clerk/clerk-js@5/dist/clerk.browser.js";
-        s.async = true;
-        s.onload = resolve;
-        s.onerror = () => reject(new Error("Clerk load failed"));
-        document.head.appendChild(s);
-      });
-    }
-    await window.Clerk.load({ publishableKey: cfg.clerkPublishableKey });
-    clerk = window.Clerk;
+    if (!window.PlatformAuth) return null;
+    const ok = await window.PlatformAuth.init();
+    if (!ok) return null;
+    clerk = window.PlatformAuth.getClerk();
     return clerk;
   }
 
   async function authHeaders() {
+    const c = clerk || window.PlatformAuth?.getClerk?.();
     const h = { "Content-Type": "application/json" };
-    if (clerk?.session) {
-      const t = await clerk.session.getToken();
+    if (c?.session) {
+      const t = await c.session.getToken();
       if (t) h.Authorization = "Bearer " + t;
     }
     return h;
@@ -51,7 +40,9 @@
       if (!clerk?.user) {
         container.innerHTML =
           '<p class="small muted">Org members: <button type="button" class="btn btn-small" id="ev-collab-signin">Sign in</button> to start a collaboration thread.</p>';
-        $("#ev-collab-signin", container)?.addEventListener("click", () => clerk?.openSignIn());
+        $("#ev-collab-signin", container)?.addEventListener("click", () =>
+          window.PlatformAuth?.openSignIn() ?? clerk?.openSignIn()
+        );
         return;
       }
       const me = await fetch(base + "/api/org-members/me", { headers: await authHeaders() }).then((r) => r.json());
