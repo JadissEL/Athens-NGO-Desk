@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "phases": {
+    "wave1_discover": {
+      "description": "Add NGOs to registry via import JSON",
+      "pattern": "data/ngos/imports/wave1_shard_*.json"
+    },
+    "wave2_profiles": {
+      "description": "Enrich registry rows (org profile pages)",
+      "pattern": "data/ngos/imports/wave2_profiles_shard_*.json"
+    },
+    "wave3_jobs": {
+      "description": "Careers / job postings into job_research_seed",
+      "pattern": "data/ngos/imports/wave3_jobs_shard_*.json"
+    }
+  },
+  "shards": [
+    { "id": "01", "slug": "attica", "label": "Attica & Athens metro" },
+    { "id": "02", "slug": "central_macedonia", "label": "Central Macedonia (Thessaloniki)" },
+    { "id": "03", "slug": "crete", "label": "Crete" },
+    { "id": "04", "slug": "peloponnese", "label": "Peloponnese" },
+    { "id": "05", "slug": "thessaly", "label": "Thessaly" },
+    { "id": "06", "slug": "west_greece", "label": "Epirus & Western Greece" },
+    { "id": "07", "slug": "aegean", "label": "Aegean islands" },
+    { "id": "08", "slug": "ionian", "label": "Ionian islands" },
+    { "id": "09", "slug": "thrace", "label": "Eastern Macedonia & Thrace" },
+    { "id": "10", "slug": "national", "label": "National / multi-region CSOs" }
+  ]
+}

@@ -23,6 +23,9 @@ scripts/.migration_*.html
 data/ngos/imports/*
 !data/ngos/imports/README.md
 !data/ngos/imports/pending_national.example.json
+!data/ngos/imports/wave1_shard_*.json
+!data/ngos/imports/wave2_profiles_shard_*.json
+!data/ngos/imports/wave3_jobs_shard_*.json
 
 # Vercel CLI link metadata (per deploy root)
 .vercel

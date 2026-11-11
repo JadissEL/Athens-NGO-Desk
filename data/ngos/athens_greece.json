@@ -3,8 +3,8 @@
     "title": "NGOs operating in Greece (national scope; Athens as a major hub)",
     "createdAt": "2026-10-28T00:24:20.334Z",
     "source": "canvas athens-greece-ngos + Migration Ministry / UNHCR / HelpPoint / NGOBase",
-    "count": 104,
-    "note": "jobOpenings filled by research scripts; not a complete national census",
+    "count": 107,
+    "note": "jobOpenings filled by research scripts; not a complete national census | import_registry_rows 2026-11-11T00:44:44.984Z: +3 from data/ngos/imports/wave1_shard_03_crete.json",
     "jobResearch": {
       "lastMergedAt": "2026-10-28T00:42:42.489Z",
       "orgsResearched": 13,
@@ -3004,6 +3004,72 @@
       "focus": "Patient & family support (Byron)",
       "website": null,
       "notes": null,
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-105-cretanscent-union-of-social-economy-entities-crete",
+      "name": "CretanSCENT — Union of Social Economy Entities Crete",
+      "nameEl": "Ένωση Φορέων Κ.ΑΛ.Ο. Κρήτης",
+      "sector": "Social economy network",
+      "scope": "Crete",
+      "focus": "Network of social solidarity economy enterprises across Crete regional units.",
+      "website": "https://cretanscent.gr",
+      "notes": "Public member directory; source wave1 shard 03 (manual after agent stall).",
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-106-n-idaia-synergasia-social-co-operative",
+      "name": "N-Idaia Synergasia Social Co-operative",
+      "nameEl": "Ν-Ιδαία Συνεργασία Κοιν.Σ.Επ.",
+      "sector": "Social enterprise",
+      "scope": "Rethymno / Anogia, Crete",
+      "focus": "Local development, cultural tourism, shepherd park and collective benefit in Anogia.",
+      "website": "https://www.n-idea.gr",
+      "notes": "Listed on CretanSCENT founding members.",
+      "jobOpenings": {
+        "researchedAt": null,
+        "totalFound": null,
+        "sources": [],
+        "postings": [],
+        "status": "pending"
+      },
+      "jobPossibility": {
+        "status": "unscored",
+        "score": null,
+        "band": null
+      }
+    },
+    {
+      "id": "ngo-107-oramati-zo-social-co-operative",
+      "name": "ORAMATI-ZO Social Co-operative",
+      "nameEl": "ΟΡΑΜΑΤΙ-ΖΩ",
+      "sector": "Mental health / community",
+      "scope": "Heraklion, Crete",
+      "focus": "Community mental health awareness, panels, accessible services.",
+      "website": "https://oramatizw.gr",
+      "notes": "Κοιν.Σ.Επ. Heraklion.",
       "jobOpenings": {
         "researchedAt": null,
         "totalFound": null,

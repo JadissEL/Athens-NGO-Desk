@@ -16,6 +16,10 @@
     "smoke:api": "node scripts/smoke_api.js",
     "audit:registry-duplicates": "node scripts/audit_registry_duplicates.js",
     "import:registry": "node scripts/import_registry_rows.js",
+    "national:wave:status": "node scripts/national/wave_status.mjs",
+    "national:wave1:apply": "node scripts/national/apply_wave1_imports.mjs",
+    "national:wave2:patch": "node scripts/national/patch_profiles.mjs",
+    "national:wave3:merge-jobs": "node scripts/national/merge_job_research_waves.mjs",
     "osint:coverage": "node scripts/report_osint_coverage.js",
     "test:e2e:static": "playwright test",
     "test:e2e:static:ui": "playwright test --ui"

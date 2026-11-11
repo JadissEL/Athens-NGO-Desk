@@ -280,10 +280,28 @@
         "Refugee sector support",
         "Logistics / material aid"
       ]
+    },
+    {
+      "id": "ngo-105-cretanscent-union-of-social-economy-entities-crete",
+      "name": "CretanSCENT — Union of Social Economy Entities Crete",
+      "possibility": "Unmeasured",
+      "score": null
+    },
+    {
+      "id": "ngo-106-n-idaia-synergasia-social-co-operative",
+      "name": "N-Idaia Synergasia Social Co-operative",
+      "possibility": "Unmeasured",
+      "score": null
+    },
+    {
+      "id": "ngo-107-oramati-zo-social-co-operative",
+      "name": "ORAMATI-ZO Social Co-operative",
+      "possibility": "Unmeasured",
+      "score": null
     }
   ],
   "unresearchedNote": {
-    "count": 95,
-    "message": "The other 95 registry NGOs have no job-possibility score yet. Priority next research targets with likely hiring (by sector scale): Hellenic Red Cross, ARSIS, KMOP, Caritas Hellas, MSF Greece, HOME Project, Diotima, ELIX, Generation 2.0, Apostoli."
+    "count": 98,
+    "message": "98 registry NGOs have no job-possibility score yet (unscored in registry or import stubs)."
   }
 }
