@@ -96,9 +96,14 @@ Override example (other workspace):
 
 ### If `greece-ngo-desk.vercel.app` looks outdated
 
-Production may still be an **old manual deploy** not wired to GitHub. **GitHub Actions** now publishes the current UI to:
+**GitHub Actions → Vercel** fails until repo secrets exist (`VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`). Until then, refresh prod from the repo root after `npm run build:data`:
 
-**https://jadissel.github.io/Athens-NGO-Desk/**
+```powershell
+vercel link --project greece-ngo-desk --yes   # once per machine
+vercel deploy --prod --yes
+```
+
+**GitHub Pages** (auto on `main`) stays at **https://jadissel.github.io/Athens-NGO-Desk/** — use `scripts/compare_static_deploys.mjs` to diff Vercel vs Pages vs local.
 
 To refresh **Vercel**:
 

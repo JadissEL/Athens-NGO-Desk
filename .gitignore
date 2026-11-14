@@ -29,3 +29,5 @@ data/ngos/imports/*
 
 # Vercel CLI link metadata (per deploy root)
 .vercel
+
+.vercel
