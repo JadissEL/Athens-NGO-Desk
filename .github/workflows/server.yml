@@ -32,3 +32,6 @@ jobs:
       - name: Generate Prisma client and typecheck
         working-directory: server
         run: npm run typecheck
+      - name: Test insert-only NGO merge
+        working-directory: server
+        run: node --import tsx --test scripts/merge_missing_orgs.test.ts

@@ -29,7 +29,8 @@ Then use the steward UI to **Publish** so `GET /api/ngo-data` returns 200 (not 4
 1. Connect this GitHub repo to Render.
 2. **New Web Service** — use **[`render.yaml`](../render.yaml)** (Blueprint) **or** manual:
    - **Root directory:** `server`
-   - **Build:** `npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty` (Blueprint seeds once if there is no published bundle yet)
+   - **Build:** `npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty && npm run db:upsert:orgs && npm run db:seed:hospitality && npm run db:seed:events`
+   - **What the seed does:** the first deploy writes `data/ngos` when `PublishedBundle` is empty. Later deploys do **not** replace that bundle. `seed_from_json.ts --if-empty` and `npm run db:upsert:orgs` insert organization ids that are in `data/ngos` and missing from the draft and published rows (registry, plus matching possibility, summary, and email rows). Existing organization objects, including steward edits, stay as they are. `npm run db:seed` without `--if-empty` still replaces the whole bundle — do not use that against production.
    - **Start:** `npm start`
    - **Health check path:** `/api/ready` (or `/api/health` — DB optional for `health`)
 3. **Environment variables** (Blueprint can inject `DATABASE_URL` from linked Postgres via `fromDatabase` in `render.yaml`; Clerk keys and `CORS_ORIGIN` stay in the dashboard)
@@ -106,15 +107,17 @@ To refresh **Vercel**:
 2. Either **Root Directory:** `static-site`, **or** repo root with root [`vercel.json`](../vercel.json) (`outputDirectory: static-site`).
 3. **Redeploy** production.
 
-Optional CI (**Deploy static site (Vercel)** on every `static-site/**` push to `main`):
+Optional CI (**Deploy static site (Vercel)** on every `static-site/**` push to `main`, and when this workflow file changes):
+
+If `VERCEL_TOKEN`, `VERCEL_ORG_ID`, or `VERCEL_PROJECT_ID` is missing, the workflow **succeeds and posts a warning**. It does not call Vercel, so a push to `main` still goes out on GitHub Pages.
 
 | GitHub secret | Where to get it |
 |---------------|-----------------|
-| `VERCEL_TOKEN` | Vercel → Account → **Tokens** |
-| `VERCEL_ORG_ID` | Vercel team **Settings** → General → **Team ID** (`team_…`) |
-| `VERCEL_PROJECT_ID` | Project → **Settings** → General → **Project ID** (`prj_…`) |
+| `VERCEL_TOKEN` | Vercel → Account → **Tokens** → **Create** (shown once) |
+| `VERCEL_ORG_ID` | Vercel team **Settings** → **General** → **Team ID** (`team_…`). A personal scope uses the same page under the account that owns the project. |
+| `VERCEL_PROJECT_ID` | Project → **Settings** → **General** → **Project ID** (`prj_…`) |
 
-After secrets are set, re-run the workflow or push to `main`. Until then, use **GitHub Pages**: https://jadissel.github.io/Athens-NGO-Desk/
+Add each name under GitHub → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**, then **Actions** → **Deploy static site (Vercel)** → **Run workflow** on `main`. Until that deploy is green, the current UI is **GitHub Pages**: https://jadissel.github.io/Athens-NGO-Desk/
 
 ### First-time setup
 

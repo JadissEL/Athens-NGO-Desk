@@ -1,7 +1,11 @@
 name: Deploy static site (Vercel)
 
-# Requires repo secrets: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID
-# Vercel project must use repo root with root vercel.json → outputDirectory static-site
+# Deploys static-site/ to Vercel production when these Actions secrets are set:
+#   VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID
+# If any secret is missing the job succeeds and emits a warning. It does not
+# call Vercel. See docs/DEPLOYMENT_VERCEL_RENDER.md for where to copy each value.
+# The Vercel project must use the repo root with root vercel.json
+# (outputDirectory: static-site).
 
 on:
   push:
@@ -18,7 +22,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check Vercel credentials
+        id: vercel_auth
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          missing=()
+          if [ -z "${VERCEL_TOKEN}" ]; then missing+=(VERCEL_TOKEN); fi
+          if [ -z "${VERCEL_ORG_ID}" ]; then missing+=(VERCEL_ORG_ID); fi
+          if [ -z "${VERCEL_PROJECT_ID}" ]; then missing+=(VERCEL_PROJECT_ID); fi
+          if [ "${#missing[@]}" -gt 0 ]; then
+            echo "::warning title=Vercel deploy skipped::Missing GitHub Actions secret(s): ${missing[*]}. greece-ngo-desk.vercel.app was not updated. Add VERCEL_TOKEN, VERCEL_ORG_ID, and VERCEL_PROJECT_ID (docs/DEPLOYMENT_VERCEL_RENDER.md), or connect the Vercel project to JadissEL/Athens-NGO-Desk on branch main, then re-run this workflow."
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Vercel secrets present. Deploying production."
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Deploy to Vercel
+        if: steps.vercel_auth.outputs.enabled == 'true'
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}

@@ -16,6 +16,7 @@
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx scripts/seed_from_json.ts",
+    "db:upsert:orgs": "tsx scripts/upsert_missing_orgs.ts",
     "db:seed:hospitality": "tsx scripts/seed_hospitality_pilot.ts",
     "db:seed:events": "tsx scripts/seed_civic_events_demo.ts",
     "scrape:events": "tsx scripts/scrape_civic_events.ts"
