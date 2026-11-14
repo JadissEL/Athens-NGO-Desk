@@ -3,7 +3,10 @@
 #
 # Postgres: use an existing Render Postgres named `greece-ngo-desk-db` in this workspace, or add a
 # `databases:` block here. DATABASE_URL is injected via `fromDatabase` (no secret in git).
-# After first deploy: build runs migrate + seed once if PublishedBundle is empty (see buildCommand).
+# After first deploy: build runs migrate + seed once if PublishedBundle is empty.
+# Later deploys keep that bundle and insert organization ids that are new in data/ngos
+# (seed_from_json.ts --if-empty, then upsert_missing_orgs.ts). Neither step replaces
+# existing organization records.
 
 services:
   - type: web
@@ -11,7 +14,7 @@ services:
     runtime: node
     region: frankfurt
     rootDir: server
-    buildCommand: npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty && npm run db:seed:hospitality && npm run db:seed:events
+    buildCommand: npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty && npm run db:upsert:orgs && npm run db:seed:hospitality && npm run db:seed:events
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:

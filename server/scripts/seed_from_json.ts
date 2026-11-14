@@ -1,5 +1,10 @@
 /**
  * Loads data/ngos/*.json into DraftBundle and PublishedBundle (id=1).
+ * Without flags this replaces both rows. With --if-empty it seeds only when
+ * PublishedBundle id=1 is missing; if a bundle already exists it inserts
+ * organization ids that are in data/ngos and absent from the bundle
+ * (see upsert_missing_orgs.ts) and does not overwrite existing records.
+ *
  * Run from repo: cd server && npx tsx scripts/seed_from_json.ts
  */
 import fs from "fs";
@@ -7,6 +12,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
 import { PrismaClient } from "@prisma/client";
+import { upsertMissingOrgs } from "./upsert_missing_orgs.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -57,7 +63,14 @@ async function main() {
   if (ifEmpty) {
     const existing = await prisma.publishedBundle.findUnique({ where: { id: 1 } });
     if (existing) {
-      console.log("seed_if_empty: skip — PublishedBundle id=1 already exists");
+      const result = await upsertMissingOrgs(prisma);
+      if (result.publishedAdded.length === 0 && result.draftAdded.length === 0) {
+        console.log("seed_if_empty: published bundle exists — no new organization ids to add");
+      } else {
+        console.log(
+          `seed_if_empty: inserted missing organizations published=[${result.publishedAdded.join(", ")}] draft=[${result.draftAdded.join(", ")}]`
+        );
+      }
       await prisma.$disconnect();
       return;
     }

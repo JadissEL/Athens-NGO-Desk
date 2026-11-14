@@ -43,7 +43,7 @@ const SERVICE_PLAN = process.env.SERVICE_PLAN ?? "starter";
 const PG_VERSION = Number(process.env.PG_VERSION ?? 16);
 
 const BUILD_CMD =
-  "npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty && npm run db:seed:hospitality && npm run db:seed:events";
+  "npm ci && npx prisma migrate deploy && npm run build && npx tsx scripts/seed_from_json.ts --if-empty && npm run db:upsert:orgs && npm run db:seed:hospitality && npm run db:seed:events";
 const START_CMD = "npm start";
 
 function headers(extra = {}) {
@@ -288,7 +288,7 @@ async function main() {
     console.log(`Updating env + build config on existing service id=${serviceId}`);
     try {
       await patchWebServiceToServerRoot(serviceId);
-      console.log("Patched rootDir=server and buildCommand (migrate + seed --if-empty).");
+      console.log("Patched rootDir=server and buildCommand (migrate + seed --if-empty + upsert missing orgs).");
     } catch (e) {
       console.warn("PATCH service failed (build may stay dashboard-default):", e.message);
     }
